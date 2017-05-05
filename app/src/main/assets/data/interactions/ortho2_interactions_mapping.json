@@ -1,0 +1,129 @@
+[
+  {
+    "id":"monster1",
+    "template":"monster_type1.json",
+    "properties": {
+      "pathId":"path1"
+    },
+    "eventsAction":[
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents":[
+          {
+            "sourceId":"activator1",
+            "type":"STATE",
+            "value":"ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+      "inputEvents":[
+      {
+      "sourceId":"monster1",
+      "type":"END_STATE",
+      "value":"BURNING"
+      }
+      ]
+    },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "BURNING"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"monster1",
+            "type":"EFFECT_START",
+            "value":"BURN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "FROZEN"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"monster1",
+            "type":"EFFECT_START",
+            "value":"FREEZE"
+          }
+        ]
+      }
+    ,
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "IDLE"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"monster1",
+            "type":"EFFECT_STOP",
+            "value":"FREEZE"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[{
+      "type":"END_STATE",
+      "value":"BURNING"
+    },
+      {
+        "type":"END_STATE",
+        "value":"FROZEN"
+      }]
+  },
+  {
+    "id":"activator1",
+    "template":"activator_type1.json",
+    "eventsAction":[],
+    "outputEvents":[{
+      "type":"STATE",
+      "value":"ACTIVATED"
+    },
+      {
+        "type":"STATE",
+        "value":"IDLE"
+      }]
+  }
+,
+  {
+    "id":"chest1",
+    "template":"chest_type1.json",
+    "properties": {
+      "requiredItem":"KeyIron"
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+  "id":"portal1",
+  "template":"portal.json",
+    "properties": {
+      "targetMapId": "ortho",
+      "isDefaultStart": "true"
+    },
+  "eventsAction":[],
+  "outputEvents":[]
+},
+  {
+    "id":"portal2",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"ortho3"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  }
+
+]

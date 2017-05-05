@@ -1,0 +1,138 @@
+{
+  "com.badlogic.gdx.graphics.Color": {
+    green: {
+      a: 1,
+      b: 0,
+      g: 1,
+      r: 0
+    },
+    white: {
+      a: 1,
+      b: 1,
+      g: 1,
+      r: 1
+    },
+    red: {
+      a: 1,
+      b: 0,
+      g: 0,
+      r: 1
+    },
+    yellow: {
+      a: 1,
+      b: 0,
+      g: 1,
+      r: 1
+    },
+    black: {
+      a: 1,
+      b: 0,
+      g: 0,
+      r: 0
+    },
+    grey: {
+      a: 1,
+      b: 0.5,
+      g: 0.5,
+      r: 0.5
+    },
+    cyan: {
+      a: 1,
+      b: 1,
+      g: 0.9,
+      r: 0.72
+    },
+    transparent: {
+      a: 0,
+      b: 0,
+      g: 0,
+      r: 0
+    }
+  },
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+    "default-font": {
+      "file": "data/fonts/SDS_6x6.fnt"
+    },
+    "small-font": {
+      "file": "data/fonts/SDS_6x6_small.fnt"
+    },
+    "smooth-font": {
+      "file": "data/fonts/sans_serif_18.fnt"
+    },
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": {
+      "font": "default-font"
+    },
+    "inventory-item-count": {
+      "font": "small-font",
+      "fontColor": "black"
+    },
+    "inventory-detail": {
+      "font": "smooth-font",
+      "fontColor": "black"
+    },
+    "dialog-detail": {
+      "font": "smooth-font",
+      "fontColor": "white"
+    },
+    "dialog-speaker": {
+      "font": "default-font",
+      "fontColor": "yellow"
+    },
+    "big-font": {
+      "font": "default-font",
+      "fontColor": "black"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
+    "default": {
+      "font": "default-font",
+      "fontColor": "white"
+    },
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
+    "default": {},
+    "inventoryPane": {},
+    "dialogPane": {}
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle": {
+    "default": {
+      "titleFont": "default-font",
+      "background": "dialog"
+    },
+    "solidbackground": {
+      "titleFont": "default-font",
+      "background": "window"
+    },
+    "dialog": {
+      "titleFont": "default-font",
+      "background": "dialog"
+    },
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+    "default": {
+    },
+
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle": {
+    "default": {
+      "font": "smooth-font",
+      "fontColor": "white"
+    },
+
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
+  "default-horizontal": {
+    "background": "slider1",
+    "knob": "slider2" }
+},
+  "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
+  "default": {
+    "checkboxOn": "checkbox_checked",
+    "checkboxOff": "checkbox_unchecked",
+    "font": "default-font",
+    "fontColor": "white"
+  }
+},
+}

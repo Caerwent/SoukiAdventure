@@ -1,0 +1,22 @@
+
+{
+	"id": "quest_start",
+	"title":"quest_start_title",
+	"desc":"quest_start_desc",
+	"itemsReward":["KeyIron"],
+	"effectsReward":[],
+	"startQuestDialogId":"dialog_intro",
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "quest_start_task1",
+			"type":"DIALOG",
+			"targetId":"quest_lapin_jaune",
+			"value":"",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

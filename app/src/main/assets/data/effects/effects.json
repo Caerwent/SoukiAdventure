@@ -1,0 +1,90 @@
+[
+  {
+    "id": "FREEZE",
+    "description": "effect_desc_freeze",
+    "atlasFile": "freeze.atlas",
+    "sound":"freeze.wav",
+    "distance": "1",
+    "duration": "5",
+    "targetState": "FROZEN",
+    "targetDuration": "5",
+    "fps": "10",
+    "icon": "SpellFreeze",
+    "frames": [
+      "freeze_1",
+      "freeze_2",
+      "freeze_3",
+      "freeze_4",
+      "freeze_5",
+      "freeze_6",
+      "freeze_7",
+      "freeze_8",
+      "freeze_9",
+      "freeze_10",
+      "freeze_11",
+      "freeze_12",
+      "freeze_13",
+      "freeze_14",
+      "freeze_15",
+      "freeze_16"
+    ]
+  },
+  {
+    "id": "BURN",
+    "description": "effect_desc_burn",
+    "atlasFile": "burn.atlas",
+    "particuleFile":"burn.p",
+    "particuleScale":"0.5",
+    "sound":"fire.wav",
+    "distance": "1",
+    "duration": "3",
+    "targetState": "BURNING",
+    "targetDuration": "-1",
+    "fps": "10",
+    "icon": "SpellBurn",
+    "frames": [
+    ]
+  },
+  {
+    "id": "PORTAL",
+    "description": "effect_desc_portal",
+    "atlasFile": "townportal.atlas",
+    "sound":"portal.ogg",
+    "distance": "0",
+    "duration": "-1",
+    "fps": "10",
+    "icon": "SpellPortal",
+    "frames": [
+      "portal_1",
+      "portal_2",
+      "portal_3",
+      "portal_4",
+      "portal_5",
+      "portal_6",
+      "portal_7",
+      "portal_8",
+      "portal_9",
+      "portal_10",
+      "portal_11",
+      "portal_12",
+      "portal_13",
+      "portal_14"
+    ]
+  },
+  {
+    "id": "WAVE",
+    "description": "effect_desc_wave",
+    "atlasFile": "tornado.atlas",
+    "particuleFile":"wave.p",
+    "particuleScale":"0.2",
+    "sound":"tornado.ogg",
+    "distance": "1",
+    "duration": "3",
+    "targetState": "EXPLODE",
+    "targetDuration": "-1",
+    "fps": "10",
+    "icon": "SpellWave",
+    "frames": [
+    ]
+  }
+]

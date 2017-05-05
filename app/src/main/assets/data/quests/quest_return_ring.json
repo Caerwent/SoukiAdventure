@@ -1,0 +1,34 @@
+
+{
+	"id": "quest_return_ring",
+	"title":"quest_return_ring_title",
+	"desc":"quest_return_ring_desc",
+	"itemsReward":[],
+	"requiredCompletedQuest": ["quest_obtain_portal"],
+	"tasks" : [
+		{
+			"id": "quest_return_ring_task1",
+			"value":"1",
+			"type":"FIND_ITEM",
+			"targetId":"RingGold",
+			"requiredCompletedTask":[""]
+		},
+		{
+			"id": "quest_return_ring_task2",
+			"type":"RETURN_ITEM",
+			"targetId":"lapin_jaune",
+			"requiredCompletedTask":["quest_return_ring_task1"]
+		},
+
+		{
+			"id": "quest_return_ring_task3",
+			"type":"DIALOG",
+			"targetId":"quest_return_ring_dialog",
+			"value":"",
+			"requiredCompletedTask":["quest_return_ring_task1"]
+		}
+	]
+
+
+}
+

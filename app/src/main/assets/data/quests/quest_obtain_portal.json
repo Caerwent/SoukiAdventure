@@ -1,0 +1,21 @@
+
+{
+	"id": "quest_obtain_portal",
+	"title":"quest_obtain_portal_title",
+	"desc":"quest_obtain_portal_desc",
+	"itemsReward":["RingGold"],
+	"effectsReward":["PORTAL","FREEZE","BURN","WAVE"],
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "quest_obtain_portal_task1",
+			"type":"DIALOG",
+			"targetId":"wizard_first_dialog",
+			"value":"",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

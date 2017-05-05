@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="12" height="10" tilewidth="64" tileheight="64" nextobjectid="63">
+ <tileset firstgid="1" source="tile2map64.tsx"/>
+ <tileset firstgid="61" name="test" tilewidth="0" tileheight="0" tilecount="0" columns="0"/>
+ <tileset firstgid="61" name="objects" tilewidth="128" tileheight="128" tilecount="1" columns="0">
+  <tile id="0">
+   <image width="128" height="128" source="tree2.png"/>
+   <objectgroup draworder="index">
+    <object id="1" x="69.3333" y="2">
+     <polygon points="0,0 -15.3333,0 -63.3333,58 -56,87.3333 -30,103.333 -36,115.333 -23.3333,125.333 7.33333,126 25.3333,114.667 14,100.667 36,94.6667 51.3333,80 54,62.6667 43.3333,39.3333 29.3333,17.3333 10,1.33333"/>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="62" name="tile3map64" tilewidth="64" tileheight="64" tilecount="24" columns="4">
+  <image source="tile3map64.png" width="256" height="384"/>
+  <tile id="0">
+   <objectgroup draworder="index"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="86" name="tile4map64" tilewidth="64" tileheight="64" tilecount="64" columns="4">
+  <image source="tile4map64.png" width="256" height="1024"/>
+ </tileset>
+ <layer name="ground" width="12" height="10">
+  <data encoding="base64">
+   KQAAACoAAAAqAAAAKgAAACoAAAAqAAAAKgAAACoAAAAqAAAAKwAAAG4AAABuAAAALQAAAAkAAAAJAAAARAAAAAkAAAAJAAAACQAAAAkAAAAJAAAALgAAAC4AAAAuAAAALQAAAAkAAAARAAAARAAAAAkAAAANAAAACQAAAAkAAAAJAAAALwAAAG4AAABuAAAALQAAAEcAAABHAAAASAAAAAkAAAAJAAAACQAAAAkAAAARAAAALwAAAG4AAABuAAAALQAAAEMAAABDAAAAQwAAAA4AAAAJAAAACQAAAAkAAAAJAAAALwAAAG4AAABuAAAALQAAAEMAAABDAAAAQwAAAAkAAAAJAAAACQAAAAkAAAANAAAALwAAAG4AAABuAAAALQAAAAYAAAAHAAAAQwAAAAkAAAAJAAAACQAAABIAAAAJAAAALwAAAG4AAABuAAAALQAAAAoAAAALAAAADQAAAAkAAAARAAAACQAAAAkAAAAJAAAALwAAAG4AAABuAAAALQAAAEMAAABDAAAAQwAAAAkAAAAJAAAACQAAAAkAAAAJAAAALwAAAG4AAABuAAAAMQAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMwAAAG4AAABuAAAA
+  </data>
+ </layer>
+ <layer name="terrain" width="12" height="10">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  </data>
+ </layer>
+ <objectgroup name="zindex">
+  <object id="35" name="panneau" x="233.333" y="438">
+   <polygon points="0,0 -0.666667,-15.3333 13.3333,-16 12,-42 -35.3333,-42 -35.3333,-16 -20,-15.3333 -20.6667,2"/>
+  </object>
+  <object id="58" name="tree" x="544" y="192">
+   <polygon points="-32,0 -64,0 -64,-16 -80,-32 -96,-64 -48,-128 -16,-128 16,-96 32,-64 16,-32 -16,-16 0,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="collision">
+  <object id="12" x="66" y="206">
+   <polygon points="69,-14 158,-12 176,-16 175,-136.667 189,-137 192,0 160,48 -2,47 -1,-12"/>
+  </object>
+  <object id="21" x="0" y="638.667">
+   <polygon points="0,0 22.6667,-2 22.6667,-636.667 0,-637.333"/>
+  </object>
+  <object id="22" x="24" y="0.666667">
+   <polygon points="0,0 0,20 28.6667,10 572.667,14.6667 574,-0.666667"/>
+  </object>
+  <object id="23" x="600" y="1.33333">
+   <polygon points="0,0 -1.33333,16.6667 18.6667,30 24,62.6667 168,62.6667 168,-1.33333"/>
+  </object>
+  <object id="24" x="637.333" y="578.667">
+   <polygon points="0,0 -616,-2.66667 -614.667,58.6667 0,60.6667"/>
+  </object>
+  <object id="34" x="214.667" y="438.667">
+   <polygon points="0,0 18.6667,0.666667 16.6667,-15.3333 1.33333,-16"/>
+  </object>
+  <object id="53" name="water" x="768" y="128">
+   <polygon points="-64,0 -144,0 -144,512 0,512 0,0"/>
+  </object>
+  <object id="56" x="768" y="64">
+   <polygon points="0,0 -16,0 -16,64 0,64"/>
+  </object>
+  <object id="59" name="tree" x="544" y="192">
+   <polygon points="0,0 -64,0 -48,-32 -16,-32"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="items">
+  <object id="38" name="Gear" type="ITEM" gid="20" x="512" y="321" width="64" height="64"/>
+  <object id="39" name="VialBlue" type="ITEM" gid="20" x="128" y="128" width="64" height="64"/>
+  <object id="61" name="VialRed" type="ITEM" gid="20" x="432" y="112" width="64" height="64"/>
+  <object id="62" name="VialGreen" type="ITEM" gid="20" x="256" y="208" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="interactions">
+  <object id="54" name="portal2" type="PORTAL" gid="16" x="672" y="128" width="61" height="64"/>
+  <object id="36" name="portal1" type="PORTAL" gid="12" x="96" y="477" width="64" height="64"/>
+  <object id="44" name="npc1" gid="16" x="250" y="450" width="64" height="64"/>
+  <object id="60" name="test_challenge" type="CHALLENGE" gid="16" x="528" y="512" width="64" height="64"/>
+ </objectgroup>
+</map>

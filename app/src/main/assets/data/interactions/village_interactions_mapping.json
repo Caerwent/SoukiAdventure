@@ -1,0 +1,46 @@
+[
+  {
+    "id":"portal1",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"east_land1"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"portal3",
+    "template":"portal_clickable.json",
+    "properties": {
+      "targetMapId":"house1"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"portal4",
+    "template":"portal_clickable.json",
+    "properties": {
+      "targetMapId":"home"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"defaultPortal",
+    "template":"portal.json",
+    "properties": {
+      "isDefaultStart":"true",
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"carriage",
+    "template":"carriage_type1.json",
+    "properties": {
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId":"ortho2",
+      "isDefaultStart":"true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "door1",
+    "template": "obstacle_door_wood.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door1",
+            "type": "END_STATE",
+            "value": "BURNING"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door1",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "BURNING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door1",
+            "type": "EFFECT_START",
+            "value": "BURN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "END_STATE",
+        "value": "BURNING"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "door2",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "FROZEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door2",
+            "type": "EFFECT_START",
+            "value": "FREEZE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "EXPLODE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door2",
+            "type": "STATE",
+            "value": "FROZEN"
+          },
+          {
+            "sourceId": "door2",
+            "type": "EFFECT_START",
+            "value": "WAVE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door2",
+            "type": "END_STATE",
+            "value": "EXPLODE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "door2",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+
+  {
+    "type": "STATE",
+    "value": "OPEN"
+  },
+      {
+        "type": "STATE",
+        "value": "FROZEN"
+      },
+      {
+        "type": "END_STATE",
+        "value": "EXPLODE"
+      }
+    ]
+  }
+]

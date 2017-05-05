@@ -1,0 +1,35 @@
+{
+  "type":"NPC",
+  "atlas":"malo.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "idle"
+      ]
+    }
+
+  ],
+  "eventsAction":[
+    {
+      "id":"DIALOG",
+      "inputEvents":[
+        {
+          "sourceId":"",
+          "type":"END_DIALOG",
+          "value":"dquest2TasksCompleted"
+        }
+      ]
+    }
+  ],
+
+
+
+}

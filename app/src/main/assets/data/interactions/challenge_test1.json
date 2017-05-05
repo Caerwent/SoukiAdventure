@@ -1,0 +1,29 @@
+{
+  "type":"CHALLENGE",
+  "atlas":"../challenges/the_machine.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "theMachine_small"
+      ]
+    },
+    {
+      "name": "COMPLETED",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "theMachine_small"
+      ]
+    }
+
+  ]
+
+}

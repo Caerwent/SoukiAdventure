@@ -1,0 +1,128 @@
+[
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_bottom_left.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        }
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "barrier1",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "barrier1",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+
+  {
+    "id":"activator1",
+    "template":"activator_type1.json",
+    "eventsAction":[]
+  },
+  {
+    "id":"activator2",
+    "template":"activator_type1.json"
+  },
+  {
+  "id":"portal1",
+  "template":"portal.json",
+    "properties": {
+      "targetMapId": "east_land1",
+      "isDefaultStart": "true"
+    },
+  "eventsAction":[],
+  "outputEvents":[]
+},
+  {
+    "id":"portal2",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"east_land3"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  }
+
+]

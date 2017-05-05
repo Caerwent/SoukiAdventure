@@ -1,0 +1,25 @@
+{
+  "type":"PORTAL",
+  "atlas":"",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "false",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": []
+    },
+    {
+      "name": "ACTIVATED",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": []
+    }
+
+  ]
+
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id":"test_challenge",
+    "template":"challenge_test1.json",
+    "properties": {
+      "type":"MACHINE"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"portal1",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"village",
+      "isDefaultStart":"true"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"portal2",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"forest1",
+      "activatedByQuestId":"quest_malo"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"npc1",
+    "template":"npc1.json",
+    "properties":{
+      "dialogId":"npc1"
+    },
+    "questActions":[
+      {
+        "questId":"quest_talk_malo",
+        "questState":"NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_activated"
+        }
+      },
+      {
+        "questId":"quest_malo",
+        "questState":"NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_notCompleted"
+        }
+      },
+      {
+        "questId":"quest_malo",
+        "questState":"COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_notCompleted"
+        }
+      },
+      {
+        "questId":"quest_malo",
+        "questState":"FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_finished"
+        }
+      }
+    ],
+    "eventsAction":[
+      {
+        "id":"DIALOG",
+        "value":"quest_malo_finished",
+        "inputEvents":[
+          {
+            "sourceId":"",
+            "type":"DIALOG",
+            "value":"quest_malo_completed"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[]
+  }
+]

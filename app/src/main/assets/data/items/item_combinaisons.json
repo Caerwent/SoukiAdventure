@@ -1,0 +1,14 @@
+[
+{
+	"item1":Lantern,
+	"item2":Torch,
+	"resultItems":["TorchFire", "Lantern"]
+},
+	{
+		"item1":Lantern2,
+		"item2":Torch,
+		"resultItems":["TorchFire", "Lantern2"]
+	}
+
+
+]

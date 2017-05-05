@@ -1,0 +1,86 @@
+[
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_bottom_left.json",
+    "properties": {
+    },
+    "questActions": [
+      {
+        "questId": "quest_obtain_portal",
+        "questState": "FINISHED",
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "barrier1",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "barrier1",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+
+  {
+  "id":"portal1",
+  "template":"portal.json",
+    "properties": {
+      "targetMapId": "east_land2",
+      "isDefaultStart": "true"
+    },
+  "eventsAction":[],
+  "outputEvents":[]
+},
+  {
+    "id":"portal2",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"forest1"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"portal3",
+    "template":"portal.json",
+    "properties": {
+      "targetMapId":"east_land_hole"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  }
+
+]

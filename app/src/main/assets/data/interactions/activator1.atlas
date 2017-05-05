@@ -1,0 +1,19 @@
+
+activator1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 0, 0
+  size: 44, 55
+  orig: 44, 55
+  offset: 0, 0
+  index: -1
+activated
+  rotate: false
+  xy: 18, 55
+  size: 40, 55
+  orig: 40, 55
+  offset: 18, 0
+  index: -1

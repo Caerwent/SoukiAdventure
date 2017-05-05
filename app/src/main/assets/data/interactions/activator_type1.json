@@ -1,0 +1,38 @@
+{
+  "type":"ACTIVATOR1",
+  "atlas":"activator1.atlas",
+  "persistence":"NONE",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "fps":"0",
+      "isLooping":"true",
+      "frames": [
+        "idle"
+      ]
+    },
+    {
+      "name": "ACTIVATED",
+      "fps":"0",
+      "isLooping":"true",
+      "frames": [
+        "activated"
+      ]
+    }
+
+  ],
+  "eventsAction":[],
+  "outputEvents":[{
+    "type":"STATE",
+    "value":"ACTIVATED"
+  },
+    {
+      "type":"STATE",
+      "value":"IDLE"
+    }]
+
+}
