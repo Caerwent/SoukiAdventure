@@ -42,5 +42,55 @@
     },
     "eventsAction":[],
     "outputEvents":[]
+  },
+  {
+    "id":"malo",
+    "template":"malo.json",
+    "properties":{
+      "dialogId":"quest_malo"
+    },
+    "questActions":[
+      {
+        "questId": "quest_malo",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_activated"
+        }
+      },
+      {
+        "questId": "quest_malo",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_completed"
+        }
+      },
+      {
+        "questId": "quest_malo",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_malo"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"",
+            "type":"DIALOG",
+            "value":"quest_malo"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[]
   }
 ]

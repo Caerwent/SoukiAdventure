@@ -18,16 +18,6 @@
 
   ],
   "eventsAction":[
-    {
-      "id":"DIALOG",
-      "inputEvents":[
-        {
-          "sourceId":"",
-          "type":"END_DIALOG",
-          "value":"dquest2TasksCompleted"
-        }
-      ]
-    }
   ],
 
 

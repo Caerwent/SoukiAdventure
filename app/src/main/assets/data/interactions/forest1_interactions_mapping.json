@@ -3,7 +3,7 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId":"east_land3",
+      "targetMapId":"east_land4",
       "isDefaultStart":"true"
     },
     "eventsAction": [],
