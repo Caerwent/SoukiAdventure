@@ -142,11 +142,17 @@ public class GameMap implements ICollisionObstacleHandler {
         Profile.getInstance().setLocationProfile(locationProfile);
 
 
+        InteractionPortal defaultPortal=null;
+        InteractionPortal arrivalPortal=null;
         for (IInteraction control : mInteractions) {
             if (control.getType() == IInteraction.Type.PORTAL) {
                 InteractionPortal portal = (InteractionPortal) control;
 
-                boolean isDefaultCase = (aFromMap == null && portal.isDefaultStart()) || portal.isDefaultStart();
+                if(portal.isDefaultStart())
+                {
+                    defaultPortal = portal;
+                }
+                boolean isDefaultCase = aFromMap == null && portal.isDefaultStart();
                 boolean isPortalToPortalCase = aTownPortalInfo == null && aFromMap != null && portal.getTargetMapId() != null && portal.getTargetMapId().compareTo(aFromMap) == 0;
                 boolean isDefaultMapArrivalFromTownPortal = aTownPortalInfo != null && isCurrentMapIsDefault && portal.isDefaultStart();
                 if (isDefaultCase || isPortalToPortalCase || isDefaultMapArrivalFromTownPortal) {
@@ -155,6 +161,7 @@ public class GameMap implements ICollisionObstacleHandler {
                     if (isDefaultMapArrivalFromTownPortal) {
                         mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
                     }
+                    arrivalPortal = portal;
                     portal.setActivated(false);
 
                     if (portal.getQuestId() != null) {
@@ -178,6 +185,21 @@ public class GameMap implements ICollisionObstacleHandler {
                     } else {
                         portal.setActivated(true);
                     }
+                }
+            }
+        }
+        if(arrivalPortal==null && defaultPortal!=null && !isMapBackWithTownPortal)
+        {
+            mPlayer.getHero().setPosition(defaultPortal.getX(), defaultPortal.getY());
+            tryToSetCameraAtPosition(defaultPortal.getX(), defaultPortal.getY());
+
+            defaultPortal.setActivated(false);
+
+            if (defaultPortal.getQuestId() != null) {
+                Quest theQuest = QuestManager.getInstance().getQuestFromId(defaultPortal.getQuestId());
+                if (theQuest != null && !theQuest.isCompleted()) {
+                    theQuest.setActivated(true);
+                    EventDispatcher.getInstance().onQuestActivated(theQuest);
                 }
             }
         }
