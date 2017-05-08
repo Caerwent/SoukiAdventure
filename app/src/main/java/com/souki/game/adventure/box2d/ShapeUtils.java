@@ -218,6 +218,31 @@ public class ShapeUtils {
 
     }
 
+    static public boolean segmentIntersectShape(Vector2 p1, Vector2 p2, Shape aShape)
+    {
+        if(aShape.getType()==Shape.Type.POLYGON)
+        {
+            return Intersector.intersectSegmentPolygon(p1, p2, ((PolygonShape) aShape).getShape());
+        }
+        else if(aShape.getType()==Shape.Type.CIRCLE)
+        {
+            Circle circle = ((CircleShape) aShape).getShape();
+            Vector2 center = new Vector2(circle.x, circle.y);
+            return Intersector.intersectSegmentCircle(p1, p2, center, circle.radius);
+        }
+        else  if(aShape.getType()==Shape.Type.RECT)
+        {
+            Rectangle rect = ((RectangleShape) aShape).getShape();
+            Polygon rectPolygon = new Polygon(new float[]{0, 0, rect.getWidth(), 0, rect.getWidth(), rect.getHeight(), 0, rect.getHeight()});
+            rectPolygon.setPosition(rect.x , rect.y );
+            return Intersector.intersectSegmentPolygon(p1, p2, rectPolygon);
+
+        }
+
+        return false;
+    }
+
+
     static public boolean overlaps(Shape aShape, Shape aOtherShape)
     {
 
