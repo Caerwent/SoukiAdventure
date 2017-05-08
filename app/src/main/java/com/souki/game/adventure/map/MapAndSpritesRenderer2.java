@@ -34,7 +34,6 @@ import com.souki.game.adventure.screens.GameScreen;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static android.R.attr.x;
 import static com.badlogic.gdx.graphics.g2d.Batch.C1;
 import static com.badlogic.gdx.graphics.g2d.Batch.C2;
 import static com.badlogic.gdx.graphics.g2d.Batch.C3;
@@ -76,6 +75,8 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 
     private IMapRendable[] mMapRendables;
 
+    private PolygonShape mTileRegionShape = new PolygonShape();
+    private Polygon mTileRegionPoly = new Polygon();
 
     public MapAndSpritesRenderer2(GameMap map) {
         super(map.getTiledMap());
@@ -115,209 +116,204 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
         // shapeRenderer.setAutoShapeType(true);
     }
 
-    protected void renderLayerByLayer(int aStartIdxLayer)
-    {
+    protected void renderLayerByLayer(int aStartIdxLayer) {
         final Color batchColor = batch.getColor();
         final float color = Color.toFloatBits(batchColor.r, batchColor.g, batchColor.b, batchColor.a * mDefaultlayer.getOpacity());
 
 
-                // check if  a zindex object overlaps the tile and if  a rendable should be drawn before above or below zindex object
-//                PolygonShape tileShape = new PolygonShape();
-//                float[] tmpTilePoly = new float[]{x, y, x, y + layerTileHeight, x + layerTileWidth, y + layerTileHeight, x + layerTileWidth, y};
-//
-//                tileShape.setShape(new Polygon(tmpTilePoly));
-//                 Gdx.app.debug("DEBUG", "------------------------- tile " + ShapeUtils.logShape(tileShape));
+        // check if  a zindex object overlaps the tile and if  a rendable should be drawn before above or below zindex object
+
+        for (int i = aStartIdxLayer; i < map.getLayers().getCount(); i++) {
+            MapLayer layer = map.getLayers().get(i);
+            if (layer.isVisible()) {
+                Array<Shape> zindexList = mMap.getBodiesZindex(layer.getName());
+                if (layer instanceof TiledMapTileLayer) {
+//                            Gdx.app.debug("DEBUG", "------------------------- layer " + layer.getName());
+                    int layerWidth = mDefaultlayer.getWidth();
+                    int layerHeight = mDefaultlayer.getHeight();
+
+                    float layerTileWidth = mDefaultlayer.getTileWidth() * unitScale;
+                    float layerTileHeight = mDefaultlayer.getTileHeight() * unitScale;
+
+                    int col1 = Math.max(0, (int) (viewBounds.x / layerTileWidth));
+                    int col2 = Math.min(layerWidth, (int) ((viewBounds.x + viewBounds.width + layerTileWidth) / layerTileWidth));
+
+                    int row1 = Math.max(0, (int) (viewBounds.y / layerTileHeight));
+                    int row2 = Math.min(layerHeight, (int) ((viewBounds.y + viewBounds.height + layerTileHeight) / layerTileHeight));
+
+                    float y = row2 * layerTileHeight;
+                    float xStart = col1 * layerTileWidth;
+                    float[] vertices = this.vertices;
 
 
-                for (int i = aStartIdxLayer; i < map.getLayers().getCount(); i++) {
-                    MapLayer layer = map.getLayers().get(i);
-                    if (layer.isVisible()) {
-                        Array<Shape> zindexList = mMap.getBodiesZindex(layer.getName());
-                        if (layer instanceof TiledMapTileLayer) {
-
-                            int layerWidth = mDefaultlayer.getWidth();
-                            int layerHeight = mDefaultlayer.getHeight();
-
-                            float layerTileWidth = mDefaultlayer.getTileWidth() * unitScale;
-                            float layerTileHeight = mDefaultlayer.getTileHeight() * unitScale;
-
-                            int col1 = Math.max(0, (int) (viewBounds.x / layerTileWidth));
-                            int col2 = Math.min(layerWidth, (int) ((viewBounds.x + viewBounds.width + layerTileWidth) / layerTileWidth));
-
-                            int row1 = Math.max(0, (int) (viewBounds.y / layerTileHeight));
-                            int row2 = Math.min(layerHeight, (int) ((viewBounds.y + viewBounds.height + layerTileHeight) / layerTileHeight));
-
-                            float y = row2 * layerTileHeight;
-                            float xStart = col1 * layerTileWidth;
-                            float[] vertices = this.vertices;
+                    for (int row = row2; row >= row1; row--) {
+                        float x = xStart;
+                        for (int col = col1; col < col2; col++) {
 
 
-                            for (int row = row2; row >= row1; row--) {
-                                float x = xStart;
-                                for (int col = col1; col < col2; col++) {
+                            final TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) layer).getCell(col, row);
+                            if (cell == null) {
+                                x += layerTileWidth;
+                                continue;
+                            }
+                            final TiledMapTile tile = cell.getTile();
 
+                            if (tile != null) {
+//                                        Gdx.app.debug("DEBUG", "tile row=" + row+" col="+col);
+                                final boolean flipX = cell.getFlipHorizontally();
+                                final boolean flipY = cell.getFlipVertically();
+                                final int rotations = cell.getRotation();
 
-                                    final TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) layer).getCell(col, row);
-                                    if (cell == null) {
-                                        x += layerTileWidth;
-                                        continue;
-                                    }
-                                    final TiledMapTile tile = cell.getTile();
+                                TextureRegion region = tile.getTextureRegion();
 
-                                    if (tile != null) {
-                                        final boolean flipX = cell.getFlipHorizontally();
-                                        final boolean flipY = cell.getFlipVertically();
-                                        final int rotations = cell.getRotation();
+                                float x1 = x + tile.getOffsetX() * unitScale;
+                                float y1 = y + tile.getOffsetY() * unitScale;
+                                float x2 = x1 + region.getRegionWidth() * unitScale;
+                                float y2 = y1 + region.getRegionHeight() * unitScale;
 
-                                        TextureRegion region = tile.getTextureRegion();
+                                float u1 = region.getU();
+                                float v1 = region.getV2();
+                                float u2 = region.getU2();
+                                float v2 = region.getV();
 
-                                        float x1 = x + tile.getOffsetX() * unitScale;
-                                        float y1 = y + tile.getOffsetY() * unitScale;
-                                        float x2 = x1 + region.getRegionWidth() * unitScale;
-                                        float y2 = y1 + region.getRegionHeight() * unitScale;
+                                vertices[X1] = x1;
+                                vertices[Y1] = y1;
+                                vertices[C1] = color;
+                                vertices[U1] = u1;
+                                vertices[V1] = v1;
 
-                                        float u1 = region.getU();
-                                        float v1 = region.getV2();
-                                        float u2 = region.getU2();
-                                        float v2 = region.getV();
+                                vertices[X2] = x1;
+                                vertices[Y2] = y2;
+                                vertices[C2] = color;
+                                vertices[U2] = u1;
+                                vertices[V2] = v2;
 
-                                        vertices[X1] = x1;
-                                        vertices[Y1] = y1;
-                                        vertices[C1] = color;
-                                        vertices[U1] = u1;
-                                        vertices[V1] = v1;
+                                vertices[X3] = x2;
+                                vertices[Y3] = y2;
+                                vertices[C3] = color;
+                                vertices[U3] = u2;
+                                vertices[V3] = v2;
 
-                                        vertices[X2] = x1;
-                                        vertices[Y2] = y2;
-                                        vertices[C2] = color;
-                                        vertices[U2] = u1;
-                                        vertices[V2] = v2;
+                                vertices[X4] = x2;
+                                vertices[Y4] = y1;
+                                vertices[C4] = color;
+                                vertices[U4] = u2;
+                                vertices[V4] = v1;
 
-                                        vertices[X3] = x2;
-                                        vertices[Y3] = y2;
-                                        vertices[C3] = color;
-                                        vertices[U3] = u2;
-                                        vertices[V3] = v2;
-
-                                        vertices[X4] = x2;
-                                        vertices[Y4] = y1;
-                                        vertices[C4] = color;
-                                        vertices[U4] = u2;
-                                        vertices[V4] = v1;
-
-                                        if (flipX) {
-                                            float temp = vertices[U1];
-                                            vertices[U1] = vertices[U3];
-                                            vertices[U3] = temp;
-                                            temp = vertices[U2];
-                                            vertices[U2] = vertices[U4];
-                                            vertices[U4] = temp;
-                                        }
-                                        if (flipY) {
-                                            float temp = vertices[V1];
-                                            vertices[V1] = vertices[V3];
-                                            vertices[V3] = temp;
-                                            temp = vertices[V2];
-                                            vertices[V2] = vertices[V4];
-                                            vertices[V4] = temp;
-                                        }
-                                        if (rotations != 0) {
-                                            switch (rotations) {
-                                                case TiledMapTileLayer.Cell.ROTATE_90: {
-                                                    float tempV = vertices[V1];
-                                                    vertices[V1] = vertices[V2];
-                                                    vertices[V2] = vertices[V3];
-                                                    vertices[V3] = vertices[V4];
-                                                    vertices[V4] = tempV;
-
-                                                    float tempU = vertices[U1];
-                                                    vertices[U1] = vertices[U2];
-                                                    vertices[U2] = vertices[U3];
-                                                    vertices[U3] = vertices[U4];
-                                                    vertices[U4] = tempU;
-                                                    break;
-                                                }
-                                                case TiledMapTileLayer.Cell.ROTATE_180: {
-                                                    float tempU = vertices[U1];
-                                                    vertices[U1] = vertices[U3];
-                                                    vertices[U3] = tempU;
-                                                    tempU = vertices[U2];
-                                                    vertices[U2] = vertices[U4];
-                                                    vertices[U4] = tempU;
-                                                    float tempV = vertices[V1];
-                                                    vertices[V1] = vertices[V3];
-                                                    vertices[V3] = tempV;
-                                                    tempV = vertices[V2];
-                                                    vertices[V2] = vertices[V4];
-                                                    vertices[V4] = tempV;
-                                                    break;
-                                                }
-                                                case TiledMapTileLayer.Cell.ROTATE_270: {
-                                                    float tempV = vertices[V1];
-                                                    vertices[V1] = vertices[V4];
-                                                    vertices[V4] = vertices[V3];
-                                                    vertices[V3] = vertices[V2];
-                                                    vertices[V2] = tempV;
-
-                                                    float tempU = vertices[U1];
-                                                    vertices[U1] = vertices[U4];
-                                                    vertices[U4] = vertices[U3];
-                                                    vertices[U3] = vertices[U2];
-                                                    vertices[U2] = tempU;
-                                                    break;
-                                                }
-                                            }
-                                        }
-                                        PolygonShape tileRegionShape = new PolygonShape();
-                                        float[] tmpTileRegionPoly = new float[]{vertices[X1], vertices[Y1], vertices[X2], vertices[Y2], vertices[X3], vertices[Y3], vertices[X4], vertices[Y4]};
-
-                                        tileRegionShape.setShape(new Polygon(tmpTileRegionPoly));
-
-                                        boolean renderShape = checkTileOverlapsRendables(tileRegionShape, zindexList);
-
-                                        batch.draw(region.getTexture(), vertices, 0, NUM_VERTICES);
-//                                        if (renderShape) {
-//                                            shapeRenderer.setColor(Color.CYAN);
-//                                            shapeRenderer.polyline(new float[]{vertices[X1], vertices[Y1], vertices[X3], vertices[Y3]});
-//                                            shapeRenderer.polyline(new float[]{vertices[X2], vertices[Y2], vertices[X4], vertices[Y4]});
-//                                        }
-                                    }
-                                    x += layerTileWidth;
+                                if (flipX) {
+                                    float temp = vertices[U1];
+                                    vertices[U1] = vertices[U3];
+                                    vertices[U3] = temp;
+                                    temp = vertices[U2];
+                                    vertices[U2] = vertices[U4];
+                                    vertices[U4] = temp;
                                 }
-                                y -= layerTileHeight;
+                                if (flipY) {
+                                    float temp = vertices[V1];
+                                    vertices[V1] = vertices[V3];
+                                    vertices[V3] = temp;
+                                    temp = vertices[V2];
+                                    vertices[V2] = vertices[V4];
+                                    vertices[V4] = temp;
+                                }
+                                if (rotations != 0) {
+                                    switch (rotations) {
+                                        case TiledMapTileLayer.Cell.ROTATE_90: {
+                                            float tempV = vertices[V1];
+                                            vertices[V1] = vertices[V2];
+                                            vertices[V2] = vertices[V3];
+                                            vertices[V3] = vertices[V4];
+                                            vertices[V4] = tempV;
+
+                                            float tempU = vertices[U1];
+                                            vertices[U1] = vertices[U2];
+                                            vertices[U2] = vertices[U3];
+                                            vertices[U3] = vertices[U4];
+                                            vertices[U4] = tempU;
+                                            break;
+                                        }
+                                        case TiledMapTileLayer.Cell.ROTATE_180: {
+                                            float tempU = vertices[U1];
+                                            vertices[U1] = vertices[U3];
+                                            vertices[U3] = tempU;
+                                            tempU = vertices[U2];
+                                            vertices[U2] = vertices[U4];
+                                            vertices[U4] = tempU;
+                                            float tempV = vertices[V1];
+                                            vertices[V1] = vertices[V3];
+                                            vertices[V3] = tempV;
+                                            tempV = vertices[V2];
+                                            vertices[V2] = vertices[V4];
+                                            vertices[V4] = tempV;
+                                            break;
+                                        }
+                                        case TiledMapTileLayer.Cell.ROTATE_270: {
+                                            float tempV = vertices[V1];
+                                            vertices[V1] = vertices[V4];
+                                            vertices[V4] = vertices[V3];
+                                            vertices[V3] = vertices[V2];
+                                            vertices[V2] = tempV;
+
+                                            float tempU = vertices[U1];
+                                            vertices[U1] = vertices[U4];
+                                            vertices[U4] = vertices[U3];
+                                            vertices[U3] = vertices[U2];
+                                            vertices[U2] = tempU;
+                                            break;
+                                        }
+                                    }
+                                }
+                                float[] tmpTileRegionPoly = new float[]{vertices[X1], vertices[Y1], vertices[X2], vertices[Y2], vertices[X3], vertices[Y3], vertices[X4], vertices[Y4]};
+                                mTileRegionPoly.setPosition(0, 0);
+                                mTileRegionPoly.setVertices(tmpTileRegionPoly);
+                                mTileRegionShape.setShape(mTileRegionPoly);
+
+                                boolean renderShape = checkTileOverlapsRendables(x, mTileRegionShape, zindexList, row, col);
+
+                                batch.draw(region.getTexture(), vertices, 0, NUM_VERTICES);
+//                                if (renderShape) {
+//                                    shapeRenderer.setColor(Color.CYAN);
+//                                    shapeRenderer.polyline(new float[]{vertices[X1], vertices[Y1], vertices[X3], vertices[Y3]});
+//                                    shapeRenderer.polyline(new float[]{vertices[X2], vertices[Y2], vertices[X4], vertices[Y4]});
+//                                }
                             }
-                        } else if (layer instanceof TiledMapImageLayer) {
-                            TextureRegion region = ((TiledMapImageLayer) layer).getTextureRegion();
-
-                            if (region == null) {
-                                return;
-                            }
-
-                            final float xLayer = ((TiledMapImageLayer) layer).getX();
-                            final float yLayer = ((TiledMapImageLayer) layer).getY();
-                            final float x1 = xLayer * unitScale;
-                            final float y1 = yLayer * unitScale;
-                            final float x2 = x1 + region.getRegionWidth() * unitScale;
-                            final float y2 = y1 + region.getRegionHeight() * unitScale;
-                            PolygonShape tileRegionShape = new PolygonShape();
-                            float[] tmpTileRegionPoly = new float[]{x1, y1, x1, y2, x2, y2, x2, y1};
-
-                            tileRegionShape.setShape(new Polygon(tmpTileRegionPoly));
-                            boolean renderShape = checkTileOverlapsRendables(tileRegionShape, zindexList);
-
-                            renderImageLayer((TiledMapImageLayer) layer);
-                        } else {
-                            renderObjects(layer);
+                            x += layerTileWidth;
                         }
+                        y -= layerTileHeight;
                     }
+                } else if (layer instanceof TiledMapImageLayer) {
+                    TextureRegion region = ((TiledMapImageLayer) layer).getTextureRegion();
+
+                    if (region == null) {
+                        return;
+                    }
+
+                    final float xLayer = ((TiledMapImageLayer) layer).getX();
+                    final float yLayer = ((TiledMapImageLayer) layer).getY();
+                    final float x1 = xLayer * unitScale;
+                    final float y1 = yLayer * unitScale;
+                    final float x2 = x1 + region.getRegionWidth() * unitScale;
+                    final float y2 = y1 + region.getRegionHeight() * unitScale;
+                    float[] tmpTileRegionPoly = new float[]{x1, y1, x1, y2, x2, y2, x2, y1};
+                    mTileRegionPoly.setPosition(0, 0);
+                    mTileRegionPoly.setVertices(tmpTileRegionPoly);
+                    mTileRegionShape.setShape(mTileRegionPoly);
+
+                    boolean renderShape = checkTileOverlapsRendables(x1, mTileRegionShape, zindexList, 0, 0);
+
+                    renderImageLayer((TiledMapImageLayer) layer);
+                } else {
+                    renderObjects(layer);
+                }
+            }
 
         }
 
         renderRemainingObjects(mMapRendables);
 
     }
-    protected void renderCellByCell(int aStartIdxLayer)
-    {
+
+    protected void renderCellByCell(int aStartIdxLayer) {
 
 
         final Color batchColor = batch.getColor();
@@ -340,20 +336,13 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
         final float[] vertices = this.vertices;
 
 
-
-//        Gdx.app.debug("DEBUG", "************************************************************");
+        //      Gdx.app.debug("DEBUG", "************************************************************");
 
 
         for (int row = row2; row >= row1; row--) {
             float x = xStart;
             for (int col = col1; col < col2; col++) {
                 // check if  a zindex object overlaps the tile and if  a rendable should be drawn before above or below zindex object
-//                PolygonShape tileShape = new PolygonShape();
-//                float[] tmpTilePoly = new float[]{x, y, x, y + layerTileHeight, x + layerTileWidth, y + layerTileHeight, x + layerTileWidth, y};
-//
-//                tileShape.setShape(new Polygon(tmpTilePoly));
-//                 Gdx.app.debug("DEBUG", "------------------------- tile " + ShapeUtils.logShape(tileShape));
-
 
                 for (int i = aStartIdxLayer; i < map.getLayers().getCount(); i++) {
                     MapLayer layer = map.getLayers().get(i);
@@ -473,12 +462,12 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                                         }
                                     }
                                 }
-                                PolygonShape tileRegionShape = new PolygonShape();
                                 float[] tmpTileRegionPoly = new float[]{vertices[X1], vertices[Y1], vertices[X2], vertices[Y2], vertices[X3], vertices[Y3], vertices[X4], vertices[Y4]};
+                                mTileRegionPoly.setPosition(0, 0);
+                                mTileRegionPoly.setVertices(tmpTileRegionPoly);
+                                mTileRegionShape.setShape(mTileRegionPoly);
 
-                                tileRegionShape.setShape(new Polygon(tmpTileRegionPoly));
-
-                                boolean renderShape = checkTileOverlapsRendables(tileRegionShape, zindexList);
+                                boolean renderShape = checkTileOverlapsRendables(x, mTileRegionShape, zindexList, row, col);
 
                                 batch.draw(region.getTexture(), vertices, 0, NUM_VERTICES);
 //                                if (renderShape) {
@@ -500,11 +489,11 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                             final float y1 = yLayer * unitScale;
                             final float x2 = x1 + region.getRegionWidth() * unitScale;
                             final float y2 = y1 + region.getRegionHeight() * unitScale;
-                            PolygonShape tileRegionShape = new PolygonShape();
                             float[] tmpTileRegionPoly = new float[]{x1, y1, x1, y2, x2, y2, x2, y1};
-
-                            tileRegionShape.setShape(new Polygon(tmpTileRegionPoly));
-                            boolean renderShape = checkTileOverlapsRendables(tileRegionShape, zindexList);
+                            mTileRegionPoly.setPosition(0, 0);
+                            mTileRegionPoly.setVertices(tmpTileRegionPoly);
+                            mTileRegionShape.setShape(mTileRegionPoly);
+                            boolean renderShape = checkTileOverlapsRendables(x1, mTileRegionShape, zindexList, row, col);
 
                             renderImageLayer((TiledMapImageLayer) layer);
                         } else {
@@ -522,6 +511,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 
 
     }
+
     @Override
     public void render() {
 
@@ -565,85 +555,87 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
             }
         }
 
-        if(mMap.getZindexCount()>1)
-        {
+        if (mMap.getZindexCount() > 1) {
             renderLayerByLayer(startLayerIdx);
-        }
-        else
-        {
+        } else {
             renderCellByCell(startLayerIdx);
         }
 
         endRender();
         shapeRenderer.end();
-        //renderInteractionShapes();
-        //        renderShapes(mMapRendables);
-        //         renderCollisionShapes();
+//        renderInteractionShapes();
+//        renderShapes(mMapRendables);
+//        renderCollisionShapes();
 
     }
-    private boolean checkTileOverlapsRendables(PolygonShape aTileShape, Array<Shape> aZindexList) {
+
+    private boolean checkTileOverlapsRendables(float aX, PolygonShape aTileShape, Array<Shape> aZindexList, int row, int col) {
         boolean renderShape = false;
+        boolean debug = false;
         for (int idx = 0; idx < mMapRendables.length; idx++) {
             IMapRendable rendable = mMapRendables[idx];
             if (rendable.isRendable() && !rendable.isRended()) {
-//                Gdx.app.debug("DEBUG", "check mapRendable " + ShapeUtils.logShape(rendable.getShapeRendering()));
                 if (ShapeUtils.overlaps(rendable.getShapeRendering(), aTileShape)) {
 
+//                    if(rendable instanceof InteractionHero)
+//                    {
+//                        debug=true;
+//                        Gdx.app.debug("DEBUG", "hero overlaps tile row=" +row+" col="+col);
+//                    }
                     for (int i = 0; i < aZindexList.size; i++) {
                         Shape currentZIndex = aZindexList.get(i);
 //                        Gdx.app.debug("DEBUG", "check zindex " + ShapeUtils.logShape(currentZIndex));
 
                         if (ShapeUtils.overlaps(rendable.getShapeRendering(), currentZIndex) && ShapeUtils.overlaps(aTileShape, currentZIndex)) {
-//                            Gdx.app.debug("DEBUG", "rendable overlaps tile zindex=" +ShapeUtils.logShape(currentZIndex));
 
-//                            shapeRenderer.setColor(Color.GOLD);
-//                            shapeRenderer.polygon(aTileShape.getShape().getTransformedVertices());
-//                            shapeRenderer.setColor(Color.RED);
-//                            if (rendable.getShapeRendering() instanceof PolygonShape) {
-//                                shapeRenderer.polygon(((PolygonShape) rendable.getShapeRendering()).getShape().getTransformedVertices());
-//                            } else if (rendable.getShapeRendering() instanceof RectangleShape) {
-//                                Rectangle rect = ((RectangleShape) rendable.getShapeRendering()).getShape();
-//                                shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
-//                            }
-//                            shapeRenderer.setColor(Color.GREEN);
-//                            if (currentZIndex instanceof PolygonShape) {
-//                                shapeRenderer.polygon(((PolygonShape) currentZIndex).getShape().getTransformedVertices());
-//                            } else if (currentZIndex instanceof RectangleShape) {
-//                                Rectangle rect = ((RectangleShape) currentZIndex).getShape();
-//                                shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
-//                            }
-                            renderShape = true;
-                            float Yzindex = currentZIndex.getYAtX(x);
-                            float Ytmp = currentZIndex.getYAtX(x + aTileShape.getBounds().getWidth());
+
+                            float Yzindex = currentZIndex.getYAtX(aX);
+                            float Ytmp = currentZIndex.getYAtX(aX + aTileShape.getBounds().getWidth());
                             if (Yzindex == -1 || (Ytmp != -1 && Ytmp < Yzindex)) {
                                 Yzindex = Ytmp;
                             }
-                            Ytmp = currentZIndex.getYAtX(x + aTileShape.getBounds().getWidth() / 2);
+                            Ytmp = currentZIndex.getYAtX(aX + aTileShape.getBounds().getWidth() / 2);
                             if (Yzindex == -1 || (Ytmp != -1 && Ytmp < Yzindex)) {
                                 Yzindex = Ytmp;
                             }
                             if (Yzindex == -1) {
                                 Yzindex = currentZIndex.getBounds().getY();
                             }
-                            float Yrendable = rendable.getShapeRendering().getYAtX(x);
-                            Ytmp = rendable.getShapeRendering().getYAtX(x + aTileShape.getBounds().getWidth());
+                            float Yrendable = rendable.getShapeRendering().getYAtX(aX);
+                            Ytmp = rendable.getShapeRendering().getYAtX(aX + aTileShape.getBounds().getWidth());
                             if (Yrendable == -1 || (Ytmp != -1 && Ytmp < Yrendable)) {
                                 Yrendable = Ytmp;
                             }
-                            Ytmp = rendable.getShapeRendering().getYAtX(x + aTileShape.getBounds().getWidth() / 2);
+                            Ytmp = rendable.getShapeRendering().getYAtX(aX + aTileShape.getBounds().getWidth() / 2);
                             if (Yrendable == -1 || (Ytmp != -1 && Ytmp < Yrendable)) {
                                 Yrendable = Ytmp;
                             }
                             if (Yrendable == -1) {
                                 Yrendable = rendable.getShapeRendering().getBounds().getY();
                             }
-//                            Gdx.app.debug("DEBUG", "mapRendable " + ShapeUtils.logShape(rendable.getShapeRendering()) + "\n" +
-//                                    " zindex " + ShapeUtils.logShape(currentZIndex) + "\n" +
-//                                    " tile " + ShapeUtils.logShape(aTileShape) + "\n" +
-//                                    "x=" + x + " zindexYatX=" + Yzindex + " entityYAtX=" + Yrendable);
+//                            if(debug)
+//                            {
+//                                Gdx.app.debug("DEBUG", "zindex overlaps " +ShapeUtils.logShape(currentZIndex)+ " x=" + aX + " zindexYatX=" + Yzindex + " heroYAtX=" + Yrendable);
+//                            }
 
                             if (Yzindex < Yrendable) {
-//                                Gdx.app.debug("DEBUG", "render mapRendable ");
+                                shapeRenderer.setColor(Color.GOLD);
+                                shapeRenderer.polygon(aTileShape.getShape().getTransformedVertices());
+                                shapeRenderer.setColor(Color.RED);
+                                if (rendable.getShapeRendering() instanceof PolygonShape) {
+                                    shapeRenderer.polygon(((PolygonShape) rendable.getShapeRendering()).getShape().getTransformedVertices());
+                                } else if (rendable.getShapeRendering() instanceof RectangleShape) {
+                                    Rectangle rect = ((RectangleShape) rendable.getShapeRendering()).getShape();
+                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
+                                }
+                                shapeRenderer.setColor(Color.GREEN);
+                                if (currentZIndex instanceof PolygonShape) {
+                                    shapeRenderer.polygon(((PolygonShape) currentZIndex).getShape().getTransformedVertices());
+                                } else if (currentZIndex instanceof RectangleShape) {
+                                    Rectangle rect = ((RectangleShape) currentZIndex).getShape();
+                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
+                                }
+                                renderShape = true;
                                 // need to draw all overlaping entities with < Y
                                 drawPreviousOverlapingEntity(rendable, idx, mMapRendables);
                                 rendable.render(getBatch());
@@ -684,9 +676,6 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 
         for (IMapRendable rendable : sortedMapRendables) {
             if (rendable.isRendable() && !rendable.isRended()) {
-                //    Gdx.app.debug("DEBUG", "render "+rendable.getClass().getSimpleName()+" y="+rendable.getShape().getBounds().getY());
-
-
                 rendable.render(batch);
                 rendable.setRended(true);
             }
@@ -737,7 +726,6 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
         collisionRenderer.setProjectionMatrix(getBatch().getProjectionMatrix());
         collisionRenderer.begin(ShapeRenderer.ShapeType.Line);
 
-        //  Array<Shape> zindex = mMap.getBodiesZindex();
         Array<Shape> mapCollision = mMap.getBodiesCollision();
 
 
@@ -748,8 +736,6 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 
             if (mapCollision.contains(col.mShape, true)) {
                 collisionRenderer.setColor(Color.GREEN);
-                //  } else if (zindex.contains(col.mShapeCollision, true)) {
-                //      collisionRenderer.setColor(Color.YELLOW);
             } else {
                 collisionRenderer.setColor(Color.BLUE);
             }
@@ -777,14 +763,6 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                 collisionRenderer.circle(circle.x, circle.y, circle.radius, 16);
             }
         }
-        /*
-        Array<Shape> bodies = mMap.getBodiesCollision();
-
-        for (Shape body : bodies) {
-            if (body.getType() == Shape.Type.POLYGON) {
-                collisionRenderer.polygon(((PolygonShape) body).getShape().getTransformedVertices());
-            }
-        }*/
 
 
         collisionRenderer.end();
