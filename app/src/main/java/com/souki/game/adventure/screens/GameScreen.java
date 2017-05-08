@@ -116,8 +116,9 @@ public class GameScreen implements Screen, InputProcessor {
 
 
         mInputMultiplexer.addProcessor(UIStage.getInstance());
-        mInputMultiplexer.addProcessor(this);
         mInputMultiplexer.addProcessor(bobController);
+        mInputMultiplexer.addProcessor(this);
+
 
 
     }
