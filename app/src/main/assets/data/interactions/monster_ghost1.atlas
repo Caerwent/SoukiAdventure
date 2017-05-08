@@ -1,0 +1,40 @@
+monster_ghost1.png
+size: 70, 90
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+idle
+  rotate: false
+  xy: 35, 45
+  size: 35, 45
+  orig: 35, 45
+  offset: 0, 0
+  index: -1
+move_down_1
+  rotate: false
+  xy: 35, 45
+  size: 35, 45
+  orig: 35, 45
+  offset: 0, 0
+  index: -1
+move_left_1
+  rotate: false
+  xy: 0, 45
+  size: 35, 45
+  orig: 35, 45
+  offset: 0, 0
+  index: -1
+move_up_1
+  rotate: false
+  xy: 35, 0
+  size: 35, 45
+  orig: 35, 45
+  offset: 0, 0
+  index: -1
+move_right_1
+  rotate: false
+  xy: 0, 0
+  size: 35, 45
+  orig: 35, 45
+  offset: 0, 0
+  index: -1

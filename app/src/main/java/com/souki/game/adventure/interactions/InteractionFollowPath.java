@@ -13,6 +13,7 @@ import com.souki.game.adventure.map.GameMap;
 
 public class InteractionFollowPath extends Interaction  {
     protected PathMap mPath;
+    protected boolean mIsAutoStart;
 
     public InteractionFollowPath(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
@@ -22,7 +23,16 @@ public class InteractionFollowPath extends Interaction  {
             if(mProperties.containsKey("pathId"))
             {
                 mPath = aMap.getPaths().get((String) mProperties.get("pathId"));
+                if(mProperties.containsKey("autoStart"))
+                {
+                    mIsAutoStart=Boolean.valueOf((String)mProperties.get("autoStart"));
+                }
+                if(mProperties.containsKey("looping"))
+                {
+                    mPath.setLoop(Boolean.valueOf((String)mProperties.get("looping")));
+                }
             }
+
 
         }
         initialize(x, y, aMapping);
@@ -54,5 +64,16 @@ public class InteractionFollowPath extends Interaction  {
             return true;
         }
         return res;
+    }
+
+    @Override
+    public void startToInteract()
+    {
+        super.startToInteract();
+        if(mPath!=null && mIsAutoStart)
+        {
+            setMovable(true);
+        }
+
     }
 }
