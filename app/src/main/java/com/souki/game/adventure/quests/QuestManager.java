@@ -104,8 +104,8 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
     public void onDialogEnd(GameDialog aDialog) {
 
         Quest[] quests = new Quest[mLivingQuests.values().size()];
-        quests= mLivingQuests.values().toArray(quests);
-        for (int i=0;i<quests.length;i++ ) {
+        quests = mLivingQuests.values().toArray(quests);
+        for (int i = 0; i < quests.length; i++) {
             if (quests[i].isActivated() && !quests[i].isCompleted()) {
                 for (QuestTask task : quests[i].getTasks()) {
                     if (!task.isCompleted()) {
@@ -113,7 +113,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                             if (task.getTargetId() != null && task.getTargetId().equals(aDialog.getId())) {
                                 if (quests[i].isTaskDependenciesCompleted(task)) {
                                     task.setCompleted(true);
-                                    Gdx.app.debug("QestManager","onDialogEnd quest "+quests[i].getId()+" task "+task.getType()+" completed "+task.getId());
+                                    Gdx.app.debug("QestManager", "onDialogEnd quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
                                     //check if quest is completed
                                     quests[i].computeCompleted();
                                     if (quests[i].isCompleted()) {
@@ -143,7 +143,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                                 checkItemFoundTask(quest);
                                 if (quest.isTaskDependenciesCompleted(task)) {
                                     task.setCompleted(true);
-                                    Gdx.app.debug("QestManager","onNPC quest "+quest.getId()+" task "+task.getType()+" completed "+task.getId());
+                                    Gdx.app.debug("QestManager", "onNPC quest " + quest.getId() + " task " + task.getType() + " completed " + task.getId());
 
                                     quest.computeCompleted();
                                     if (quest.isCompleted()) {
@@ -178,7 +178,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                                 if (foundItems.size >= nbItem) {
                                     if (quest.isTaskDependenciesCompleted(task)) {
                                         task.setCompleted(true);
-                                        Gdx.app.debug("QestManager","onItemFound quest "+quest.getId()+" task "+task.getType()+" completed "+task.getId());
+                                        Gdx.app.debug("QestManager", "onItemFound quest " + quest.getId() + " task " + task.getType() + " completed " + task.getId());
 
                                         quest.computeCompleted();
                                         if (quest.isCompleted()) {
@@ -246,8 +246,26 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
         Profile.getInstance().updateQuestProfile(aQuest.getId(), aQuest);
     }
 
+    public void activateQuestIfAllDependenciesCompleted(Quest aQuest) {
+        boolean isAllDependenciesCompleted = true;
+
+        if(aQuest.getRequiredCompletedQuest() != null) {
+            for (String requiredId : aQuest.getRequiredCompletedQuest()) {
+                Quest dependenciyQuest = mQuests.get(requiredId);
+                if (!dependenciyQuest.isCompleted()) {
+                    isAllDependenciesCompleted = false;
+                    break;
+                }
+            }
+        }
+        if (isAllDependenciesCompleted) {
+            aQuest.setActivated(true);
+            EventDispatcher.getInstance().onQuestActivated(aQuest);
+        }
+    }
+
     private void internalQuestcompleted(Quest aQuest) {
-        Gdx.app.debug("QestManager","quest completed "+aQuest.getId());
+        Gdx.app.debug("QestManager", "quest completed " + aQuest.getId());
 
         updateItemsFromFoundTask(aQuest);
         if (aQuest.getItemsReward() != null) {
@@ -266,19 +284,8 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
             if (!mLivingQuests.containsKey(quest.getId()) &&
                     !mCompletedQuests.containsKey(quest.getId()) &&
                     quest.getRequiredCompletedQuest() != null) {
+                activateQuestIfAllDependenciesCompleted(quest);
 
-                boolean isAllDependenciesCompleted = true;
-                for (String requiredId : quest.getRequiredCompletedQuest()) {
-                    Quest dependenciyQuest = mQuests.get(requiredId);
-                    if (!dependenciyQuest.isCompleted()) {
-                        isAllDependenciesCompleted = false;
-                        break;
-                    }
-                }
-                if(isAllDependenciesCompleted) {
-                    quest.setActivated(true);
-                    EventDispatcher.getInstance().onQuestActivated(quest);
-                }
 
             }
         }
@@ -302,8 +309,6 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
 
     @Override
     public void onQuestTaskCompleted(Quest aQuest, QuestTask aTask) {
-
-
 
 
     }
