@@ -12,7 +12,8 @@ public class InteractionActionType {
         OPEN,
         CLOSE,
         REMOVED,
-        LAUNCH_EFFECT;
+        LAUNCH_EFFECT,
+        ACTIVATE_QUEST;
     }
 
     public ActionType type;

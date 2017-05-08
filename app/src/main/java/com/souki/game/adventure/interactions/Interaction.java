@@ -698,6 +698,14 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                 return true;
             }
         }
+        else if (aAction != null && InteractionActionType.ActionType.ACTIVATE_QUEST==aAction.type) {
+            Quest quest = QuestManager.getInstance().getQuestFromId(aAction.value);
+            if ( quest != null && !quest.isActivated() && !quest.isCompleted()) {
+
+                QuestManager.getInstance().activateQuestIfAllDependenciesCompleted(quest);
+                return true;
+            }
+        }
         return false;
     }
 
