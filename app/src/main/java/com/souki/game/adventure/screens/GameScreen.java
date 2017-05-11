@@ -17,12 +17,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.souki.game.adventure.ChararcterMoveController2;
+import com.souki.game.adventure.CharacterMoveController3;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.Settings;
 import com.souki.game.adventure.box2d.Shape;
@@ -46,7 +47,7 @@ import static com.souki.game.adventure.Settings.TARGET_WIDTH;
  * Created by gwalarn on 16/11/16.
  */
 
-public class GameScreen implements Screen, InputProcessor {
+public class GameScreen implements Screen, GestureDetector.GestureListener, InputProcessor {
 
     public final static String TAG = GameScreen.class.getSimpleName();
     public Rectangle viewport;
@@ -57,7 +58,7 @@ public class GameScreen implements Screen, InputProcessor {
     private OrthographicCamera camera;
     private OrthographicCamera uiCamera;
     //private OrthoCamController cameraController;
-    private ChararcterMoveController2 bobController;
+    private CharacterMoveController3 bobController;
     private AssetManager assetManager;
     private BitmapFont font;
     private SpriteBatch batch;
@@ -112,12 +113,14 @@ public class GameScreen implements Screen, InputProcessor {
         UIStage.getInstance().setHUD(new MainHUD());
 
 
-        bobController = new ChararcterMoveController2(camera);
-
+       // bobController = new ChararcterMoveController2(camera);
+        bobController = new CharacterMoveController3(camera);
+        GestureDetector gd = new GestureDetector(bobController);
 
         mInputMultiplexer.addProcessor(UIStage.getInstance());
-        mInputMultiplexer.addProcessor(bobController);
-        mInputMultiplexer.addProcessor(this);
+        mInputMultiplexer.addProcessor(gd);
+        GestureDetector gd2 = new GestureDetector(this);
+        mInputMultiplexer.addProcessor(gd2);
 
 
 
@@ -347,7 +350,17 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
+return false;
 
+    }
+
+    @Override
+    public boolean touchDown(float x, float y, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean tap(float x, float y, int count, int button) {
         final Vector3 curr = new Vector3();
         camera.unproject(curr.set(x, y, 0));
 
@@ -356,7 +369,7 @@ public class GameScreen implements Screen, InputProcessor {
             if (inputEntities != null) {
                 for (Entity entity : inputEntities) {
                     InputComponent input = entity.getComponent(InputComponent.class);
-                    if (input.touchDown(x, y, pointer, button)) {
+                    if (input.tap(x, y, count, button)) {
                         return true;
                     }
                 }
@@ -366,4 +379,38 @@ public class GameScreen implements Screen, InputProcessor {
         return false;
     }
 
+    @Override
+    public boolean longPress(float x, float y) {
+        return false;
+    }
+
+    @Override
+    public boolean fling(float velocityX, float velocityY, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean pan(float x, float y, float deltaX, float deltaY) {
+        return false;
+    }
+
+    @Override
+    public boolean panStop(float x, float y, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean zoom(float initialDistance, float distance) {
+        return false;
+    }
+
+    @Override
+    public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2) {
+        return false;
+    }
+
+    @Override
+    public void pinchStop() {
+
+    }
 }

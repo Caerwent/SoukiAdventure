@@ -1,7 +1,7 @@
 package com.souki.game.adventure.entity.components;
 
 import com.badlogic.ashley.core.Component;
-import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.input.GestureDetector;
 
 /**
  * Created by vincent on 12/01/2017.
@@ -9,27 +9,17 @@ import com.badlogic.gdx.InputProcessor;
 
 public class InputComponent implements Component {
 
-    protected InputProcessor mInputProcessor;
+    protected GestureDetector.GestureListener mInputProcessor;
 
-    public InputComponent(InputProcessor aInputProcessor) {
+    public InputComponent(GestureDetector.GestureListener aInputProcessor) {
         mInputProcessor = aInputProcessor;
     }
 
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean tap(float x, float y, int count, int button)
+    {
         if (mInputProcessor != null) {
-            return mInputProcessor.touchDown(screenX, screenY, pointer, button);
+            return mInputProcessor.tap(x, y, count, button);
         } else return false;
     }
 
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        if (mInputProcessor != null) {
-            return mInputProcessor.touchUp(screenX, screenY, pointer, button);
-        } else return false;
-    }
-
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        if (mInputProcessor != null) {
-            return mInputProcessor.touchDragged(screenX, screenY, pointer);
-        } else return false;
-    }
 }

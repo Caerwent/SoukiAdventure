@@ -20,7 +20,7 @@ import com.souki.game.adventure.screens.GameScreen;
  * Created by vincent on 01/07/2016.
  */
 
-public class ChararcterMoveController2 extends InputAdapter {
+public class CharacterMoveController2 extends InputAdapter {
     final OrthographicCamera camera;
     final Vector3 mCursorPoint = new Vector3();
     final Vector3 last = new Vector3(-1, -1, -1);
@@ -39,7 +39,7 @@ public class ChararcterMoveController2 extends InputAdapter {
 
     private ImmutableArray<Entity> entities;
 
-    public ChararcterMoveController2(OrthographicCamera camera) {
+    public CharacterMoveController2(OrthographicCamera camera) {
         this.camera = camera;
 
 

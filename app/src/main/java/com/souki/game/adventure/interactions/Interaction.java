@@ -2,10 +2,10 @@ package com.souki.game.adventure.interactions;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -48,7 +48,7 @@ import java.util.HashMap;
  * Created by vincent on 08/02/2017.
  */
 
-public class Interaction extends Entity implements ICollisionObstacleHandler, ICollisionInteractionHandler, IInteraction, InputProcessor, IInteractionEventListener, IQuestListener {
+public class Interaction extends Entity implements ICollisionObstacleHandler, ICollisionInteractionHandler, IInteraction, GestureDetector.GestureListener, IInteractionEventListener, IQuestListener {
 
     protected String mId;
     protected Type mType;
@@ -65,8 +65,11 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     protected Array<CollisionInteractionComponent> mCollisionsInteraction = new Array<CollisionInteractionComponent>();
     protected Array<CollisionEffectComponent> mCollisionsEffect = new Array<CollisionEffectComponent>();
 
+    protected byte mCollisionType = CollisionObstacleComponent.MAPINTERACTION;
+
     protected Shape mShapeCollision;
     protected int mCollisionHeightFactor = 8;
+    protected float mInteractionBorderSize = 0.1F;
     protected Shape mShapeInteraction;
     protected Shape mShapeRendering;
     protected float[] mVertices = new float[8];
@@ -563,7 +566,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         updateCollision(0);
         updateInteraction(0);
         if (isRendable()) {
-            this.add(new CollisionObstacleComponent(CollisionObstacleComponent.MAPINTERACTION, getShapeCollision(), mId, this, this));
+            this.add(new CollisionObstacleComponent(mCollisionType, getShapeCollision(), mId, this, this));
         }
         this.add(new CollisionInteractionComponent(getShapeInteraction(), this, this));
         if (mQuestsActions != null) {
@@ -577,7 +580,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         TransformComponent tfm = this.getComponent(TransformComponent.class);
         if (isRendable()) {
             RectangleShape interactionArea = (RectangleShape) mShapeInteraction;
-            interactionArea.getShape().set(mShapeRendering.getX() - 0.1F, mShapeRendering.getY() - 0.1F, mShapeRendering.getWidth() + 0.2f, mShapeRendering.getHeight() + 0.2f);
+            interactionArea.getShape().set(mShapeRendering.getX() - mInteractionBorderSize, mShapeRendering.getY() - mInteractionBorderSize, mShapeRendering.getWidth() + 2*mInteractionBorderSize, mShapeRendering.getHeight() + 2*mInteractionBorderSize);
 
         } else if(getComponent(CollisionObstacleComponent.class)!=null){
             mShapeInteraction = mShapeCollision;
@@ -910,49 +913,6 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     /*************************************** TOUCH ************************************/
 
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        Vector3 cursorPoint = new Vector3();
-
-        mCamera.unproject(cursorPoint.set(screenX, screenY, 0));
-
-        if (hasTouchInteraction(cursorPoint.x, cursorPoint.y)) {
-            onTouchInteraction();
-            return true;
-        }
-        return false;
-    }
-
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-
-        return false;
-    }
-
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
-
     protected boolean hasTouchInteraction(float x, float y) {
         return isClickable();
     }
@@ -962,4 +922,56 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     }
 
 
+    @Override
+    public boolean touchDown(float x, float y, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean tap(float x, float y, int count, int button) {
+        Vector3 cursorPoint = new Vector3();
+
+        mCamera.unproject(cursorPoint.set(x, y, 0));
+
+        if (hasTouchInteraction(cursorPoint.x, cursorPoint.y)) {
+            onTouchInteraction();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean longPress(float x, float y) {
+        return false;
+    }
+
+    @Override
+    public boolean fling(float velocityX, float velocityY, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean pan(float x, float y, float deltaX, float deltaY) {
+        return false;
+    }
+
+    @Override
+    public boolean panStop(float x, float y, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean zoom(float initialDistance, float distance) {
+        return false;
+    }
+
+    @Override
+    public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2) {
+        return false;
+    }
+
+    @Override
+    public void pinchStop() {
+
+    }
 }
