@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-up" width="30" height="25" tilewidth="32" tileheight="32" nextobjectid="135">
- <tileset firstgid="1" name="stairs" tilewidth="32" tileheight="32" tilecount="112" columns="8">
-  <image source="stairs.png" width="256" height="448"/>
+ <tileset firstgid="1" name="stairs" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="112" columns="8">
+  <image source="stairs.png" width="272" height="476"/>
  </tileset>
- <tileset firstgid="113" name="house_inside_full" tilewidth="32" tileheight="32" tilecount="900" columns="30">
-  <image source="house_inside_full.png" width="960" height="960"/>
+ <tileset firstgid="113" name="house_inside_full" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="900" columns="30">
+  <image source="house_inside_full.png" width="1020" height="1020"/>
   <tile id="370">
    <objectgroup color="#ff0000">
     <object id="1" name="chaise_haut" x="26.6667" y="32">
@@ -13,8 +13,8 @@
    </objectgroup>
   </tile>
  </tileset>
- <tileset firstgid="1013" name="house_inside_full2" tilewidth="32" tileheight="32" tilecount="504" columns="24">
-  <image source="house_inside_full2.png" width="768" height="672"/>
+ <tileset firstgid="1013" name="house_inside_full2" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="504" columns="24">
+  <image source="house_inside_full2.png" width="816" height="714"/>
  </tileset>
  <layer name="ground" width="30" height="25">
   <data encoding="base64">

@@ -3,13 +3,13 @@
  <tileset firstgid="1" name="dungeonex" tilewidth="32" tileheight="32" tilecount="100" columns="10">
   <image source="dungeonex.png" width="320" height="320"/>
  </tileset>
- <tileset firstgid="101" name="house_inside_full" tilewidth="32" tileheight="32" tilecount="900" columns="30">
-  <image source="house_inside_full.png" width="960" height="960"/>
+ <tileset firstgid="101" name="house_inside_full" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="900" columns="30">
+  <image source="house_inside_full.png" width="1020" height="1020"/>
  </tileset>
- <tileset firstgid="1001" name="house_inside_full2" tilewidth="32" tileheight="32" tilecount="504" columns="24">
-  <image source="house_inside_full2.png" width="768" height="672"/>
+ <tileset firstgid="1001" name="house_inside_full2" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="504" columns="24">
+  <image source="house_inside_full2.png" width="816" height="714"/>
  </tileset>
- <tileset firstgid="1505" name="terrain_atlas" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
+ <tileset firstgid="1505" name="terrain_atlas" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
   <image source="terrain_atlas.png" width="1024" height="1024"/>
  </tileset>
  <layer name="ground" width="12" height="10">
