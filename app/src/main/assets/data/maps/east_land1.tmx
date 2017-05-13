@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-up" width="31" height="26" tilewidth="32" tileheight="32" nextobjectid="79">
  <tileset firstgid="1" name="terrain_atlas" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
-  <image source="terrain_atlas.png" width="1024" height="1024"/>
+  <image source="terrain_atlas.png" width="1088" height="1088"/>
  </tileset>
  <tileset firstgid="1025" name="plant repack" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="182" columns="14">
   <image source="plant repack.png" width="476" height="442"/>
@@ -129,7 +129,6 @@
   <object id="8" name="activator3" gid="1096" x="540" y="404" width="32" height="32"/>
   <object id="9" name="barrier3" gid="1096" x="554" y="125" width="32" height="32"/>
   <object id="10" name="activator4" gid="1096" x="449" y="116" width="32" height="32"/>
-  <object id="55" name="activator5" gid="1096" x="934" y="457" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="items"/>
  <objectgroup name="zindex">

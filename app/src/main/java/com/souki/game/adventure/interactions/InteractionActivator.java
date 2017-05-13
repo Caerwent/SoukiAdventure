@@ -1,7 +1,9 @@
 package com.souki.game.adventure.interactions;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
+import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
 
@@ -10,12 +12,31 @@ import com.souki.game.adventure.persistence.GameSession;
  */
 
 public class InteractionActivator extends Interaction{
-    private static final String KEY_STATE = "state";
+    public final static String STATE_ACTIVATED="ACTIVATED";
 
-    public InteractionActivator(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
+    private static final String KEY_STATE = "state";
+    protected boolean mIsPush = false;
+    protected float mDelay=0;
+    protected float mDelayTime=0;
+    protected boolean mDelayRunning = false;
+
+
+    public InteractionActivator(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap, boolean aIsPush) {
         super(aDef, x, y, aMapping, aProperties, aMap);
+        mIsPush = aIsPush;
+        if(mIsPush)
+        {
+            mCollisionHeightFactor = 1;
+            mCollisionType = CollisionObstacleComponent.MAPINTERACTION_NOT_OBSTACLE;
+        }
         mType = Type.ACTIVATOR;
+        if (mProperties != null) {
+            if (mProperties.containsKey("delay")) {
+                mDelay = ((Float)mProperties.get("delay")).floatValue();
+            }
+        }
         initialize(x, y, aMapping);
+
 
     }
 
@@ -35,19 +56,67 @@ public class InteractionActivator extends Interaction{
     }
 
     @Override
+    public void update(float dt) {
+        super.update(dt);
+        if(mDelayRunning) {
+            mDelayTime += dt;
+            if (mDelayTime >= mDelay) {
+                mDelayRunning = false;
+                mDelayTime = 0;
+                setState(InteractionState.STATE_IDLE);
+            }
+        }
+
+    }
+    @Override
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+
+        boolean ret = super.onCollisionObstacleStart(aEntity);
+        if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 && mIsPush && aEntity.mHandler != null && aEntity.mHandler == mMap.getPlayer().getHero()) {
+
+            if(mDelay>0) {
+                mDelayTime=0;
+                mDelayRunning=false;
+            }
+            setState(STATE_ACTIVATED);
+            return true;
+
+        }
+        return ret;
+    }
+    @Override
+    public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity) {
+
+        boolean ret = super.onCollisionObstacleStop(aEntity);
+        if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 && mIsPush && aEntity.mHandler != null && aEntity.mHandler == mMap.getPlayer().getHero()) {
+            if(mDelay>0) {
+                Gdx.app.debug("DEBUG", "onCollisionObstacleStop start delay");
+                mDelayTime=0;
+                mDelayRunning=true;
+            }
+            else
+            {
+                setState(InteractionState.STATE_IDLE);
+            }
+            return true;
+
+        }
+        return ret;
+    }
+    @Override
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return aEntity.mInteraction.getType()==Type.HERO;
+        return !mIsPush && aEntity.mInteraction.getType()==Type.HERO;
     }
     @Override
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if(!isClickable())
+        if(!mIsPush && !isClickable())
         {
             toggleActivation();
         }
     }
     @Override
     public void onStopCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if(!isClickable())
+        if(!mIsPush && !isClickable())
         {
             toggleActivation();
         }
@@ -55,7 +124,7 @@ public class InteractionActivator extends Interaction{
     @Override
     protected boolean hasTouchInteraction(float x, float y) {
 
-        return getShapeInteraction().getBounds().contains(x, y);
+        return !mIsPush && getShapeInteraction().getBounds().contains(x, y);
     }
     @Override
     public void onTouchInteraction() {
@@ -63,6 +132,11 @@ public class InteractionActivator extends Interaction{
 
     }
 
+    @Override
+    public int getZIndex() {
+
+        return mIsPush ? 0 : super.getZIndex();
+    }
     protected void toggleActivation()
     {
         if(mCurrentState.name.compareTo(mDef.states.get(0).name)==0)

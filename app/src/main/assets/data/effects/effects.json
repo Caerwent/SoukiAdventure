@@ -3,6 +3,8 @@
     "id": "FREEZE",
     "description": "effect_desc_freeze",
     "atlasFile": "freeze.atlas",
+    "particuleFile":"freeze.p",
+    "particuleScale":"0.5",
     "sound":"freeze.wav",
     "distance": "1",
     "duration": "5",
@@ -11,22 +13,6 @@
     "fps": "10",
     "icon": "SpellFreeze",
     "frames": [
-      "freeze_1",
-      "freeze_2",
-      "freeze_3",
-      "freeze_4",
-      "freeze_5",
-      "freeze_6",
-      "freeze_7",
-      "freeze_8",
-      "freeze_9",
-      "freeze_10",
-      "freeze_11",
-      "freeze_12",
-      "freeze_13",
-      "freeze_14",
-      "freeze_15",
-      "freeze_16"
     ]
   },
   {

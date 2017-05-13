@@ -2,6 +2,7 @@
   {
     "id": "barrier1",
     "template": "barrier_wood_bottom_left.json",
+    "persistence": "GAME",
     "properties": {
     },
     "eventsAction": [
@@ -13,19 +14,6 @@
         "inputEvents": [
           {
             "sourceId": "activator1",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        }
-        "inputEvents": [
-          {
-            "sourceId": "activator2",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -52,19 +40,6 @@
         "inputEvents": [
           {
             "sourceId": "activator1",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator2",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -100,10 +75,6 @@
     "id":"activator1",
     "template":"activator_type1.json",
     "eventsAction":[]
-  },
-  {
-    "id":"activator2",
-    "template":"activator_type1.json"
   },
   {
   "id":"portal1",

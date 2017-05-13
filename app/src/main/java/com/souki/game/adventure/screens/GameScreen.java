@@ -82,6 +82,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         float h = Gdx.graphics.getHeight();
 
         camera = new OrthographicCamera();
+        float worldViewPortHeight = 15/ (h / TARGET_HEIGHT);
         camera.setToOrtho(false, (w / h) * 10, 10);
         //camera.zoom = 2;
         camera.update();
@@ -113,7 +114,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         UIStage.getInstance().setHUD(new MainHUD());
 
 
-       // bobController = new ChararcterMoveController2(camera);
+        // bobController = new ChararcterMoveController2(camera);
         bobController = new CharacterMoveController3(camera);
         GestureDetector gd = new GestureDetector(bobController);
 
@@ -123,12 +124,12 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         mInputMultiplexer.addProcessor(gd2);
 
 
-
     }
 
     public void setSpotShape(Shape aSpot) {
         mSpot = aSpot;
     }
+
     public Shape getSpotShape() {
         return mSpot;
     }
@@ -159,12 +160,11 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
     @Override
     public void show() {
 
-        if(map!=null)
-        {
+        if (map != null) {
             map.playMusic(true);
         }
         Gdx.input.setInputProcessor(mInputMultiplexer);
-        if( EntityEngine.getInstance()!=null && EntityEngine.getInstance().getSystems().size()==0) {
+        if (EntityEngine.getInstance() != null && EntityEngine.getInstance().getSystems().size() == 0) {
             EntityEngine.getInstance().addSystem(new MovementSystem());
             EntityEngine.getInstance().addSystem(new CollisionObstacleSystem());
             EntityEngine.getInstance().addSystem(new InteractionSystem());
@@ -175,12 +175,11 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
 
     @Override
     public void hide() {
-        if(map!=null)
-        {
+        if (map != null) {
             map.playMusic(false);
         }
         Gdx.input.setInputProcessor(null);
-        if( EntityEngine.getInstance()!=null) {
+        if (EntityEngine.getInstance() != null) {
             EntityEngine.getInstance().removeSystem(EntityEngine.getInstance().getSystem(MovementSystem.class));
             EntityEngine.getInstance().removeSystem(EntityEngine.getInstance().getSystem(CollisionObstacleSystem.class));
             EntityEngine.getInstance().removeSystem(EntityEngine.getInstance().getSystem(CollisionInteractionSystem.class));
@@ -206,7 +205,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         //Gdx.gl.glClearColor(100f / 255f, 100f / 255f, 250f / 255f, 1f);
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if( EntityEngine.getInstance()!=null) {
+        if (EntityEngine.getInstance() != null) {
             EntityEngine.getInstance().
                     update(delta/*Time*/);
         }
@@ -214,13 +213,11 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         if (map != null)
             map.render();
         pathRenderer.setProjectionMatrix(camera.combined);
-        if(map.getPlayer().getHero().getPath()!=null) {
+        if (map.getPlayer().getHero().getPath() != null) {
             pathRenderer.begin();
             map.getPlayer().getHero().getPath().render(pathRenderer);
             pathRenderer.end();
-        }
-        else if(bobController.getPath()!=null)
-        {
+        } else if (bobController.getPath() != null) {
             pathRenderer.begin();
             bobController.getPath().render(pathRenderer);
             pathRenderer.end();
@@ -241,7 +238,6 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         UIStage.getInstance().
 
                 draw();
-
 
 
     }
@@ -350,7 +346,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
 
     @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
-return false;
+        return false;
 
     }
 
@@ -364,7 +360,7 @@ return false;
         final Vector3 curr = new Vector3();
         camera.unproject(curr.set(x, y, 0));
 
-        if( EntityEngine.getInstance()!=null) {
+        if (EntityEngine.getInstance() != null) {
             ImmutableArray<Entity> inputEntities = EntityEngine.getInstance().getEntitiesFor(Family.all(InputComponent.class).get());
             if (inputEntities != null) {
                 for (Entity entity : inputEntities) {

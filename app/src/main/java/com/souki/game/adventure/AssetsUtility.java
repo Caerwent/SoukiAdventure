@@ -74,6 +74,10 @@ public final class AssetsUtility {
         //load asset
         if (_filePathResolver.resolve(mapFilenamePath).exists()) {
             _assetManager.setLoader(TiledMap.class, new TmxMapLoader(_filePathResolver));
+      /*      TmxMapLoader.Parameters params = new TmxMapLoader.Parameters();
+            params.textureMagFilter = Texture.TextureFilter.Linear;
+            params.textureMinFilter = Texture.TextureFilter.Linear;
+            _assetManager.load(mapFilenamePath, TiledMap.class, params);*/
             _assetManager.load(mapFilenamePath, TiledMap.class);
             //Until we add loading screen, just block until we load the map
             _assetManager.finishLoadingAsset(mapFilenamePath);
@@ -84,20 +88,14 @@ public final class AssetsUtility {
     }
 
 
-    protected static void loadStrings()
-    {
+    protected static void loadStrings() {
         Locale locale;
-        if(PersistenceProvider.getInstance().getSettings().language==null) {
+        if (PersistenceProvider.getInstance().getSettings().language == null) {
             locale = Locale.getDefault();
-        }
-        else
-        {
-            if(PersistenceProvider.getInstance().getSettings().countryCode==null)
-            {
+        } else {
+            if (PersistenceProvider.getInstance().getSettings().countryCode == null) {
                 locale = new Locale(PersistenceProvider.getInstance().getSettings().language);
-            }
-            else
-            {
+            } else {
                 locale = new Locale(PersistenceProvider.getInstance().getSettings().language, PersistenceProvider.getInstance().getSettings().countryCode);
             }
 
@@ -107,14 +105,14 @@ public final class AssetsUtility {
         _assetManager.finishLoadingAsset(STRINGS_PATH);
         Gdx.app.debug(TAG, "Strings loaded!: " + STRINGS_PATH);
     }
-    public static void reloadStrings()
-    {
-        if(_assetManager.isLoaded(STRINGS_PATH))
-        {
+
+    public static void reloadStrings() {
+        if (_assetManager.isLoaded(STRINGS_PATH)) {
             _assetManager.unload(STRINGS_PATH);
         }
 
     }
+
     /**
      * Gets the string with the specified key from this bundle or one of its parent after replacing the given arguments if they
      * occur.

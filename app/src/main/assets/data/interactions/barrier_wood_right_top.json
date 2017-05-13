@@ -15,7 +15,7 @@
       "name": "CLOSED",
       "fps": "0",
       "frames": [
-        "barrier_side_right"
+        "barrier_side_right_offset"
       ]
     },
     {

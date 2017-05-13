@@ -25,13 +25,14 @@ import com.souki.game.adventure.map.MapTownPortalInfo;
 public class InteractionHero extends Interaction {
 
     protected float stateTime; // elapsed time
+
     MapTownPortalInfo mPortalInfo;
 
     public InteractionHero(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.HERO;
         initialize(x, y, aMapping);
-
+        mCollisionType = CollisionObstacleComponent.HERO;
 
     }
 
@@ -116,14 +117,6 @@ public class InteractionHero extends Interaction {
 
     /************************ PHYSICAL COLLISION *********************************/
 
-    @Override
-    public void startToInteract()
-    {
-        super.startToInteract();
-        CollisionObstacleComponent collisionObstacleComponent = this.getComponent(CollisionObstacleComponent.class);
-        collisionObstacleComponent.mType = CollisionObstacleComponent.HERO;
-
-    }
 
     @Override
     public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
@@ -136,7 +129,7 @@ public class InteractionHero extends Interaction {
 
                 EventDispatcher.getInstance().onItemFound((((ItemInteraction) aEntity.mData).getItem()));
                 return false;
-            } else {
+            } else if ((aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
                     if (mPath != null) {
                         mPath.destroy();
                         mPath = null;

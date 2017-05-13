@@ -25,10 +25,24 @@ barrier_side_left
   orig: 8, 55
   offset: 0, 0
   index: -1
+barrier_side_left_offset
+  rotate: false
+  xy: 98, 2
+  size: 8, 55
+  orig: 8, 55
+  offset: 41, 0
+  index: -1
 barrier_side_right
   rotate: false
   xy: 185, 2
   size: 8, 55
   orig: 8, 55
   offset: 0, 0
+  index: -1
+barrier_side_right_offset
+  rotate: false
+  xy: 185, 2
+  size: 8, 55
+  orig: 8, 55
+  offset: 41, 0
   index: -1

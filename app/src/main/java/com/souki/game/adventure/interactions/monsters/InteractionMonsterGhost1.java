@@ -19,7 +19,7 @@ public class InteractionMonsterGhost1 extends InteractionFollowPath {
     public InteractionMonsterGhost1(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.MONSTER;
-
+        mInteractionBorderSize=0;
 
     }
 //    @Override

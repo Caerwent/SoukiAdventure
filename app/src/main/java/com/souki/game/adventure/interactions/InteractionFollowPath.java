@@ -3,6 +3,7 @@ package com.souki.game.adventure.interactions;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.souki.game.adventure.box2d.PathMap;
+import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
 import com.souki.game.adventure.map.GameMap;
@@ -75,5 +76,21 @@ public class InteractionFollowPath extends Interaction  {
             setMovable(true);
         }
 
+    }
+
+    @Override
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+
+        boolean ret = super.onCollisionObstacleStart(aEntity);
+        if (ret) {
+
+            if ((aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
+                setMovable(false);
+                return true;
+
+
+            }
+        }
+        return ret;
     }
 }

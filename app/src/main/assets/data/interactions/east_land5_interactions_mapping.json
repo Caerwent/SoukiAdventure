@@ -1,7 +1,59 @@
 [
   {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land4",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost1",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost2",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost2",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
     "id": "barrier1",
-    "template": "barrier_wood_top_left.json",
+    "template": "barrier_wood_right_bottom.json",
     "properties": {
     },
     "eventsAction": [
@@ -13,6 +65,19 @@
         "inputEvents": [
           {
             "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -33,12 +98,25 @@
       },
       {
         "action": {
-        "type": "SET_STATE",
-        "value": "CLOSED"
-      },
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
         "inputEvents": [
           {
             "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -71,85 +149,17 @@
   },
   {
     "id": "activator1",
-    "template": "activator_type1.json"
-  },
-  {
-    "id": "barrier2",
-    "template": "barrier_wood_bottom_left.json",
-    "properties": {
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator2",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "OPEN",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier2",
-            "type": "STATE",
-            "value": "OPEN"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator2",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "CLOSE",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier2",
-            "type": "STATE",
-            "value": "CLOSED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
-    ]
+    "template": "activator_type1.json",
+    "eventsAction": []
   },
   {
     "id": "activator2",
-    "template": "activator_type1.json"
+    "template": "activator_type1.json",
+    "eventsAction": []
   },
   {
-    "id": "barrier3",
-    "template": "barrier_wood_right_top.json",
+    "id": "barrier_push_1",
+    "template": "barrier_wood_left_top.json",
     "properties": {
     },
     "eventsAction": [
@@ -160,7 +170,20 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator3",
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_2",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -173,21 +196,33 @@
         },
         "inputEvents": [
           {
-            "sourceId": "barrier3",
+            "sourceId": "barrier_push_1",
             "type": "STATE",
             "value": "OPEN"
           }
         ]
       },
       {
-
         "action": {
           "type": "SET_STATE",
           "value": "CLOSED"
         },
         "inputEvents": [
           {
-            "sourceId": "activator3",
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_2",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -200,7 +235,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "barrier3",
+            "sourceId": "barrier_push_1",
             "type": "STATE",
             "value": "CLOSED"
           }
@@ -219,99 +254,50 @@
     ]
   },
   {
-    "id": "activator3",
-    "template": "activator_type1.json"
-  },
-  {
-    "id": "barrier4",
-    "template": "barrier_wood_left_bottom.json",
-    "persistence":"GAME",
+    "id": "activator_push_1",
+    "template": "activator_push.json",
     "properties": {
+      "delay": 3.0
     },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator4",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "OPEN",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier4",
-            "type": "STATE",
-            "value": "OPEN"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator4",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "CLOSE",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier4",
-            "type": "STATE",
-            "value": "CLOSED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
-    ]
+    "eventsAction": []
   },
   {
-    "id": "activator4",
-    "template": "activator_type1.json"
-  },
-  {
-    "id": "portal1",
-    "template": "portal.json",
+    "id": "activator_push_2",
+    "template": "activator_push.json",
     "properties": {
-      "targetMapId": "village",
-      "isDefaultStart": "true"
+      "delay": 3.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost1",
+      "autoStart": "true",
+      "looping": "true"
     },
     "eventsAction": [],
     "outputEvents": []
   },
   {
-    "id": "portal2",
-    "template": "portal.json",
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
     "properties": {
-      "targetMapId": "east_land2"
+      "pathId": "ghost2",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost3",
+      "autoStart": "true",
+      "looping": "true"
     },
     "eventsAction": [],
     "outputEvents": []

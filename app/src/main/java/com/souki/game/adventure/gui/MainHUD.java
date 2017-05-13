@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
@@ -23,6 +24,7 @@ import com.souki.game.adventure.effects.EffectFactory;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.events.IQuestListener;
 import com.souki.game.adventure.events.ISystemEventListener;
+import com.souki.game.adventure.gui.challenge.MiniEffects;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.map.MapTownPortalInfo;
 import com.souki.game.adventure.persistence.Profile;
@@ -55,7 +57,10 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     protected final DialogTable mDialogTable = new DialogTable(DIALOG_W, DIALOG_H);
     protected Image mInventoryButton;
     protected Image mSpellButton;
+    protected Image mHomeButton;
     protected Effect.Type mCurrentEffectType = null;
+
+    protected MiniEffects mMiniEffects;
     /**
      * the duration of the screen transition for the screenOut method
      */
@@ -63,9 +68,8 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
 
     public MainHUD() {
-
-        mHud.setSize(128, 64);
-
+        mHud.setSize(TARGET_WIDTH, 64);
+        mHud.fill();
         this.addActor(mHud);
 
         EventDispatcher.getInstance().addSystemEventListener(this);
@@ -83,6 +87,18 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mSpellButton.setSize(64, 64);
 
         mHud.addActor(mSpellButton);
+
+        mMiniEffects = new MiniEffects();
+        mHud.addActor(mMiniEffects);
+        mMiniEffects.setVisible(false);
+
+        mHomeButton = new Image();
+        mHomeButton.setScaling(Scaling.fill);
+        mHomeButton.setAlign(Align.center);
+        mHomeButton.setSize(56, 56);
+        mHomeButton.setPosition(TARGET_WIDTH,0);
+        mHomeButton.setDrawable(new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("close")));
+        addActor(mHomeButton);
 
         mMainPanel.setSize(TARGET_WIDTH / 2, TARGET_HEIGHT - 64 - 25);
         mMainPanel.setPosition(10, 64);
@@ -156,15 +172,26 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         });
         mInventoryButton.setTouchable(Touchable.enabled);
 
-
-        mSpellButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
+        mSpellButton.addListener(new ActorGestureListener(){
+            public void tap (InputEvent event, float x, float y, int count, int button) {
                 if (mCurrentEffectType != null) {
                     ((GameScreen) MyGame.getInstance().getScreenType(MainGame)).getMap().getPlayer().getHero().launchEffect(EffectFactory.getInstance().getNewInstanceEffect(mCurrentEffectType));
                 }
             }
+
+            /** If true is returned, additional gestures will not be triggered. No event is provided because this event is triggered by time
+             * passing, not by an InputEvent. */
+            public boolean longPress (Actor actor, float x, float y) {
+                if (mCurrentEffectType != null) {
+
+                    mMiniEffects.setVisible(!mMiniEffects.isVisible());
+                    return true;
+                }
+                return false;
+            }
         });
+
+
         mSpellButton.setTouchable(Touchable.enabled);
 
         Effect.Type selectedEffect = Profile.getInstance().getSelectedEffect();
@@ -175,6 +202,14 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         } else {
             mEffectsPanel.update();
         }
+
+        mHomeButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+             MyGame.getInstance().setScreen(MyGame.ScreenType.MainMenu);
+            }
+        });
+        mHomeButton.setTouchable(Touchable.enabled);
 
     }
 

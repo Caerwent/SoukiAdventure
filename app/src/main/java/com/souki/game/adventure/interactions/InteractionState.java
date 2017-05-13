@@ -19,6 +19,7 @@ public class InteractionState {
     public final static String STATE_MOVE_UP="MOVE_UP";
     public final static String STATE_FROZEN="FROZEN";
     public final static String STATE_BURNING="BURNING";
+    public final static String STATE_IDLE="IDLE";
     public String name;
     public boolean isLooping;
     public int fps;

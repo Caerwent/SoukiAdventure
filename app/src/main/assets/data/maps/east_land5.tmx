@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-up" width="31" height="15" tilewidth="32" tileheight="32" nextobjectid="38">
  <tileset firstgid="1" name="hole" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="30" columns="5">
-  <image source="hole.png" width="160" height="192"/>
+  <image source="hole.png" width="170" height="204"/>
  </tileset>
  <tileset firstgid="31" name="plant repack" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="182" columns="14">
   <image source="plant repack.png" width="476" height="442"/>
  </tileset>
  <tileset firstgid="213" name="terrain_atlas" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
-  <image source="terrain_atlas.png" width="1024" height="1024"/>
+  <image source="terrain_atlas.png" width="1088" height="1088"/>
  </tileset>
  <tileset firstgid="1237" name="build_atlas" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
   <image source="build_atlas.png" width="1088" height="1088"/>

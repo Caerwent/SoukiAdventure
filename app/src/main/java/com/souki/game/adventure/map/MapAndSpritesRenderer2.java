@@ -619,22 +619,22 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 //                            }
 
                             if (Yzindex < Yrendable) {
-                                shapeRenderer.setColor(Color.GOLD);
-                                shapeRenderer.polygon(aTileShape.getShape().getTransformedVertices());
-                                shapeRenderer.setColor(Color.RED);
-                                if (rendable.getShapeRendering() instanceof PolygonShape) {
-                                    shapeRenderer.polygon(((PolygonShape) rendable.getShapeRendering()).getShape().getTransformedVertices());
-                                } else if (rendable.getShapeRendering() instanceof RectangleShape) {
-                                    Rectangle rect = ((RectangleShape) rendable.getShapeRendering()).getShape();
-                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
-                                }
-                                shapeRenderer.setColor(Color.GREEN);
-                                if (currentZIndex instanceof PolygonShape) {
-                                    shapeRenderer.polygon(((PolygonShape) currentZIndex).getShape().getTransformedVertices());
-                                } else if (currentZIndex instanceof RectangleShape) {
-                                    Rectangle rect = ((RectangleShape) currentZIndex).getShape();
-                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
-                                }
+//                                shapeRenderer.setColor(Color.GOLD);
+//                                shapeRenderer.polygon(aTileShape.getShape().getTransformedVertices());
+//                                shapeRenderer.setColor(Color.RED);
+//                                if (rendable.getShapeRendering() instanceof PolygonShape) {
+//                                    shapeRenderer.polygon(((PolygonShape) rendable.getShapeRendering()).getShape().getTransformedVertices());
+//                                } else if (rendable.getShapeRendering() instanceof RectangleShape) {
+//                                    Rectangle rect = ((RectangleShape) rendable.getShapeRendering()).getShape();
+//                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
+//                                }
+//                                shapeRenderer.setColor(Color.GREEN);
+//                                if (currentZIndex instanceof PolygonShape) {
+//                                    shapeRenderer.polygon(((PolygonShape) currentZIndex).getShape().getTransformedVertices());
+//                                } else if (currentZIndex instanceof RectangleShape) {
+//                                    Rectangle rect = ((RectangleShape) currentZIndex).getShape();
+//                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
+//                                }
                                 renderShape = true;
                                 // need to draw all overlaping entities with < Y
                                 drawPreviousOverlapingEntity(rendable, idx, mMapRendables);

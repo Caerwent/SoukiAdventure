@@ -51,7 +51,10 @@ public class InteractionFactory {
             InteractionMonsterGhost1 interaction = new InteractionMonsterGhost1(def, x, y, aMapping, aProperties, aMap);
             return interaction;
         } else if (def.type.compareTo("ACTIVATOR1") == 0) {
-            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap);
+            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, false);
+            return interaction;
+        }  else if (def.type.compareTo("ACTIVATOR_PUSH") == 0) {
+            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, true);
             return interaction;
         } else if (def.type.compareTo("CHEST") == 0) {
             InteractionChest interaction = new InteractionChest(def, x, y, aMapping, aProperties, aMap);

@@ -1,53 +1,52 @@
 [
   {
-  "id":"portal1",
-  "template":"portal.json",
+    "id": "portal1",
+    "template": "portal.json",
     "properties": {
       "targetMapId": "east_land3",
       "isDefaultStart": "true"
     },
-  "eventsAction":[],
-  "outputEvents":[]
-},
-  {
-    "id":"portal2",
-    "template":"portal.json",
-    "properties": {
-      "targetMapId":"forest1"
-    },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"portal3",
-    "template":"portal.json",
+    "id": "portal2",
+    "template": "portal.json",
     "properties": {
-      "targetMapId":"generic_hole"
+      "targetMapId": "east_land5"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"ghost1",
-    "template":"monster_ghost1.json",
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "generic_hole"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
     "properties": {
       "pathId": "ghost1",
-      "autoStart":"true",
-      "looping":"true"
+      "autoStart": "true",
+      "looping": "true"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"ghost2",
-    "template":"monster_ghost1.json",
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
     "properties": {
       "pathId": "ghost2",
-      "autoStart":"true",
-      "looping":"true"
+      "autoStart": "true",
+      "looping": "true"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   }
-
 ]

@@ -11,8 +11,9 @@ public class CollisionObstacleComponent implements Component {
 
     public static byte OBSTACLE = 1;
     public static byte MAPINTERACTION = 2;
-    public static byte ITEM = 4;
-    public static byte HERO = 8;
+    public static byte MAPINTERACTION_NOT_OBSTACLE = 4;
+    public static byte ITEM = 8;
+    public static byte HERO = 16;
 
 
     public Shape mShape;

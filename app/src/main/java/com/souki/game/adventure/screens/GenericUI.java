@@ -61,5 +61,7 @@ public class GenericUI {
         if (skinPath != null)
             skin.load(Gdx.files.internal(skinPath));
         styleSkin(skin, atlas);
+
+
     }
 }

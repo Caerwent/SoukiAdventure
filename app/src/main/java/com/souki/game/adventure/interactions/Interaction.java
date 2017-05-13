@@ -85,6 +85,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     protected MapProperties mMapProperties;
     protected HashMap mProperties;
     protected GameMap mMap;
+    protected Persistence mPersistence;
 
     protected Effect mEffectLaunched;
     protected float mEffectLaunchedTime;
@@ -101,6 +102,11 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     public Interaction(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         mId = aMapping.id;
         mDef = aDef;
+        mPersistence = aDef.persistence;
+        if(aMapping.persistence!=null)
+        {
+            mPersistence =aMapping.persistence;
+        }
         mEventsAction = aDef.eventsAction;
         if (mEventsAction == null) {
             mEventsAction = new ArrayList<>();
@@ -228,7 +234,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     @Override
     public Persistence getPersistence() {
-        return mDef.persistence;
+        return mPersistence;
     }
 
 
