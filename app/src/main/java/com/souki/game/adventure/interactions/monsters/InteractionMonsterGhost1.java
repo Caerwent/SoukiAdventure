@@ -2,6 +2,7 @@ package com.souki.game.adventure.interactions.monsters;
 
 import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
+import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.interactions.InteractionDef;
 import com.souki.game.adventure.interactions.InteractionFollowPath;
@@ -42,6 +43,12 @@ public class InteractionMonsterGhost1 extends InteractionFollowPath {
            EventDispatcher.getInstance().onMapReloadRequested(mMap.getMapName(), mMap.getFromMapId());
        }
 
+    }
+
+    @Override
+    public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
+        return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 ||
+                (((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0) && !(aEntity.mHandler instanceof InteractionMonsterGhost1));
     }
 
 }
