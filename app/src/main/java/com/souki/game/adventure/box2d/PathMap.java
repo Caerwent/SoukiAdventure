@@ -17,6 +17,7 @@ public class PathMap {
 
     protected boolean isRevert = false;
     protected boolean isLoop = false;
+    protected boolean isLoopReversing = false;
     protected float lastTime = 0;
     static public final float CHECK_RADIUS = 0.2f;
     public float mVelocityCte = 2;
@@ -45,6 +46,14 @@ public class PathMap {
 
     public void setLoop(boolean loop) {
         isLoop = loop;
+    }
+
+    public boolean isLoopReversing() {
+        return isLoopReversing;
+    }
+
+    public void setLoopReversing(boolean loop) {
+        isLoopReversing = loop;
     }
 
     public boolean isRevert() {
@@ -92,7 +101,7 @@ public class PathMap {
     }
 
     public boolean hasNextPoint() {
-        if (isLoop)
+        if (isLoop || isLoopReversing)
             return true;
 
         if (isRevert) {
@@ -107,7 +116,12 @@ public class PathMap {
     int getNextPoint() {
         if (isRevert) {
             if (currentPointIndex <= 0) {
-                return isLoop ? positions.size() - 1 : -1;
+                if (isLoop)
+                    return positions.size() - 1;
+                else if (isLoopReversing) {
+                    isRevert = false;
+                    return currentPointIndex + 1;
+                } else return -1;
             } else {
                 return currentPointIndex - 1;
             }
@@ -115,7 +129,13 @@ public class PathMap {
             if (currentPointIndex < positions.size() - 1) {
                 return currentPointIndex + 1;
             } else {
-                return isLoop ? 0 : -1;
+                if (isLoop)
+                    return 0;
+                else if (isLoopReversing) {
+                    isRevert = true;
+                    return positions.size() - 1;
+                } else
+                    return -1;
             }
 
         }
@@ -135,7 +155,7 @@ public class PathMap {
         double vx = Math.cos(angle) * mVelocityCte;
         double vy = Math.sin(angle) * mVelocityCte;
 
-       // Gdx.app.debug("DEBUG", "p=("+aCurrentPosition.x+","+aCurrentPosition.y+") n=("+nextPosition.x+","+nextPosition.y+") dx="+dx+" dy="+dy+" D="+D+" angle="+angle +" vx="+vx+" vy"+vy);
+        // Gdx.app.debug("DEBUG", "p=("+aCurrentPosition.x+","+aCurrentPosition.y+") n=("+nextPosition.x+","+nextPosition.y+") dx="+dx+" dy="+dy+" D="+D+" angle="+angle +" vx="+vx+" vy"+vy);
 
         mVelocity.set((float) vx, (float) vy);
 

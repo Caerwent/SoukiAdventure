@@ -12,25 +12,24 @@ import com.souki.game.adventure.map.GameMap;
  * Created by vincent on 17/04/2017.
  */
 
-public class InteractionFollowPath extends Interaction  {
+public class InteractionFollowPath extends Interaction {
     protected PathMap mPath;
     protected boolean mIsAutoStart;
 
     public InteractionFollowPath(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
 
-        if(mProperties!=null)
-        {
-            if(mProperties.containsKey("pathId"))
-            {
+        if (mProperties != null) {
+            if (mProperties.containsKey("pathId")) {
                 mPath = aMap.getPaths().get((String) mProperties.get("pathId"));
-                if(mProperties.containsKey("autoStart"))
-                {
-                    mIsAutoStart=Boolean.valueOf((String)mProperties.get("autoStart"));
+                if (mProperties.containsKey("autoStart")) {
+                    mIsAutoStart = Boolean.valueOf((String) mProperties.get("autoStart"));
                 }
-                if(mProperties.containsKey("looping"))
-                {
-                    mPath.setLoop(Boolean.valueOf((String)mProperties.get("looping")));
+                if (mProperties.containsKey("looping")) {
+                    mPath.setLoop(Boolean.valueOf((String) mProperties.get("looping")));
+                }
+                if (mProperties.containsKey("loopingReversing")) {
+                    mPath.setLoopReversing(Boolean.valueOf((String) mProperties.get("loopingReversing")));
                 }
             }
 
@@ -40,6 +39,7 @@ public class InteractionFollowPath extends Interaction  {
 
 
     }
+
     @Override
     public void update(float dt) {
         super.update(dt);
@@ -55,10 +55,11 @@ public class InteractionFollowPath extends Interaction  {
 
         }
     }
+
     @Override
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
-        if (!res && aAction != null && InteractionActionType.ActionType.WAKEUP==aAction.type) {
+        if (!res && aAction != null && InteractionActionType.ActionType.WAKEUP == aAction.type) {
             if (mPath != null) {
                 setMovable(true);
             }
@@ -68,14 +69,16 @@ public class InteractionFollowPath extends Interaction  {
     }
 
     @Override
-    public void startToInteract()
-    {
+    public void startToInteract() {
         super.startToInteract();
-        if(mPath!=null && mIsAutoStart)
-        {
+        if (mPath != null && mIsAutoStart) {
             setMovable(true);
         }
 
+    }
+
+    public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
+        return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0);
     }
 
     @Override
@@ -84,7 +87,7 @@ public class InteractionFollowPath extends Interaction  {
         boolean ret = super.onCollisionObstacleStart(aEntity);
         if (ret) {
 
-            if ((aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
+            if (hasCollisionObstacle(aEntity)) {
                 setMovable(false);
                 return true;
 
