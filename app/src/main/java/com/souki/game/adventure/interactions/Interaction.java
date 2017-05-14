@@ -103,9 +103,8 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         mId = aMapping.id;
         mDef = aDef;
         mPersistence = aDef.persistence;
-        if(aMapping.persistence!=null)
-        {
-            mPersistence =aMapping.persistence;
+        if (aMapping.persistence != null) {
+            mPersistence = aMapping.persistence;
         }
         mEventsAction = aDef.eventsAction;
         if (mEventsAction == null) {
@@ -155,9 +154,6 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         mShapeCollision = createShapeCollision();
         mShapeInteraction = createShapeInteraction();
         mShapeRendering = createShapeRendering();
-
-
-
 
 
     }
@@ -446,8 +442,8 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             }
 
         }
-        mShapeRendering.setX(tfm.position.x+tfm.originOffset.x);
-        mShapeRendering.setY(tfm.position.y+tfm.originOffset.y);
+        mShapeRendering.setX(tfm.position.x + tfm.originOffset.x);
+        mShapeRendering.setY(tfm.position.y + tfm.originOffset.y);
     }
 
     @Override
@@ -514,17 +510,17 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     public void updateCollision(float dt) {
         TransformComponent tfm = this.getComponent(TransformComponent.class);
-        mShapeCollision.setX(tfm.position.x+tfm.originOffset.x);
-        mShapeCollision.setY(tfm.position.y+tfm.originOffset.y);
+        mShapeCollision.setX(tfm.position.x + tfm.originOffset.x);
+        mShapeCollision.setY(tfm.position.y + tfm.originOffset.y);
         if (isRendable()) {
             if (mShapeCollision instanceof RectangleShape) {
                 RectangleShape shape = (RectangleShape) mShapeCollision;
                 shape.getShape().setWidth(mShapeRendering.getWidth());
-                shape.getShape().setHeight((float)Math.max(0.2, mShapeRendering.getHeight() / mCollisionHeightFactor));
+                shape.getShape().setHeight((float) Math.max(0.2, mShapeRendering.getHeight() / mCollisionHeightFactor));
 
             } else if (mShapeCollision instanceof CircleShape) {
                 CircleShape shape = (CircleShape) mShapeCollision;
-                shape.getShape().setRadius((float)Math.max(0.2, mShapeRendering.getHeight() / mCollisionHeightFactor));
+                shape.getShape().setRadius((float) Math.max(0.2, mShapeRendering.getHeight() / mCollisionHeightFactor));
             }
         }
     }
@@ -566,8 +562,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     /*************************************** INTERACTIONS  ************************************/
 
-    public void startToInteract()
-    {
+    public void startToInteract() {
         updateRendering(0);
         updateCollision(0);
         updateInteraction(0);
@@ -582,19 +577,18 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         }
 
     }
+
     public void updateInteraction(float dt) {
         TransformComponent tfm = this.getComponent(TransformComponent.class);
         if (isRendable()) {
             RectangleShape interactionArea = (RectangleShape) mShapeInteraction;
-            interactionArea.getShape().set(mShapeRendering.getX() - mInteractionBorderSize, mShapeRendering.getY() - mInteractionBorderSize, mShapeRendering.getWidth() + 2*mInteractionBorderSize, mShapeRendering.getHeight() + 2*mInteractionBorderSize);
+            interactionArea.getShape().set(mShapeRendering.getX() - mInteractionBorderSize, mShapeRendering.getY() - mInteractionBorderSize, mShapeRendering.getWidth() + 2 * mInteractionBorderSize, mShapeRendering.getHeight() + 2 * mInteractionBorderSize);
 
-        } else if(getComponent(CollisionObstacleComponent.class)!=null){
+        } else if (getComponent(CollisionObstacleComponent.class) != null) {
             mShapeInteraction = mShapeCollision;
-        }
-        else
-        {
-            mShapeInteraction.setX(tfm.position.x+tfm.originOffset.x);
-            mShapeInteraction.setY(tfm.position.y+tfm.originOffset.y);
+        } else {
+            mShapeInteraction.setX(tfm.position.x + tfm.originOffset.x);
+            mShapeInteraction.setY(tfm.position.y + tfm.originOffset.y);
         }
 
     }
@@ -701,15 +695,14 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
      * @return true if action has be done, false in other cases
      */
     protected boolean doAction(InteractionActionType aAction) {
-        if (aAction != null && InteractionActionType.ActionType.SET_STATE==aAction.type) {
+        if (aAction != null && InteractionActionType.ActionType.SET_STATE == aAction.type) {
             if (getState(aAction.value) != null) {
                 setState(aAction.value);
                 return true;
             }
-        }
-        else if (aAction != null && InteractionActionType.ActionType.ACTIVATE_QUEST==aAction.type) {
+        } else if (aAction != null && InteractionActionType.ActionType.ACTIVATE_QUEST == aAction.type) {
             Quest quest = QuestManager.getInstance().getQuestFromId(aAction.value);
-            if ( quest != null && !quest.isActivated() && !quest.isCompleted()) {
+            if (quest != null && !quest.isActivated() && !quest.isCompleted()) {
 
                 QuestManager.getInstance().activateQuestIfAllDependenciesCompleted(quest);
                 return true;
@@ -783,10 +776,10 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
 
     protected void updateLaunchedEffect(float dt) {
-        float xOffset = getShapeInteraction().getWidth()/2 - mZoneLaunchedEffect.getShape().radius;
-        float yOffset = getShapeInteraction().getHeight()/2 - mEffectLaunched.distance;
-        mZoneLaunchedEffect.setX(getShapeInteraction().getX()+xOffset);
-        mZoneLaunchedEffect.setY(getShapeInteraction().getY()+yOffset);
+        float xOffset = getShapeInteraction().getWidth() / 2 - mZoneLaunchedEffect.getShape().radius;
+        float yOffset = getShapeInteraction().getHeight() / 2 - mEffectLaunched.distance;
+        mZoneLaunchedEffect.setX(getShapeInteraction().getX() + xOffset);
+        mZoneLaunchedEffect.setY(getShapeInteraction().getY() + yOffset);
         mEffectLaunchedTime += dt;
         float timeAction = mEffectLaunched.duration;
         if (timeAction < 0) {
@@ -865,11 +858,11 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         mEffectLaunchedTime = 0;
         mZoneLaunchedEffect = new CircleShape();
         mZoneLaunchedEffect.setRadius(mEffectLaunched.distance);
-        float xOffset = getShapeInteraction().getWidth()/2 - mZoneLaunchedEffect.getShape().radius;
-        float yOffset = getShapeInteraction().getHeight()/2 - mEffectLaunched.distance;
-        mZoneLaunchedEffect.setX(getShapeInteraction().getX()+xOffset);
-        mZoneLaunchedEffect.setY(getShapeInteraction().getY()+yOffset);
-        if(mEffectLaunched.distance>0) {
+        float xOffset = getShapeInteraction().getWidth() / 2 - mZoneLaunchedEffect.getShape().radius;
+        float yOffset = getShapeInteraction().getHeight() / 2 - mEffectLaunched.distance;
+        mZoneLaunchedEffect.setX(getShapeInteraction().getX() + xOffset);
+        mZoneLaunchedEffect.setY(getShapeInteraction().getY() + yOffset);
+        if (mEffectLaunched.distance > 0) {
             add(new CollisionEffectComponent(mEffectLaunched, mZoneLaunchedEffect, mId));
         }
         if (mEffectLaunched.sound != null && !mEffectLaunched.sound.isEmpty()) {
@@ -886,8 +879,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             AudioManager.getInstance().onAudioEvent(new AudioEvent(AudioEvent.Type.SOUND_STOP, mEffectLaunched.sound));
         }
 
-        if(mEffectLaunched.id== Effect.Type.PORTAL)
-        {
+        if (mEffectLaunched.id == Effect.Type.PORTAL) {
             EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(getId(), InteractionEvent.EventType.EFFECT_STOP.name(), mEffectLaunched.id.name()));
         }
         mEffectLaunched = null;

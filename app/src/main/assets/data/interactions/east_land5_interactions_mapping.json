@@ -13,40 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "forest1"
-    },
-    "eventsAction": [],
-    "outputEvents": []
-  },
-  {
-    "id": "ghost1",
-    "template": "monster_ghost1.json",
-    "properties": {
-      "pathId": "ghost1",
-      "autoStart": "true",
-      "looping": "true"
-    },
-    "eventsAction": [],
-    "outputEvents": []
-  },
-  {
-    "id": "ghost2",
-    "template": "monster_ghost1.json",
-    "properties": {
-      "pathId": "ghost2",
-      "autoStart": "true",
-      "looping": "true"
-    },
-    "eventsAction": [],
-    "outputEvents": []
-  },
-  {
-    "id": "ghost2",
-    "template": "monster_ghost1.json",
-    "properties": {
-      "pathId": "ghost2",
-      "autoStart": "true",
-      "looping": "true"
+      "targetMapId": "east_land6"
     },
     "eventsAction": [],
     "outputEvents": []
