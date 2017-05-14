@@ -184,3 +184,10 @@ window1
   orig: 64, 64
   offset: 0, 0
   index: -1
+zoomOut
+  rotate: false
+  xy: 791, 63
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1

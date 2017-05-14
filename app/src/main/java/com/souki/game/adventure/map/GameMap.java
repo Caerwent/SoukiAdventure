@@ -31,8 +31,8 @@ import com.souki.game.adventure.box2d.ShapeUtils;
 import com.souki.game.adventure.entity.EntityEngine;
 import com.souki.game.adventure.entity.components.CollisionEffectComponent;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
-import com.souki.game.adventure.entity.components.ICollisionObstacleHandler;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
+import com.souki.game.adventure.entity.components.ICollisionObstacleHandler;
 import com.souki.game.adventure.entity.components.InteractionComponent;
 import com.souki.game.adventure.entity.components.PathComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
@@ -85,6 +85,14 @@ public class GameMap implements ICollisionObstacleHandler {
     private Player mPlayer;
     private String mMusic;
 
+    private int mMapWidth;
+    private int mMapTileWidth;
+    private int mMapHeight;
+    private int mMapTileHeight;
+
+    private boolean mIsZoomOut = false;
+    private float mCamXBeforeZoomOut, mCamYBeforeZoomOut;
+
 
     public GameMap(String aMapName, String aFromMap, OrthographicCamera aCamera, MapTownPortalInfo aTownPortalInfo) {
         mMapName = aMapName;
@@ -105,9 +113,16 @@ public class GameMap implements ICollisionObstacleHandler {
             return;
         }
         mCamera = aCamera;
+        MapProperties mapProperties = map.getProperties();
+        mMapWidth = mapProperties.get("width", Integer.class);
+        mMapTileWidth = mapProperties.get("tilewidth", Integer.class);
+        mMapHeight = mapProperties.get("height", Integer.class);
+        mMapTileHeight = mapProperties.get("tileheight", Integer.class);
+        mMapWidth = (int) (mMapWidth * mMapTileWidth * MyGame.SCALE_FACTOR);
+        mMapHeight = (int) (mMapHeight * mMapTileHeight * MyGame.SCALE_FACTOR);
+
 
         if (PersistenceProvider.getInstance().getSettings().musicActivated) {
-            MapProperties mapProperties = map.getProperties();
             mMusic = mapProperties.get("music", String.class);
             if (mMusic != null && !mMusic.isEmpty()) {
                 AudioManager.getInstance().onAudioEvent(new AudioEvent(AudioEvent.Type.MUSIC_LOAD, mMusic));
@@ -142,14 +157,13 @@ public class GameMap implements ICollisionObstacleHandler {
         Profile.getInstance().setLocationProfile(locationProfile);
 
 
-        InteractionPortal defaultPortal=null;
-        InteractionPortal arrivalPortal=null;
+        InteractionPortal defaultPortal = null;
+        InteractionPortal arrivalPortal = null;
         for (IInteraction control : mInteractions) {
             if (control.getType() == IInteraction.Type.PORTAL) {
                 InteractionPortal portal = (InteractionPortal) control;
 
-                if(portal.isDefaultStart())
-                {
+                if (portal.isDefaultStart()) {
                     defaultPortal = portal;
                 }
                 boolean isDefaultCase = aFromMap == null && portal.isDefaultStart();
@@ -188,8 +202,7 @@ public class GameMap implements ICollisionObstacleHandler {
                 }
             }
         }
-        if(arrivalPortal==null && defaultPortal!=null && !isMapBackWithTownPortal)
-        {
+        if (arrivalPortal == null && defaultPortal != null && !isMapBackWithTownPortal) {
             mPlayer.getHero().setPosition(defaultPortal.getX(), defaultPortal.getY());
             tryToSetCameraAtPosition(defaultPortal.getX(), defaultPortal.getY());
 
@@ -205,20 +218,15 @@ public class GameMap implements ICollisionObstacleHandler {
         }
 
         renderer = new MapAndSpritesRenderer2(this, MyGame.SCALE_FACTOR);
-       // mBodiesZindex = buildShapes(map, "zindex");
-        for(MapLayer layer : map.getLayers())
-        {
-            if(layer.getName().startsWith("zindex_"))
-            {
+        // mBodiesZindex = buildShapes(map, "zindex");
+        for (MapLayer layer : map.getLayers()) {
+            if (layer.getName().startsWith("zindex_")) {
                 mBodiesZindex.put(layer.getName().substring("zindex_".length(), layer.getName().length()), buildShapes(map, layer.getName()));
-            }
-            else if(layer.getName().compareTo("zindex")==0)
-            {
+            } else if (layer.getName().compareTo("zindex") == 0) {
                 mBodiesZindex.put("zindex", buildShapes(map, layer.getName()));
             }
         }
-        if(!mBodiesZindex.containsKey("zindex"))
-        {
+        if (!mBodiesZindex.containsKey("zindex")) {
             mBodiesZindex.put("zindex", new Array());
         }
         mBodiesCollision = buildShapes(map, "collision");
@@ -230,24 +238,43 @@ public class GameMap implements ICollisionObstacleHandler {
         mIsInitialized = true;
     }
 
+    public void zoomOut(boolean isZoomOut) {
+        if (isZoomOut) {
+            float xZoom = mMapWidth / mCamera.viewportWidth;
+            float yZoom = mMapHeight / mCamera.viewportHeight;
+
+            float zoom = Math.max(xZoom, yZoom);
+            mIsZoomOut = true;
+            mCamera.zoom = zoom;
+            mCamXBeforeZoomOut = mCamera.position.x;
+            mCamYBeforeZoomOut = mCamera.position.y;
+            mCamera.position.x = mMapWidth / 2;
+            mCamera.position.y = mMapHeight / 2;
+
+        } else {
+            mIsZoomOut = false;
+            mCamera.zoom = 1;
+            mCamera.position.x = mCamXBeforeZoomOut;
+            mCamera.position.y = mCamYBeforeZoomOut;
+        }
+        mCamera.update();
+    }
 
     protected void tryToSetCameraAtPosition(float x, float y) {
+        if (mIsZoomOut) {
+            mIsZoomOut = false;
+            mCamera.zoom = 1;
+        }
         mCamera.position.x = x;
         mCamera.position.y = y;
-        MapProperties mapProperties = map.getProperties();
-        int mapWidth = mapProperties.get("width", Integer.class);
-        int mapTileWidth = mapProperties.get("tilewidth", Integer.class);
-        int mapHeight = mapProperties.get("height", Integer.class);
-        int mapTileHeight = mapProperties.get("tileheight", Integer.class);
-        mapWidth = (int) (mapWidth * mapTileWidth * MyGame.SCALE_FACTOR);
-        mapHeight = (int) (mapHeight * mapTileHeight * MyGame.SCALE_FACTOR);
-        if (x + (mCamera.viewportWidth / 2) > mapWidth) {
-            mCamera.position.x = mapWidth - (mCamera.viewportWidth / 2);
+
+        if (x + (mCamera.viewportWidth / 2) > mMapWidth) {
+            mCamera.position.x = mMapWidth - (mCamera.viewportWidth / 2);
         } else if (x - (mCamera.viewportWidth / 2) < 0) {
             mCamera.position.x = mCamera.viewportWidth / 2;
         }
-        if (y + (mCamera.viewportHeight / 2) > mapHeight) {
-            mCamera.position.y = mapHeight - (mCamera.viewportHeight / 2);
+        if (y + (mCamera.viewportHeight / 2) > mMapHeight) {
+            mCamera.position.y = mMapHeight - (mCamera.viewportHeight / 2);
         } else if (y - (mCamera.viewportHeight / 2) < 0) {
             mCamera.position.y = mCamera.viewportHeight / 2;
         }
@@ -258,8 +285,7 @@ public class GameMap implements ICollisionObstacleHandler {
         return mMapName;
     }
 
-    public String getFromMapId()
-    {
+    public String getFromMapId() {
         return mFromMapId;
     }
 
@@ -307,11 +333,18 @@ public class GameMap implements ICollisionObstacleHandler {
         int mapTileHeight = mapProperties.get("tileheight", Integer.class);
         mapWidth = (int) (mapWidth * mapTileWidth * MyGame.SCALE_FACTOR);
         mapHeight = (int) (mapHeight * mapTileHeight * MyGame.SCALE_FACTOR);
+
         if (mPlayer.getHero().getPosition().x > mCamera.viewportWidth / 2 && mPlayer.getHero().getPosition().x < mapWidth - (mCamera.viewportWidth / 2)) {
-            mCamera.position.x = mPlayer.getHero().getPosition().x;
+            if (mIsZoomOut)
+                mCamXBeforeZoomOut = mPlayer.getHero().getPosition().x;
+            else
+                mCamera.position.x = mPlayer.getHero().getPosition().x;
         }
         if (mPlayer.getHero().getPosition().y > mCamera.viewportHeight / 2 && mPlayer.getHero().getPosition().y < mapHeight - (mCamera.viewportHeight / 2)) {
-            mCamera.position.y = mPlayer.getHero().getPosition().y;
+            if (mIsZoomOut)
+                mCamYBeforeZoomOut = mPlayer.getHero().getPosition().y;
+            else
+                mCamera.position.y = mPlayer.getHero().getPosition().y;
         }
 
         mCamera.update();
@@ -324,13 +357,12 @@ public class GameMap implements ICollisionObstacleHandler {
         return map;
     }
 
-    public int getZindexCount()
-    {
+    public int getZindexCount() {
         return mBodiesZindex.size();
     }
 
     public Array<Shape> getBodiesZindex(String aLayerName) {
-        if(mBodiesZindex.containsKey(aLayerName))
+        if (mBodiesZindex.containsKey(aLayerName))
             return mBodiesZindex.get(aLayerName);
         else
             return mBodiesZindex.get("zindex");
@@ -467,8 +499,7 @@ public class GameMap implements ICollisionObstacleHandler {
 
     private void buildMapInteractions(Map map, String layerName) {
         mInteractions = new Array<IInteraction>();
-        if(map.getLayers().get(layerName)==null)
-        {
+        if (map.getLayers().get(layerName) == null) {
             return;
         }
         MapObjects objects = map.getLayers().get(layerName).getObjects();
@@ -497,12 +528,10 @@ public class GameMap implements ICollisionObstacleHandler {
 
     private Array<IItemInteraction> buildItems(Map map, String layerName) {
         Array<IItemInteraction> interactions = new Array<IItemInteraction>();
-        if(map.getLayers().get(layerName)==null)
-        {
+        if (map.getLayers().get(layerName) == null) {
             return interactions;
         }
         MapObjects objects = map.getLayers().get(layerName).getObjects();
-
 
 
         MapProfile mapProfile = Profile.getInstance().getMapProfile(mMapName);
@@ -511,7 +540,7 @@ public class GameMap implements ICollisionObstacleHandler {
             if (object instanceof TextureMapObject) {
                 TextureMapObject textureObject = (TextureMapObject) object;
                 float x = textureObject.getX() * MyGame.SCALE_FACTOR;
-                float y = textureObject.getY()  * MyGame.SCALE_FACTOR;
+                float y = textureObject.getY() * MyGame.SCALE_FACTOR;
                 String type = textureObject.getProperties().get("type", String.class);
                 if (type == null) {
                     continue;

@@ -58,9 +58,12 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     protected Image mInventoryButton;
     protected Image mSpellButton;
     protected Image mHomeButton;
+    protected Image mZoomOutButton;
     protected Effect.Type mCurrentEffectType = null;
 
     protected MiniEffects mMiniEffects;
+
+    protected int mZoomPressedPointer=-1;
     /**
      * the duration of the screen transition for the screenOut method
      */
@@ -73,6 +76,37 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         this.addActor(mHud);
 
         EventDispatcher.getInstance().addSystemEventListener(this);
+
+        mZoomOutButton = new Image();
+        mZoomOutButton.setScaling(Scaling.fit);
+        mZoomOutButton.setAlign(Align.center);
+        mZoomOutButton.setSize(64, 64);
+        mZoomOutButton.setDrawable(new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("zoomOut")));
+        mHud.addActor(mZoomOutButton);
+
+        mZoomOutButton.addListener(new ClickListener() {
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button)
+            {
+                if(mZoomPressedPointer==-1)
+                {
+                    mZoomPressedPointer=pointer;
+                    ((GameScreen) MyGame.getInstance().getScreenType(MyGame.ScreenType.MainGame)).getMap().zoomOut(true);
+                    return true;
+                }
+                return false;
+
+
+            }
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                if (pointer == mZoomPressedPointer) {
+                    mZoomPressedPointer=-1;
+                    ((GameScreen) MyGame.getInstance().getScreenType(MyGame.ScreenType.MainGame)).getMap().zoomOut(false);
+                }
+            }
+        });
+        mZoomOutButton.setTouchable(Touchable.enabled);
 
         mInventoryButton = new Image();
         mInventoryButton.setScaling(Scaling.fit);
