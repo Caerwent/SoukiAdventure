@@ -217,6 +217,21 @@ public class GameMap implements ICollisionObstacleHandler {
             }
         }
 
+        if(mMapWidth<=mCamera.viewportWidth)
+        {
+            mCamera.position.x = mMapWidth / 2;
+            mCamera.update();
+        }
+        if(mMapHeight<=mCamera.viewportHeight)
+        {
+            mCamera.position.y = mMapHeight / 2;
+            mCamera.update();
+        }
+
+
+
+
+
         renderer = new MapAndSpritesRenderer2(this, MyGame.SCALE_FACTOR);
         // mBodiesZindex = buildShapes(map, "zindex");
         for (MapLayer layer : map.getLayers()) {
