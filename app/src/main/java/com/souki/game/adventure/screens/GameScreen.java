@@ -3,7 +3,6 @@ package com.souki.game.adventure.screens;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
@@ -76,8 +75,6 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
 
 
     public GameScreen() {
-        Gdx.app.setLogLevel(Application.LOG_DEBUG);
-
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
 

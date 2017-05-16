@@ -64,10 +64,6 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     protected MiniEffects mMiniEffects;
 
     protected int mZoomPressedPointer=-1;
-    /**
-     * the duration of the screen transition for the screenOut method
-     */
-    public float dur;
 
 
     public MainHUD() {

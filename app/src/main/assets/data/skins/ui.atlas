@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 Mark
   rotate: false
-  xy: 845, 94
+  xy: 903, 94
   size: 31, 32
   orig: 31, 32
   offset: 0, 0
@@ -20,21 +20,21 @@ SpellBurn
   index: -1
 SpellFreeze
   rotate: false
-  xy: 613, 79
+  xy: 671, 79
   size: 64, 47
   orig: 64, 47
   offset: 0, 0
   index: -1
 SpellPortal
   rotate: false
-  xy: 745, 62
+  xy: 803, 62
   size: 44, 64
   orig: 44, 64
   offset: 0, 0
   index: -1
 SpellWave
   rotate: false
-  xy: 679, 79
+  xy: 737, 79
   size: 64, 47
   orig: 64, 47
   offset: 0, 0
@@ -124,7 +124,7 @@ flag_en
   index: -1
 flag_fr
   rotate: false
-  xy: 791, 89
+  xy: 849, 89
   size: 52, 37
   orig: 52, 37
   offset: 0, 0
@@ -145,7 +145,7 @@ slider2
   index: -1
 spell
   rotate: false
-  xy: 878, 89
+  xy: 936, 89
   size: 26, 37
   orig: 26, 37
   offset: 0, 0
@@ -186,8 +186,8 @@ window1
   index: -1
 zoomOut
   rotate: false
-  xy: 791, 63
-  size: 24, 24
-  orig: 24, 24
+  xy: 613, 70
+  size: 56, 56
+  orig: 56, 56
   offset: 0, 0
   index: -1
