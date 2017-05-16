@@ -1,0 +1,124 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land7",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land9"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost1",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost2",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost3",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost4",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost4",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost5",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost5",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "barrier_push_1",
+    "template": "barrier_wood_top_left.json",
+    "properties": {
+      "initState":"OPEN"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "barrier_push_1",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      }
+    ]
+  },
+  {
+    "id": "activator_push_1",
+    "template": "activator_push.json",
+    "properties": {
+    },
+    "eventsAction": []
+  }
+]

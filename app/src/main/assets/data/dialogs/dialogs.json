@@ -234,6 +234,92 @@
         ]
       }
     ]
+  },
+  {
+    "id": "quest_farmer_shovel",
+    "dialogs": [
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_farmer_shovel_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_phrase3",
+          "quest_farmer_shovel_phrase4"
+
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_farmer_shovel_phrase5"
+        ]
+      },
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_phrase6",
+          "quest_farmer_shovel_phrase7"
+
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_farmer_shovel_activated",
+    "dialogs": [
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_activated_dialog_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_farmer_shovel_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_completed_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_farmer_shovel_completed_dialog_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_completed_dialog_phrase3",
+          "quest_farmer_shovel_completed_dialog_phrase4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_farmer_shovel_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_farmer1_name",
+        "phrases": [
+          "quest_farmer_shovel_finished_dialog_phrase1"
+        ]
+      }
+    ]
   }
+
 ]
 

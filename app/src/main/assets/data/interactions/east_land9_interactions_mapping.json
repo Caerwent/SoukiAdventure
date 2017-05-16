@@ -1,0 +1,30 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land8",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land7"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "forest1"
+      "targetMapId": "east_land7"
     },
     "eventsAction": [],
     "outputEvents": []

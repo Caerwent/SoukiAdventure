@@ -1,24 +1,24 @@
 {
-  "id": "quest_malo",
-  "title": "quest_malo_title",
-  "desc": "quest_malo_desc",
+  "id": "quest_farmer_shovel",
+  "title": "quest_farmer_shovel_title",
+  "desc": "quest_farmer_shovel_desc",
   "requiredCompletedQuest": [],
-  "itemsReward": [],
+  "itemsReward": ["FoodBread2"],
   "effectsReward": [],
   "tasks": [
     {
-      "id": "quest_malo_task1",
+      "id": "quest_farmer_shovel_task1",
       "value": "1",
       "type": "FIND_ITEM",
-      "targetId": "Hammer",
+      "targetId": "Shovel",
       "requiredCompletedTask": []
     },
     {
-      "id": "quest_malo_task2",
+      "id": "quest_farmer_shovel_task2",
       "type": "RETURN_ITEM",
-      "targetId": "malo",
+      "targetId": "npc_farmer1",
       "requiredCompletedTask": [
-        "quest_malo_task1"
+        "quest_farmer_shovel_task1"
       ]
     }
   ]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land6",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land8"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land9"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id":"npc_farmer1",
+    "template":"npc_farmer.json",
+    "properties":{
+      "dialogId":"quest_farmer_shovel"
+    },
+    "questActions":[
+      {
+        "questId": "quest_farmer_shovel",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_farmer_shovel_activated"
+        }
+      },
+      {
+        "questId": "quest_farmer_shovel",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_farmer_shovel_completed"
+        }
+      },
+      {
+        "questId": "quest_farmer_shovel",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_farmer_shovel_finished"
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_farmer_shovel"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"",
+            "type":"DIALOG",
+            "value":"quest_farmer_shovel"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[]
+  }
+]
