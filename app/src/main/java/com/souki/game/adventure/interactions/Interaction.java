@@ -145,6 +145,9 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
         this.add(new TransformComponent());
 
+        setMovable(mDef.isMovable);
+        mCurrentState = getState(mDef.defaultState);
+
         //    mType = IInteraction.Type.valueOf(mDef.type);
         if (mOutputEvents != null) {
             for (InteractionEvent event : mOutputEvents) {
@@ -278,10 +281,6 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     public void initialize(float x, float y, InteractionMapping aMapping) {
 
-
-        setMovable(mDef.isMovable);
-
-        mCurrentState = getState(mDef.defaultState);
 
         if (mDef.isRendable) {
 
@@ -730,8 +729,8 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                         doAction(questAction.action);
                         return;
                     } else if (questAction.questState == InteractionQuestAction.QuestState.NOT_ACTIVATED &&
-                            QuestManager.getInstance().getLivingQuestFromId(aQuest.getId()) != null &&
-                            !aQuest.isActivated()) {
+                            QuestManager.getInstance().getLivingQuestFromId(aQuest.getId()) == null &&
+                            !aQuest.isCompleted()) {
                         doAction(questAction.action);
                         return;
                     }

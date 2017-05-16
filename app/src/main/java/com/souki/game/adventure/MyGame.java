@@ -1,6 +1,8 @@
 package com.souki.game.adventure;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -141,6 +143,8 @@ public class MyGame extends Game implements ISystemEventListener {
     private SettingsScreen mSettingsScreen;
 
     public void create() {
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
+
         s_instance = this;
         GenericUI.createInstance();
         batch = new SpriteBatch();

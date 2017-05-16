@@ -54,6 +54,9 @@ public class InteractionObstacle extends Interaction {
             } else {
                 mOpenZIndex = super.getZIndex();
             }
+            if (mProperties.containsKey("initState")) {
+                mCurrentState = getState((String) mProperties.get("initState"));
+            }
         }
         initialize(x, y, aMapping);
 
@@ -61,12 +64,6 @@ public class InteractionObstacle extends Interaction {
 
     }
 
-    @Override
-    public void initialize(float x, float y, InteractionMapping aMapping) {
-        super.initialize(x, y, aMapping);
-
-
-    }
     @Override
     public void startToInteract()
     {

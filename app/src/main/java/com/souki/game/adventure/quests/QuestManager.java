@@ -283,7 +283,8 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
         for (Quest quest : mQuests.values()) {
             if (!mLivingQuests.containsKey(quest.getId()) &&
                     !mCompletedQuests.containsKey(quest.getId()) &&
-                    quest.getRequiredCompletedQuest() != null) {
+                    quest.getRequiredCompletedQuest() != null  &&
+                    quest.getRequiredCompletedQuest().size()>0) {
                 activateQuestIfAllDependenciesCompleted(quest);
 
 
