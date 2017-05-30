@@ -1,11 +1,17 @@
 package com.souki.game.adventure.interactions;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.math.Vector2;
+import com.souki.game.adventure.box2d.RectangleShape;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
+import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.gui.UIStage;
 import com.souki.game.adventure.gui.challenge.ChallengeUI;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
+import com.souki.game.adventure.screens.GenericUI;
 
 /**
  * Created by vincent on 04/04/2017.
@@ -15,13 +21,19 @@ public class InteractionChallenge extends Interaction {
 
     protected ChallengeUI mChallengeUI;
 
+    private boolean mIsInteractionShown = false;
+    private RectangleShape mMarkShape;
+    private TextureRegion mInteractionTextureRegion;
+
     protected String mChallengeType;
     private static final String KEY_STATE = "state";
 
     public InteractionChallenge(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
-        mType = Type.CHALLENGE;
-        initialize(x, y, aMapping);
+        mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("InteractionDialog");
+        initialize(x,y,aMapping);
+        mMarkShape = new RectangleShape();
+        updateInteractionMarkShape();
 
 
     }
@@ -31,7 +43,7 @@ public class InteractionChallenge extends Interaction {
         super.initialize(x, y, aMapping);
         mChallengeType = (String) mProperties.get("type");
         mChallengeUI = ChallengeUI.createInstance(ChallengeUI.ChallengeType.valueOf(mChallengeType));
-        mChallengeUI.setInteractionChallenge(this);
+        mChallengeUI.setInteractionChallenge(this, mProperties);
 
     }
 
@@ -60,11 +72,16 @@ public class InteractionChallenge extends Interaction {
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
         return aEntity.mInteraction.getType()==Type.HERO;
     }
-
+    @Override
+    public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
+        if(isClickable()) {
+            mIsInteractionShown = true;
+        }
+    }
 
     @Override
     public void onStopCollisionInteraction(CollisionInteractionComponent aEntity) {
-
+        mIsInteractionShown = false;
         ChallengeUI currentChallengeUI = UIStage.getInstance().getChallengeUIOpened();
         if (currentChallengeUI != null && currentChallengeUI == mChallengeUI) {
             UIStage.getInstance().closeChallengeUI();
@@ -74,7 +91,7 @@ public class InteractionChallenge extends Interaction {
     @Override
     protected boolean hasTouchInteraction(float x, float y) {
 
-        return getShapeInteraction().getBounds().contains(x, y);
+        return mIsInteractionShown && (mMarkShape.getBounds().contains(x, y) || getShapeInteraction().getBounds().contains(x, y));
     }
 
     @Override
@@ -97,8 +114,64 @@ public class InteractionChallenge extends Interaction {
             UIStage.getInstance().closeChallengeUI();
         }
     }
+    /************************ RENDERING *********************************/
+    @Override
+    public void render(Batch batch) {
+        super.render(batch);
+        TransformComponent transform = this.getComponent(TransformComponent.class);
 
+        if (mIsInteractionShown) {
+            float width_frame = mCurrentFrame.getRegionWidth();
+            float height_frame = mCurrentFrame.getRegionHeight();
 
+            float width = mInteractionTextureRegion.getRegionWidth();
+            float height = mInteractionTextureRegion.getRegionHeight();
+
+            //Allow for Offset
+            float originX = (width_frame - width) / 2 * transform.scale;//transform.originOffset.x;
+            float originY = height_frame * transform.scale;//transform.originOffset.y;
+
+            batch.draw(mInteractionTextureRegion,
+                    transform.position.x + transform.originOffset.x, transform.position.y + transform.originOffset.y,
+                    originX, originY,
+                    width, height,
+                    transform.scale, transform.scale,
+                    transform.angle);
+        }
+    }
+    public void updateInteractionMarkShape() {
+        if (mMarkShape == null)
+            return;
+
+        TransformComponent transform = this.getComponent(TransformComponent.class);
+        float width_frame = mCurrentFrame.getRegionWidth();
+        float height_frame = mCurrentFrame.getRegionHeight();
+
+        float width = mInteractionTextureRegion.getRegionWidth();
+        float height = mInteractionTextureRegion.getRegionHeight();
+
+        //Allow for Offset
+        float originX = (width_frame - width) / 2 * transform.scale;//transform.originOffset.x;
+        float originY = height_frame * transform.scale;//transform.originOffset.y;
+
+        mMarkShape.getShape().set(0, 0, width, height);
+        mMarkShape.setX(transform.position.x + transform.originOffset.x + originX);
+        mMarkShape.setY(transform.position.y + transform.originOffset.y + originY);
+
+    }
+
+    @Override
+    public void setPosition(float x, float y) {
+        super.setPosition(x, y);
+        updateInteractionMarkShape();
+
+    }
+
+    @Override
+    public void setPosition(Vector2 pos) {
+        super.setPosition(pos);
+        updateInteractionMarkShape();
+    }
     @Override
     public void destroy() {
         mChallengeUI.release();

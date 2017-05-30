@@ -13,6 +13,8 @@ import com.souki.game.adventure.interactions.InteractionChallenge;
 import com.souki.game.adventure.persistence.GameSession;
 import com.souki.game.adventure.screens.GenericUI;
 
+import java.util.HashMap;
+
 /**
  * Created by vincent on 04/04/2017.
  */
@@ -21,7 +23,8 @@ public class ChallengeUI extends Window {
 
     public static enum ChallengeType {
         TEST(ChallengeTest.class),
-        MACHINE(ChallengeMachine.class);
+        MACHINE(ChallengeMachine.class),
+        PUZZLE(ChallengeSlidingPuzzle.class);
 
         protected Class mClass;
 
@@ -68,8 +71,9 @@ public class ChallengeUI extends Window {
 
     }
 
-    public void setInteractionChallenge(InteractionChallenge aInteractionChallenge) {
+    public void setInteractionChallenge(InteractionChallenge aInteractionChallenge, HashMap aProperties) {
         mInteractionChallenge = aInteractionChallenge;
+        setProperties(aProperties);
     }
 
     public void restoreFromPersistence() {
@@ -85,6 +89,10 @@ public class ChallengeUI extends Window {
     }
 
     protected void createView() {
+
+    }
+
+    protected void setProperties(HashMap aProperties) {
 
     }
 

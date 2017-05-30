@@ -4,11 +4,18 @@ size: 1024,128
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Mark
+Interaction
   rotate: false
   xy: 903, 94
-  size: 31, 32
-  orig: 31, 32
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1
+InteractionDialog
+  rotate: false
+  xy: 942, 94
+  size: 37, 32
+  orig: 37, 32
   offset: 0, 0
   index: -1
 SpellBurn
@@ -138,14 +145,14 @@ slider1
   index: -1
 slider2
   rotate: false
-  xy: 326, 4
+  xy: 290, 4
   size: 16, 26
   orig: 16, 26
   offset: 0, 0
   index: -1
 spell
   rotate: false
-  xy: 936, 89
+  xy: 849, 50
   size: 26, 37
   orig: 26, 37
   offset: 0, 0
@@ -168,7 +175,7 @@ tab_inactive
   index: -1
 window
   rotate: false
-  xy: 290, 4
+  xy: 981, 100
   size: 34, 26
   split: 16, 16, 12, 12
   pad: 12, 12, 12, 12

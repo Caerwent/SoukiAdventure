@@ -35,7 +35,7 @@ public class InteractionNPC extends Interaction {
     public InteractionNPC(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.NPC;
-        mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("Mark");
+        mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("InteractionDialog");
         initialize(x,y,aMapping);
         mMarkShape = new RectangleShape();
         updateInteractionMarkShape();

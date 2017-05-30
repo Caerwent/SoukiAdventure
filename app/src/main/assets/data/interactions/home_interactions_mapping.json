@@ -5,7 +5,9 @@
     "properties": {
       "targetMapId":"village",
       "isDefaultStart":"true",
-      "activateQuestId":"quest_start"
+      "activateQuestId":"quest_start",
+      "width":32,
+      "height":60
     },
     "eventsAction":[],
     "outputEvents":[]

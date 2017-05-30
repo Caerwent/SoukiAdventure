@@ -3,7 +3,7 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "east_land8",
+      "targetMapId": "east_land9",
       "isDefaultStart": "true"
     },
     "eventsAction": [],
@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "east_land7"
+      "targetMapId": "forest1"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -22,9 +22,21 @@
     "id": "portal3",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "east_land10"
+      "targetMapId": "generic_hole"
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+
+  {
+    "id":"challenge_puzzle",
+    "template":"challenge_test1.json",
+    "properties": {
+      "type":"PUZZLE",
+      "size":3,
+      "image":"data/challenges/pirate_ship.png"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
   }
 ]

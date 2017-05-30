@@ -319,7 +319,20 @@
         ]
       }
     ]
+  },
+  {
+    "id": "chien_jaune_dialog",
+    "dialogs": [
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "npc_chien_jaune_phrase1"
+        ]
+      }
+    ]
   }
+
+
 
 ]
 

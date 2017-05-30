@@ -1,6 +1,6 @@
 {
   "type":"NPC",
-  "atlas":"npc_farmer.atlas",
+  "atlas":"npc_chien_jaune.atlas",
   "persistence":"GAME",
   "defaultState":"IDLE",
   "isClickable": "true",

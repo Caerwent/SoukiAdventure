@@ -12,7 +12,9 @@
     "id":"portal3",
     "template":"portal_clickable.json",
     "properties": {
-      "targetMapId":"house1"
+      "targetMapId":"house1",
+      "width":32,
+      "height":60
     },
     "eventsAction":[],
     "outputEvents":[]
@@ -21,7 +23,9 @@
     "id":"portal4",
     "template":"portal_clickable.json",
     "properties": {
-      "targetMapId":"home"
+      "targetMapId":"home",
+      "width":32,
+      "height":60
     },
     "eventsAction":[],
     "outputEvents":[]
@@ -30,7 +34,7 @@
     "id":"defaultPortal",
     "template":"portal.json",
     "properties": {
-      "isDefaultStart":"true",
+      "isDefaultStart":"true"
     },
     "eventsAction":[],
     "outputEvents":[]
@@ -90,6 +94,21 @@
           }
         ]
       }
+    ],
+    "outputEvents":[]
+  },
+
+  {
+    "id":"chien_jaune",
+    "template":"npc_chien_jaune.json",
+    "properties":{
+      "dialogId":"chien_jaune_dialog"
+    },
+    "questActions":[
+
+    ],
+    "eventsAction":[
+
     ],
     "outputEvents":[]
   }

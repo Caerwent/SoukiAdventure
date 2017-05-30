@@ -22,6 +22,7 @@
     "id":"lapin_jaune",
     "template":"npc_lapin_jaune.json",
     "properties":{
+      "dialogId":"npc_lapin_jaune"
     },
     "questActions": [
       {

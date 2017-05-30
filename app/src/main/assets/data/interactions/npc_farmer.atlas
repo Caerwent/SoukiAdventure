@@ -1,0 +1,12 @@
+npc_farmer.png
+size: 38, 60
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+idle
+  rotate: false
+  xy: 0,0
+  size: 38, 60
+  orig: 38, 60
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,12 @@
+npc_chien_jaune.png
+size: 32, 68
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+idle
+  rotate: false
+  xy: 0,0
+  size: 32, 68
+  orig: 32, 68
+  offset: 0, 0
+  index: -1

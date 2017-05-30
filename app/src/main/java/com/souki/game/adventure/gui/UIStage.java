@@ -72,6 +72,7 @@ public class UIStage extends Stage {
             addActor(mChallengeUI);
             mChallengeUI.setSize((TARGET_WIDTH - 20) / 2, TARGET_HEIGHT - 64 - 25);
             mChallengeUI.setPosition(TARGET_WIDTH / 2 + 10, 64);
+            mChallengeUI.layout();
         }
 
     }
