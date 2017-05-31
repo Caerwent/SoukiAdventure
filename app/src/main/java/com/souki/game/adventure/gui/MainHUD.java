@@ -45,7 +45,7 @@ import static com.souki.game.adventure.Settings.TARGET_WIDTH;
 public class MainHUD extends Group implements ISystemEventListener, IQuestListener {
 
     private static final int DIALOG_W = TARGET_WIDTH / 4 * 3;
-    private static final int DIALOG_H = TARGET_HEIGHT/4;
+    private static final int DIALOG_H = TARGET_HEIGHT / 4;
 
     protected final HorizontalGroup mHud = new HorizontalGroup();
 
@@ -63,7 +63,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
     protected MiniEffects mMiniEffects;
 
-    protected int mZoomPressedPointer=-1;
+    protected int mZoomPressedPointer = -1;
 
 
     public MainHUD() {
@@ -82,11 +82,9 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
         mZoomOutButton.addListener(new ClickListener() {
             @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button)
-            {
-                if(mZoomPressedPointer==-1)
-                {
-                    mZoomPressedPointer=pointer;
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if (mZoomPressedPointer == -1) {
+                    mZoomPressedPointer = pointer;
                     ((GameScreen) MyGame.getInstance().getScreenType(MyGame.ScreenType.MainGame)).getMap().zoomOut(true);
                     return true;
                 }
@@ -94,10 +92,11 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
 
             }
+
             @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 if (pointer == mZoomPressedPointer) {
-                    mZoomPressedPointer=-1;
+                    mZoomPressedPointer = -1;
                     ((GameScreen) MyGame.getInstance().getScreenType(MyGame.ScreenType.MainGame)).getMap().zoomOut(false);
                 }
             }
@@ -126,7 +125,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mHomeButton.setScaling(Scaling.fill);
         mHomeButton.setAlign(Align.center);
         mHomeButton.setSize(56, 56);
-        mHomeButton.setPosition(TARGET_WIDTH,0);
+        mHomeButton.setPosition(TARGET_WIDTH, 0);
         mHomeButton.setDrawable(new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("close")));
         addActor(mHomeButton);
 
@@ -172,13 +171,10 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mContentPanel.setBackground(GenericUI.getInstance().getSkin().getDrawable("window"));
         stack.add(mInventorySlotTable);
         mInventorySlotTable.setPosition(0, 0);
-        if(QuestManager.getInstance().getQuestFromId(MyGame.QUEST_START_ID).isCompleted())
-        {
+        if (QuestManager.getInstance().getQuestFromId(MyGame.QUEST_START_ID).isCompleted()) {
             mInventoryButton.setVisible(true);
             mSpellButton.setVisible(true);
-        }
-        else
-        {
+        } else {
             EventDispatcher.getInstance().addQuestListener(this);
             mInventoryButton.setVisible(false);
             mSpellButton.setVisible(false);
@@ -202,8 +198,8 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         });
         mInventoryButton.setTouchable(Touchable.enabled);
 
-        mSpellButton.addListener(new ActorGestureListener(){
-            public void tap (InputEvent event, float x, float y, int count, int button) {
+        mSpellButton.addListener(new ActorGestureListener() {
+            public void tap(InputEvent event, float x, float y, int count, int button) {
                 if (mCurrentEffectType != null) {
                     ((GameScreen) MyGame.getInstance().getScreenType(MainGame)).getMap().getPlayer().getHero().launchEffect(EffectFactory.getInstance().getNewInstanceEffect(mCurrentEffectType));
                 }
@@ -211,7 +207,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
             /** If true is returned, additional gestures will not be triggered. No event is provided because this event is triggered by time
              * passing, not by an InputEvent. */
-            public boolean longPress (Actor actor, float x, float y) {
+            public boolean longPress(Actor actor, float x, float y) {
                 if (mCurrentEffectType != null) {
 
                     mMiniEffects.setVisible(!mMiniEffects.isVisible());
@@ -236,7 +232,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mHomeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-             MyGame.getInstance().setScreen(MyGame.ScreenType.MainMenu);
+                MyGame.getInstance().setScreen(MyGame.ScreenType.MainMenu);
             }
         });
         mHomeButton.setTouchable(Touchable.enabled);
@@ -246,12 +242,14 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
     @Override
     public void onNewMapRequested(String aMapId, MapTownPortalInfo aTownPortalInfo) {
-
+        UIStage.getInstance().closeChallengeUI();
     }
+
     @Override
     public void onMapReloadRequested(String aMapId, String aFromMapId) {
-
+        UIStage.getInstance().closeChallengeUI();
     }
+
     @Override
     public void onMapLoaded(GameMap aMap) {
     }
@@ -271,13 +269,11 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mEffectsPanel.update();
     }
 
-    public DragAndDrop getItemDragAndDrop()
-    {
+    public DragAndDrop getItemDragAndDrop() {
         return mInventorySlotTable.getDragAndDrop();
     }
 
-    public void destroy()
-    {
+    public void destroy() {
         EventDispatcher.getInstance().removeQuestListener(this);
         EventDispatcher.getInstance().removeSystemEventListener(this);
     }
@@ -289,8 +285,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
 
     @Override
     public void onQuestCompleted(Quest aQuest) {
-        if(aQuest.getId().compareTo(MyGame.QUEST_START_ID)==0)
-        {
+        if (aQuest.getId().compareTo(MyGame.QUEST_START_ID) == 0) {
             mInventoryButton.setVisible(true);
             mSpellButton.setVisible(true);
             EventDispatcher.getInstance().removeQuestListener(this);

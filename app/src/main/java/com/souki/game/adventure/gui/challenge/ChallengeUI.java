@@ -7,9 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.gui.InventorySlot;
 import com.souki.game.adventure.gui.UIStage;
 import com.souki.game.adventure.interactions.InteractionChallenge;
+import com.souki.game.adventure.interactions.InteractionEvent;
 import com.souki.game.adventure.persistence.GameSession;
 import com.souki.game.adventure.screens.GenericUI;
 
@@ -115,12 +117,6 @@ public class ChallengeUI extends Window {
 
     }
 
-    @Override
-    public void act(float delta) {
-        // update content
-        super.act(delta);
-    }
-
     public void release() {
         if (UIStage.getInstance().getMainHUD() != null) {
             removeDragAndDropTarget(UIStage.getInstance().getMainHUD().getItemDragAndDrop());
@@ -133,5 +129,10 @@ public class ChallengeUI extends Window {
 
     public GameSession saveInPersistence(GameSession aGameSession) {
         return aGameSession;
+    }
+
+    protected void challengeCompleted()
+    {
+        EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(mInteractionChallenge.getId(), InteractionEvent.EventType.CHALLENGE_COMPLETED.name(),null));
     }
 }

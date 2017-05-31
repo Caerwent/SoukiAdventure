@@ -114,6 +114,7 @@ public class InteractionChallenge extends Interaction {
             UIStage.getInstance().closeChallengeUI();
         }
     }
+
     /************************ RENDERING *********************************/
     @Override
     public void render(Batch batch) {

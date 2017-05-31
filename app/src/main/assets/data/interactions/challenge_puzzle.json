@@ -1,0 +1,29 @@
+{
+  "type":"CHALLENGE",
+  "atlas":"../challenges/puzzle.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "puzzle_interaction"
+      ]
+    },
+    {
+      "name": "COMPLETED",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "puzzle_interaction"
+      ]
+    }
+
+  ]
+
+}

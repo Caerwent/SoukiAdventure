@@ -12,7 +12,8 @@ public class InteractionEvent {
         END_STATE,
         DIALOG,
         EFFECT_START,
-        EFFECT_STOP;
+        EFFECT_STOP,
+        CHALLENGE_COMPLETED;
     }
     public String sourceId;
     public String type;
