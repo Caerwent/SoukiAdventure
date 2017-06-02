@@ -138,6 +138,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
 
     public GameSession saveInPersistence(GameSession aGameSession) {
         aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_PUZZLE_STATE, mPuzzleState);
+        aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_IS_RESOLVED, mIsResolved);
         return aGameSession;
     }
 
@@ -259,6 +260,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                     Image img = new Image(initRegions[row][col]);
                     img.setTouchable(Touchable.disabled);
                     Container<Image> cell = new Container<>();
+                    cell.setBackground(GenericUI.getInstance().getSkin().getDrawable("bg"));
                     cell.setTouchable(Touchable.enabled);
                     cell.setColor(GenericUI.getInstance().getSkin().getColor("background-color-2"));
                     mGroup.addActor(cell);
@@ -337,6 +339,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                 lastState = mPuzzleState[i][j];
             }
         }
+        mIsResolved=true;
         mGroup.removeListener(mClickListener);
         mGroup.clear();
         mGroup.addActor(mCompletedImage);

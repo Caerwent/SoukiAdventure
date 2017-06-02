@@ -31,6 +31,7 @@
   {
     "id":"challenge_puzzle",
     "template":"challenge_puzzle.json",
+    "persistence":"NONE",
     "properties": {
       "type":"PUZZLE",
       "size":3,

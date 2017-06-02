@@ -57,11 +57,13 @@ public class Styles {
         NinePatch window1patch = atlas.createPatch("window1");
         NinePatch window = atlas.createPatch("window");
         NinePatch dialog = atlas.createPatch("dialog");
+        NinePatch bgpatch = atlas.createPatch("bg");
         skin.add("btn1up", btn1up);
         skin.add("btn1down", btn1down);
         skin.add("window1", window1patch);
         skin.add("dialog", dialog);
         skin.add("window", window);
+        skin.add("bg", bgpatch);
 
         NinePatchDrawable tabActive = new NinePatchDrawable(atlas.createPatch("tab_active"));
         NinePatchDrawable tabInactive = new NinePatchDrawable(atlas.createPatch("tab_inactive"));

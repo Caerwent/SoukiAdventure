@@ -11,6 +11,7 @@ import com.souki.game.adventure.gui.UIStage;
 import com.souki.game.adventure.gui.challenge.ChallengeUI;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
+import com.souki.game.adventure.persistence.Profile;
 import com.souki.game.adventure.screens.GenericUI;
 
 /**
@@ -44,6 +45,11 @@ public class InteractionChallenge extends Interaction {
         mChallengeType = (String) mProperties.get("type");
         mChallengeUI = ChallengeUI.createInstance(ChallengeUI.ChallengeType.valueOf(mChallengeType));
         mChallengeUI.setInteractionChallenge(this, mProperties);
+        if (getPersistence() == Persistence.GAME) {
+            mChallengeUI.restoreFromPersistence(Profile.getInstance().getPersistentGameSession());
+        } else if (getPersistence() == Persistence.SESSION) {
+            mChallengeUI.restoreFromPersistence(GameSession.getInstance());
+        }
 
     }
 
