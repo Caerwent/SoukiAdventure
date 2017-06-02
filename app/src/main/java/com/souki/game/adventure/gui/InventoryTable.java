@@ -93,14 +93,7 @@ public class InventoryTable extends Table implements IPlayerListener {
             if (inventorySlot == null) {
                 inventorySlot = new InventorySlot();
 
-                InventorySlotTarget target = new InventorySlotTarget(inventorySlot);
-                mSlotTargets.add(target);
-                _dragAndDrop.addTarget(target);
-                InventorySlotSource source = new InventorySlotSource(inventorySlot, _dragAndDrop);
-                mSlotSources.add(source);
-                _dragAndDrop.addSource(source);
-
-                mSlots.put(item.getItemTypeID(), inventorySlot);
+               mSlots.put(item.getItemTypeID(), inventorySlot);
                 inventorySlot.setTouchable(Touchable.enabled);
                 mInventoryTable.top().add(inventorySlot).size(mSlotWidth, mSlotHeight);
                 inventorySlot.addListener(new ClickListener() {
@@ -126,6 +119,14 @@ public class InventoryTable extends Table implements IPlayerListener {
 
                     }
                 });
+                InventorySlotTarget target = new InventorySlotTarget(inventorySlot);
+                mSlotTargets.add(target);
+                _dragAndDrop.addTarget(target);
+                InventorySlotSource source = new InventorySlotSource(inventorySlot, _dragAndDrop);
+                mSlotSources.add(source);
+                _dragAndDrop.addSource(source);
+
+
                 nbItemInRow++;
                 if (nbItemInRow % mLengthSlotRow == 0) {
                     mInventoryTable.row();

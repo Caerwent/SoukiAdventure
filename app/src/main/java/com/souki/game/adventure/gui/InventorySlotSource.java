@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+import com.badlogic.gdx.utils.Scaling;
+
 /**
  * Created by vincent on 24/02/2017.
  */
@@ -28,12 +30,13 @@ private Image img;
 
         img = new Image(_sourceSlot.getItemOnTop().getTextureRegion());
         img.setSize(_sourceSlot.getWidth(), _sourceSlot.getHeight());
+        img.setScaling(Scaling.fit);
         Color color = img.getColor();
         color.a*=0.5;
         img.setColor(color);
         _sourceSlot.addActor(img);
         payload.setDragActor(img);
-        _dragAndDrop.setDragActorPosition(-x, -y + img.getHeight());
+        _dragAndDrop.setDragActorPosition(x-img.getWidth()/2, y - img.getHeight()/2);
 
         return payload;
     }
