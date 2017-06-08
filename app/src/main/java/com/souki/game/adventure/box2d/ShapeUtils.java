@@ -203,6 +203,40 @@ public class ShapeUtils {
         vertices1 = p1.getTransformedVertices();
         vertices2 = p2.getTransformedVertices();
 
+        Vector2 pt1 = new Vector2();
+        Vector2 pt2 = new Vector2();
+        for (int i = 0; i < vertices1.length; i += 2) {
+            if(i+3>=vertices1.length) {
+                pt1.set(vertices1[i], vertices1[i + 1]);
+                pt2.set(vertices1[0], vertices1[1]);
+            }
+            else
+            {
+                pt1.set(vertices1[i], vertices1[i + 1]);
+                pt2.set(vertices1[i + 2], vertices1[i + 3]);
+            }
+
+            if(Intersector.intersectSegmentPolygon(pt1, pt2, p2))
+            {
+                return true;
+            }
+        }
+        for (int i = 0; i < vertices2.length; i += 2) {
+            if(i+3>=vertices2.length) {
+                pt1.set(vertices2[i], vertices2[i + 1]);
+                pt2.set(vertices2[0], vertices2[1]);
+            }
+            else
+            {
+                pt1.set(vertices2[i], vertices2[i + 1]);
+                pt2.set(vertices2[i + 2], vertices2[i + 3]);
+            }
+
+            if(Intersector.intersectSegmentPolygon(pt1, pt2, p1))
+            {
+                return true;
+            }
+        }
         for (int i = 0; i < vertices1.length; i += 2) {
             if(isPointInPolygon(vertices2,0,vertices2.length,vertices1[i], vertices1[i + 1] )) {
                 return true;
