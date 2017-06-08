@@ -330,6 +330,45 @@
         ]
       }
     ]
+  },
+  {
+    "id": "wizard_obtain_ice_and_fire_dialog",
+    "dialogs": [
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "wizard_obtain_ice_and_fire_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "wizard_obtain_ice_and_fire_phrase2"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "wizard_obtain_ice_and_fire_phrase3",
+          "wizard_obtain_ice_and_fire_phrase4",
+          "wizard_obtain_ice_and_fire_phrase5",
+          "wizard_obtain_ice_and_fire_phrase6"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "wizard_obtain_ice_and_fire_phrase7"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "wizard_obtain_ice_and_fire_phrase8",
+          "wizard_obtain_ice_and_fire_phrase9"
+        ]
+      }
+    ]
   }
 
 

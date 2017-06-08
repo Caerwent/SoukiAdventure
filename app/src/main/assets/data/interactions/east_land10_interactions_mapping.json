@@ -4,7 +4,8 @@
     "template": "portal.json",
     "properties": {
       "targetMapId": "east_land9",
-      "isDefaultStart": "true"
+      "isDefaultStart": "true",
+      "activateQuestId":"quest_obtain_ice_and_fire"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -39,5 +40,46 @@
     },
     "eventsAction":[],
     "outputEvents":[]
+  },
+  {
+    "id": "wizard",
+    "template": "wizard.json",
+    "properties": {
+      "dialogId": "wizard_obtain_ice_and_fire_dialog"
+    },
+    "questActions": [
+      {
+        "questId": "quest_obtain_ice_and_fire",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "LAUNCH_EFFECT",
+          "value": "PORTAL"
+        }
+      },
+      {
+        "questId": "quest_obtain_ice_and_fire",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "wizard",
+            "type": "EFFECT_STOP",
+            "value": "PORTAL"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
   }
 ]

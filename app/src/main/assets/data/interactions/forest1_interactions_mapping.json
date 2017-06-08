@@ -97,5 +97,45 @@
         "value": "BURNING"
       }
     ]
+  },
+  {
+    "id": "wood3",
+    "template": "obstacle_log_wood.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "wood3",
+            "type": "END_STATE",
+            "value": "BURNING"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "BURNING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "wood3",
+            "type": "EFFECT_START",
+            "value": "BURN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "END_STATE",
+        "value": "BURNING"
+      }
+    ]
   }
 ]

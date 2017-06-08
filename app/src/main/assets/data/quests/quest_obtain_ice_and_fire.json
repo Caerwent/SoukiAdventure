@@ -1,0 +1,21 @@
+
+{
+	"id": "quest_obtain_ice_and_fire",
+	"title":"quest_obtain_ice_and_fire_title",
+	"desc":"quest_obtain_ice_and_fire_desc",
+	"itemsReward":[],
+	"effectsReward":["FREEZE","BURN"],
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "quest_obtain_ice_and_fire_task1",
+			"type":"DIALOG",
+			"targetId":"wizard_obtain_ice_and_fire_dialog",
+			"value":"",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

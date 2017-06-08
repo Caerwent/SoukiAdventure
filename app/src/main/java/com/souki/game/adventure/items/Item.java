@@ -15,6 +15,7 @@ public class Item {
         Boots,
         ChessClosed,
         ChessOpen,
+        Compass,
         CrystalAnimBlue,
         CrystalAnimGreen,
         CrystalAnimGrey,

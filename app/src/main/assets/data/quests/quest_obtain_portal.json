@@ -4,7 +4,7 @@
 	"title":"quest_obtain_portal_title",
 	"desc":"quest_obtain_portal_desc",
 	"itemsReward":["RingGold"],
-	"effectsReward":["PORTAL","FREEZE","BURN","WAVE"],
+	"effectsReward":["PORTAL"],
 	"requiredCompletedQuest": [],
 	"tasks" : [
 		{

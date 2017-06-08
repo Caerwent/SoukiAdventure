@@ -657,7 +657,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     /*************************************** EVENTS ************************************/
     @Override
     public void onInteractionEvent(InteractionEvent aEvent) {
-        Gdx.app.debug("DEBUG", "onInteractionEvent event.sourceId=" + aEvent.sourceId + " aEvent.type=" + aEvent.type + " aEvent.value=" + aEvent.value);
+        Gdx.app.debug("DEBUG", "onInteractionEvent id="+getId()+" event.sourceId=" + aEvent.sourceId + " aEvent.type=" + aEvent.type + " aEvent.value=" + aEvent.value);
 
         if (mEventsAction != null && aEvent != null) {
             for (InteractionEventAction eventAction : mEventsAction) {
@@ -812,8 +812,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         Effect effect = (Effect) aEntity.mEffect;
         if (effect != null) {
             mEffectAction = effect;
-            Gdx.app.debug("DEBUG", "onStartEffectInteraction " + getId());
-            EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(getId(), InteractionEvent.EventType.EFFECT_START.name(), effect.id.name()));
+           EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(getId(), InteractionEvent.EventType.EFFECT_START.name(), effect.id.name()));
         }
         return false;
     }
@@ -886,7 +885,6 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     }
 
     protected void stopEffectAction() {
-        Gdx.app.debug("DEBUG", "stopEffectAction " + getId());
         EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(getId(), InteractionEvent.EventType.EFFECT_STOP.name(), mEffectAction.id.name()));
         mEffectAction = null;
         mEffectActionTime = 0;
