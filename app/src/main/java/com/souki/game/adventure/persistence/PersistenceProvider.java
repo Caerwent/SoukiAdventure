@@ -63,8 +63,7 @@ public class PersistenceProvider {
 
     public void saveSettings() {
 
-        if(mSettings==null)
-        {
+        if (mSettings == null) {
             loadSettings();
         }
         FileHandle encodedFile;
@@ -111,8 +110,7 @@ public class PersistenceProvider {
 
     }
 
-    public Settings getSettings()
-    {
+    public Settings getSettings() {
         return mSettings;
     }
 
@@ -141,8 +139,7 @@ public class PersistenceProvider {
         }
     }
 
-    public boolean hasProfile()
-    {
+    public boolean hasProfile() {
         if (Gdx.files.isLocalStorageAvailable()) {
             boolean doesProfileFileExist = Gdx.files.local(SAVE_FILE).exists();
             if (doesProfileFileExist) {
@@ -151,6 +148,7 @@ public class PersistenceProvider {
         }
         return false;
     }
+
     public Profile loadProfile() {
         String filename = SAVE_FILE;
         Profile profile = null;
@@ -204,17 +202,19 @@ public class PersistenceProvider {
         save(Profile.getInstance());
     }
 
-    public void saveSelectedEffect(Effect.Type aSelectedEffect)
-    {
-        save(Profile.getInstance());
-    }
-    public void saveEffectsList(ArrayList<Effect.Type> aList)
-    {
+    public void saveSelectedEffect(Effect.Type aSelectedEffect) {
         save(Profile.getInstance());
     }
 
-    public void saveGameSession(GameSession aGameSession)
-    {
+    public void saveEffectsList(ArrayList<Effect.Type> aList) {
+        save(Profile.getInstance());
+    }
+
+    public void saveGameSession(GameSession aGameSession) {
+        save(Profile.getInstance());
+    }
+
+    public void savePortalCheckpoints(ArrayList<String> PortalCheckpoints) {
         save(Profile.getInstance());
     }
 }

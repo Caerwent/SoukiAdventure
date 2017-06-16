@@ -21,6 +21,7 @@ public class Profile {
     Effect.Type mSelectedEffect = null;
     ArrayList<Effect.Type> mAvailableEffects = new ArrayList();
     GameSession mPersistentGameSession = new GameSession();
+    ArrayList<String>  mPortalCheckpointMap = new ArrayList<>();
 
     static private Profile sProfile;
 
@@ -122,6 +123,16 @@ public class Profile {
     {
         mPersistentGameSession = aGameSession;
         PersistenceProvider.getInstance().saveGameSession(mPersistentGameSession);
+    }
+
+    public final ArrayList<String>  getPortalCheckpoints() {
+        return mPortalCheckpointMap;
+    }
+
+    public void updatePortalCheckpoints(ArrayList<String>  PortalCheckpoints) {
+        mPortalCheckpointMap=PortalCheckpoints;
+        PersistenceProvider.getInstance().savePortalCheckpoints(mPortalCheckpointMap);
+
     }
 
 }

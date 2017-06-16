@@ -39,7 +39,9 @@ import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
 import com.souki.game.adventure.entity.components.VisualComponent;
 import com.souki.game.adventure.events.EventDispatcher;
+import com.souki.game.adventure.gui.challenge.ChallengeUI;
 import com.souki.game.adventure.interactions.IInteraction;
+import com.souki.game.adventure.interactions.InteractionChallenge;
 import com.souki.game.adventure.interactions.InteractionFactory;
 import com.souki.game.adventure.interactions.InteractionMapping;
 import com.souki.game.adventure.interactions.InteractionMappingManager;
@@ -63,6 +65,8 @@ import java.util.HashMap;
 
 public class GameMap implements ICollisionObstacleHandler {
     public final static String TAG = GameMap.class.getSimpleName();
+
+    private static MapTownPortalInfo sTownPortalInfo;
     private TiledMap map;
     private String mMapName;
     private String mFromMapId;
@@ -128,7 +132,6 @@ public class GameMap implements ICollisionObstacleHandler {
                 AudioManager.getInstance().onAudioEvent(new AudioEvent(AudioEvent.Type.MUSIC_LOAD, mMusic));
             }
         }
-
         mPlayer = new Player(this);
         mPlayer.getHero().setCamera(mCamera);
         mPlayer.getHero().setPath(null);
@@ -137,19 +140,32 @@ public class GameMap implements ICollisionObstacleHandler {
         mInteractionMappingManager.loadMappingFile("data/interactions/" + aMapName + "_interactions_mapping.json");
         buildMapInteractions(map, "interactions");
 
-        boolean isMapBackWithTownPortal = aTownPortalInfo != null && aTownPortalInfo.originMap.compareTo(getMapName()) == 0;
+        boolean isMapBackWithTownPortal = aTownPortalInfo != null && aTownPortalInfo.originMap.compareTo(getMapName()) == 0 && !aTownPortalInfo.isCheckpoint;
         boolean isCurrentMapIsDefault = getMapName().compareTo(MyGame.DEFAULT_MAP_NAME) == 0;
-
+        boolean isCheckpointPortal = aTownPortalInfo != null && aTownPortalInfo.isCheckpoint;
 
         LocationProfile locationProfile = new LocationProfile();
         locationProfile.mMapId = mMapName;
 
 
         if (isMapBackWithTownPortal) {
+            sTownPortalInfo=null;
             // set hero at the town portal position
             mPlayer.getHero().setPosition(aTownPortalInfo.x, aTownPortalInfo.y);
             tryToSetCameraAtPosition(aTownPortalInfo.x, aTownPortalInfo.y);
             mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
+        }
+        if(isCheckpointPortal)
+        {
+            for(IInteraction interaction : mInteractions) {
+                if (interaction.getType() == IInteraction.Type.CHALLENGE &&
+                        ((InteractionChallenge) interaction).getChallengeType()== ChallengeUI.ChallengeType.PORTAL_CHECKPOINT) {
+                    sTownPortalInfo=null;
+                    mPlayer.getHero().setPosition(interaction.getX(),interaction.getY());
+                    tryToSetCameraAtPosition(interaction.getX(),interaction.getY());
+                    mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
+                }
+            }
         }
         if (aTownPortalInfo == null) {
             locationProfile.mFromMapId = aFromMap;
@@ -173,7 +189,16 @@ public class GameMap implements ICollisionObstacleHandler {
                     mPlayer.getHero().setPosition(control.getX(), control.getY());
                     tryToSetCameraAtPosition(control.getX(), control.getY());
                     if (isDefaultMapArrivalFromTownPortal) {
+                        sTownPortalInfo = aTownPortalInfo;
                         mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
+                    }
+                    else if(isPortalToPortalCase && MyGame.getInstance().isDefaultMapOrAssociated(mMapName) && sTownPortalInfo!=null)
+                    {
+                        mPlayer.getHero().setTownPortalInfo(sTownPortalInfo);
+                    }
+                    else
+                    {
+                        sTownPortalInfo=null;
                     }
                     arrivalPortal = portal;
                     portal.setActivated(false);
@@ -202,7 +227,7 @@ public class GameMap implements ICollisionObstacleHandler {
                 }
             }
         }
-        if (arrivalPortal == null && defaultPortal != null && !isMapBackWithTownPortal) {
+        if (arrivalPortal == null && defaultPortal != null && !isMapBackWithTownPortal && !isCheckpointPortal) {
             mPlayer.getHero().setPosition(defaultPortal.getX(), defaultPortal.getY());
             tryToSetCameraAtPosition(defaultPortal.getX(), defaultPortal.getY());
 

@@ -30,15 +30,29 @@
   },
 
   {
-    "id":"challenge_puzzle",
-    "template":"challenge_puzzle.json",
-    "persistence":"NONE",
+    "id":"challenge_portal_checkpoint",
+    "template":"challenge_portal_checkpoint.json",
     "properties": {
-      "type":"PUZZLE",
-      "size":3,
-      "image":"data/challenges/pirate_ship.png"
+      "type":"PORTAL_CHECKPOINT",
+      "zindex":0
     },
-    "eventsAction":[],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+
+
     "outputEvents":[]
   },
   {

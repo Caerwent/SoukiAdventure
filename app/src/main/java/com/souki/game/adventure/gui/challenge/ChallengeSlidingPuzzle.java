@@ -30,7 +30,6 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
     protected int mImgSizeInPx, mTotalSizeInPx;
     protected int[][] mPuzzleState;
     protected String mImageFile;
-    boolean sizeInvalid = true;
     protected Image mCompletedImage;
     protected boolean mIsResolved = false;
 
@@ -110,18 +109,13 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
         mGroup = new WidgetGroup();
         mContent.align(Align.center);
         mContent.top().add(mGroup).pad(20).expand().fill().center();
-        mTotalSizeInPx = (int) Math.min(mGroup.getWidth(), mGroup.getHeight());
 
     }
 
     @Override
-    public void layout() {
-        super.layout();
-        if (sizeInvalid) {
-            mTotalSizeInPx = (int) Math.min(mGroup.getWidth(), mGroup.getHeight());
-            createPuzzle();
-            sizeInvalid = false;
-        }
+    protected void layoutView() {
+        mTotalSizeInPx = (int) Math.min(mGroup.getWidth(), mGroup.getHeight());
+        createPuzzle();
     }
 
     public void restoreFromPersistence(GameSession aGameSession) {
@@ -165,9 +159,20 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                 }
             }
         }
+        int slide = 0;
+        int tmp = 0;
         for (int iter = 0; iter < 30; iter++) {
             int rand = (int) Math.round(Math.random() * 3);
             int lastMove = -1;
+            if (iter == 10 && tmp < mSize) {
+                rand = tmp;
+                slide++;
+                if (slide == mSize - 1) {
+                    tmp++;
+                    slide = 0;
+                }
+                iter--;
+            }
             switch (rand) {
                 case 0: // left
                     if (col > 1 && lastMove != 1) {
@@ -217,6 +222,81 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
         }
     }
 
+    protected int countInversions(int i, int j) {
+        int inversions = 0;
+        int tileNum = j * (mSize) + i;
+        int lastTile = mSize * mSize;
+        int tileValue = mPuzzleState[i][j];
+        for (int q = tileNum + 1; q < lastTile; ++q) {
+            int k = q % mSize;
+            int l = (int) Math.floor(q / mSize);
+
+            int compValue = mPuzzleState[k][l];
+            if (tileValue > compValue && tileValue != 0) {
+                ++inversions;
+            }
+        }
+        return inversions;
+    }
+
+    protected int sumInversions() {
+        int inversions = 0;
+        for (int j = 0; j < mSize; ++j) {
+            for (int i = 0; i < mSize; ++i) {
+                inversions += countInversions(i, j);
+            }
+        }
+        return inversions;
+    }
+
+    protected boolean isSolvable(int width, int height, int emptyRow) {
+        if (width % 2 == 1) {
+            return (sumInversions() % 2 == 0);
+        } else {
+            return ((sumInversions() + height - emptyRow) % 2 == 0);
+        }
+    }
+
+    protected void initTiles() {
+        //https://www.sitepoint.com/randomizing-sliding-puzzle-tiles/
+        int i = mSize * mSize - 1;
+        int emptyRow = 0;
+        while (i > 0) {
+            int j = (int) Math.floor(Math.random() * i);
+            int xi = (int) i % mSize;
+            int yi = (int) Math.floor(i / mSize);
+            int xj = (int) j % mSize;
+            int yj = (int) Math.floor(j / mSize);
+            int tmp = mPuzzleState[xi][yi];
+            if (tmp == 0)
+                emptyRow = xi;
+            if (mPuzzleState[xj][yj] == 0)
+                emptyRow = xj;
+            mPuzzleState[xi][yi] = mPuzzleState[xj][yj];
+            mPuzzleState[xj][yj] = tmp;
+            if (!isSolvable(mSize, mSize, emptyRow + 1)) {
+                if (emptyRow == 0 && emptyRow <= 1) {
+                    tmp = mPuzzleState[mSize - 2][mSize - 1];
+                    if (tmp == 0)
+                        emptyRow = mSize - 2;
+                    if (mPuzzleState[mSize - 1][mSize - 1] == 0)
+                        emptyRow = mSize - 1;
+                    mPuzzleState[mSize - 2][mSize - 1] = mPuzzleState[mSize - 1][mSize - 1];
+                    mPuzzleState[mSize - 1][mSize - 1] = tmp;
+                } else {
+                    tmp = mPuzzleState[0][0];
+                    if (tmp == 0)
+                        emptyRow = 0;
+                    if (mPuzzleState[1][0] == 0)
+                        emptyRow = 1;
+                    mPuzzleState[0][0] = mPuzzleState[1][0];
+                    mPuzzleState[1][1] = tmp;
+                }
+            }
+            --i;
+        }
+    }
+
     protected void createPuzzle() {
 
         if (mImageFile == null || mTotalSizeInPx == 0)
@@ -240,6 +320,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
 
             }
             shuffle();
+            //initTiles();
         }
         mGroup.clear();
         mImgSizeInPx = mTotalSizeInPx / mSize;
@@ -339,7 +420,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                 lastState = mPuzzleState[i][j];
             }
         }
-        mIsResolved=true;
+        mIsResolved = true;
         mGroup.removeListener(mClickListener);
         mGroup.clear();
         mGroup.addActor(mCompletedImage);

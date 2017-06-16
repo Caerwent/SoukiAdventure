@@ -1,6 +1,5 @@
 package com.souki.game.adventure.gui.challenge;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -26,7 +25,8 @@ public class ChallengeUI extends Window {
     public static enum ChallengeType {
         TEST(ChallengeTest.class),
         MACHINE(ChallengeMachine.class),
-        PUZZLE(ChallengeSlidingPuzzle.class);
+        PUZZLE(ChallengeSlidingPuzzle.class),
+        PORTAL_CHECKPOINT(ChallengePortalCheckpoint.class);
 
         protected Class mClass;
 
@@ -52,6 +52,7 @@ public class ChallengeUI extends Window {
     protected Image mClose;
     protected Table mContent;
     protected InteractionChallenge mInteractionChallenge;
+    protected boolean mSizeInvalid = true;
 
     public ChallengeUI() {
         super("", GenericUI.getInstance().getSkin(), "solidbackground");
@@ -69,13 +70,12 @@ public class ChallengeUI extends Window {
         add(mContent).top().left().fill().expand();
         createView();
 
-        createDragAndDropTarget(UIStage.getInstance().getMainHUD().getItemDragAndDrop());
-
     }
 
     public void setInteractionChallenge(InteractionChallenge aInteractionChallenge, HashMap aProperties) {
         mInteractionChallenge = aInteractionChallenge;
         setProperties(aProperties);
+        createDragAndDropTarget(UIStage.getInstance().getMainHUD().getItemDragAndDrop());
     }
 
     public void restoreFromPersistence() {
@@ -90,9 +90,6 @@ public class ChallengeUI extends Window {
         }
     }
 
-    protected void createView() {
-
-    }
 
     protected void setProperties(HashMap aProperties) {
 
@@ -110,11 +107,21 @@ public class ChallengeUI extends Window {
 
     }
 
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
-        //draw content
+    protected void createView() {
 
+    }
+
+    protected void layoutView() {
+
+    }
+
+    @Override
+    public void layout() {
+        super.layout();
+        if (mSizeInvalid) {
+            mSizeInvalid = false;
+            layoutView();
+        }
     }
 
     public void release() {
@@ -131,8 +138,7 @@ public class ChallengeUI extends Window {
         return aGameSession;
     }
 
-    protected void challengeCompleted()
-    {
-        EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(mInteractionChallenge.getId(), InteractionEvent.EventType.CHALLENGE_COMPLETED.name(),null));
+    protected void challengeCompleted() {
+        EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(mInteractionChallenge.getId(), InteractionEvent.EventType.CHALLENGE_COMPLETED.name(), null));
     }
 }

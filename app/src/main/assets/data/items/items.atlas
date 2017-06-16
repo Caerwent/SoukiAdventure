@@ -1,495 +1,607 @@
 
 items.png
-size: 512,256
+size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 Banana
   rotate: false
-  xy: 2, 46
+  xy: 2, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Barrel
   rotate: false
-  xy: 260, 208
+  xy: 518, 214
   size: 30, 40
   orig: 30, 40
   offset: 0, 0
   index: -1
 BookDark
   rotate: false
-  xy: 376, 20
+  xy: 410, 2
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
   index: -1
 Boots
   rotate: false
-  xy: 292, 216
+  xy: 260, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 ChestClosed
   rotate: false
-  xy: 2, 12
+  xy: 550, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 ChestOpen
   rotate: false
-  xy: 36, 46
+  xy: 2, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Compass
   rotate: false
-  xy: 326, 216
+  xy: 36, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 CrystalAnimBlue
   rotate: false
-  xy: 2, 216
+  xy: 2, 222
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
 CrystalAnimGreen
   rotate: false
-  xy: 2, 182
+  xy: 2, 188
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
 CrystalAnimGrey
   rotate: false
-  xy: 2, 148
+  xy: 260, 222
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
 CrystalAnimPink
   rotate: false
-  xy: 2, 114
+  xy: 2, 154
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
 CrystalAnimYellow
   rotate: false
-  xy: 2, 80
+  xy: 260, 188
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
 CrystalsBlue
   rotate: false
-  xy: 36, 12
+  xy: 294, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 CrystalsGreen
   rotate: false
-  xy: 70, 46
+  xy: 584, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 CrystalsPurple
   rotate: false
-  xy: 360, 216
+  xy: 2, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Dagger
   rotate: false
-  xy: 70, 12
+  xy: 36, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 DaggerBroken
   rotate: false
-  xy: 104, 46
+  xy: 70, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 FoodAle
   rotate: false
-  xy: 394, 216
+  xy: 328, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 FoodBiscuit
   rotate: false
-  xy: 104, 12
+  xy: 618, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 FoodBread
   rotate: false
-  xy: 138, 46
+  xy: 2, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 FoodBread2
   rotate: false
-  xy: 477, 57
+  xy: 498, 165
   size: 26, 21
   orig: 26, 21
   offset: 0, 0
   index: -1
 FoodShank
   rotate: false
-  xy: 428, 216
+  xy: 36, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GameCards
   rotate: false
-  xy: 138, 12
+  xy: 70, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Gear
   rotate: false
-  xy: 172, 46
+  xy: 104, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Gloves
   rotate: false
-  xy: 462, 216
+  xy: 362, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GlyphGreen
   rotate: false
-  xy: 172, 12
+  xy: 652, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GlyphRed
   rotate: false
-  xy: 206, 46
+  xy: 36, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GlyphYellow
   rotate: false
-  xy: 206, 12
+  xy: 70, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Hammer
   rotate: false
-  xy: 260, 174
+  xy: 104, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 HammerSmall
   rotate: false
-  xy: 260, 140
+  xy: 138, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Jewels
   rotate: false
-  xy: 260, 106
+  xy: 396, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 JewelsBlue
   rotate: false
-  xy: 294, 182
+  xy: 686, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 JewelsRed
   rotate: false
-  xy: 294, 148
+  xy: 70, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 KeyCrystal
   rotate: false
-  xy: 409, 57
+  xy: 410, 29
   size: 32, 21
   orig: 32, 21
   offset: 0, 0
   index: -1
 KeyDark
   rotate: false
-  xy: 409, 38
+  xy: 992, 237
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
   index: -1
 KeyIron
   rotate: false
-  xy: 403, 21
+  xy: 992, 220
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
   index: -1
 KeyMoon
   rotate: false
-  xy: 328, 182
+  xy: 104, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 KeyRed
   rotate: false
-  xy: 443, 60
+  xy: 518, 194
   size: 32, 18
   orig: 32, 18
   offset: 0, 0
   index: -1
 KeyRoyal
   rotate: false
-  xy: 294, 114
+  xy: 138, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Lantern
   rotate: false
-  xy: 328, 148
+  xy: 172, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Lantern2
   rotate: false
-  xy: 362, 182
+  xy: 430, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Letter
   rotate: false
-  xy: 464, 182
+  xy: 410, 52
   size: 31, 32
   orig: 31, 32
   offset: 0, 0
   index: -1
 Mirror
   rotate: false
-  xy: 328, 114
+  xy: 720, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 NecklaceJewelBlue
   rotate: false
-  xy: 362, 148
+  xy: 104, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 NecklaceJewelGreen
   rotate: false
-  xy: 396, 182
+  xy: 138, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 NecklaceJewelOrange
   rotate: false
-  xy: 362, 114
+  xy: 172, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 NecklaceJewelRed
   rotate: false
-  xy: 396, 148
+  xy: 206, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Pick
   rotate: false
-  xy: 430, 182
+  xy: 464, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionBlueSmall
   rotate: false
-  xy: 396, 114
+  xy: 754, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionGreenSmall
   rotate: false
-  xy: 430, 148
+  xy: 138, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionRedSmall
   rotate: false
-  xy: 430, 114
+  xy: 172, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionRounededBrown
   rotate: false
-  xy: 464, 148
+  xy: 206, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionSilver
   rotate: false
-  xy: 464, 114
+  xy: 240, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionTealBig
   rotate: false
-  xy: 260, 72
+  xy: 788, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionVioletLarge
   rotate: false
-  xy: 294, 80
+  xy: 172, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionYellowLarge
   rotate: false
-  xy: 328, 80
+  xy: 206, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 PotionYellowSmall
   rotate: false
-  xy: 362, 80
+  xy: 240, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 RingGold
   rotate: false
-  xy: 376, 2
+  xy: 478, 136
   size: 18, 16
   orig: 18, 16
   offset: 0, 0
   index: -1
 RobeBlue
   rotate: false
-  xy: 396, 80
+  xy: 274, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll01
   rotate: false
-  xy: 430, 80
+  xy: 822, 222
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll02
   rotate: false
-  xy: 464, 80
+  xy: 206, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll03
   rotate: false
-  xy: 240, 38
+  xy: 240, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll04
   rotate: false
-  xy: 240, 4
+  xy: 274, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Shovel
   rotate: false
-  xy: 376, 47
+  xy: 444, 87
   size: 31, 31
   orig: 31, 31
   offset: 0, 0
   index: -1
 Shovel2
   rotate: false
-  xy: 274, 38
+  xy: 308, 120
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone1
+  rotate: false
+  xy: 856, 222
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone10
+  rotate: false
+  xy: 376, 120
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone11
+  rotate: false
+  xy: 924, 222
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone12
+  rotate: false
+  xy: 308, 18
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone13
+  rotate: false
+  xy: 342, 52
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone14
+  rotate: false
+  xy: 376, 86
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone15
+  rotate: false
+  xy: 410, 120
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone16
+  rotate: false
+  xy: 958, 222
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone2
+  rotate: false
+  xy: 240, 18
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone3
+  rotate: false
+  xy: 274, 52
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone4
+  rotate: false
+  xy: 308, 86
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone5
+  rotate: false
+  xy: 342, 120
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone6
+  rotate: false
+  xy: 890, 222
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone7
+  rotate: false
+  xy: 274, 18
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone8
+  rotate: false
+  xy: 308, 52
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone9
+  rotate: false
+  xy: 342, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Torch
   rotate: false
-  xy: 274, 4
+  xy: 342, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 TorchFire
   rotate: false
-  xy: 308, 46
+  xy: 376, 52
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 VialBlue
   rotate: false
-  xy: 308, 12
+  xy: 410, 86
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 VialGreen
   rotate: false
-  xy: 342, 46
+  xy: 444, 120
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 VialRed
   rotate: false
-  xy: 342, 12
+  xy: 376, 18
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

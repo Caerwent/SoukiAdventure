@@ -189,6 +189,24 @@ public class InteractionHero extends Interaction {
 
     }
 
+    /**
+     * used to map associated to the default one
+     * @param aPortalInfo   the portal info to be transfered in this map
+     */
+    public void setTownPortalInfo(MapTownPortalInfo aPortalInfo)
+    {
+        mPortalInfo = aPortalInfo;
+    }
+
+    public MapTownPortalInfo getTownPortalInfo()
+    {
+        return mPortalInfo;
+    }
+
+    /**
+     * use it to launch a town portal arrival effect
+     * @param aPortalInfo   the source town portal info
+     */
     public void launchTownPortalArrivalEffect(MapTownPortalInfo aPortalInfo) {
         mPortalInfo = aPortalInfo;
 

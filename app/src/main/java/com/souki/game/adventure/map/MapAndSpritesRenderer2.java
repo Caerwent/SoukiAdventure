@@ -268,7 +268,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                                 mTileRegionPoly.setVertices(tmpTileRegionPoly);
                                 mTileRegionShape.setShape(mTileRegionPoly);
 
-                                boolean renderShape = checkTileOverlapsRendables(x, mTileRegionShape, zindexList, row, col);
+                                boolean renderShape = checkTileOverlapsRendables(mTileRegionShape, zindexList, row, col);
 
                                 batch.draw(region.getTexture(), vertices, 0, NUM_VERTICES);
 //                                if (renderShape) {
@@ -299,7 +299,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                     mTileRegionPoly.setVertices(tmpTileRegionPoly);
                     mTileRegionShape.setShape(mTileRegionPoly);
 
-                    boolean renderShape = checkTileOverlapsRendables(x1, mTileRegionShape, zindexList, 0, 0);
+                    boolean renderShape = checkTileOverlapsRendables(mTileRegionShape, zindexList, 0, 0);
 
                     renderImageLayer((TiledMapImageLayer) layer);
                 } else {
@@ -467,7 +467,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                                 mTileRegionPoly.setVertices(tmpTileRegionPoly);
                                 mTileRegionShape.setShape(mTileRegionPoly);
 
-                                boolean renderShape = checkTileOverlapsRendables(x, mTileRegionShape, zindexList, row, col);
+                                boolean renderShape = checkTileOverlapsRendables(mTileRegionShape, zindexList, row, col);
 
                                 batch.draw(region.getTexture(), vertices, 0, NUM_VERTICES);
 //                                if (renderShape) {
@@ -493,7 +493,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                             mTileRegionPoly.setPosition(0, 0);
                             mTileRegionPoly.setVertices(tmpTileRegionPoly);
                             mTileRegionShape.setShape(mTileRegionPoly);
-                            boolean renderShape = checkTileOverlapsRendables(x1, mTileRegionShape, zindexList, row, col);
+                            boolean renderShape = checkTileOverlapsRendables(mTileRegionShape, zindexList, row, col);
 
                             renderImageLayer((TiledMapImageLayer) layer);
                         } else {
@@ -569,7 +569,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 
     }
 
-    private boolean checkTileOverlapsRendables(float aX, PolygonShape aTileShape, Array<Shape> aZindexList, int row, int col) {
+    private boolean checkTileOverlapsRendables(PolygonShape aTileShape, Array<Shape> aZindexList, int row, int col) {
         boolean renderShape = false;
         boolean debug = false;
         for (int idx = 0; idx < mMapRendables.length; idx++) {
@@ -589,24 +589,24 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                         if (ShapeUtils.overlaps(rendable.getShapeRendering(), currentZIndex) && ShapeUtils.overlaps(aTileShape, currentZIndex)) {
 
 
-                            float Yzindex = currentZIndex.getYAtX(aX);
-                            float Ytmp = currentZIndex.getYAtX(aX + aTileShape.getBounds().getWidth());
+                            float Yzindex = currentZIndex.getYAtX(rendable.getShapeRendering().getX());
+                            float Ytmp = currentZIndex.getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth());
                             if (Yzindex == -1 || (Ytmp != -1 && Ytmp < Yzindex)) {
                                 Yzindex = Ytmp;
                             }
-                            Ytmp = currentZIndex.getYAtX(aX + aTileShape.getBounds().getWidth() / 2);
+                            Ytmp = currentZIndex.getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth()/ 2);
                             if (Yzindex == -1 || (Ytmp != -1 && Ytmp < Yzindex)) {
                                 Yzindex = Ytmp;
                             }
                             if (Yzindex == -1) {
                                 Yzindex = currentZIndex.getBounds().getY();
                             }
-                            float Yrendable = rendable.getShapeRendering().getYAtX(aX);
-                            Ytmp = rendable.getShapeRendering().getYAtX(aX + aTileShape.getBounds().getWidth());
+                            float Yrendable = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX());
+                            Ytmp = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth());
                             if (Yrendable == -1 || (Ytmp != -1 && Ytmp < Yrendable)) {
                                 Yrendable = Ytmp;
                             }
-                            Ytmp = rendable.getShapeRendering().getYAtX(aX + aTileShape.getBounds().getWidth() / 2);
+                            Ytmp = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth()/ 2);
                             if (Yrendable == -1 || (Ytmp != -1 && Ytmp < Yrendable)) {
                                 Yrendable = Ytmp;
                             }
@@ -635,7 +635,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 //                                    Rectangle rect = ((RectangleShape) currentZIndex).getShape();
 //                                    shapeRenderer.rect(rect.getX(), rect.getY(), 0, 0, rect.getWidth(), rect.getHeight(), 1, 1, 0);
 //                                }
-                                renderShape = true;
+//                                renderShape = true;
                                 // need to draw all overlaping entities with < Y
                                 drawPreviousOverlapingEntity(rendable, idx, mMapRendables);
                                 rendable.render(getBatch());

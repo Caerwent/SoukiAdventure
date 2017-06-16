@@ -94,6 +94,13 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     protected Effect mEffectAction;
     protected float mEffectActionTime;
 
+    protected String mAtlasFilename;
+
+    public String getAtlasFilename()
+    {
+        return mAtlasFilename;
+    }
+
     @Override
     public void setCamera(Camera aCamera) {
         mCamera = aCamera;
@@ -131,8 +138,19 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             mProperties.putAll(aMapping.properties);
         }
         if (aMapping.eventsAction != null) {
+            // check again to be sure interaction mapping has not overwrite an event using true id or THIS id
+            for (InteractionEventAction action : aMapping.eventsAction) {
+                if (action.inputEvents != null) {
+                    for (InteractionEvent event : action.inputEvents) {
+                        if (event.sourceId != null && event.sourceId.compareTo(InteractionEvent.THIS) == 0) {
+                            event.sourceId = mId;
+                        }
+                    }
+                }
+            }
             mEventsAction.addAll(aMapping.eventsAction);
         }
+
         if (aMapping.outputEvents != null) {
             mOutputEvents.addAll(aMapping.outputEvents);
         }
@@ -293,17 +311,17 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     path.add(files[i]);
                 }
             }
-            String filename = "";
+            mAtlasFilename = "";
             String sep = "";
             while (path.size() > 0) {
-                filename += sep + path.remove(0);
+                mAtlasFilename += sep + path.remove(0);
                 sep = "/";
             }
 
-            AssetsUtility.loadTextureAtlasAsset(filename);
+            AssetsUtility.loadTextureAtlasAsset(mAtlasFilename);
 
             for (InteractionState state : mDef.states) {
-                state.init(AssetsUtility.getTextureAtlasAsset(filename));
+                state.init(AssetsUtility.getTextureAtlasAsset(mAtlasFilename));
             }
             mCurrentFrame = mCurrentState.getTextureRegion(0F);
             if (mCurrentFrame != null) {
@@ -665,7 +683,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     boolean performed = false;
                     for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                         if ((expectedEvent.sourceId == null || expectedEvent.sourceId.isEmpty() || expectedEvent.sourceId.equals(aEvent.sourceId)) && expectedEvent.type.equals(aEvent.type)) {
-                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value));
+                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value) || (expectedEvent==null && aEvent.value.isEmpty()));
                             performed = expectedEvent.isPerformed();
                             break;
                         }

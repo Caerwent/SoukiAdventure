@@ -3,8 +3,8 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId":"east_land10",
-      "isDefaultStart":"true"
+      "targetMapId": "east_land10",
+      "isDefaultStart": "true"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId":"forest2"
+      "targetMapId": "forest2"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -137,5 +137,29 @@
         "value": "BURNING"
       }
     ]
+  },
+  {
+    "id": "challenge_portal_checkpoint",
+    "template": "challenge_portal_checkpoint.json",
+    "properties": {
+      "type": "PORTAL_CHECKPOINT",
+      "zindex": 0
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
   }
 ]

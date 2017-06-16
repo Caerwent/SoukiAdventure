@@ -1,0 +1,258 @@
+
+portal_checkpoint.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+EmptyStone
+  rotate: false
+  xy: 328, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone1
+  rotate: false
+  xy: 254, 109
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone10
+  rotate: false
+  xy: 460, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone11
+  rotate: false
+  xy: 504, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone12
+  rotate: false
+  xy: 504, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone13
+  rotate: false
+  xy: 548, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone14
+  rotate: false
+  xy: 548, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone15
+  rotate: false
+  xy: 592, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone16
+  rotate: false
+  xy: 592, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone2
+  rotate: false
+  xy: 328, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone3
+  rotate: false
+  xy: 372, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone4
+  rotate: false
+  xy: 254, 63
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone5
+  rotate: false
+  xy: 372, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone6
+  rotate: false
+  xy: 416, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone7
+  rotate: false
+  xy: 254, 17
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone8
+  rotate: false
+  xy: 416, 163
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+EmptyStone9
+  rotate: false
+  xy: 460, 209
+  size: 42, 44
+  orig: 42, 44
+  offset: 0, 0
+  index: -1
+SymbolStone1
+  rotate: false
+  xy: 679, 215
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+SymbolStone10
+  rotate: false
+  xy: 758, 214
+  size: 35, 39
+  orig: 35, 39
+  offset: 0, 0
+  index: -1
+SymbolStone11
+  rotate: false
+  xy: 872, 218
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1
+SymbolStone12
+  rotate: false
+  xy: 795, 217
+  size: 37, 36
+  orig: 37, 36
+  offset: 0, 0
+  index: -1
+SymbolStone13
+  rotate: false
+  xy: 636, 174
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+SymbolStone14
+  rotate: false
+  xy: 755, 173
+  size: 32, 39
+  orig: 32, 39
+  offset: 0, 0
+  index: -1
+SymbolStone15
+  rotate: false
+  xy: 677, 173
+  size: 38, 40
+  orig: 38, 40
+  offset: 0, 0
+  index: -1
+SymbolStone16
+  rotate: false
+  xy: 948, 221
+  size: 36, 32
+  orig: 36, 32
+  offset: 0, 0
+  index: -1
+SymbolStone2
+  rotate: false
+  xy: 986, 220
+  size: 32, 33
+  orig: 32, 33
+  offset: 0, 0
+  index: -1
+SymbolStone3
+  rotate: false
+  xy: 909, 221
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1
+SymbolStone4
+  rotate: false
+  xy: 298, 115
+  size: 29, 38
+  orig: 29, 38
+  offset: 0, 0
+  index: -1
+SymbolStone5
+  rotate: false
+  xy: 717, 173
+  size: 36, 40
+  orig: 36, 40
+  offset: 0, 0
+  index: -1
+SymbolStone6
+  rotate: false
+  xy: 719, 215
+  size: 37, 38
+  orig: 37, 38
+  offset: 0, 0
+  index: -1
+SymbolStone7
+  rotate: false
+  xy: 834, 218
+  size: 36, 35
+  orig: 36, 35
+  offset: 0, 0
+  index: -1
+SymbolStone8
+  rotate: false
+  xy: 636, 215
+  size: 41, 38
+  orig: 41, 38
+  offset: 0, 0
+  index: -1
+SymbolStone9
+  rotate: false
+  xy: 298, 78
+  size: 32, 35
+  orig: 32, 35
+  offset: 0, 0
+  index: -1
+bkg
+  rotate: false
+  xy: 2, 2
+  size: 250, 251
+  orig: 250, 251
+  offset: 0, 0
+  index: -1
+interaction_off
+  rotate: false
+  xy: 254, 205
+  size: 72, 48
+  orig: 72, 48
+  offset: 0, 0
+  index: -1
+interaction_on
+  rotate: false
+  xy: 254, 155
+  size: 72, 48
+  orig: 72, 48
+  offset: 0, 0
+  index: -1

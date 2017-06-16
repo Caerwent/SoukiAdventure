@@ -1,9 +1,9 @@
 {
-  "type":"PORTAL_CHECKPOINT",
-  "atlas":"portal_checkpoint.atlas",
+  "type":"CHALLENGE",
+  "atlas":"../challenges/portal_checkpoint.atlas",
   "persistence":"GAME",
   "defaultState":"IDLE",
-  "isClickable": "false",
+  "isClickable": "true",
   "isRendable": "true",
   "isMovable": "false",
   "states": [
@@ -12,7 +12,7 @@
       "fps":"0",
       "isLooping":"true",
       "frames": [
-        "idle"
+        "interaction_off"
       ]
     },
     {
@@ -20,7 +20,7 @@
       "fps":"0",
       "isLooping":"true",
       "frames": [
-        "activated"
+        "interaction_on"
       ]
     }
 

@@ -32,6 +32,7 @@ import com.souki.game.adventure.screens.SettingsScreen;
 public class MyGame extends Game implements ISystemEventListener {
     public static float SCALE_FACTOR = 1.0F / 32.0F;
     public static String DEFAULT_MAP_NAME = "village";
+    protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[] {DEFAULT_MAP_NAME, "home", "house1", "house2"};
     public static String INIT_MAP_START = "home";
     public static String QUEST_START_ID = "quest_start";
 
@@ -41,6 +42,23 @@ public class MyGame extends Game implements ISystemEventListener {
     private Screen mScreenRequested = null;
     private Screen mCurrentScreen = null;
 
+    /**
+     * check if a mapname is the default map or associated (house from village)
+     * @param aMapName  the map name to test
+     * @return  true if it's a default map name or associated
+     */
+    public boolean isDefaultMapOrAssociated(String aMapName)
+    {
+        if(aMapName==null || aMapName.isEmpty())
+            return false;
+        for(String name : DEFAULT_MAP_NAME_OR_ASSOCIATED)
+        {
+            if(aMapName.compareTo(name)==0)
+                return true;
+        }
+
+        return false;
+    }
     @Override
     public void onNewMapRequested(String aMapId, MapTownPortalInfo aTownPortalInfo) {
         if (mGameScreen != null) {

@@ -8,4 +8,5 @@ public class MapTownPortalInfo {
     public float x;
     public float y;
     public String originMap;
+    public boolean isCheckpoint;
 }

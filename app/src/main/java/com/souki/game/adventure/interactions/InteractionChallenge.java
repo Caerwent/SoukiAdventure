@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.souki.game.adventure.box2d.RectangleShape;
+import com.souki.game.adventure.entity.components.CollisionEffectComponent;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
+import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.gui.UIStage;
 import com.souki.game.adventure.gui.challenge.ChallengeUI;
@@ -28,11 +30,13 @@ public class InteractionChallenge extends Interaction {
 
     protected String mChallengeType;
     private static final String KEY_STATE = "state";
+    protected int mZindex = 1;
 
     public InteractionChallenge(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
+        mType = Type.CHALLENGE;
         mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("InteractionDialog");
-        initialize(x,y,aMapping);
+        initialize(x, y, aMapping);
         mMarkShape = new RectangleShape();
         updateInteractionMarkShape();
 
@@ -50,7 +54,32 @@ public class InteractionChallenge extends Interaction {
         } else if (getPersistence() == Persistence.SESSION) {
             mChallengeUI.restoreFromPersistence(GameSession.getInstance());
         }
+        if (mProperties.containsKey("zindex")) {
+            mZindex = ((Float) mProperties.get("zindex")).intValue();
+        } else {
+            mZindex = super.getZIndex();
+        }
 
+
+    }
+
+    public ChallengeUI.ChallengeType getChallengeType() {
+        return ChallengeUI.ChallengeType.valueOf(mChallengeType);
+    }
+
+    @Override
+    public void startToInteract() {
+        super.startToInteract();
+        if (getZIndex() == 0) {
+            remove(CollisionObstacleComponent.class);
+            remove(CollisionEffectComponent.class);
+        }
+
+    }
+
+    @Override
+    public int getZIndex() {
+        return mZindex;
     }
 
     @Override
@@ -76,11 +105,12 @@ public class InteractionChallenge extends Interaction {
 
     @Override
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return aEntity.mInteraction.getType()==Type.HERO;
+        return aEntity.mInteraction.getType() == Type.HERO;
     }
+
     @Override
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if(isClickable()) {
+        if (isClickable()) {
             mIsInteractionShown = true;
         }
     }
@@ -146,6 +176,7 @@ public class InteractionChallenge extends Interaction {
                     transform.angle);
         }
     }
+
     public void updateInteractionMarkShape() {
         if (mMarkShape == null)
             return;
@@ -179,6 +210,7 @@ public class InteractionChallenge extends Interaction {
         super.setPosition(pos);
         updateInteractionMarkShape();
     }
+
     @Override
     public void destroy() {
         mChallengeUI.release();
