@@ -31,7 +31,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "wood1",
+            "sourceId": "THIS",
             "type": "END_STATE",
             "value": "BURNING"
           }
@@ -44,7 +44,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "wood1",
+            "sourceId": "THIS",
             "type": "EFFECT_START",
             "value": "BURN"
           }
@@ -71,7 +71,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "wood2",
+            "sourceId": "THIS",
             "type": "END_STATE",
             "value": "BURNING"
           }
@@ -84,7 +84,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "wood2",
+            "sourceId": "THIS",
             "type": "EFFECT_START",
             "value": "BURN"
           }
@@ -111,7 +111,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "wood3",
+            "sourceId": "THIS",
             "type": "END_STATE",
             "value": "BURNING"
           }
@@ -124,7 +124,48 @@
         },
         "inputEvents": [
           {
-            "sourceId": "wood3",
+            "sourceId": "THIS",
+            "type": "EFFECT_START",
+            "value": "BURN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "END_STATE",
+        "value": "BURNING"
+      }
+    ]
+  }
+,
+  {
+    "id": "wood4",
+    "template": "obstacle_log_wood.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_STATE",
+            "value": "BURNING"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "BURNING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
             "type": "EFFECT_START",
             "value": "BURN"
           }
@@ -141,6 +182,7 @@
   {
     "id": "challenge_portal_checkpoint",
     "template": "challenge_portal_checkpoint.json",
+    "persistence":"GAME",
     "properties": {
       "type": "PORTAL_CHECKPOINT",
       "zindex": 0

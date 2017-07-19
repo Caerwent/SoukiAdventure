@@ -196,7 +196,9 @@ public class PersistenceProvider {
     public void saveInventory(ArrayList<String> aInventory) {
         save(Profile.getInstance());
     }
-
+    public void saveFoundScrolls(ArrayList<String> aFoundScrolls) {
+        save(Profile.getInstance());
+    }
 
     public void saveLocationProfile(LocationProfile aLocationProfile) {
         save(Profile.getInstance());

@@ -683,7 +683,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     boolean performed = false;
                     for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                         if ((expectedEvent.sourceId == null || expectedEvent.sourceId.isEmpty() || expectedEvent.sourceId.equals(aEvent.sourceId)) && expectedEvent.type.equals(aEvent.type)) {
-                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value) || (expectedEvent==null && aEvent.value.isEmpty()));
+                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value) || (expectedEvent.value==null && aEvent.value.isEmpty()) || (aEvent.value==null && expectedEvent.value.isEmpty()));
                             performed = expectedEvent.isPerformed();
                             break;
                         }

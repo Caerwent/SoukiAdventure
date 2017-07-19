@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class Profile {
     HashMap<String, MapProfile> maps = new HashMap<>();
     ArrayList<String> inventory = new ArrayList<>();
+    ArrayList<String> foundScrolls = new ArrayList<>();
     HashMap<String, QuestProfile> quests = new HashMap<>();
     LocationProfile location = new LocationProfile();
     Effect.Type mSelectedEffect = null;
@@ -78,6 +79,18 @@ public class Profile {
             inventory.add(item.getItemTypeID().name());
         }
         PersistenceProvider.getInstance().saveInventory(inventory);
+
+    }
+    public final ArrayList<String> getFoundScrolls() {
+        return foundScrolls;
+    }
+
+    public void updateFoundScrolls(ArrayList<String> aFoundScrolls) {
+        foundScrolls.clear();
+        for (String item : aFoundScrolls) {
+            foundScrolls.add(item);
+        }
+        PersistenceProvider.getInstance().saveFoundScrolls(foundScrolls);
 
     }
 

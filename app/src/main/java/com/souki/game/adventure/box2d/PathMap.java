@@ -19,7 +19,7 @@ public class PathMap {
     protected boolean isLoop = false;
     protected boolean isLoopReversing = false;
     protected float lastTime = 0;
-    static public final float CHECK_RADIUS = 0.2f;
+    static public final float CHECK_RADIUS = 0.01f;
     public float mVelocityCte = 2;
 
     public PathMap() {
@@ -147,18 +147,21 @@ public class PathMap {
         Vector2 nextPosition = positions.get(nextPointIndex);
         double dx = nextPosition.x - aCurrentPosition.x;
         double dy = nextPosition.y - aCurrentPosition.y;
+
+        computeVelocityForDisplacement(mVelocity, dx, dy, mVelocityCte);
+
+
+    }
+
+    public static void computeVelocityForDisplacement(Vector2 aVelocity, double dx, double dy, float aVelocityCte) {
         double D = Math.sqrt(dx * dx + dy * dy);
 
         double angle = Math.acos(dx / D);
         angle = angle * (dy < 0 ? -1d : 1d);
 
-        double vx = Math.cos(angle) * mVelocityCte;
-        double vy = Math.sin(angle) * mVelocityCte;
+        double vx = Math.cos(angle) * aVelocityCte;
+        double vy = Math.sin(angle) * aVelocityCte;
 
-        // Gdx.app.debug("DEBUG", "p=("+aCurrentPosition.x+","+aCurrentPosition.y+") n=("+nextPosition.x+","+nextPosition.y+") dx="+dx+" dy="+dy+" D="+D+" angle="+angle +" vx="+vx+" vy"+vy);
-
-        mVelocity.set((float) vx, (float) vy);
-
-
+        aVelocity.set((float) vx, (float) vy);
     }
 }

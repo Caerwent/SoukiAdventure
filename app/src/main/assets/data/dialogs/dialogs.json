@@ -321,16 +321,95 @@
     ]
   },
   {
-    "id": "chien_jaune_dialog",
+    "id": "quest_guitar",
     "dialogs": [
       {
         "speaker": "npc_chien_jaune_name",
         "phrases": [
-          "npc_chien_jaune_phrase1"
+          "quest_guitar_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_guitar_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_guitar_phrase3",
+          "quest_guitar_phrase4",
+          "quest_guitar_phrase5"
+
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_guitar_phrase6"
+        ]
+      },
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_guitar_phrase7"
+
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_guitar_phrase8"
+        ]
+      },
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_guitar_phrase9"
+
         ]
       }
     ]
   },
+  {
+    "id": "quest_guitar_activated",
+    "dialogs": [
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_guitar_activated_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_guitar_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_guitar_completed_phrase1",
+          "quest_guitar_completed_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_guitar_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_guitar_finished_phrase1"
+        ]
+      }
+    ]
+  },
+
+
+
+
   {
     "id": "wizard_obtain_ice_and_fire_dialog",
     "dialogs": [

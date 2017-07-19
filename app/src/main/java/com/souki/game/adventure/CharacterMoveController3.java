@@ -173,6 +173,7 @@ public class CharacterMoveController3 extends GestureDetector.GestureAdapter {
         if (mMap != null && mMap.getPlayer() != null && mMap.getPlayer().getHero() != null && isActive) {
             isActive = false;
             mMap.getPlayer().getHero().setPath(path);
+            path=null;
             ((GameScreen) MyGame.getInstance().getScreenType(MyGame.ScreenType.MainGame)).setSpotShape(null);
         }
         return false;

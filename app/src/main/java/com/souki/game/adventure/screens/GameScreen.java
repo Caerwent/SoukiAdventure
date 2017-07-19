@@ -22,7 +22,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.souki.game.adventure.CharacterMoveController3;
+import com.souki.game.adventure.CharacterMoveController5;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.Settings;
 import com.souki.game.adventure.box2d.Shape;
@@ -57,7 +57,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
     private OrthographicCamera camera;
     private OrthographicCamera uiCamera;
     //private OrthoCamController cameraController;
-    private CharacterMoveController3 bobController;
+    private CharacterMoveController5 bobController;
     private AssetManager assetManager;
     private BitmapFont font;
     private SpriteBatch batch;
@@ -112,7 +112,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
 
 
         // bobController = new ChararcterMoveController2(camera);
-        bobController = new CharacterMoveController3(camera);
+        bobController = new CharacterMoveController5(camera);
         GestureDetector gd = new GestureDetector(bobController);
 
         mInputMultiplexer.addProcessor(UIStage.getInstance());

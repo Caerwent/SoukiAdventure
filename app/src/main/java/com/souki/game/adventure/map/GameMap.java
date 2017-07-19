@@ -54,6 +54,9 @@ import com.souki.game.adventure.player.Player;
 import com.souki.game.adventure.quests.Quest;
 import com.souki.game.adventure.quests.QuestManager;
 
+import net.dermetfan.gdx.math.BayazitDecomposer;
+import net.dermetfan.gdx.math.GeometryUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -475,15 +478,29 @@ public class GameMap implements ICollisionObstacleHandler {
             }*/ else {
                 continue;
             }
-            PolygonShape shape = new PolygonShape();
-            shape.setShape(polygon);
-            bodies.add(shape);
-            if (isCollision && polygon != null) {
+           if (isCollision && polygon != null) {
 
-                Entity entity = new Entity();
-                entity.add(new CollisionObstacleComponent(CollisionObstacleComponent.OBSTACLE, shape, object.getName(), this, this));
-                EntityEngine.getInstance().addEntity(entity);
+                BayazitDecomposer.maxPolygonVertices = Math.max(BayazitDecomposer.maxPolygonVertices,polygon.getVertices().length/2);
+                float[][] convexPolys = GeometryUtils.decompose(polygon.getTransformedVertices());
+               for(int currPolyId=0; currPolyId<convexPolys.length;currPolyId++)
+               {
+                   polygon = new Polygon(convexPolys[currPolyId]);
+                   PolygonShape shape = new PolygonShape();
+                   shape.setShape(polygon);
+                   bodies.add(shape);
+                   Entity entity = new Entity();
+                   entity.add(new CollisionObstacleComponent(CollisionObstacleComponent.OBSTACLE, shape, object.getName(), this, this));
+                   EntityEngine.getInstance().addEntity(entity);
+               }
+
             }
+            else
+           {
+               PolygonShape shape = new PolygonShape();
+               shape.setShape(polygon);
+               bodies.add(shape);
+
+           }
 
         }
         Shape[] sortedShapes = bodies.toArray(Shape.class);
@@ -563,6 +580,22 @@ public class GameMap implements ICollisionObstacleHandler {
                 }
 
             }
+            else if (object instanceof RectangleMapObject) {
+                RectangleMapObject textureObject = (RectangleMapObject) object;
+                float x = textureObject.getRectangle().getX() * MyGame.SCALE_FACTOR;
+                float y = textureObject.getRectangle().getY() * MyGame.SCALE_FACTOR;
+                InteractionMapping mapping = mInteractionMappingManager.getInterationMapping(object.getName());
+                if (mapping == null) {
+                    continue;
+                }
+                IInteraction interaction = InteractionFactory.getInstance().createInteractionInstance(x, y, mapping, textureObject.getProperties(), this);
+                if (interaction != null) {
+                    interaction.setCamera(mCamera);
+                    mInteractions.add(interaction);
+                    interaction.startToInteract();
+                }
+
+            }
         }
     }
 
@@ -577,11 +610,25 @@ public class GameMap implements ICollisionObstacleHandler {
         MapProfile mapProfile = Profile.getInstance().getMapProfile(mMapName);
         for (MapObject object : objects) {
 
-            if (object instanceof TextureMapObject) {
-                TextureMapObject textureObject = (TextureMapObject) object;
-                float x = textureObject.getX() * MyGame.SCALE_FACTOR;
-                float y = textureObject.getY() * MyGame.SCALE_FACTOR;
-                String type = textureObject.getProperties().get("type", String.class);
+            if (object instanceof TextureMapObject || object instanceof RectangleMapObject) {
+                float x = 0;
+                float y = 0;
+                String type = null;
+                String name = null;
+                if (object instanceof TextureMapObject) {
+                    TextureMapObject textureObject = (TextureMapObject) object;
+                    x = textureObject.getX() * MyGame.SCALE_FACTOR;
+                    y = textureObject.getY() * MyGame.SCALE_FACTOR;
+                    type = textureObject.getProperties().get("type", String.class);
+                    name = textureObject.getName();
+                }
+                else if (object instanceof RectangleMapObject) {
+                    RectangleMapObject textureObject = (RectangleMapObject) object;
+                    x = textureObject.getRectangle().getX() * MyGame.SCALE_FACTOR;
+                    y = textureObject.getRectangle().getY() * MyGame.SCALE_FACTOR;
+                    type = textureObject.getProperties().get("type", String.class);
+                    name = textureObject.getName();
+                }
                 if (type == null) {
                     continue;
                 }
@@ -589,7 +636,7 @@ public class GameMap implements ICollisionObstacleHandler {
                 if (type.compareTo(IItemInteraction.Type.ITEM.name()) == 0) {
                     boolean itemAlreadyFound = false;
                     if (mapProfile != null) {
-                        ArrayList<Vector2> itemsFound = mapProfile.items.get(textureObject.getName());
+                        ArrayList<Vector2> itemsFound = mapProfile.items.get(name);
                         if (itemsFound != null) {
                             for (Vector2 v : itemsFound) {
                                 if (Math.abs(v.x - x) <= 0.2 && Math.abs(v.y - y) <= 0.2) {
@@ -601,7 +648,7 @@ public class GameMap implements ICollisionObstacleHandler {
                         }
                     }
                     if (!itemAlreadyFound) {
-                        interaction = new ItemInteraction(x, y, textureObject.getName(), this);
+                        interaction = new ItemInteraction(x, y, name, this);
                     }
 
                 }

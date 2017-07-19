@@ -14,13 +14,20 @@ import com.souki.game.adventure.entity.components.PathComponent;
 
 public class PathHero extends PathMap {
       static public final float CHECK_RADIUS = 0.01f;
+    static public final float HERO_VELOCITY = 3;
     Entity entity;
+    float mOffset;
 
-    public PathHero() {
+    public PathHero()
+    {
+        this(0);
+    }
+    public PathHero(float aOffset) {
       super();
+        mOffset = aOffset;
         setLoop(false);
         setRevert(false);
-        setVelocityCte(3);
+        setVelocityCte(HERO_VELOCITY);
         entity = new Entity();
         entity.add(new PathComponent(this));
         EntityEngine.getInstance().addEntity(entity);
@@ -53,7 +60,7 @@ public class PathHero extends PathMap {
         for (int i = currentPointIndex; i < positions.size() - 1; i++) {
             Vector2 pointStart = positions.get(i);
             Vector2 pointEnd = positions.get(i + 1);
-            renderer.line(pointStart.x, pointStart.y, 0, pointEnd.x, pointEnd.y, 0, Color.YELLOW, Color.YELLOW);
+            renderer.line(pointStart.x+mOffset, pointStart.y, 0, pointEnd.x+mOffset, pointEnd.y, 0, Color.YELLOW, Color.YELLOW);
         }
     }
 }

@@ -42,6 +42,7 @@ public class InteractionHero extends Interaction {
     protected boolean hasTouchInteraction(float x, float y) {
         return isClickable();
     }
+
     @Override
     public void setMovable(boolean isMovable) {
         super.setMovable(isMovable);
@@ -50,10 +51,10 @@ public class InteractionHero extends Interaction {
         }
     }
 
-    public PathHero getPath()
-    {
+    public PathHero getPath() {
         return mPath;
     }
+
     public void setPath(PathHero p) {
         mPath = p;
         if (mPath == null) {
@@ -94,8 +95,8 @@ public class InteractionHero extends Interaction {
         if (mPath != null) {
             if (mPath.hasNextPoint()) {
                 TransformComponent transform = this.getComponent(TransformComponent.class);
-                float heroShapeHalfWidth = mMap.getPlayer().getHero().getShapeRendering().getWidth() / 2;
-                Vector2 pos2D = new Vector2(transform.position.x + heroShapeHalfWidth, transform.position.y);
+                // float heroShapeHalfWidth = mMap.getPlayer().getHero().getShapeRendering().getWidth() / 2;
+                Vector2 pos2D = new Vector2(transform.position.x /*+ heroShapeHalfWidth*/, transform.position.y);
                 Vector2 velocity = mPath.getVelocityForPosAndTime(pos2D, dt);
                 setVelocity(velocity);
 
@@ -130,12 +131,12 @@ public class InteractionHero extends Interaction {
                 EventDispatcher.getInstance().onItemFound((((ItemInteraction) aEntity.mData).getItem()));
                 return false;
             } else if ((aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
-                    if (mPath != null) {
-                        mPath.destroy();
-                        mPath = null;
-                        setVelocity(0, 0);
-                    }
-                    return true;
+                if (mPath != null) {
+                    mPath.destroy();
+                    mPath = null;
+                    setVelocity(0, 0);
+                }
+                return true;
 
 
             }
@@ -152,6 +153,7 @@ public class InteractionHero extends Interaction {
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
 
     }
+
     /************************ EFFECT *********************************/
     @Override
     protected void stopLaunchedEffect() {
@@ -191,21 +193,21 @@ public class InteractionHero extends Interaction {
 
     /**
      * used to map associated to the default one
-     * @param aPortalInfo   the portal info to be transfered in this map
+     *
+     * @param aPortalInfo the portal info to be transfered in this map
      */
-    public void setTownPortalInfo(MapTownPortalInfo aPortalInfo)
-    {
+    public void setTownPortalInfo(MapTownPortalInfo aPortalInfo) {
         mPortalInfo = aPortalInfo;
     }
 
-    public MapTownPortalInfo getTownPortalInfo()
-    {
+    public MapTownPortalInfo getTownPortalInfo() {
         return mPortalInfo;
     }
 
     /**
      * use it to launch a town portal arrival effect
-     * @param aPortalInfo   the source town portal info
+     *
+     * @param aPortalInfo the source town portal info
      */
     public void launchTownPortalArrivalEffect(MapTownPortalInfo aPortalInfo) {
         mPortalInfo = aPortalInfo;
@@ -214,7 +216,6 @@ public class InteractionHero extends Interaction {
         portalBackEffect.setPlayMode(Animation.PlayMode.REVERSED);
         launchEffect(portalBackEffect);
     }
-
 
 
 }

@@ -17,7 +17,12 @@
   {
 
     "id":"house2_chest1",
-    "items": ["VialBlue","Lantern2"]
+    "items": ["Compass","Lantern2"]
+  },
+  {
+
+    "id":"east_land10_chest1",
+    "items": ["VialRed"]
   }
 
 

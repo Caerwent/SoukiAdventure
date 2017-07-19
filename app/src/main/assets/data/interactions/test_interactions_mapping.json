@@ -1,0 +1,22 @@
+[
+  {
+    "id":"portal1",
+    "template":"portal_clickable.json",
+    "properties": {
+      "targetMapId":"east_land10",
+      "isDefaultStart":"true"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"portal2",
+    "template":"portal_clickable.json",
+    "properties": {
+      "targetMapId":"east_land10",
+      "isDefaultStart":"true"
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  }
+]

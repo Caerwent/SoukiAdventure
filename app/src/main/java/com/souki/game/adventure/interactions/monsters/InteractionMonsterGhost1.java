@@ -5,7 +5,6 @@ import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.interactions.InteractionDef;
-import com.souki.game.adventure.interactions.InteractionFollowPath;
 import com.souki.game.adventure.interactions.InteractionHero;
 import com.souki.game.adventure.interactions.InteractionMapping;
 import com.souki.game.adventure.map.GameMap;
@@ -14,7 +13,7 @@ import com.souki.game.adventure.map.GameMap;
  * Created by vincent on 14/02/2017.
  */
 
-public class InteractionMonsterGhost1 extends InteractionFollowPath {
+public class InteractionMonsterGhost1 extends InteractionMonster1 {
 
 
     public InteractionMonsterGhost1(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {

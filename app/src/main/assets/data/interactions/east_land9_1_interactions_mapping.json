@@ -1,0 +1,134 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land9",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land9",
+      "height":60
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "monster1",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "monster3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "monster3",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "monster4",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "monster4",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "monster6",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "monster6",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "monster7",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "monster7",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_puzzle.json",
+    "persistence":"NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_ghost.png",
+      "size":3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

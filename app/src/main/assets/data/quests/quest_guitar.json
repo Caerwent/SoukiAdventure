@@ -1,0 +1,26 @@
+{
+  "id": "quest_guitar",
+  "title": "quest_guitar_title",
+  "desc": "quest_guitar_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_guitar_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "Guitar",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_guitar_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "npc_chien_jaune",
+      "requiredCompletedTask": [
+        "quest_guitar_task1"
+      ]
+    }
+  ]
+}
+

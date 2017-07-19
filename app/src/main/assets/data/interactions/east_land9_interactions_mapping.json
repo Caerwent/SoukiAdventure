@@ -26,5 +26,14 @@
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+  {
+    "id": "portal4",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "east_land9_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
   }
 ]
