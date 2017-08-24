@@ -287,6 +287,17 @@ public class EventDispatcher implements IDialogListener, IItemListener, IQuestLi
         }
     }
 
+    @Override
+    public void onNewHelpPage() {
+        synchronized (mSystemEventListeners) {
+            ISystemEventListener[] listeners = new ISystemEventListener[mSystemEventListeners.size()];
+            listeners = mSystemEventListeners.toArray(listeners);
+            for (ISystemEventListener listener : listeners) {
+                listener.onNewHelpPage();
+            }
+        }
+    }
+
     public void addInteractionEventListener(IInteractionEventListener aListener) {
         synchronized (mInteractionEventListeners) {
             if (!mInteractionEventListeners.contains(aListener)) {

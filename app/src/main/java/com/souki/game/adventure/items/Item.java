@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Item {
 
+    public final static String HELP_PAGE_ITEM = "Scroll";
 
     public enum ItemTypeID {
         Banana,

@@ -31,6 +31,18 @@
     "outputEvents":[]
   },
   {
+  "id":"portal5",
+  "template":"portal_clickable.json",
+  "properties": {
+    "targetMapId":"house3",
+    "activatedByQuestId":"quest_start",
+    "width":32,
+    "height":60
+  },
+  "eventsAction":[],
+  "outputEvents":[]
+},
+  {
     "id":"defaultPortal",
     "template":"portal.json",
     "properties": {

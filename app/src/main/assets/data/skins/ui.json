@@ -72,6 +72,10 @@
       "font": "smooth-font",
       "fontColor": "black"
     },
+    "help-book-item": {
+      "font": "smooth-font",
+      "fontColor": "black"
+    },
     "dialog-detail": {
       "font": "smooth-font",
       "fontColor": "white"
@@ -135,4 +139,12 @@
     "fontColor": "white"
   }
 },
+  "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle":{
+    "default":{
+      "font":"smooth-font",
+      "fontColorUnselected":"black",
+      "fontColorSelected":"white",
+      "selection": "checkbox_checked"
+    }
+  },
 }

@@ -86,9 +86,11 @@ public class Profile {
     }
 
     public void updateFoundScrolls(ArrayList<String> aFoundScrolls) {
-        foundScrolls.clear();
-        for (String item : aFoundScrolls) {
-            foundScrolls.add(item);
+        if(aFoundScrolls!=foundScrolls) {
+            foundScrolls.clear();
+            for (String item : aFoundScrolls) {
+                foundScrolls.add(item);
+            }
         }
         PersistenceProvider.getInstance().saveFoundScrolls(foundScrolls);
 

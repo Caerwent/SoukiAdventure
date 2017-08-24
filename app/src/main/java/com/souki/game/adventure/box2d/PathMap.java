@@ -19,7 +19,7 @@ public class PathMap {
     protected boolean isLoop = false;
     protected boolean isLoopReversing = false;
     protected float lastTime = 0;
-    static public final float CHECK_RADIUS = 0.01f;
+    static public final float CHECK_RADIUS = 0.05f;
     public float mVelocityCte = 2;
 
     public PathMap() {

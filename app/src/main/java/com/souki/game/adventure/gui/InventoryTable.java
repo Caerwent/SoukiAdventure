@@ -2,6 +2,7 @@ package com.souki.game.adventure.gui;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
@@ -55,7 +56,11 @@ public class InventoryTable extends Table implements IPlayerListener {
         //  mInventoryTable.setSize(mLengthSlotRow*mSlotWidth+5, Settings.TARGET_HEIGHT - 64);
         EventDispatcher.getInstance().addPlayerListener(this);
         mDetails = new InventoryDetails(200, (Settings.TARGET_HEIGHT - 64) / 2);
-        add(mInventoryTable).fillY().expand().left();
+
+        ScrollPane scrollPane = new ScrollPane(mInventoryTable, GenericUI.getInstance().getSkin(), "inventoryPane");
+        scrollPane.setScrollingDisabled(true, false);
+
+        add(scrollPane).fillY().expand().left();
         add(mDetails).top().left();
         row();
         // mDetails.setPosition(mLengthSlotRow*mSlotWidth+5, (Settings.TARGET_HEIGHT - 64)/2+25);

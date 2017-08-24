@@ -2,6 +2,7 @@ package com.souki.game.adventure.gui;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
@@ -36,9 +37,11 @@ public class EffectsPanel extends Table {
     private void init() {
         mList.setSkin(GenericUI.getInstance().getSkin());
         mList.setName("Effects_Slot_Table");
-        ;
         mDetails = new InventoryDetails(200, (Settings.TARGET_HEIGHT - 64) / 2);
-        add(mList).fillY().expand().left();
+        ScrollPane scrollPane = new ScrollPane(mList, GenericUI.getInstance().getSkin(), "inventoryPane");
+        scrollPane.setScrollingDisabled(true, false);
+        add(scrollPane).fillY().expand().left();
+
         add(mDetails).top().left();
         row();
 

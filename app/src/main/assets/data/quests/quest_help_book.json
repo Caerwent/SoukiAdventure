@@ -1,0 +1,21 @@
+
+{
+	"id": "quest_help_book",
+	"title":"quest_help_book_title",
+	"desc":"quest_help_book_desc",
+	"itemsReward":[],
+	"effectsReward":[],
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "quest_help_book_task1",
+			"value":"1",
+			"type":"FIND_ITEM",
+			"targetId":"Book",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

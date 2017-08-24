@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
+import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.effects.Effect;
 import com.souki.game.adventure.effects.EffectFactory;
@@ -52,8 +53,12 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     Table mMainPanel = new Table();
     protected HorizontalGroup mTabsPanel = new HorizontalGroup();
     protected Table mContentPanel = new Table();
+    private Button mTabInventory;
     private InventoryTable mInventorySlotTable = new InventoryTable();
+    private Button mTabEffects;
     private EffectsPanel mEffectsPanel = new EffectsPanel();
+    private Button mTabHelp;
+    private HelpPanel mHelpPanel = new HelpPanel();
     protected final DialogTable mDialogTable = new DialogTable(DIALOG_W, DIALOG_H);
     protected Image mInventoryButton;
     protected Image mSpellButton;
@@ -134,32 +139,37 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mMainPanel.setVisible(false);
         addActor(mMainPanel);
 
-        final Button tab1 = new TextButton("Objets", GenericUI.getInstance().getSkin(), "tab");
-        final Button tab2 = new TextButton("Pouvoirs", GenericUI.getInstance().getSkin(), "tab");
+        mTabInventory = new TextButton(AssetsUtility.getString("ui_tab_inventory"), GenericUI.getInstance().getSkin(), "tab");
+        mTabEffects = new TextButton(AssetsUtility.getString("ui_tab_effect"), GenericUI.getInstance().getSkin(), "tab");
+        mTabHelp = new TextButton(AssetsUtility.getString("ui_tab_help"), GenericUI.getInstance().getSkin(), "tab");
 
-        mTabsPanel.addActor(tab1);
-        mTabsPanel.addActor(tab2);
+        mTabsPanel.addActor(mTabInventory);
+        mTabsPanel.addActor(mTabEffects);
+        mTabsPanel.addActor(mTabHelp);
 
         // Listen to changes in the tab button checked states
         // Set visibility of the tab content to match the checked state
         ChangeListener tab_listener = new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                mInventorySlotTable.setVisible(tab1.isChecked());
-                mEffectsPanel.setVisible(tab2.isChecked());
+                mInventorySlotTable.setVisible(mTabInventory.isChecked());
+                mEffectsPanel.setVisible(mTabEffects.isChecked());
+                mHelpPanel.setVisible(mTabHelp.isChecked());
             }
         };
-        tab1.addListener(tab_listener);
-        tab2.addListener(tab_listener);
+        mTabInventory.addListener(tab_listener);
+        mTabEffects.addListener(tab_listener);
+        mTabHelp.addListener(tab_listener);
 
         // Let only one tab button be checked at a time
         ButtonGroup tabs = new ButtonGroup();
         tabs.setMinCheckCount(1);
         tabs.setMaxCheckCount(1);
-        tabs.add(tab1);
-        tabs.add(tab2);
+        tabs.add(mTabInventory);
+        tabs.add(mTabHelp);
+        tabs.add(mTabEffects);
 
-        tab1.setChecked(true);
+        mTabInventory.setChecked(true);
 
         mMainPanel.add(mTabsPanel).top().left().padBottom(-1).padLeft(15);
         mMainPanel.row();
@@ -173,15 +183,14 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mInventorySlotTable.setPosition(0, 0);
         if (QuestManager.getInstance().getQuestFromId(MyGame.QUEST_START_ID).isCompleted()) {
             mInventoryButton.setVisible(true);
-            mSpellButton.setVisible(true);
         } else {
             EventDispatcher.getInstance().addQuestListener(this);
             mInventoryButton.setVisible(false);
-            mSpellButton.setVisible(false);
         }
         stack.add(mEffectsPanel);
         mEffectsPanel.setPosition(0, 0);
-
+        stack.add(mHelpPanel);
+        mHelpPanel.setPosition(0, 0);
 
         mDialogTable.setPosition((TARGET_WIDTH - DIALOG_W) / 2, 0);
         mDialogTable.setVisible(false);
@@ -198,6 +207,15 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         });
         mInventoryButton.setTouchable(Touchable.enabled);
 
+
+        if (QuestManager.getInstance().getQuestFromId(MyGame.QUEST_EFFECT_ID).isCompleted()) {
+            mSpellButton.setVisible(true);
+            mTabEffects.setVisible(true);
+        } else {
+            mSpellButton.setVisible(false);
+            mTabEffects.setVisible(false);
+            EventDispatcher.getInstance().addQuestListener(this);
+        }
         mSpellButton.addListener(new ActorGestureListener() {
             public void tap(InputEvent event, float x, float y, int count, int button) {
                 if (mCurrentEffectType != null) {
@@ -227,6 +245,14 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
             onNewSelectedEffect(Profile.getInstance().getAvailableEffects().get(0));
         } else {
             mEffectsPanel.update();
+        }
+
+        if (QuestManager.getInstance().getQuestFromId(MyGame.QUEST_HELP_BOOK_ID).isCompleted()) {
+            mTabHelp.setVisible(true);
+            mHelpPanel.update();
+        } else {
+            mTabHelp.setVisible(false);
+            EventDispatcher.getInstance().addQuestListener(this);
         }
 
         mHomeButton.addListener(new ClickListener() {
@@ -269,6 +295,12 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         mEffectsPanel.update();
     }
 
+    @Override
+    public void onNewHelpPage()
+    {
+        mHelpPanel.update();
+    }
+
     public DragAndDrop getItemDragAndDrop() {
         return mInventorySlotTable.getDragAndDrop();
     }
@@ -287,8 +319,22 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     public void onQuestCompleted(Quest aQuest) {
         if (aQuest.getId().compareTo(MyGame.QUEST_START_ID) == 0) {
             mInventoryButton.setVisible(true);
+            if(mSpellButton.isVisible()) {
+                EventDispatcher.getInstance().removeQuestListener(this);
+            }
+        }
+        else if (aQuest.getId().compareTo(MyGame.QUEST_EFFECT_ID) == 0) {
             mSpellButton.setVisible(true);
-            EventDispatcher.getInstance().removeQuestListener(this);
+            mTabEffects.setVisible(true);
+            if(mInventoryButton.isVisible() && mTabHelp.isVisible()) {
+                EventDispatcher.getInstance().removeQuestListener(this);
+            }
+        }
+        else if (aQuest.getId().compareTo(MyGame.QUEST_HELP_BOOK_ID) == 0) {
+            mTabHelp.setVisible(true);
+            if(mInventoryButton.isVisible() && mTabEffects.isVisible()) {
+                EventDispatcher.getInstance().removeQuestListener(this);
+            }
         }
     }
 

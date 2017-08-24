@@ -41,35 +41,38 @@
           "quest_start_phrase3",
           "quest_start_phrase4",
           "quest_start_phrase5",
-          "quest_start_phrase6"
+          "quest_start_phrase6",
+          "quest_start_phrase7",
+          "quest_start_phrase8"
         ]
       },
       {
         "speaker": "hero_name",
         "phrases": [
-          "quest_start_phrase7"
+          "quest_start_phrase9"
         ]
       },
       {
         "speaker": "npc_lapin_jaune_name",
         "phrases": [
-          "quest_start_phrase8",
-          "quest_start_phrase9",
           "quest_start_phrase10",
           "quest_start_phrase11",
-          "quest_start_phrase12"
+          "quest_start_phrase12",
+          "quest_start_phrase13",
+          "quest_start_phrase14",
+          "quest_start_phrase15"
         ]
       },
       {
         "speaker": "hero_name",
         "phrases": [
-          "quest_start_phrase13"
+          "quest_start_phrase16"
         ]
       },
       {
         "speaker": "npc_lapin_jaune_name",
         "phrases": [
-          "quest_start_phrase14"
+          "quest_start_phrase17"
         ]
       }
     ]

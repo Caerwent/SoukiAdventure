@@ -174,11 +174,16 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                         if (task.getTargetId() != null && task.getTargetId().equals(aItem.getItemTypeID().name())) {
                             if (task.getType() == QuestTask.TypeTask.FIND_ITEM) {
                                 Array<Item> foundItems = mCurrentPlayer.getItemsInventoryById(task.getTargetId());
+                                int nbItemInInventory = foundItems.size;
+                                if(nbItemInInventory<=0)
+                                {
+                                    nbItemInInventory = task.getTargetId().equals(aItem.getItemTypeID().name()) ? 1 : 0;
+                                }
                                 int nbItem = 1;
                                 if (task.getValue() != null) {
                                     nbItem = Integer.valueOf(task.getValue());
                                 }
-                                if (foundItems.size >= nbItem) {
+                                if (nbItemInInventory >= nbItem) {
                                     if (quests[i].isTaskDependenciesCompleted(task)) {
                                         task.setCompleted(true);
                                         Gdx.app.debug("QestManager", "onItemFound quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());

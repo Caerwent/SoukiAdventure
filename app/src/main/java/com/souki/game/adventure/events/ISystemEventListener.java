@@ -19,4 +19,6 @@ public interface ISystemEventListener {
     public void onNewSelectedEffect(Effect.Type aEffectType);
 
     public void onEffectFound(Effect.Type aEffectType);
+
+    public void onNewHelpPage();
 }
