@@ -32,7 +32,7 @@ import com.souki.game.adventure.screens.SettingsScreen;
 public class MyGame extends Game implements ISystemEventListener {
     public static float SCALE_FACTOR = 1.0F / 32.0F;
     public static String DEFAULT_MAP_NAME = "village";
-    protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[] {DEFAULT_MAP_NAME, "home", "house1", "house2", "house3"};
+    protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[] {DEFAULT_MAP_NAME, "home", "house1", "house2", "house3", "village_tower1", "village_tower2"};
     public static String INIT_MAP_START = "home";
     public static String QUEST_START_ID = "quest_start";
     public static String QUEST_EFFECT_ID = "quest_obtain_portal";

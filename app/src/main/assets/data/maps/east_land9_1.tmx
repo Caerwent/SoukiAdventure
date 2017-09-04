@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0.0" orientation="orthogonal" renderorder="right-up" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="75">
  <tileset firstgid="1" source="autum_schwarzena.tsx"/>
- <tileset firstgid="257" source="build.tsx"/>
  <tileset firstgid="1281" source="Celianna_TileA1.tsx"/>
  <tileset firstgid="1761" source="Celianna_TileA2.tsx"/>
  <tileset firstgid="2241" source="Celianna_TileA4.tsx"/>

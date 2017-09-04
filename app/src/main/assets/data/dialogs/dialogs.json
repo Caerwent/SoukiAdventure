@@ -59,20 +59,19 @@
           "quest_start_phrase11",
           "quest_start_phrase12",
           "quest_start_phrase13",
-          "quest_start_phrase14",
-          "quest_start_phrase15"
+          "quest_start_phrase14"
         ]
       },
       {
         "speaker": "hero_name",
         "phrases": [
-          "quest_start_phrase16"
+          "quest_start_phrase15"
         ]
       },
       {
         "speaker": "npc_lapin_jaune_name",
         "phrases": [
-          "quest_start_phrase17"
+          "quest_start_phrase16"
         ]
       }
     ]

@@ -20,25 +20,19 @@
     "outputEvents":[]
   },
   {
-    "id":"chest2",
-    "template":"chest_invisible.json",
-    "properties": {
-    },
-
-    "eventsAction":[],
-    "outputEvents":[]
-  },
-  {
     "id": "ice1",
     "template": "obstacle_water_iceable.json"
   },
   {
-    "id": "monster_slime1",
-    "template": "monster_slime.json",
-    "properties": {
-      "speedFactor": "2"
-    },
-    "eventsAction": [],
-    "outputEvents": []
+    "id": "ice2",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice3",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice4",
+    "template": "obstacle_water_iceable.json"
   }
 ]

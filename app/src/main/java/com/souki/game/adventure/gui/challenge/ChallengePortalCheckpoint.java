@@ -33,7 +33,8 @@ public class ChallengePortalCheckpoint extends ChallengeUI {
         CAVES("village", "EmptyStone1", Item.ItemTypeID.Stone1),
         DESERT("village", "EmptyStone2", Item.ItemTypeID.Stone2),
         MOUNTAIN("village", "EmptyStone12", Item.ItemTypeID.Stone12),
-        MINES("village", "EmptyStone4", Item.ItemTypeID.Stone4);
+        MINES("village", "EmptyStone4", Item.ItemTypeID.Stone4),
+        VILLAGE("village_tower2", "EmptyStone14", Item.ItemTypeID.Stone14);
 
         PortalMap(String aMapName, String aEmptyStone, Item.ItemTypeID aActivateStone) {
             mMapName = aMapName;
@@ -193,8 +194,8 @@ public class ChallengePortalCheckpoint extends ChallengeUI {
 
     @Override
     public void onItemDrop(InventorySlot aSourceSlot) {
-        if (mCurrentPortal != null) {
-            aSourceSlot.doesAcceptItemUseType(mCurrentPortal.mActivateStone);
+        if (mCurrentPortal != null && aSourceSlot!=null && aSourceSlot.doesAcceptItemUseType(mCurrentPortal.mActivateStone)) {
+
             mIsActivated = true;
             saveInPersistence();
             Item stone = aSourceSlot.getItemOnTop();

@@ -1,0 +1,88 @@
+{
+  "type":"MONSTER_SLIME",
+  "atlas":"monster_slime.atlas",
+  "persistence":"NONE",
+  "defaultState":"IDLE",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "true",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "idle"
+      ]
+    },
+    {
+      "name": "FROZEN",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "frozen"
+      ]
+    },
+    {
+      "name": "MOVE_DOWN",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "move_down_1","move_down_2","move_down_3"
+      ]
+    },
+    {
+      "name": "MOVE_UP",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "move_up_1","move_up_2","move_up_3"
+      ]
+    },
+    {
+      "name": "MOVE_LEFT",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "move_left_1","move_left_2","move_left_3"
+      ]
+    },
+    {
+      "name": "MOVE_RIGHT",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "move_right_1","move_right_2","move_right_3"
+      ]
+    }
+
+  ]
+  ,
+  "eventsAction": [
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "FROZEN"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "FREEZE"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+
+    {
+      "type": "STATE",
+      "value": "FROZEN"
+    },
+    {
+      "type": "END_STATE",
+      "value": "FROZEN"
+    }
+  ]
+
+}

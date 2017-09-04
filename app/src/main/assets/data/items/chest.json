@@ -1,29 +1,49 @@
 [
   {
-
-    "id":"ortho2_chest1",
-    "items": ["Gear", "VialBlue"]
+    "id": "ortho2_chest1",
+    "items": [
+      "Gear",
+      "VialBlue"
+    ]
   },
   {
-
-    "id":"forest2_chest1",
-    "items": ["VialBlue", "VialGreen", "VialRed"]
+    "id": "forest2_chest1",
+    "items": [
+      "VialBlue",
+      "VialRed"
+    ]
   },
   {
-
-    "id":"house2_chest2",
-    "items": ["Scroll10"]
+    "id": "house2_chest2",
+    "items": [
+      "Scroll10"
+    ]
   },
   {
-
-    "id":"house2_chest1",
-    "items": ["Compass","Lantern2"]
+    "id": "house2_chest1",
+    "items": [
+      "Compass",
+      "Lantern2",
+      "Scroll06"
+    ]
   },
   {
-
-    "id":"east_land10_chest1",
-    "items": ["VialRed"]
+    "id": "east_land10_chest1",
+    "items": [
+      "VialRed",
+      "Scroll03"
+    ]
+  },
+  {
+    "id": "forest2_chest1",
+    "items": [
+      "VialGreen"
+    ]
+  },
+  {
+    "id": "forest2_chest2",
+    "items": [
+      "Scroll02"
+    ]
   }
-
-
 ]

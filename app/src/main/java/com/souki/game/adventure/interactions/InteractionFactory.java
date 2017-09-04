@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.utils.Json;
 import com.souki.game.adventure.interactions.monsters.InteractionMonster1;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterGhost1;
+import com.souki.game.adventure.interactions.monsters.InteractionMonsterSlime;
 import com.souki.game.adventure.map.GameMap;
 
 /**
@@ -50,10 +51,13 @@ public class InteractionFactory {
         } else if (def.type.compareTo("MONSTER_GHOST1") == 0) {
             InteractionMonsterGhost1 interaction = new InteractionMonsterGhost1(def, x, y, aMapping, aProperties, aMap);
             return interaction;
+        } else if (def.type.compareTo("MONSTER_SLIME") == 0) {
+            InteractionMonsterSlime interaction = new InteractionMonsterSlime(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
         } else if (def.type.compareTo("ACTIVATOR1") == 0) {
             InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, false);
             return interaction;
-        }  else if (def.type.compareTo("ACTIVATOR_PUSH") == 0) {
+        } else if (def.type.compareTo("ACTIVATOR_PUSH") == 0) {
             InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, true);
             return interaction;
         } else if (def.type.compareTo("CHEST") == 0) {

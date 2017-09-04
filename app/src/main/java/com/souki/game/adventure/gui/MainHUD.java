@@ -245,6 +245,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
             onNewSelectedEffect(Profile.getInstance().getAvailableEffects().get(0));
         } else {
             mEffectsPanel.update();
+            mMiniEffects.update();
         }
 
         if (QuestManager.getInstance().getQuestFromId(MyGame.QUEST_HELP_BOOK_ID).isCompleted()) {
@@ -286,6 +287,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
         if (mCurrentEffectType != null) {
             mSpellButton.setDrawable(new TextureRegionDrawable(EffectFactory.getInstance().getEffect(mCurrentEffectType).getIcon()));
             mEffectsPanel.update();
+            mMiniEffects.update();
 
         }
     }
@@ -293,6 +295,7 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     @Override
     public void onEffectFound(Effect.Type aEffectType) {
         mEffectsPanel.update();
+        mMiniEffects.update();
     }
 
     @Override

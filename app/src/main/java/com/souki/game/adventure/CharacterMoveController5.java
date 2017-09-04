@@ -5,11 +5,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.souki.game.adventure.box2d.PathHero;
-import com.souki.game.adventure.box2d.PathMap;
 import com.souki.game.adventure.box2d.Shape;
 import com.souki.game.adventure.box2d.ShapeUtils;
 import com.souki.game.adventure.entity.EntityEngine;
@@ -55,63 +53,6 @@ public class CharacterMoveController5 extends GestureDetector.GestureAdapter {
 
     }
 
-    protected boolean checkMove(Shape aShapeToTest, Vector2 aTargetPos, Shape aShapeToIgnore, Vector2 aPosFinale, int maxDepth) {
-        Intersector.MinimumTranslationVector mvt = new Intersector.MinimumTranslationVector();
-        Vector2 posOrigin = new Vector2(aShapeToTest.getX(), aShapeToTest.getY());
-        aShapeToTest.setX(aTargetPos.x);
-        aShapeToTest.setY(aTargetPos.y);
-        if (entities != null && entities.length > 0) {
-            for (int i=0; i<entities.length; i++) {
-
-                CollisionObstacleComponent collision = entities[i].getComponent(CollisionObstacleComponent.class);
-                if (collision.mShape == aShapeToIgnore)
-                    continue;
-
-                if ((collision.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((collision.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
-                    if (collision.mShape.getBounds().overlaps(aShapeToTest.getBounds()) || aShapeToTest.getBounds().overlaps(collision.mShape.getBounds())) {
-                        if (ShapeUtils.overlaps(aShapeToTest, collision.mShape, mvt)) {
-                            mvt.normal.setLength((float) Math.max(mvt.depth * 1.1, Math.sqrt(PathMap.CHECK_RADIUS)));
-                            aPosFinale.set(aShapeToTest.getX() + mvt.normal.x, aShapeToTest.getY() + mvt.normal.y);
-                            if (!ShapeUtils.segmentIntersectShape(posOrigin, aPosFinale, collision.mShape)) {
-                                if (maxDepth > 0) {
-                                    float targetPosX = aTargetPos.x;
-                                    float targetPosY = aTargetPos.y;
-                                    aTargetPos.set(aShapeToTest.getX() + mvt.normal.x,
-                                            aShapeToTest.getY() + mvt.normal.y);
-                                    if (checkMove(aShapeToTest, aTargetPos, collision.mShape, aPosFinale, maxDepth - 1)) {
-                                        aShapeToTest.setX(posOrigin.x);
-                                        aShapeToTest.setY(posOrigin.y);
-                                       // aPosFinale.set(aTargetPos);
-                                        return true;
-                                    }
-                                    aTargetPos.set(targetPosX, targetPosY);
-                                }
-
-
-                            }
-                        }
-                    }
-
-                    aPosFinale.set(aShapeToTest.getX(), aShapeToTest.getY());
-                    if (ShapeUtils.segmentIntersectShape(posOrigin, aPosFinale, collision.mShape)) {
-                        aShapeToTest.setX(posOrigin.x);
-                        aShapeToTest.setY(posOrigin.y);
-                        aPosFinale.set(posOrigin);
-                        return false;
-                    }
-
-
-                }
-
-
-            }
-
-        }
-        aShapeToTest.setX(posOrigin.x);
-        aShapeToTest.setY(posOrigin.y);
-        aPosFinale.set(aTargetPos);
-        return true;
-    }
 
     @Override
     public boolean pan(float x, float y, float deltaX, float deltaY) {
@@ -135,7 +76,7 @@ public class CharacterMoveController5 extends GestureDetector.GestureAdapter {
 
             Vector2 posFinale = new Vector2();
             Vector2 posTarget = new Vector2(mPathSpot.getX() + delta.x, mPathSpot.getY() + delta.y);
-            if (checkMove(mPathSpot, posTarget, null, posFinale, 5)) {
+            if (ShapeUtils.checkMove(entities, mPathSpot, posTarget, null, posFinale, 5)) {
                 mPathSpot.setX(posFinale.x);
                 mPathSpot.setY(posFinale.y);
                 mLastPoint.set(posFinale.x, posFinale.y);

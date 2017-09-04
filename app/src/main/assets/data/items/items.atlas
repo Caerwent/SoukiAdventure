@@ -529,14 +529,14 @@ Scroll14
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll6
+Scroll15
   rotate: false
   xy: 307, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll7
+Scroll16
   rotate: false
   xy: 341, 44
   size: 32, 32

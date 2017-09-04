@@ -28,11 +28,19 @@ public class InventorySlotTarget extends Target {
 
     @Override
     public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
+        if(_targetSlot!=null)
+        {
+            _targetSlot.setDragOver(true);
+        }
         return true;
     }
 
     @Override
     public void reset(Source source, Payload payload) {
+        if(_targetSlot!=null)
+        {
+            _targetSlot.setDragOver(false);
+        }
     }
 
     @Override

@@ -86,6 +86,8 @@ public class Item {
         Scroll12,
         Scroll13,
         Scroll14,
+        Scroll15,
+        Scroll16,
         Stone1,
         Stone2,
         Stone3,

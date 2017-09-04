@@ -1,11 +1,13 @@
 package com.souki.game.adventure.box2d;
 
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 
 import java.util.ArrayList;
 
@@ -817,6 +819,65 @@ public class ShapeUtils {
         }
 
         public float value;
+    }
+
+
+    public static boolean checkMove(Entity[] aEntities, Shape aShapeToTest, Vector2 aTargetPos, Shape aShapeToIgnore, Vector2 aPosFinale, int maxDepth) {
+        Intersector.MinimumTranslationVector mvt = new Intersector.MinimumTranslationVector();
+        Vector2 posOrigin = new Vector2(aShapeToTest.getX(), aShapeToTest.getY());
+        aShapeToTest.setX(aTargetPos.x);
+        aShapeToTest.setY(aTargetPos.y);
+        if (aEntities != null && aEntities.length > 0) {
+            for (int i=0; i<aEntities.length; i++) {
+
+                CollisionObstacleComponent collision = aEntities[i].getComponent(CollisionObstacleComponent.class);
+                if (collision.mShape == aShapeToIgnore)
+                    continue;
+
+                if ((collision.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((collision.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
+                    if (collision.mShape.getBounds().overlaps(aShapeToTest.getBounds()) || aShapeToTest.getBounds().overlaps(collision.mShape.getBounds())) {
+                        if (ShapeUtils.overlaps(aShapeToTest, collision.mShape, mvt)) {
+                            mvt.normal.setLength((float) Math.max(mvt.depth * 1.1, Math.sqrt(PathMap.CHECK_RADIUS)));
+                            aPosFinale.set(aShapeToTest.getX() + mvt.normal.x, aShapeToTest.getY() + mvt.normal.y);
+                            if (!ShapeUtils.segmentIntersectShape(posOrigin, aPosFinale, collision.mShape)) {
+                                if (maxDepth > 0) {
+                                    float targetPosX = aTargetPos.x;
+                                    float targetPosY = aTargetPos.y;
+                                    aTargetPos.set(aShapeToTest.getX() + mvt.normal.x,
+                                            aShapeToTest.getY() + mvt.normal.y);
+                                    if (checkMove(aEntities, aShapeToTest, aTargetPos, collision.mShape, aPosFinale, maxDepth - 1)) {
+                                        aShapeToTest.setX(posOrigin.x);
+                                        aShapeToTest.setY(posOrigin.y);
+                                        // aPosFinale.set(aTargetPos);
+                                        return true;
+                                    }
+                                    aTargetPos.set(targetPosX, targetPosY);
+                                }
+
+
+                            }
+                        }
+                    }
+
+                    aPosFinale.set(aShapeToTest.getX(), aShapeToTest.getY());
+                    if (ShapeUtils.segmentIntersectShape(posOrigin, aPosFinale, collision.mShape)) {
+                        aShapeToTest.setX(posOrigin.x);
+                        aShapeToTest.setY(posOrigin.y);
+                        aPosFinale.set(posOrigin);
+                        return false;
+                    }
+
+
+                }
+
+
+            }
+
+        }
+        aShapeToTest.setX(posOrigin.x);
+        aShapeToTest.setY(posOrigin.y);
+        aPosFinale.set(aTargetPos);
+        return true;
     }
 
 }

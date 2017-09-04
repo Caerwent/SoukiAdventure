@@ -43,6 +43,17 @@
   "outputEvents":[]
 },
   {
+    "id":"portal6",
+    "template":"portal_clickable.json",
+    "properties": {
+      "targetMapId":"village_tower1",
+      "width":32,
+      "height":60
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
     "id":"defaultPortal",
     "template":"portal.json",
     "properties": {

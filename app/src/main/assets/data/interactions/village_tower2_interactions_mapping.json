@@ -1,0 +1,37 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "village_tower1",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge_portal_checkpoint",
+    "template": "challenge_portal_checkpoint.json",
+    "persistence":"GAME",
+    "properties": {
+      "type": "PORTAL_CHECKPOINT",
+      "zindex": 0
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

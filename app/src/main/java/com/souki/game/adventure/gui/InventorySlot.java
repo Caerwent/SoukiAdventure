@@ -23,6 +23,7 @@ public class InventorySlot extends Stack {
     private int _numItemsVal = 0;
     private Item.ItemTypeID _filterItemType;
     private Array<Item> mItems;
+    private boolean mIsSelected = false;
 
 
     public InventorySlot() {
@@ -111,8 +112,18 @@ public class InventorySlot extends Stack {
     }
 
     public void setSelected(boolean aIsSelected) {
-
+        mIsSelected = aIsSelected;
         _defaultBackground.setColor(GenericUI.getInstance().getSkin().getColor(aIsSelected ? "background-color-2" : "background-color-1"));
+    }
+
+    public void setDragOver(boolean aIsDragOver) {
+
+        if (aIsDragOver) {
+            _defaultBackground.setColor(GenericUI.getInstance().getSkin().getColor("background-color-3"));
+        } else {
+            setSelected(mIsSelected);
+        }
+
     }
 
 
