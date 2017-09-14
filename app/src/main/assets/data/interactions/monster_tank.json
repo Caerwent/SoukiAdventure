@@ -1,6 +1,6 @@
 {
-  "type":"MONSTER_SLIME",
-  "atlas":"monster_slime.atlas",
+  "type":"MONSTER_TANK",
+  "atlas":"monster_tank.atlas",
   "persistence":"NONE",
   "defaultState":"IDLE",
   "isClickable": "false",
@@ -16,43 +16,43 @@
       ]
     },
     {
-      "name": "FROZEN",
+      "name": "KO",
       "isLooping":"true",
-      "fps":"0",
+      "fps":"10",
       "frames": [
-        "frozen"
+        "ko_1", "ko_2", "ko_3"
       ]
     },
     {
       "name": "MOVE_DOWN",
       "isLooping":"true",
-      "fps":"10",
+      "fps":"15",
       "frames": [
-        "move_down_1","move_down_2","move_down_3"
+        "move_down_1","move_down_2","move_down_3","move_down_4"
       ]
     },
     {
       "name": "MOVE_UP",
       "isLooping":"true",
-      "fps":"10",
+      "fps":"15",
       "frames": [
-        "move_up_1","move_up_2","move_up_3"
+        "move_up_1","move_up_2","move_up_3","move_up_4"
       ]
     },
     {
       "name": "MOVE_LEFT",
       "isLooping":"true",
-      "fps":"10",
+      "fps":"15",
       "frames": [
-        "move_left_1","move_left_2","move_left_3"
+        "move_left_1","move_left_2","move_left_3","move_left_4"
       ]
     },
     {
       "name": "MOVE_RIGHT",
       "isLooping":"true",
-      "fps":"10",
+      "fps":"15",
       "frames": [
-        "move_right_1","move_right_2","move_right_3"
+        "move_right_1","move_right_2","move_right_3","move_right_4"
       ]
     }
 
@@ -62,26 +62,13 @@
     {
       "action": {
         "type": "SET_STATE",
-        "value": "FROZEN"
-      },
-      "inputEvents": [
-        {
-          "sourceId": "THIS",
-          "type": "EFFECT_START",
-          "value": "FREEZE"
-        }
-      ]
-    },
-    {
-      "action": {
-        "type": "SET_STATE",
         "value": "IDLE"
       },
       "inputEvents": [
         {
           "sourceId": "THIS",
           "type": "EFFECT_STOP",
-          "value": "FREEZE"
+          "value": "WAVE"
         }
       ]
     }
@@ -89,12 +76,8 @@
   "outputEvents": [
 
     {
-      "type": "STATE",
-      "value": "FROZEN"
-    },
-    {
       "type": "END_STATE",
-      "value": "FROZEN"
+      "value": "KO"
     }
   ]
 

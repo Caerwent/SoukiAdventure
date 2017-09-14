@@ -20,6 +20,7 @@ public class MovementSystem extends EntitySystem {
     private ComponentMapper<VelocityComponent> vm = ComponentMapper.getFor(VelocityComponent.class);
 
     public MovementSystem() {
+        priority = 1;
     }
 
     public void addedToEngine(Engine engine) {

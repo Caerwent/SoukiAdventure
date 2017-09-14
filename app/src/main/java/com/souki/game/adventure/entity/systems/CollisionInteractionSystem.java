@@ -16,6 +16,7 @@ public class CollisionInteractionSystem extends IteratingSystem {
 
     public CollisionInteractionSystem() {
         super(Family.one(CollisionInteractionComponent.class, CollisionEffectComponent.class).get());
+        priority = 0;
     }
 
 

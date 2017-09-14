@@ -22,6 +22,7 @@ public class PathRenderSystem extends EntitySystem {
 
     public PathRenderSystem(ShapeRenderer renderer) {
         mRenderer = renderer;
+        priority = 2;
     }
 
     public void addedToEngine(Engine engine) {

@@ -831,7 +831,7 @@ public class ShapeUtils {
             for (int i=0; i<aEntities.length; i++) {
 
                 CollisionObstacleComponent collision = aEntities[i].getComponent(CollisionObstacleComponent.class);
-                if (collision.mShape == aShapeToIgnore)
+                if (collision.mShape == aShapeToIgnore || collision.mShape == aShapeToTest)
                     continue;
 
                 if ((collision.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((collision.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
@@ -839,8 +839,15 @@ public class ShapeUtils {
                         if (ShapeUtils.overlaps(aShapeToTest, collision.mShape, mvt)) {
                             mvt.normal.setLength((float) Math.max(mvt.depth * 1.1, Math.sqrt(PathMap.CHECK_RADIUS)));
                             aPosFinale.set(aShapeToTest.getX() + mvt.normal.x, aShapeToTest.getY() + mvt.normal.y);
+
+                            //Gdx.app.debug("DEBUG", "checkMove overlaps "+logShape(collision.mShape)+" mvt=(" + mvt.normal.x + "," + mvt.normal.y + ")");
+
                             if (!ShapeUtils.segmentIntersectShape(posOrigin, aPosFinale, collision.mShape)) {
+                                //Gdx.app.debug("DEBUG", "posFinal intersects Shape aPosFinale=(" + aPosFinale.x + "," + aPosFinale.y + ")");
+
                                 if (maxDepth > 0) {
+                                    //Gdx.app.debug("DEBUG", "maxDepth=" +maxDepth);
+
                                     float targetPosX = aTargetPos.x;
                                     float targetPosY = aTargetPos.y;
                                     aTargetPos.set(aShapeToTest.getX() + mvt.normal.x,

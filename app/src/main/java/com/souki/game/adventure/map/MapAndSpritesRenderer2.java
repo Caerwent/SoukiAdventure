@@ -565,7 +565,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
         shapeRenderer.end();
 //        renderInteractionShapes();
 //        renderShapes(mMapRendables);
-//        renderCollisionShapes();
+//       renderCollisionShapes();
 
     }
 
@@ -590,11 +590,11 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 
 
                             float Yzindex = currentZIndex.getYAtX(rendable.getShapeRendering().getX());
-                            float Ytmp = currentZIndex.getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth());
+                            float Ytmp = currentZIndex.getYAtX(rendable.getShapeRendering().getX() + rendable.getShapeRendering().getWidth());
                             if (Yzindex == -1 || (Ytmp != -1 && Ytmp < Yzindex)) {
                                 Yzindex = Ytmp;
                             }
-                            Ytmp = currentZIndex.getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth()/ 2);
+                            Ytmp = currentZIndex.getYAtX(rendable.getShapeRendering().getX() + rendable.getShapeRendering().getWidth() / 2);
                             if (Yzindex == -1 || (Ytmp != -1 && Ytmp < Yzindex)) {
                                 Yzindex = Ytmp;
                             }
@@ -602,11 +602,11 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                                 Yzindex = currentZIndex.getBounds().getY();
                             }
                             float Yrendable = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX());
-                            Ytmp = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth());
+                            Ytmp = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX() + rendable.getShapeRendering().getWidth());
                             if (Yrendable == -1 || (Ytmp != -1 && Ytmp < Yrendable)) {
                                 Yrendable = Ytmp;
                             }
-                            Ytmp = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX()+rendable.getShapeRendering().getWidth()/ 2);
+                            Ytmp = rendable.getShapeRendering().getYAtX(rendable.getShapeRendering().getX() + rendable.getShapeRendering().getWidth() / 2);
                             if (Yrendable == -1 || (Ytmp != -1 && Ytmp < Yrendable)) {
                                 Yrendable = Ytmp;
                             }
@@ -618,7 +618,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 //                                Gdx.app.debug("DEBUG", "zindex overlaps " +ShapeUtils.logShape(currentZIndex)+ " x=" + aX + " zindexYatX=" + Yzindex + " heroYAtX=" + Yrendable);
 //                            }
 
-                            if (Yzindex < Yrendable  && rendable.getZIndex()<=1) {
+                            if (Yzindex < Yrendable && rendable.getZIndex() <= 1) {
 //                                shapeRenderer.setColor(Color.GOLD);
 //                                shapeRenderer.polygon(aTileShape.getShape().getTransformedVertices());
 //                                shapeRenderer.setColor(Color.RED);

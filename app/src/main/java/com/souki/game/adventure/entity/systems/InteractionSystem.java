@@ -18,6 +18,7 @@ public class InteractionSystem extends EntitySystem {
     private ComponentMapper<InteractionComponent> pm = ComponentMapper.getFor(InteractionComponent.class);
 
     public InteractionSystem() {
+        priority = 1;
     }
 
     public void addedToEngine(Engine engine) {

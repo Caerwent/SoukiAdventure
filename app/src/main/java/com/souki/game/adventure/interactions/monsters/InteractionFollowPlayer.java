@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.souki.game.adventure.box2d.PathHero;
 import com.souki.game.adventure.box2d.PathMap;
 import com.souki.game.adventure.box2d.ShapeUtils;
+import com.souki.game.adventure.effects.Effect;
 import com.souki.game.adventure.entity.EntityEngine;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
@@ -53,7 +54,7 @@ public class InteractionFollowPlayer extends Interaction {
 
     @Override
     public void update(float dt) {
-        super.update(dt);
+
         VelocityComponent velocity = this.getComponent(VelocityComponent.class);
         if (velocity != null) {
             Vector2 target = mMap.getPlayer().getHero().getPosition();
@@ -62,31 +63,59 @@ public class InteractionFollowPlayer extends Interaction {
                 mPos2D.set(transform.position.x, transform.position.y);
                 double dx = target.x - mPos2D.x;
                 double dy = target.y - mPos2D.y;
-                PathMap.computeVelocityForDisplacement(mTmpVelocity, dx, dy, PathHero.HERO_VELOCITY/**mSpeedFactor*/);
 
+                PathMap.computeVelocityForDisplacement(mTmpVelocity, dx, dy, PathHero.HERO_VELOCITY * mSpeedFactor);
+//                Gdx.app.debug("DEBUG", "mPos2D=(" + mPos2D.x + "," + mPos2D.y + ")");
+//                Gdx.app.debug("DEBUG", "mPosPlayer=(" + target.x + "," + target.y + ")");
                 // compute virtual next pos to check collision
 
-                mTmpPosTarget.set(mPos2D.x + mTmpVelocity.x*dt , mPos2D.y + mTmpVelocity.y*dt);
+                mTmpPosTarget.set(mPos2D.x + mTmpVelocity.x * dt, mPos2D.y + mTmpVelocity.y * dt);
+
+//                Gdx.app.debug("DEBUG", "mTmpPosTarget=(" + mTmpPosTarget.x + "," + mTmpPosTarget.y + ")");
+
 
                 mEntities = EntityEngine.getInstance().getEntitiesFor(Family.all(CollisionObstacleComponent.class).get()).toArray(Entity.class);
 
+                getShapeCollision().setX(mTmpPosTarget.x);
+                getShapeCollision().setY(mTmpPosTarget.y);
+                if (!ShapeUtils.overlaps(getShapeCollision(), mMap.getPlayer().getHero().getShapeCollision())) {
+                    getShapeCollision().setX(mPos2D.x);
+                    getShapeCollision().setY(mPos2D.y);
 
-                if (ShapeUtils.checkMove(mEntities, getShapeCollision(), mTmpPosTarget, null, mTmpPosFinale, 5)) {
-                    setVelocity(mTmpVelocity);
+                    if (ShapeUtils.checkMove(mEntities, getShapeCollision(), mTmpPosTarget, null, mTmpPosFinale, 5)) {
+                        //setPosition(mTmpPosFinale.x, mTmpPosFinale.y);
+                        //Gdx.app.debug("DEBUG", "CAN MOVE to mTmpPosFinale=(" + mTmpPosFinale.x + "," + mTmpPosFinale.y + ")");
+
+                        dx = mTmpPosFinale.x - mPos2D.x;
+                        dy = mTmpPosFinale.y - mPos2D.y;
+//                        Gdx.app.debug("DEBUG", "CAN MOVE by=(" + dx + "," + dy + ")");
+
+                        PathMap.computeVelocityForDisplacement(mTmpVelocity, dx, dy, PathHero.HERO_VELOCITY * mSpeedFactor);
+                        setMovable(true);
+                        setVelocity(mTmpVelocity);
+//                        Gdx.app.debug("DEBUG", "mTmpVelocity=(" + mTmpVelocity.x + "," + mTmpVelocity.y + ")");
+
+
+                    } else {
+                        setVelocity(0, 0);
+                    }
+                } else {
+                    setVelocity(0, 0);
                 }
 
             } else {
-                setVelocity(0,0);
+                setVelocity(0, 0);
             }
-
         }
+        super.update(dt);
+
+
     }
 
 
-
-
     public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
-        return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0);
+        return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.HERO) != 0)
+                || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0);
     }
 
     @Override
@@ -96,14 +125,41 @@ public class InteractionFollowPlayer extends Interaction {
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {
-                VelocityComponent velocity = this.getComponent(VelocityComponent.class);
-                if (velocity != null) {
-                    setVelocity(0, 0);
+                if ((aEntity.mType & CollisionObstacleComponent.HERO) == 0) {
+                    setMovable(false);
                     return true;
+                } else {
+                    VelocityComponent velocity = this.getComponent(VelocityComponent.class);
+                    if (velocity != null) {
+                        setVelocity(0, 0);
+                        return true;
+                    }
                 }
 
             }
         }
         return ret;
+    }
+
+    @Override
+    public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity) {
+
+        boolean ret = super.onCollisionObstacleStop(aEntity);
+        if (ret) {
+            if ((aEntity.mType & CollisionObstacleComponent.HERO) == 0 && (mEffectAction == null || mEffectAction.id != Effect.Type.FREEZE)) {
+                setMovable(true);
+            }
+        }
+
+        return ret;
+    }
+
+    @Override
+    protected void stopEffectAction() {
+        if (mEffectAction != null && mEffectAction.id == Effect.Type.FREEZE) {
+            setMovable(true);
+        }
+        super.stopEffectAction();
+
     }
 }

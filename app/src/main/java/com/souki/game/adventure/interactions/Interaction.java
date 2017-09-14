@@ -271,6 +271,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         if (state != null && state != mCurrentState) {
             String oldState = mCurrentState.name;
             mCurrentState = state;
+            //Gdx.app.debug("DEBUG", "set state " + mCurrentState.name+ " on id "+mId);
             mStateTime = 0;
             if (mOutputEvents != null) {
                 for (InteractionEvent event : mOutputEvents) {
