@@ -116,7 +116,7 @@
   },
   {
     "id": "activator_push_1",
-    "template": "activator_push.json",
+    "template": "activator_push_pull.json",
     "properties": {
     },
     "eventsAction": []

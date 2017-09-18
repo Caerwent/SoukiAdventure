@@ -24,38 +24,10 @@
     "properties": {
     },
     "eventsAction": [
-      {
-        "action": {
-          "type": "REMOVED",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "END_STATE",
-            "value": "BURNING"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "BURNING"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "EFFECT_START",
-            "value": "BURN"
-          }
-        ]
-      }
+
     ],
     "outputEvents": [
-      {
-        "type": "END_STATE",
-        "value": "BURNING"
-      }
+
     ]
   },
   {
@@ -64,38 +36,10 @@
     "properties": {
     },
     "eventsAction": [
-      {
-        "action": {
-          "type": "REMOVED",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "END_STATE",
-            "value": "BURNING"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "BURNING"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "EFFECT_START",
-            "value": "BURN"
-          }
-        ]
-      }
+
     ],
     "outputEvents": [
-      {
-        "type": "END_STATE",
-        "value": "BURNING"
-      }
+
     ]
   },
   {
@@ -104,38 +48,10 @@
     "properties": {
     },
     "eventsAction": [
-      {
-        "action": {
-          "type": "REMOVED",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "END_STATE",
-            "value": "BURNING"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "BURNING"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "EFFECT_START",
-            "value": "BURN"
-          }
-        ]
-      }
+
     ],
     "outputEvents": [
-      {
-        "type": "END_STATE",
-        "value": "BURNING"
-      }
+
     ]
   }
 ,
@@ -145,38 +61,10 @@
     "properties": {
     },
     "eventsAction": [
-      {
-        "action": {
-          "type": "REMOVED",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "END_STATE",
-            "value": "BURNING"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "BURNING"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "EFFECT_START",
-            "value": "BURN"
-          }
-        ]
-      }
+
     ],
     "outputEvents": [
-      {
-        "type": "END_STATE",
-        "value": "BURNING"
-      }
+
     ]
   },
   {

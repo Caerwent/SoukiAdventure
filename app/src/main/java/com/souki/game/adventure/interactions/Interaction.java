@@ -96,8 +96,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     protected String mAtlasFilename;
 
-    public String getAtlasFilename()
-    {
+    public String getAtlasFilename() {
         return mAtlasFilename;
     }
 
@@ -164,8 +163,13 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         this.add(new TransformComponent());
 
         setMovable(mDef.isMovable);
-        mCurrentState = getState(mDef.defaultState);
+        if (mProperties.containsKey("startState")) {
 
+            mCurrentState = getState((String) mProperties.get("startState"));
+        }
+        if (mCurrentState == null) {
+            mCurrentState = getState(mDef.defaultState);
+        }
         //    mType = IInteraction.Type.valueOf(mDef.type);
         if (mOutputEvents != null) {
             for (InteractionEvent event : mOutputEvents) {
@@ -269,16 +273,13 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     protected void setState(String aStateName) {
         InteractionState state = getState(aStateName);
         if (state != null && state != mCurrentState) {
-            String oldState = mCurrentState.name;
+
             mCurrentState = state;
             //Gdx.app.debug("DEBUG", "set state " + mCurrentState.name+ " on id "+mId);
             mStateTime = 0;
             if (mOutputEvents != null) {
                 for (InteractionEvent event : mOutputEvents) {
-                   /* if (InteractionEvent.EventType.END_STATE == InteractionEvent.EventType.valueOf(event.type) &&
-                            oldState.equals(event.value)) {
-                        EventDispatcher.getInstance().onInteractionEvent(event);
-                    }*/
+
                     if (InteractionEvent.EventType.STATE == InteractionEvent.EventType.valueOf(event.type) &&
                             mCurrentState.name.equals(event.value)) {
                         EventDispatcher.getInstance().onInteractionEvent(event);
@@ -336,6 +337,15 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         }
         setPosition(x, y);
 
+        if (mProperties.containsKey("startState")) {
+            String initState = (String) mProperties.get("startState");
+            if (getState(initState) != null) {
+                mCurrentState = null;
+                setState(initState);
+
+            }
+
+        }
 
         restoreFromPersistence();
 
@@ -676,7 +686,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     /*************************************** EVENTS ************************************/
     @Override
     public void onInteractionEvent(InteractionEvent aEvent) {
-        Gdx.app.debug("DEBUG", "onInteractionEvent id="+getId()+" event.sourceId=" + aEvent.sourceId + " aEvent.type=" + aEvent.type + " aEvent.value=" + aEvent.value);
+        Gdx.app.debug("DEBUG", "onInteractionEvent id=" + getId() + " event.sourceId=" + aEvent.sourceId + " aEvent.type=" + aEvent.type + " aEvent.value=" + aEvent.value);
 
         if (mEventsAction != null && aEvent != null) {
             for (InteractionEventAction eventAction : mEventsAction) {
@@ -684,7 +694,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     boolean performed = false;
                     for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                         if ((expectedEvent.sourceId == null || expectedEvent.sourceId.isEmpty() || expectedEvent.sourceId.equals(aEvent.sourceId)) && expectedEvent.type.equals(aEvent.type)) {
-                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value) || (expectedEvent.value==null && aEvent.value.isEmpty()) || (aEvent.value==null && expectedEvent.value.isEmpty()));
+                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value) || (expectedEvent.value == null && aEvent.value.isEmpty()) || (aEvent.value == null && expectedEvent.value.isEmpty()));
                             performed = expectedEvent.isPerformed();
                             break;
                         }
@@ -830,8 +840,10 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     public boolean onStartEffectInteraction(CollisionEffectComponent aEntity) {
         Effect effect = (Effect) aEntity.mEffect;
         if (effect != null) {
-            mEffectAction = effect;
-           EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(getId(), InteractionEvent.EventType.EFFECT_START.name(), effect.id.name()));
+            if (getState(effect.targetState) != null) {
+                mEffectAction = effect;
+            }
+            EventDispatcher.getInstance().onInteractionEvent(new InteractionEvent(getId(), InteractionEvent.EventType.EFFECT_START.name(), effect.id.name()));
         }
         return false;
     }

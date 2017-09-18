@@ -222,7 +222,7 @@
   },
   {
     "id": "activator_push_1",
-    "template": "activator_push.json",
+    "template": "activator_push_pull.json",
     "properties": {
       "delay": 3.0
     },
@@ -230,7 +230,7 @@
   },
   {
     "id": "activator_push_2",
-    "template": "activator_push.json",
+    "template": "activator_push_pull.json",
     "properties": {
       "delay": 3.0
     },

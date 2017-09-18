@@ -1,0 +1,174 @@
+
+obstacle_log_wood2.png
+size: 1024,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+log2
+  rotate: false
+  xy: 2, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning1
+  rotate: false
+  xy: 37, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning10
+  rotate: false
+  xy: 317, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning11
+  rotate: false
+  xy: 352, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning12
+  rotate: false
+  xy: 387, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning13
+  rotate: false
+  xy: 422, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning14
+  rotate: false
+  xy: 457, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning15
+  rotate: false
+  xy: 492, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning16
+  rotate: false
+  xy: 527, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning17
+  rotate: false
+  xy: 562, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning18
+  rotate: false
+  xy: 597, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning19
+  rotate: false
+  xy: 632, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning2
+  rotate: false
+  xy: 72, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning20
+  rotate: false
+  xy: 667, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning21
+  rotate: false
+  xy: 702, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning22
+  rotate: false
+  xy: 737, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning23
+  rotate: false
+  xy: 772, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning24
+  rotate: false
+  xy: 807, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning3
+  rotate: false
+  xy: 107, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning4
+  rotate: false
+  xy: 142, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning5
+  rotate: false
+  xy: 177, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning6
+  rotate: false
+  xy: 212, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning7
+  rotate: false
+  xy: 247, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1
+log2_burning8
+  rotate: false
+  xy: 282, 2
+  size: 33, 62
+  orig: 33, 62
+  offset: 0, 0
+  index: -1

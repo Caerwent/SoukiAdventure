@@ -1,7 +1,7 @@
 {
   "type":"OBSTACLE",
   "atlas":"log.atlas",
-  "persistence":"SESSION",
+  "persistence":"NONE",
   "defaultState":"CLOSED",
   "isClickable": "false",
   "isRendable": "true",
@@ -32,6 +32,40 @@
       "frames": [ "log"]
     }
 
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "REMOVED",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "BURNING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "BURNING"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "BURN"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "END_STATE",
+      "value": "BURNING"
+    }
   ]
 
 }

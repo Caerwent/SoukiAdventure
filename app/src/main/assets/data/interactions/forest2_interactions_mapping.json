@@ -23,10 +23,6 @@
     "template": "obstacle_water_iceable.json"
   },
   {
-    "id": "ice2",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
     "id": "monster_tank1",
     "template": "monster_tank.json",
     "properties": {

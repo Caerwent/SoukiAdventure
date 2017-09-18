@@ -1,0 +1,77 @@
+{
+  "type":"OBSTACLE",
+  "atlas":"obstacle_log_wood2.atlas",
+  "persistence":"NONE",
+  "defaultState":"CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "properties": {
+    "closedBoundsAsObstacle":"true"
+  },
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps":"0",
+      "frames": [
+        "log2"
+      ]
+    },
+    {
+      "name": "BURNING",
+      "fps":"15",
+      "isLooping":"false",
+      "frames": [
+        "log2_burning1", "log2_burning2", "log2_burning3",
+        "log2_burning4", "log2_burning5", "log2_burning6",
+        "log2_burning7", "log2_burning8", "log2_burning9",
+        "log2_burning10", "log2_burning11", "log2_burning12",
+        "log2_burning13", "log2_burning14", "log2_burning15",
+        "log2_burning16", "log2_burning17", "log2_burning18",
+        "log2_burning19", "log2_burning20", "log2_burning21",
+        "log2_burning22", "log2_burning23", "log2_burning24"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps":"0",
+      "frames": [ "log2"]
+    }
+
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "REMOVED",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "BURNING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "BURNING"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "BURN"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "END_STATE",
+      "value": "BURNING"
+    }
+  ]
+
+}

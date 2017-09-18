@@ -1,5 +1,5 @@
 {
-  "type":"ACTIVATOR_PUSH",
+  "type":"ACTIVATOR_PUSH_ONLY",
   "atlas":"activator_push.atlas",
   "persistence":"NONE",
   "defaultState":"IDLE",

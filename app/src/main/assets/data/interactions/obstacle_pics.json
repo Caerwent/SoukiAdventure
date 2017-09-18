@@ -1,0 +1,44 @@
+{
+  "type":"OBSTACLE",
+  "atlas":"obstacle_pics.atlas",
+  "persistence":"NONE",
+  "defaultState":"CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps":"0",
+      "frames": [
+        "pics_out"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps":"0",
+      "frames": [ "pics_in"]
+    }
+
+  ],
+  "properties": {
+    "closedBoundsAsObstacle":"true",
+    "openZIndex":0,
+    "killableWhenClosed":"true"
+  },
+  "eventsAction": [
+
+  ],
+  "outputEvents": [
+    {
+      "type":"STATE",
+      "value":"OPEN"
+    },
+    {
+      "type":"STATE",
+      "value":"CLOSED"
+    }
+  ]
+
+
+}

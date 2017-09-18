@@ -59,10 +59,13 @@ public class InteractionFactory {
             InteractionMonsterTank interaction = new InteractionMonsterTank(def, x, y, aMapping, aProperties, aMap);
             return interaction;
         } else if (def.type.compareTo("ACTIVATOR1") == 0) {
-            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, false);
+            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, InteractionActivator.MODE.NORMAL);
             return interaction;
-        } else if (def.type.compareTo("ACTIVATOR_PUSH") == 0) {
-            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, true);
+        } else if (def.type.compareTo("ACTIVATOR_PUSH_PULL") == 0) {
+            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, InteractionActivator.MODE.PUSH_PULL);
+            return interaction;
+        } else if (def.type.compareTo("ACTIVATOR_PUSH_ONLY") == 0) {
+            InteractionActivator interaction = new InteractionActivator(def, x, y, aMapping, aProperties, aMap, InteractionActivator.MODE.PUSH_ONLY);
             return interaction;
         } else if (def.type.compareTo("CHEST") == 0) {
             InteractionChest interaction = new InteractionChest(def, x, y, aMapping, aProperties, aMap);

@@ -3,33 +3,44 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId":"forest2",
-      "isDefaultStart":"true"
+      "targetMapId": "forest2",
+      "isDefaultStart": "true"
     },
     "eventsAction": [],
     "outputEvents": []
   },
   {
-    "id":"chest1",
-    "template":"chest_type1.json",
+    "id": "portal2",
+    "template": "portal.json",
     "properties": {
-      "requiredItem":"KeyIron"
+      "targetMapId": "forest3_tower0"
     },
-
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"chest2",
-    "template":"chest_invisible.json",
+    "id": "chest1",
+    "template": "chest_type1.json",
+    "properties": {
+      "requiredItem": "KeyIron"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "chest2",
+    "template": "chest_invisible.json",
     "properties": {
     },
-
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
     "id": "ice1",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice2",
     "template": "obstacle_water_iceable.json"
   },
   {
@@ -52,42 +63,41 @@
   },
   {
     "id": "wood1",
+    "template": "obstacle_log_wood2.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+
+    ],
+    "outputEvents": [
+
+    ]
+  },
+  {
+    "id": "wood2",
+    "template": "obstacle_log_wood2.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+
+    ],
+    "outputEvents": [
+
+    ]
+  },
+  {
+    "id": "wood3",
     "template": "obstacle_log_wood.json",
     "properties": {
     },
     "eventsAction": [
-      {
-        "action": {
-          "type": "REMOVED",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "END_STATE",
-            "value": "BURNING"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "BURNING"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "EFFECT_START",
-            "value": "BURN"
-          }
-        ]
-      }
+
+
     ],
     "outputEvents": [
-      {
-        "type": "END_STATE",
-        "value": "BURNING"
-      }
+
     ]
   }
 ]

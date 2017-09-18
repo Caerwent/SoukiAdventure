@@ -50,28 +50,25 @@ public class InteractionObstacle extends Interaction {
                 mOpenBoundsAsObstacle = true;
             }
             if (mProperties.containsKey("openZIndex")) {
-                mOpenZIndex = ((Float)mProperties.get("openZIndex")).intValue();
+                mOpenZIndex = ((Float) mProperties.get("openZIndex")).intValue();
             } else {
                 mOpenZIndex = super.getZIndex();
             }
-            if (mProperties.containsKey("initState")) {
-                mCurrentState = getState((String) mProperties.get("initState"));
-            }
+
         }
         initialize(x, y, aMapping);
-
 
 
     }
 
     @Override
-    public void startToInteract()
-    {
+    public void startToInteract() {
         super.startToInteract();
         mCollisionObstacleComponent = getComponent(CollisionObstacleComponent.class);
         onStateChanged();
 
     }
+
     public int getZIndex() {
         return mOpenZIndex;
     }
@@ -82,9 +79,15 @@ public class InteractionObstacle extends Interaction {
         if (isOpen != null && isOpen.booleanValue()) {
             mIsOpen = true;
             String state = (String) aGameSession.getSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_OPEN_STATE);
-            mCurrentState = getState(state == null ? mDef.defaultState : state);
+            if (state != null) {
+                mCurrentState = getState(state);
+            }
         } else {
-            mIsOpen = false;
+            if (mCurrentState != null && mCurrentState.name.equals(InteractionState.STATE_OPEN)) {
+                mIsOpen = true;
+            } else {
+                mIsOpen = false;
+            }
         }
         Boolean isDestroyed = (Boolean) GameSession.getInstance().getSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_IS_DESTROYED);
         if (isDestroyed != null && isDestroyed.booleanValue()) {
@@ -106,13 +109,13 @@ public class InteractionObstacle extends Interaction {
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
         boolean stateChanged = false;
-        if (!res && aAction != null && InteractionActionType.ActionType.OPEN==aAction.type) {
+        if (!res && aAction != null && InteractionActionType.ActionType.OPEN == aAction.type) {
             mIsOpen = true;
             stateChanged = true;
-        } else if (!res && aAction != null && InteractionActionType.ActionType.CLOSE==aAction.type) {
+        } else if (!res && aAction != null && InteractionActionType.ActionType.CLOSE == aAction.type) {
             mIsOpen = false;
             stateChanged = true;
-        } else if (!res && aAction != null && InteractionActionType.ActionType.REMOVED==aAction.type) {
+        } else if (!res && aAction != null && InteractionActionType.ActionType.REMOVED == aAction.type) {
             mIsDestroyed = true;
             stateChanged = true;
         }
@@ -131,7 +134,7 @@ public class InteractionObstacle extends Interaction {
         boolean ret = super.onCollisionObstacleStart(aEntity);
         if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 && !mIsOpen && mKillableWhenClosed && aEntity.mHandler != null && aEntity.mHandler == mMap.getPlayer().getHero()) {
             EventDispatcher.getInstance().onMapReloadRequested(mMap.getMapName(), mMap.getFromMapId());
-                return false;
+            return false;
 
         }
         return ret;
@@ -147,12 +150,9 @@ public class InteractionObstacle extends Interaction {
 
         if (mIsOpen) {
             if (mHasCollisionWhenOpen) {
-                if(mOpenBoundsAsObstacle)
-                {
+                if (mOpenBoundsAsObstacle) {
                     mCollisionHeightFactor = 1;
-                }
-                else
-                {
+                } else {
                     mCollisionHeightFactor = 8;
                 }
                 if (getComponent(CollisionObstacleComponent.class) == null) {
@@ -163,12 +163,9 @@ public class InteractionObstacle extends Interaction {
                 remove(CollisionObstacleComponent.class);
             }
         } else {
-            if(mClosedBoundsAsObstacle)
-            {
+            if (mClosedBoundsAsObstacle) {
                 mCollisionHeightFactor = 1;
-            }
-            else
-            {
+            } else {
                 mCollisionHeightFactor = 8;
             }
             if (getComponent(CollisionObstacleComponent.class) == null) {
@@ -176,7 +173,6 @@ public class InteractionObstacle extends Interaction {
             }
         }
     }
-
 
 
 }

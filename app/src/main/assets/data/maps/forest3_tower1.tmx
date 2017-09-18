@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-up" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="84">
+ <tileset firstgid="1" source="Celianna_TileA4.tsx"/>
+ <tileset firstgid="514" source="Celianna_TileA5.tsx"/>
+ <tileset firstgid="642" source="terrain.tsx"/>
+ <layer name="ground" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1EEKgCAQBdDxJt5/01G0a2iHyKghyd/A5CyKFN5GBz/Ir+CI4mGiXXQtdKadZ3ORinzg2exa6Ew7z5bC04lnPYDOtPN33pTLS8rlVe99NVcSLh19epc2t/4WNB3tzbW662+5CHdH6jPqVS/ujpSLemVF+7+yEsBboj1rCbwl2huGzQo/wauH
+  </data>
+ </layer>
+ <layer name="ground2" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztk1EKwjAQRDf+t15Deg3rLfQcekvba2gPYUISXMLu1glBBDuw0EwmPGgmHRH1aTo/e7buV/bQfJ7gH+it8D2QLL637LB8qaGSW5v/Re5Vyd4ULpK3uGclO/o5Fd4x+ZIuIDd4kyOaXfTuLq65Zynna+736c8tifFwcc09SznfqleoWvUKFdIrqyeopB5qXN4hPkTr71c6p/Ww5PIO8fmEK53TelhyLYU7kN6v9i8tIdyW2rjf4/6bXq8uOdM=
+  </data>
+ </layer>
+ <layer name="ground3" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAdnGEiQ9MoGAWjYBSMglEwCkbBCAEAay8Azw==
+  </data>
+ </layer>
+ <layer name="terrain" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIw2sh2J0NrXUDzZ7RwF9wHo8mBx1g93eUTAKRgFpwBmIXeiMXRnw531aYgBGBjqP
+  </data>
+ </layer>
+ <layer name="terrain2" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIw3wATE/lM0L5VNTPS7gAsSuULYzlE9N9aNgYAEfDsyPpo4Xj1pygAsWHAvEWmjqNIA4Bof6UTAKRsEooDYAACEqBwg=
+  </data>
+ </layer>
+ <objectgroup name="interactions">
+  <object id="1" name="portal1" gid="687" x="413" y="66" width="32" height="32"/>
+  <object id="2" name="activator1" gid="687" x="416" y="294" width="32" height="32"/>
+  <object id="3" name="pics1" gid="687" x="394.616" y="386.055" width="32" height="32"/>
+  <object id="4" name="pics2" gid="687" x="436.698" y="386.475" width="32" height="32"/>
+  <object id="6" name="pics3" gid="687" x="608.653" y="248.053" width="32" height="32"/>
+  <object id="77" name="activator2" gid="687" x="608" y="118" width="32" height="32"/>
+  <object id="79" name="pics4" gid="687" x="224" y="248.667" width="32" height="32"/>
+  <object id="80" name="activator3" gid="687" x="222.667" y="118.667" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="collision">
+  <object id="49" x="543.427" y="338.342">
+   <polygon points="0,0 -62.376,0 -61.4309,171.061 0,172.952"/>
+  </object>
+  <object id="50" x="383.707" y="513.184">
+   <polygon points="0,0 -64.2661,0 -62.376,-173.897 -0.94509,-175.787"/>
+  </object>
+  <object id="51" x="383.707" y="320.386">
+   <polygon points="0,0 -287.975,0 -287.975,98.2894 -2.14907,95.4541"/>
+  </object>
+  <object id="52" x="716.775" y="320.386">
+   <polygon points="0,0 -234.779,-0.94509 -234.779,93.5639 3.58441,93.5639"/>
+  </object>
+  <object id="53" x="481.051" y="36.8585">
+   <polygon points="0,0 0.94509,217.371 62.376,218.316 61.4309,0.94509"/>
+  </object>
+  <object id="54" x="322.276" y="36.8585">
+   <polygon points="0,0 3.78036,216.426 61.4309,218.316 59.5407,-0.94509"/>
+  </object>
+  <object id="55" x="-0.94509" y="639.826">
+   <polygon points="0,0 6.61563,0 8.50581,-639.826 0.94509,-638.881"/>
+  </object>
+  <object id="56" x="960.212" y="621.869">
+   <polygon points="0,0 -961.157,0.94509 -961.157,17.0116 0.94509,17.0116"/>
+  </object>
+  <object id="57" x="949.816" y="4.72545">
+   <polygon points="0,0 0.94509,633.21 9.4509,634.156 9.4509,-2.83527"/>
+  </object>
+  <object id="58" x="-1.89018" y="0">
+   <polygon points="0,0 2.83527,63.321 960.212,61.4309 962.102,0.94509"/>
+  </object>
+  <object id="59" x="258.01" y="157.83">
+   <polygon points="0,0 -0.94509,98.2894 123.807,97.3443 122.862,-0.94509"/>
+  </object>
+  <object id="60" x="607.693" y="158.775">
+   <polygon points="0,0 -125.697,-1.89018 -124.752,96.3992 1.89018,94.509"/>
+  </object>
+  <object id="74" x="644.552" y="160.665">
+   <polygon points="-2,0 -1.72158,89.9522 122.862,93.5639 121.917,-0.94509"/>
+  </object>
+  <object id="75" x="707.873" y="10.1781">
+   <polygon points="0,0 0.94509,403.06 58.5956,403.06 58.5956,-6.39777"/>
+  </object>
+  <object id="82" x="97.3333" y="26">
+   <polygon points="0,0 -1.33333,388.667 59.3333,389.333 60.6667,0.666667"/>
+  </object>
+  <object id="83" x="224" y="158.667">
+   <polygon points="0,0 0,97.3333 -82,96.6667 -81.3333,-1.33333"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="zindex">
+  <object id="68" name="zindex1" x="608.638" y="129.477">
+   <polygon points="0,0 0.94509,125.697 -78.4425,124.752 -79.3876,-1.89018"/>
+  </object>
+  <object id="69" name="zindex2" x="258.01" y="129.477">
+   <polygon points="0,0 0,123.807 79.3876,124.752 79.3876,0"/>
+  </object>
+  <object id="70" name="zindex3" x="150.677" y="289.198">
+   <polygon points="0,0 234.92,-0.94509 227.96,116.246 0,111.521"/>
+  </object>
+  <object id="71" name="zindex4" x="484.529" y="289.198">
+   <polygon points="0,0 227.837,-0.94509 233.054,104.905 -3.47842,103.96"/>
+  </object>
+  <object id="72" name="zindex5" x="960.212" y="592.572">
+   <polygon points="0,0 -960.212,-1.89018 -961.157,47.2545 -0.94509,47.2545"/>
+  </object>
+  <object id="76" x="639.159" y="128.144">
+   <polygon points="0,0 0,121.917 128.532,124.752 127.587,0.94509"/>
+  </object>
+  <object id="81" x="225.333" y="129.333">
+   <polygon points="0,0 -0.666667,56.6667 -74.6667,56 -74,-1.33333"/>
+  </object>
+ </objectgroup>
+</map>

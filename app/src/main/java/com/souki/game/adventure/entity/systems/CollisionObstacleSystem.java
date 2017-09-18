@@ -29,7 +29,7 @@ public class CollisionObstacleSystem extends IteratingSystem {
         ImmutableArray<Entity> entities = getEntities();
 
         CollisionObstacleComponent collisionObstacleComponent = entity.getComponent(CollisionObstacleComponent.class);
-        if (collisionObstacleComponent.mHandler == null)
+        if (collisionObstacleComponent==null || collisionObstacleComponent.mHandler == null)
             return;
         CollisionObstacleComponent otherCollisionObstacleComponent;
         Intersector.MinimumTranslationVector mvt = new Intersector.MinimumTranslationVector();

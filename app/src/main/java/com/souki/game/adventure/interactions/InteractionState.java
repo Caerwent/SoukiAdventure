@@ -13,14 +13,15 @@ import java.util.ArrayList;
 
 public class InteractionState {
 
-    public final static String STATE_MOVE_LEFT="MOVE_LEFT";
-    public final static String STATE_MOVE_RIGHT="MOVE_RIGHT";
-    public final static String STATE_MOVE_DOWN="MOVE_DOWN";
-    public final static String STATE_MOVE_UP="MOVE_UP";
-    public final static String STATE_FROZEN="FROZEN";
-    public final static String STATE_BURNING="BURNING";
-    public final static String STATE_IDLE="IDLE";
-    public final static String STATE_KO="KO";
+    public final static String STATE_MOVE_LEFT = "MOVE_LEFT";
+    public final static String STATE_MOVE_RIGHT = "MOVE_RIGHT";
+    public final static String STATE_MOVE_DOWN = "MOVE_DOWN";
+    public final static String STATE_MOVE_UP = "MOVE_UP";
+    public final static String STATE_FROZEN = "FROZEN";
+    public final static String STATE_BURNING = "BURNING";
+    public final static String STATE_IDLE = "IDLE";
+    public final static String STATE_OPEN = "OPEN";
+    public final static String STATE_KO = "KO";
     public String name;
     public boolean isLooping;
     public int fps;
@@ -29,15 +30,13 @@ public class InteractionState {
     private Animation mAnimation;
     private TextureAtlas.AtlasRegion mFixRegion;
 
-    public void init(TextureAtlas aAtlas)
-    {
-        if(frames==null || frames.size()<=0)
+    public void init(TextureAtlas aAtlas) {
+        if (frames == null || frames.size() <= 0)
             return;
 
-        if(fps==0 || frames.size()==1) {
-            mFixRegion=aAtlas.findRegion(frames.get(0));
-        }
-        else {
+        if (fps == 0 || frames.size() == 1) {
+            mFixRegion = aAtlas.findRegion(frames.get(0));
+        } else {
             Array<TextureAtlas.AtlasRegion> regions = new Array<TextureAtlas.AtlasRegion>();
             for (String key : frames) {
                 TextureAtlas.AtlasRegion reg = aAtlas.findRegion(key);
@@ -46,31 +45,24 @@ public class InteractionState {
                 }
             }
 
-            mAnimation = new Animation((1F / (float)fps), regions);
+            mAnimation = new Animation((1F / (float) fps), regions);
             mAnimation.setPlayMode(isLooping ? Animation.PlayMode.LOOP : Animation.PlayMode.NORMAL);
         }
     }
 
-    public TextureAtlas.AtlasRegion getTextureRegion(float aTime)
-    {
-        if(mFixRegion!=null)
-        {
+    public TextureAtlas.AtlasRegion getTextureRegion(float aTime) {
+        if (mFixRegion != null) {
             return mFixRegion;
-        }
-        else if(mAnimation!=null) {
+        } else if (mAnimation != null) {
             return (TextureAtlas.AtlasRegion) mAnimation.getKeyFrame(aTime, true);
         }
         return null;
     }
 
-    public boolean isCompleted(float stateTime)
-    {
-        if(mFixRegion!=null && isLooping)
-        {
+    public boolean isCompleted(float stateTime) {
+        if (mFixRegion != null && isLooping) {
             return false;
-        }
-        else if(mAnimation!=null)
-        {
+        } else if (mAnimation != null) {
             return mAnimation.isAnimationFinished(stateTime);
         }
         return true;
