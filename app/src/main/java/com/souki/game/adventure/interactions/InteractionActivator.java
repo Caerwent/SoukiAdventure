@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
+import com.souki.game.adventure.interactions.monsters.InteractionMonsterTank;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
 
@@ -82,10 +83,9 @@ public class InteractionActivator extends Interaction{
     public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
 
         boolean ret = super.onCollisionObstacleStart(aEntity);
-        if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 &&
-                (mMode==PUSH_ONLY || mMode==PUSH_PULL) &&
-                aEntity.mHandler != null &&
-                aEntity.mHandler == mMap.getPlayer().getHero()) {
+        if (ret &&
+                (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  && aEntity.mHandler instanceof InteractionMonsterTank) &&
+                (mMode==PUSH_ONLY || mMode==PUSH_PULL)) {
 
             if(mMode==PUSH_PULL && mDelay>0) {
                 mDelayTime=0;
@@ -101,7 +101,9 @@ public class InteractionActivator extends Interaction{
     public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity) {
 
         boolean ret = super.onCollisionObstacleStop(aEntity);
-        if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 && mMode==PUSH_PULL && aEntity.mHandler != null && aEntity.mHandler == mMap.getPlayer().getHero()) {
+        if (ret &&
+                (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  && aEntity.mHandler instanceof InteractionMonsterTank) &&
+                 mMode==PUSH_PULL ) {
             if(mDelay>0) {
                 Gdx.app.debug("DEBUG", "onCollisionObstacleStop start delay");
                 mDelayTime=0;
@@ -118,7 +120,7 @@ public class InteractionActivator extends Interaction{
     }
     @Override
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return !(mMode==PUSH_ONLY || mMode==PUSH_PULL) && aEntity.mInteraction.getType()==Type.HERO;
+        return !(mMode==PUSH_ONLY || mMode==PUSH_PULL) && aEntity.mInteraction.getType()==Type.HERO ;
     }
     @Override
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {

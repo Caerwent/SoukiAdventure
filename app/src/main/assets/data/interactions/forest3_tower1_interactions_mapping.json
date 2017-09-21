@@ -67,6 +67,50 @@
     "eventsAction": []
   },
   {
+    "id": "activator4",
+    "template": "activator_push.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": [ {
+      "action": {
+        "type": "SET_STATE",
+        "value": "IDLE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "activator5",
+          "type": "STATE",
+          "value": "ACTIVATED"
+        }
+      ]
+    }]
+  },
+  {
+    "id": "activator5",
+    "template": "activator_push.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator6",
+    "template": "activator_push.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator7",
+    "template": "activator_push.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": []
+  },
+  {
     "id": "pics1",
     "template": "obstacle_pics.json",
     "properties": {
@@ -314,6 +358,310 @@
     "outputEvents": [
 
     ]
+  },
+  {
+    "id": "pics5",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "activator6",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator6",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "activator5",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "pics6",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator5",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "pics7",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator6",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+
+  {
+    "id": "pics8",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator5",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "activator6",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "pics9",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator7",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "door1",
+    "template": "obstacle_door_wood.json",
+    "properties": {
+    }
+  },
+  {
+    "id":"chest1",
+    "template":"chest_type1.json",
+    "properties": {
+      "requiredItem":"KeyIron"
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
   }
 
 ]

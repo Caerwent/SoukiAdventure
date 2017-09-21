@@ -6,7 +6,7 @@
     "particuleFile":"freeze.p",
     "particuleScale":"0.5",
     "sound":"freeze.wav",
-    "distance": "1",
+    "distance": "2",
     "duration": "5",
     "targetState": "FROZEN",
     "targetDuration": "5",

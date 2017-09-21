@@ -44,6 +44,14 @@
     "template": "obstacle_water_iceable.json"
   },
   {
+    "id": "ice3",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice4",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
     "id": "monster_slime1",
     "template": "monster_slime.json",
     "properties": {
@@ -98,6 +106,81 @@
     ],
     "outputEvents": [
 
+    ]
+  },
+
+  {
+    "id": "activator1",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_right_top.json",
+    "properties": {
+      "initState":"CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      }
     ]
   }
 ]
