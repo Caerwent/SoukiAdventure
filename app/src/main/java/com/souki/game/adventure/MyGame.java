@@ -193,6 +193,10 @@ public class MyGame extends Game implements ISystemEventListener {
             mCurrentScreen = mScreenRequested;
             setScreen(mCurrentScreen);
         }
+        if(mCurrentScreen!=mGameScreen && mGameScreen!=null && mGameScreen.isUnloading())
+        {
+            mGameScreen.render(Gdx.graphics.getDeltaTime());
+        }
 
     }
 

@@ -20,6 +20,7 @@ import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.CharacterMoveController5;
@@ -49,6 +50,12 @@ import static com.souki.game.adventure.Settings.TARGET_WIDTH;
 public class GameScreen implements Screen, GestureDetector.GestureListener, InputProcessor {
 
     public final static String TAG = GameScreen.class.getSimpleName();
+
+    private static class LoadMapInfo {
+        public String mTargetMapId;
+        public String mFromMapId;
+        public MapTownPortalInfo mTownPortalInfo;
+    }
     public Rectangle viewport;
     public int orientation;
 
@@ -62,6 +69,23 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
     private BitmapFont font;
     private SpriteBatch batch;
     ShapeRenderer pathRenderer;
+
+    protected boolean mIsUnloading = false;
+    protected LoadMapInfo mLoadMapInfo;
+    boolean mIsIrisRunning = false;
+    boolean mIsIrisReload = false;
+    private float mIrisTime = 0;
+    private static final float IRIS_DURATION = 1;
+    private ShapeRenderer mIrisRenderer;
+    private Array<Array<Vector3>> mIrisTriX = new Array<Array<Vector3>>();
+    private Array<Array<Vector3>> mIrisTriY = new Array<Array<Vector3>>();
+
+    final private int mIrisCircleSmoothness = 62; //the higher the more smooth the circle
+    private float IRIS_OUTERBOUND = 500; //the higher this is, the further is expands 'out' at its fullest
+    final private float IRIS_INNERBOUND = 1;
+    private float mIrisCurrentBound = IRIS_OUTERBOUND; //where it currently is at
+
+
     private ShapeRenderer mPathSpotRenderer;
     private Shape mSpot;
     private double accumulator;
@@ -74,12 +98,13 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
     InputMultiplexer mInputMultiplexer = new InputMultiplexer();
 
 
+
     public GameScreen() {
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
 
         camera = new OrthographicCamera();
-        float worldViewPortHeight = 15/ (h / TARGET_HEIGHT);
+        float worldViewPortHeight = 15 / (h / TARGET_HEIGHT);
         camera.setToOrtho(false, (w / h) * 10, 10);
         //camera.zoom = 2;
         camera.update();
@@ -87,6 +112,8 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         //cameraController = new OrthoCamController(camera);
 
         uiCamera = new OrthographicCamera(TARGET_WIDTH, TARGET_HEIGHT);
+        mIrisRenderer = new ShapeRenderer();
+        createIrisWipe();
 
         font = new BitmapFont();
         batch = new SpriteBatch();
@@ -131,13 +158,40 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         return mSpot;
     }
 
-    public void loadMap(String aTargetMapId, String aFromMapId, MapTownPortalInfo aTownPortalInfo) {
+    protected void releaseMap()
+    {
         if (map != null) {
+
             map.playMusic(false);
             map.destroy();
             EntityEngine.destroyInstance();
+            map=null;
+
         }
-        map = null;
+    }
+    public void loadMap(String aTargetMapId, String aFromMapId, MapTownPortalInfo aTownPortalInfo) {
+        mIsIrisReload = false;
+        mIsIrisRunning = true;
+        mIrisTime = 0;
+        mLoadMapInfo = new LoadMapInfo();
+        mLoadMapInfo.mTargetMapId = aTargetMapId;
+        mLoadMapInfo.mFromMapId = aFromMapId;
+        mLoadMapInfo.mTownPortalInfo = aTownPortalInfo;
+        if (map != null) {
+            mIsUnloading = true;
+            mIsIrisReload = true;
+            return;
+        }
+
+        releaseMap();
+        internalLoadMap();
+
+    }
+
+    protected void internalLoadMap()
+    {
+        if(mLoadMapInfo==null)
+            return;
 
         EntityEngine.createInstance();
         EntityEngine.getInstance().addSystem(new MovementSystem());
@@ -145,12 +199,10 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         EntityEngine.getInstance().addSystem(new InteractionSystem());
         EntityEngine.getInstance().addSystem(new CollisionInteractionSystem());
         //  EntityEngine.getInstance().addSystem(new PathRenderSystem(pathRenderer));
-        map = new GameMap(aTargetMapId, aFromMapId, camera, aTownPortalInfo);
+        map = new GameMap(mLoadMapInfo.mTargetMapId, mLoadMapInfo.mFromMapId, camera, mLoadMapInfo.mTownPortalInfo);
         bobController.setMap(map);
         EventDispatcher.getInstance().onMapLoaded(map);
         map.playMusic(true);
-
-
     }
 
 
@@ -186,55 +238,80 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
 
     }
 
+    public boolean isUnloading()
+    {
+        return mIsUnloading;
+    }
+
     @Override
     public void render(float delta) {
-       /* double newTime = TimeUtils.millis() / 1000.0;
-        double frameTime = Math.min(newTime - currentTime, 0.25);
-        float deltaTime = (float) frameTime;
 
-        currentTime = newTime;*/
-        UIStage.getInstance().act(delta);
-        // set viewport
-        //    Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
-        //            (int) viewport.width, (int) viewport.height);
-
-        // clear previous frame
-        //Gdx.gl.glClearColor(100f / 255f, 100f / 255f, 250f / 255f, 1f);
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if (EntityEngine.getInstance() != null) {
-            EntityEngine.getInstance().
-                    update(delta/*Time*/);
+
+        if(!mIsUnloading)
+        {
+            UIStage.getInstance().act(delta);
+
+
+            if (EntityEngine.getInstance() != null) {
+                EntityEngine.getInstance().
+                        update(delta/*Time*/);
+            }
         }
+
+
 
         if (map != null)
             map.render();
-        pathRenderer.setProjectionMatrix(camera.combined);
-        if (map.getPlayer().getHero().getPath() != null) {
-            pathRenderer.begin();
-            map.getPlayer().getHero().getPath().render(pathRenderer);
-            pathRenderer.end();
-        } else if (bobController.getPath() != null) {
-            pathRenderer.begin();
-            bobController.getPath().render(pathRenderer);
-            pathRenderer.end();
-        }
-        batch.begin();
-        //font.draw(batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
-        if (mSpot != null) {
-            batch.setProjectionMatrix(camera.combined);
+        if(!mIsUnloading) {
+            pathRenderer.setProjectionMatrix(camera.combined);
+            if (map.getPlayer().getHero().getPath() != null) {
+                pathRenderer.begin();
+                map.getPlayer().getHero().getPath().render(pathRenderer);
+                pathRenderer.end();
+            } else if (bobController.getPath() != null) {
+                pathRenderer.begin();
+                bobController.getPath().render(pathRenderer);
+                pathRenderer.end();
+            }
+            batch.begin();
+            //font.draw(batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20);
+            if (mSpot != null) {
+                batch.setProjectionMatrix(camera.combined);
 
-            batch.setColor(Color.YELLOW);
-            batch.enableBlending();
-            map.getPlayer().getHero().renderShadowed(mSpot.getX(), mSpot.getY(), batch);
-        }
+                batch.setColor(Color.YELLOW);
+                batch.enableBlending();
+                map.getPlayer().getHero().renderShadowed(mSpot.getX(), mSpot.getY(), batch);
+            }
 
-        batch.end();
+            batch.end();
+        }
 
 
         UIStage.getInstance().
 
                 draw();
+
+        if (mIsIrisRunning) {
+            mIrisTime += delta;
+            drawIris(mIrisTime);
+            if (mIrisTime >= IRIS_DURATION) {
+                if (mIsIrisReload) {
+                    mIsIrisReload = false;
+                    mIrisTime = 0;
+                } else {
+                    mIsIrisRunning = false;
+                }
+                if(mIsUnloading)
+                {
+                    mIsUnloading = false;
+                    releaseMap();
+                    internalLoadMap();
+                }
+
+            }
+        }
 
 
     }
@@ -263,6 +340,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
             orientation = 0;
         else
             orientation = 1;
+
     }
 
     @Override
@@ -368,7 +446,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
                 }
             }
         }
-        Gdx.app.debug("DEBUG", "touchX=" + curr.x + " touchY=" + curr.y);
+      //  Gdx.app.debug("DEBUG", "touchX=" + curr.x + " touchY=" + curr.y);
         return false;
     }
 
@@ -406,4 +484,84 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
     public void pinchStop() {
 
     }
+
+
+    private void createIrisWipe()
+    {
+  /*
+  * create two arrays of arrays for circle triangles
+  */
+        mIrisTriX = new Array<Array<Vector3>>();
+        mIrisTriY = new Array<Array<Vector3>>();
+
+  /*
+ * this is angle "slice" for each triangle that makes up the circle
+  */
+        float step = (360f / mIrisCircleSmoothness);
+
+        for(float angle = 0; angle < 360; angle = angle + step)
+        {
+            //first vertex
+            float x1 = (float)Math.cos(Math.toRadians(angle));
+            float y1 = (float)Math.sin(Math.toRadians(angle));
+
+            //second vertex
+            float x2 = (float)Math.cos(Math.toRadians(angle + step));
+            float y2 = (float)Math.sin(Math.toRadians(angle + step));
+
+            //third vertex
+            float x3 = (float)Math.cos(Math.toRadians(angle +  step * 2f ));
+            float y3 = (float)Math.sin(Math.toRadians(angle + step * 2f));
+
+            //add x positions to array of arrays
+            //combined, these give the vertices of the triangle to draw later
+            Array<Vector3> tempTriX = new Array<Vector3>();
+            tempTriX.add(new Vector3(x1,x2,x3));
+            mIrisTriX.add(tempTriX);
+
+            //add y positions to array of arrays
+            Array<Vector3> tempTriY = new Array<Vector3>();
+            tempTriY.add(new Vector3(y1,y2,y3));
+            mIrisTriY.add(tempTriY);
+
+        }
+    }
+
+    void drawIris(float time) {
+        // http://sloppycoding.com/index.php/java-libgdx/iris-wipe/
+        if (mIsIrisReload) {
+            mIrisCurrentBound = IRIS_OUTERBOUND- (time * (IRIS_OUTERBOUND-IRIS_INNERBOUND) / IRIS_DURATION);
+        }
+        else
+        {
+            mIrisCurrentBound = IRIS_INNERBOUND+ (time * (IRIS_OUTERBOUND-IRIS_INNERBOUND) / IRIS_DURATION);
+        }
+        Gdx.app.debug("DEBUG", "time=" + time + " mIrisCurrentBound=" + mIrisCurrentBound);
+        mIrisRenderer.setProjectionMatrix(uiCamera.combined);
+        mIrisRenderer.setColor(Color.BLACK);
+        mIrisRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        float halfScreenWidth = uiCamera.position.x;
+        float halfScreenHeight = uiCamera.position.y;
+
+        Color blackColor = Color.BLACK;
+        for(int v = 0; v < mIrisTriX.size; v++)
+        {
+            mIrisRenderer.triangle(mIrisTriX.get(v).get(0).x * mIrisCurrentBound + halfScreenWidth, mIrisTriY.get(v).get(0).x * mIrisCurrentBound + halfScreenHeight,
+                    mIrisTriX.get(v).get(0).y * mIrisCurrentBound  + halfScreenWidth, mIrisTriY.get(v).get(0).y * mIrisCurrentBound + halfScreenHeight,
+                    mIrisTriX.get(v).get(0).y * IRIS_OUTERBOUND  + halfScreenWidth, mIrisTriY.get(v).get(0).y * IRIS_OUTERBOUND + halfScreenHeight
+                    , blackColor, blackColor, blackColor
+            );
+
+            mIrisRenderer.triangle(mIrisTriX.get(v).get(0).y * mIrisCurrentBound + halfScreenWidth, mIrisTriY.get(v).get(0).y * mIrisCurrentBound + halfScreenHeight,
+                    mIrisTriX.get(v).get(0).y * IRIS_OUTERBOUND  + halfScreenWidth, mIrisTriY.get(v).get(0).y * IRIS_OUTERBOUND + halfScreenHeight,
+                    mIrisTriX.get(v).get(0).z * IRIS_OUTERBOUND  + halfScreenWidth, mIrisTriY.get(v).get(0).z * IRIS_OUTERBOUND + halfScreenHeight
+                    , blackColor, blackColor, blackColor
+            );
+
+
+        }
+
+        mIrisRenderer.end();
+    }
+
 }
