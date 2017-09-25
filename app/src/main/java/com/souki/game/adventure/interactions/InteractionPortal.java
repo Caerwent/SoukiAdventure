@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.box2d.CircleShape;
 import com.souki.game.adventure.box2d.RectangleShape;
@@ -14,6 +15,8 @@ import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.VisualComponent;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.events.IQuestListener;
+import com.souki.game.adventure.items.Item;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.map.IMapRendable;
 import com.souki.game.adventure.quests.Quest;
@@ -29,11 +32,12 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     protected String mTargetMapId;
     protected boolean mIsDefaultStart = false;
     boolean mIsActivated = false;
-    protected String mActivatedByQuestId=null;
-    protected String mQuestId=null;
+    protected String mActivatedByQuestId = null;
+    protected String mQuestId = null;
+    protected String mActivatedByItem = null;
 
-    protected int mWidth=-1;
-    protected int mHeight=-1;
+    protected int mWidth = -1;
+    protected int mHeight = -1;
 
     private RectangleShape mMarkShape;
     private TextureRegion mInteractionTextureRegion;
@@ -43,40 +47,38 @@ public class InteractionPortal extends Interaction implements IQuestListener {
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.PORTAL;
 
-        if(mProperties!=null)
-        {
-            if(mProperties.containsKey("activateQuestId"))
-            {
-                mQuestId=(String) aMapping.properties.get("activateQuestId");
+        if (mProperties != null) {
+            if (mProperties.containsKey("activateQuestId")) {
+                mQuestId = (String) aMapping.properties.get("activateQuestId");
             }
-            if(mProperties.containsKey("targetMapId"))
-            {
-                mTargetMapId=(String) aMapping.properties.get("targetMapId");
+            if (mProperties.containsKey("targetMapId")) {
+                mTargetMapId = (String) aMapping.properties.get("targetMapId");
             }
             if (mProperties.containsKey("isDefaultStart")) {
-                mIsDefaultStart = Boolean.parseBoolean((String)aMapping.properties.get("isDefaultStart"));
+                mIsDefaultStart = Boolean.parseBoolean((String) aMapping.properties.get("isDefaultStart"));
             }
-            if(mProperties.containsKey("activatedByQuestId"))
-            {
+            if (mProperties.containsKey("activatedByQuestId")) {
                 mActivatedByQuestId = (String) aMapping.properties.get("activatedByQuestId");
             }
+            if (mProperties.containsKey("activatedByItem")) {
+                mActivatedByItem = (String) aMapping.properties.get("activatedByItem");
+            }
             if (mProperties.containsKey("width")) {
-                mWidth =  ((Float) aMapping.properties.get("width")).intValue();
+                mWidth = ((Float) aMapping.properties.get("width")).intValue();
             }
             if (mProperties.containsKey("height")) {
-                mHeight =  ((Float) aMapping.properties.get("height")).intValue();
+                mHeight = ((Float) aMapping.properties.get("height")).intValue();
             }
         }
-        initialize(x,y,aMapping);
-        if(isClickable())
-        {
+        initialize(x, y, aMapping);
+        if (isClickable()) {
             mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("Interaction");
             mMarkShape = new RectangleShape();
             updateInteractionMarkShape();
             final IMapRendable self = this;
             this.add(new VisualComponent(mInteractionTextureRegion, new IMapRendable() {
 
-                boolean mIsRended=false;
+                boolean mIsRended = false;
 
                 @Override
                 public boolean isRendable() {
@@ -90,7 +92,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
                 @Override
                 public void setRended(boolean aRended) {
-                    mIsRended=aRended;
+                    mIsRended = aRended;
                 }
 
                 @Override
@@ -127,23 +129,21 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     @Override
     public void updateInteraction(float dt) {
         super.updateInteraction(dt);
-        if(isClickable())
-        {
+        if (isClickable()) {
             updateInteractionMarkShape();
         }
     }
+
     public void updateInteractionMarkShape() {
         if (mMarkShape == null)
             return;
-        float width_frame = mShapeInteraction.getWidth()/ MyGame.SCALE_FACTOR;
-        float height_frame = mShapeInteraction.getHeight()/ MyGame.SCALE_FACTOR;
-        if(mWidth>0)
-        {
+        float width_frame = mShapeInteraction.getWidth() / MyGame.SCALE_FACTOR;
+        float height_frame = mShapeInteraction.getHeight() / MyGame.SCALE_FACTOR;
+        if (mWidth > 0) {
             width_frame = mWidth;
         }
-        if(mHeight>0)
-        {
-            height_frame=mHeight;
+        if (mHeight > 0) {
+            height_frame = mHeight;
         }
 
         float width = mInteractionTextureRegion.getRegionWidth();
@@ -173,13 +173,13 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     }
 
     @Override
-    public void startToInteract()
-    {
+    public void startToInteract() {
         super.startToInteract();
         remove(CollisionObstacleComponent.class);
         remove(CollisionEffectComponent.class);
 
     }
+
     @Override
     public Shape createShapeInteraction() {
         mShapeInteraction = new CircleShape();
@@ -195,9 +195,8 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     }
 
 
-    protected void teleport()
-    {
-        if (mIsActivated && mTargetMapId!=null)
+    protected void teleport() {
+        if (mIsActivated && mTargetMapId != null)
             EventDispatcher.getInstance().onNewMapRequested(mTargetMapId, null);
     }
 
@@ -206,8 +205,8 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
 
         if (mIsInteractionShown) {
-            float width_frame = mShapeInteraction.getWidth()/ MyGame.SCALE_FACTOR;
-            float height_frame = mShapeInteraction.getHeight()/ MyGame.SCALE_FACTOR;
+            float width_frame = mShapeInteraction.getWidth() / MyGame.SCALE_FACTOR;
+            float height_frame = mShapeInteraction.getHeight() / MyGame.SCALE_FACTOR;
 
             float width = mInteractionTextureRegion.getRegionWidth();
             float height = mInteractionTextureRegion.getRegionHeight();
@@ -218,11 +217,27 @@ public class InteractionPortal extends Interaction implements IQuestListener {
                     width, height,
                     MyGame.SCALE_FACTOR, MyGame.SCALE_FACTOR,
                     0);
+            if(mActivatedByItem!=null)
+            {
+                Item item = ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mActivatedByItem));
+                batch.draw(item.getTextureRegion(),
+                        mMarkShape.getX()/*+(width-item.getTextureRegion().getRegionWidth())/2*/, mMarkShape.getY()/*+(height-item.getTextureRegion().getRegionHeight())/2*/,
+                        0, 0,
+                        item.getTextureRegion().getRegionWidth(), item.getTextureRegion().getRegionHeight(),
+                        MyGame.SCALE_FACTOR, MyGame.SCALE_FACTOR,
+                        0);
+            }
         }
     }
+
     @Override
     public void onTouchInteraction() {
-        teleport();
+        if(mActivatedByItem==null) {
+            teleport();
+        }
+        else {
+
+        }
     }
 
     @Override
@@ -234,17 +249,25 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     @Override
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
 
-        if(!mDef.isClickable) {
+        if (!mDef.isClickable) {
             teleport();
-        }
-        else
-        {
+        } else {
             mIsInteractionShown = true;
+            if(mActivatedByItem!=null)
+            {
+                Array<Item> items = mMap.getPlayer().getItemsInventoryById(mActivatedByItem);
+                if(items.size>0)
+                {
+                    mActivatedByItem=null;
+                    mMap.getPlayer().removeItem(items.first());
+                }
+            }
         }
     }
+
     @Override
     public void onStopCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if(mActivatedByQuestId==null) {
+        if (mActivatedByQuestId == null) {
             mIsActivated = true;
         }
         mIsInteractionShown = false;
@@ -274,9 +297,8 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     @Override
     public void onQuestCompleted(Quest aQuest) {
-        if(mActivatedByQuestId!=null && aQuest.getId().compareTo(mActivatedByQuestId)==0)
-        {
-            mActivatedByQuestId=null;
+        if (mActivatedByQuestId != null && aQuest.getId().compareTo(mActivatedByQuestId) == 0) {
+            mActivatedByQuestId = null;
         }
     }
 
@@ -285,13 +307,11 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     }
 
-    public String getQuestId()
-    {
+    public String getQuestId() {
         return mQuestId;
     }
 
-    public void setQuestId(String aQuestId)
-    {
+    public void setQuestId(String aQuestId) {
         mQuestId = aQuestId;
     }
 
