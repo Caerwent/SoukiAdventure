@@ -117,10 +117,10 @@
     "eventsAction": []
   },
   {
-    "id": "barrier1",
-    "template": "barrier_wood_right_top.json",
+    "id": "barrier_1",
+    "template": "barrier_wood_top_left.json",
     "properties": {
-      "initState":"CLOSED"
+      "initState":"OPEN"
     },
     "eventsAction": [
       {
@@ -130,9 +130,9 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator1",
+            "sourceId": "activator_push_1",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "ACTIVATED"
           }
         ]
       },
@@ -143,35 +143,9 @@
         },
         "inputEvents": [
           {
-            "sourceId": "THIS",
+            "sourceId": "barrier_push_1",
             "type": "STATE",
             "value": "CLOSED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator1",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "OPEN",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "THIS",
-            "type": "STATE",
-            "value": "OPEN"
           }
         ]
       }

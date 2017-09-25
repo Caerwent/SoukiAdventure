@@ -19,6 +19,15 @@
     "outputEvents": []
   },
   {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
     "id": "wood1",
     "template": "obstacle_log_wood.json",
     "properties": {
