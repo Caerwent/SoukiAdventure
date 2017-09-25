@@ -17,6 +17,7 @@ raph/
 
 # Local configuration file (sdk path, etc)
 local.properties
+.gitconfig
 
 # Eclipse project files
 .classpath
