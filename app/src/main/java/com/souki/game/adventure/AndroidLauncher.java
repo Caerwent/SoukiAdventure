@@ -18,6 +18,7 @@ public class AndroidLauncher extends AndroidApplication {
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         initialize(new MyGame(), config);
         Gdx.input.setCatchBackKey(true);
+        Gdx.input.setCatchMenuKey(true);
     }
 
     @Override
