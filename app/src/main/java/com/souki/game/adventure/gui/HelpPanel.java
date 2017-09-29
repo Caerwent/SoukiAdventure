@@ -47,6 +47,7 @@ public class HelpPanel extends Table {
         mInventoryTable.setSkin(GenericUI.getInstance().getSkin());
         //  mInventoryTable.align(Align.topLeft);
         mInventoryTable.setName("Inventory_Slot_Table");
+        mInventoryTable.padLeft(5).padRight(10);
         //  mInventoryTable.setPosition(0,25);
         //  mInventoryTable.setSize(mLengthSlotRow*mSlotWidth+5, Settings.TARGET_HEIGHT - 64);
 
@@ -54,6 +55,8 @@ public class HelpPanel extends Table {
 
         ScrollPane scrollPane = new ScrollPane(mInventoryTable, GenericUI.getInstance().getSkin(), "inventoryPane");
         scrollPane.setScrollingDisabled(true, false);
+        scrollPane.setFadeScrollBars(false);
+        scrollPane.setFlickScroll(true);
         add(scrollPane).fillY().expand().left();
 
         add(mDetails).top().left();

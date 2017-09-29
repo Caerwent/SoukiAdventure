@@ -25,13 +25,9 @@ public class InventoryDetails extends Table {
         mItemDescLabel.setAlignment(Align.topLeft);
         mScrollPane = new ScrollPane(mItemDescLabel, GenericUI.getInstance().getSkin(), "inventoryPane");
         this.add(mScrollPane).width(aWidth).top().left().pad(5);
-       /* mScrollPane.setForceScroll(false, true);
-        mScrollPane.setFlickScroll(false);
-        mScrollPane.setOverscroll(false, true);*/
         mScrollPane.setScrollingDisabled(true, false);
-        //mScrollPane.setFillParent(true);
-        //  setBackground(UIStage.getInstance().getSkin().getDrawable("window1"));
-        //  setColor(UIStage.getInstance().getSkin().getColor("lt-blue"));
+        mScrollPane.setFadeScrollBars(false);
+        mScrollPane.setFlickScroll(true);
         setSkin(GenericUI.getInstance().getSkin());
         setName("Inventory_Details");
         row();

@@ -37,9 +37,12 @@ public class EffectsPanel extends Table {
     private void init() {
         mList.setSkin(GenericUI.getInstance().getSkin());
         mList.setName("Effects_Slot_Table");
+        mList.padLeft(5).padRight(10);
         mDetails = new InventoryDetails(200, (Settings.TARGET_HEIGHT - 64) / 2);
         ScrollPane scrollPane = new ScrollPane(mList, GenericUI.getInstance().getSkin(), "inventoryPane");
         scrollPane.setScrollingDisabled(true, false);
+        scrollPane.setFadeScrollBars(false);
+        scrollPane.setFlickScroll(true);
         add(scrollPane).fillY().expand().left();
 
         add(mDetails).top().left();

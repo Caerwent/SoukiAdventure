@@ -42,11 +42,9 @@ public class DialogTable extends Table implements IDialogListener {
         mLabel.setAlignment(Align.topLeft);
         mScrollPane = new ScrollPane(mLabel, GenericUI.getInstance().getSkin(), "dialogPane");
         this.add(mScrollPane).pad(14,14,14,14).expandX().fill().top().left();
-       /* mScrollPane.setForceScroll(false, true);
-        mScrollPane.setFlickScroll(false);
-        mScrollPane.setOverscroll(false, true);*/
         mScrollPane.setScrollingDisabled(true, false);
-        //mScrollPane.setFillParent(true);
+        mScrollPane.setFadeScrollBars(false);
+        mScrollPane.setFlickScroll(true);
         setBackground(GenericUI.getInstance().getSkin().getDrawable("dialog"));
        // setColor(UIStage.getInstance().getSkin().getColor("lt-blue"));
         setSkin(GenericUI.getInstance().getSkin());
