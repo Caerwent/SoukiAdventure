@@ -17,5 +17,116 @@
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+  {
+    "id": "npc_elf",
+    "template": "elf.json",
+    "properties": {
+      "dialogId": "quest_elf"
+    },
+
+
+    "questActions":[
+      {
+        "questId": "quest_elf",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_elf_activated"
+        }
+      },
+      {
+        "questId": "quest_elf",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_elf_completed"
+        }
+      },
+      {
+        "questId": "quest_elf",
+        "questState": "FINISHED",
+        "action": {
+          "type": "SET_STATE",
+          "value": "IDLE"
+        }
+      },
+      {
+        "questId": "quest_elf_reward",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "LAUNCH_EFFECT",
+          "value": "PORTAL"
+        }
+      },
+      {
+        "questId": "quest_elf_reward",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_elf"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"",
+            "type":"DIALOG",
+            "value":"quest_elf"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "EFFECT_STOP",
+            "value": "PORTAL"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_elf_reward"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "IDLE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_elf_completed"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[
+      {
+        "type":"STATE",
+        "value":"IDLE"
+      }]
   }
 ]

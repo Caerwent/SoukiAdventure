@@ -1,0 +1,32 @@
+{
+  "type": "NPC",
+  "atlas": "elf.atlas",
+  "persistence": "GAME",
+  "defaultState": "TRANSFORMED",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping": "true",
+      "fps": "0",
+      "frames": [
+        "elfe"
+      ]
+    },
+    {
+      "name": "TRANSFORMED",
+      "isLooping": "true",
+      "fps": "0",
+      "frames": [
+        "pineapple"
+      ]
+    }
+  ],
+  "questActions": [
+  ],
+  "eventsAction": [
+  ],
+  "outputEvents": []
+}

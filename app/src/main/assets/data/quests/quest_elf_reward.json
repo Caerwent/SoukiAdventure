@@ -1,0 +1,18 @@
+{
+  "id": "quest_elf_reward",
+  "title": "quest_elf_title",
+  "desc": "quest_elf_desc",
+  "requiredCompletedQuest": ["quest_elf"],
+  "itemsReward": ["KeyCrystal"],
+  "effectsReward": [],
+  "tasks" : [
+    {
+      "id": "quest_elf_reward_task1",
+      "type":"DIALOG",
+      "targetId":"quest_elf_reward",
+      "value":"",
+      "requiredCompletedTask":[]
+    }
+  ]
+}
+

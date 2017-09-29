@@ -46,7 +46,7 @@ import static com.souki.game.adventure.Settings.TARGET_WIDTH;
 public class MainHUD extends Group implements ISystemEventListener, IQuestListener {
 
     private static final int DIALOG_W = TARGET_WIDTH / 4 * 3;
-    private static final int DIALOG_H = TARGET_HEIGHT / 4;
+    private static final int DIALOG_H = TARGET_HEIGHT / 3;
 
     protected final HorizontalGroup mHud = new HorizontalGroup();
 

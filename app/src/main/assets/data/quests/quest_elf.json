@@ -1,0 +1,26 @@
+{
+  "id": "quest_elf",
+  "title": "quest_elf_title",
+  "desc": "quest_elf_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_elf_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "PotionRounededBrown",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_elf_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "npc_elf",
+      "requiredCompletedTask": [
+        "quest_elf_task1"
+      ]
+    }
+  ]
+}
+

@@ -454,5 +454,151 @@
 
 
 
+  {
+    "id": "quest_elf",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_phrase3"
+
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_phrase4"
+        ]
+      },
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_phrase5",
+          "quest_elf_phrase6",
+          "quest_elf_phrase7",
+          "quest_elf_phrase8"
+
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_phrase9"
+        ]
+      },
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_phrase10"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_phrase11"
+        ]
+      },
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_phrase12"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_phrase13"
+        ]
+      },
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_phrase14"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_phrase15"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_elf_activated",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_activated_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_activated_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_elf_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_completed_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_elf_reward",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_transformed_name",
+        "phrases": [
+          "quest_elf_reward_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_elf_reward_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_elf_reward_phrase3",
+          "quest_elf_reward_phrase4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_elf_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_elf_finished_phrase1"
+        ]
+      }
+    ]
+  }
+
 ]
 
