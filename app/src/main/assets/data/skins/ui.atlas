@@ -147,6 +147,8 @@ slider2
   rotate: false
   xy: 290, 4
   size: 16, 26
+  split: 4, 4, 12, 12
+  pad: 4, 4, 12, 12
   orig: 16, 26
   offset: 0, 0
   index: -1
@@ -204,5 +206,30 @@ zoomOut
   xy: 613, 70
   size: 56, 56
   orig: 56, 56
+  offset: 0, 0
+  index: -1
+default-scroll
+  rotate: false
+  xy: 305, 6
+  size: 16, 16
+  split: 6, 6, 6, 6
+  pad: 4, 4, 4, 4
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+default-round-large
+  rotate: false
+  xy: 229, 3
+  size: 20, 20
+  split: 9, 10, 9, 10
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+knob
+  rotate: false
+  xy: 352, 2
+  size: 8, 14
+  split: 3, 3, 6, 6
+  orig: 8, 14
   offset: 0, 0
   index: -1

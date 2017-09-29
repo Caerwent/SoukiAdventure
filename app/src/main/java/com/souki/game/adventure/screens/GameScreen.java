@@ -24,7 +24,6 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.CharacterMoveController5;
-import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.Settings;
 import com.souki.game.adventure.box2d.Shape;
 import com.souki.game.adventure.entity.EntityEngine;
@@ -395,7 +394,8 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         switch (keyCode) {
             case Input.Keys.ESCAPE:
             case Input.Keys.BACK:
-                MyGame.getInstance().setScreen(MyGame.ScreenType.MainMenu);
+            case Input.Keys.MENU:
+               // MyGame.getInstance().setScreen(MyGame.ScreenType.MainMenu);
                 break;
             default:
                 //  Log.out("unknown key");

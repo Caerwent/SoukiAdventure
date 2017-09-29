@@ -30,5 +30,24 @@
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+  {
+    "id":"chest1",
+    "template":"chest_type1.json",
+    "properties": {
+      "requiredItem":"KeyIron"
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id":"chest2",
+    "template":"chest_invisible.json",
+    "properties": {
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
   }
 ]

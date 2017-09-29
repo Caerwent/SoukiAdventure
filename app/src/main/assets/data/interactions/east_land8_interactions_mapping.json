@@ -77,7 +77,7 @@
     "id": "barrier_push_1",
     "template": "barrier_wood_top_left.json",
     "properties": {
-      "initState":"OPEN"
+      "startState":"OPEN"
     },
     "eventsAction": [
       {

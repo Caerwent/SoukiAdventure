@@ -1,0 +1,20 @@
+
+pack.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+elfe
+  rotate: false
+  xy: 2, 2
+  size: 22, 60
+  orig: 22, 60
+  offset: 0, 0
+  index: -1
+pineapple
+  rotate: false
+  xy: 26, 30
+  size: 19, 32
+  orig: 19, 32
+  offset: 0, 0
+  index: -1

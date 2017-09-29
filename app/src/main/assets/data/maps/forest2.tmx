@@ -168,7 +168,7 @@
    <polygon points="0,0 2,248 36,265 27,0"/>
   </object>
   <object id="104" x="239" y="361">
-   <polygon points="0,0 2,27 84,29 105,9 89,-6"/>
+   <polygon points="11,0 6.5,13.5 13,29 84,29 105,9 89,-6"/>
   </object>
   <object id="105" x="200" y="290">
    <polygon points="0,0 136,-1 106,24 1,30"/>

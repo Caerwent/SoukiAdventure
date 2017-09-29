@@ -120,7 +120,7 @@
     "id": "barrier_1",
     "template": "barrier_wood_top_left.json",
     "properties": {
-      "initState":"OPEN"
+      "startState":"OPEN"
     },
     "eventsAction": [
       {

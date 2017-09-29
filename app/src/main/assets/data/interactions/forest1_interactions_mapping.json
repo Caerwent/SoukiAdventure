@@ -22,7 +22,7 @@
     "id": "portal3",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "forest5"
+      "targetMapId": "forest4"
     },
     "eventsAction": [],
     "outputEvents": []
