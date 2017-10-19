@@ -1,0 +1,131 @@
+{
+  "type":"OBSTACLE",
+  "atlas":"obstacle_turtle.atlas",
+  "persistence":"NONE",
+  "defaultState":"OPEN",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps":"0",
+      "frames": [
+        "down"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps":"0",
+      "frames": [ "up"]
+    },
+    {
+      "name": "CLOSING",
+      "fps":"5",
+      "frames": [ "down1", "down2", "down3", "down4"]
+    },
+    {
+      "name": "OPENING",
+      "fps":"10",
+      "frames": [ "down4", "down3", "down2", "down1"]
+    }
+
+  ],
+  "properties": {
+    "closedBoundsAsObstacle":"true",
+    "openZIndex":0,
+    "killableWhenClosed":"true",
+    "setStateOnCollision":"CLOSING"
+  },
+  "eventsAction": [
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "OPEN"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "OPENING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "CLOSED"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "CLOSING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPENING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "CLOSE",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type":"STATE",
+      "value":"OPEN"
+    },
+    {
+      "type":"STATE",
+      "value":"CLOSED"
+    },
+    {
+      "type":"STATE",
+      "value":"OPENING"
+    },
+    {
+      "type": "END_STATE",
+      "value": "OPENING"
+    },
+    {
+      "type": "END_STATE",
+      "value": "CLOSING"
+    }
+  ]
+
+
+}

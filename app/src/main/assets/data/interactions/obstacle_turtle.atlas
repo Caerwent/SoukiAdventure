@@ -1,0 +1,48 @@
+
+obstacle_turtle.png
+size: 22,96
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+up
+  rotate: false
+  xy: 0, 0
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1
+down1
+  rotate: false
+  xy: 0, 16
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1
+down2
+  rotate: false
+  xy: 0, 32
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1
+down3
+  rotate: false
+  xy: 0, 48
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1
+down4
+  rotate: false
+  xy: 0, 64
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1
+down
+  rotate: false
+  xy: 0, 80
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1

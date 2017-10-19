@@ -2,6 +2,7 @@ package com.souki.game.adventure.interactions;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
+import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.map.GameMap;
@@ -24,6 +25,7 @@ public class InteractionObstacle extends Interaction {
     protected int mOpenZIndex = 1;
     protected boolean mKillableWhenClosed;
     protected boolean mHasCollisionWhenOpen;
+    protected String mSetStateOnCollision;
 
     public InteractionObstacle(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
@@ -54,6 +56,10 @@ public class InteractionObstacle extends Interaction {
             } else {
                 mOpenZIndex = super.getZIndex();
             }
+            if (mProperties.containsKey("setStateOnCollision")) {
+                mSetStateOnCollision = (String) mProperties.get("setStateOnCollision");
+            }
+
 
         }
         initialize(x, y, aMapping);
@@ -65,6 +71,11 @@ public class InteractionObstacle extends Interaction {
     public void startToInteract() {
         super.startToInteract();
         mCollisionObstacleComponent = getComponent(CollisionObstacleComponent.class);
+        if (mCurrentState != null && mCurrentState.name.equals(InteractionState.STATE_OPEN)) {
+            mIsOpen = true;
+        } else {
+            mIsOpen = false;
+        }
         onStateChanged();
 
     }
@@ -137,7 +148,43 @@ public class InteractionObstacle extends Interaction {
             return false;
 
         }
+
         return ret;
+    }
+
+    /*
+        @Override
+        public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
+            return mIsOpen && aEntity.mInteraction.getType() == Type.HERO;
+        }
+
+        @Override
+        public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
+            super.onStartCollisionInteraction(aEntity);
+            if (mIsOpen && mSetStateOnCollision != null && getState(mSetStateOnCollision) != null) {
+
+                if (ShapeUtils.overlaps(mShapeInteraction, ((InteractionHero) aEntity.mHandler).getShapeCollision())) {
+                    setState(mSetStateOnCollision);
+                    //mCollisionsObstacle.removeValue(, false);
+                }
+                else
+                {
+                    mCollisionsInteraction.removeValue(aEntity, true);
+                }
+            }
+        }
+    */
+    @Override
+    public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
+        return aEntity.mInteraction.getType() == Type.HERO;
+    }
+
+    @Override
+    public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
+        super.onStartCollisionInteraction(aEntity);
+        if (mSetStateOnCollision != null && getState(mSetStateOnCollision) != null) {
+            setState(mSetStateOnCollision);
+        }
     }
 
     protected void onStateChanged() {

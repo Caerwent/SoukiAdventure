@@ -3,7 +3,7 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "east_land9",
+      "targetMapId": "forest5",
       "isDefaultStart": "true"
     },
     "eventsAction": [],
@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "east_land9",
+      "targetMapId": "forest2",
       "height":60
     },
     "eventsAction": [],
