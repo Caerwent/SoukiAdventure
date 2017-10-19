@@ -23,7 +23,7 @@ public class PathHero extends PathMap {
         this(0);
     }
     public PathHero(float aOffset) {
-      super();
+      super("path_hero");
         mOffset = aOffset;
         setLoop(false);
         setRevert(false);
@@ -35,7 +35,7 @@ public class PathHero extends PathMap {
 
     public PathHero(PathMap aPath)
     {
-        super();
+        super("path_hero");
         positions=aPath.positions;
         mVelocity=aPath.mVelocity;
         currentPointIndex=aPath.currentPointIndex;

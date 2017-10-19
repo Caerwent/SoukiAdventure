@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-up" width="30" height="15" tilewidth="32" tileheight="32" nextobjectid="48">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="30" height="15" tilewidth="32" tileheight="32" nextobjectid="48">
  <tileset firstgid="1" source="Celianna_TileA2.tsx"/>
  <tileset firstgid="481" source="spring_E2_Candacis.tsx"/>
  <tileset firstgid="737" source="spring_D2_Candacis.tsx"/>
@@ -40,13 +40,13 @@
   <object id="38" name="ghost3" gid="1294" x="580" y="110" width="32" height="32"/>
   <object id="39" name="ghost4" gid="1294" x="680" y="388" width="32" height="32"/>
   <object id="40" name="ghost5" gid="1294" x="724" y="204" width="32" height="32"/>
-  <object id="41" name="ghost6" gid="1294" x="312" y="302" width="32" height="32"/>
+  <object id="41" name="ghost6" gid="1294" x="311" y="309" width="32" height="32"/>
   <object id="44" name="portal2" gid="1294" x="907" y="297" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="11" x="8" y="2" width="55" height="477"/>
   <object id="12" x="1" y="451" width="959" height="29"/>
-  <object id="13" x="139" y="1" width="819" height="60"/>
+  <object id="13" x="139" y="1" width="819" height="65"/>
   <object id="14" x="48" y="0" width="91" height="27"/>
   <object id="15" x="898" y="47" width="62" height="206"/>
   <object id="16" x="898" y="319" width="62" height="157"/>
@@ -79,7 +79,7 @@
   <object id="32" name="path5" x="311" y="190">
    <polyline points="0,0 448,1"/>
   </object>
-  <object id="33" name="path6" x="306" y="302">
+  <object id="33" name="path6" x="306" y="311">
    <polyline points="0,0 441,-1"/>
   </object>
  </objectgroup>

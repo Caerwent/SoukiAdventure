@@ -41,6 +41,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     private RectangleShape mMarkShape;
     private TextureRegion mInteractionTextureRegion;
+    private TextureRegion mInteractionEmptyTextureRegion;
     private boolean mIsInteractionShown = false;
 
     public InteractionPortal(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
@@ -73,6 +74,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
         initialize(x, y, aMapping);
         if (isClickable()) {
             mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("Interaction");
+            mInteractionEmptyTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("InteractionEmpty");
             mMarkShape = new RectangleShape();
             updateInteractionMarkShape();
             final IMapRendable self = this;
@@ -221,7 +223,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
             {
                 Item item = ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mActivatedByItem));
                 batch.draw(item.getTextureRegion(),
-                        mMarkShape.getX()/*+(width-item.getTextureRegion().getRegionWidth())/2*/, mMarkShape.getY()/*+(height-item.getTextureRegion().getRegionHeight())/2*/,
+                        mMarkShape.getX()+(width-item.getTextureRegion().getRegionWidth())/2*MyGame.SCALE_FACTOR, mMarkShape.getY()+(height-item.getTextureRegion().getRegionHeight())/2*MyGame.SCALE_FACTOR,
                         0, 0,
                         item.getTextureRegion().getRegionWidth(), item.getTextureRegion().getRegionHeight(),
                         MyGame.SCALE_FACTOR, MyGame.SCALE_FACTOR,
@@ -259,7 +261,8 @@ public class InteractionPortal extends Interaction implements IQuestListener {
                 if(items.size>0)
                 {
                     mActivatedByItem=null;
-                    mMap.getPlayer().removeItem(items.first());
+                  //  mMap.getPlayer().removeItem(items.first());
+                    // TO DO store activation in persitence before removing item
                 }
             }
         }

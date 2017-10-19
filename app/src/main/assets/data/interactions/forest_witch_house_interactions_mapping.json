@@ -1,0 +1,76 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "targetMapId": "forest8",
+      "width": 32,
+      "height": 60
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id":"witch",
+    "template":"witch.json",
+    "properties":{
+      "dialogId":"quest_witch"
+    },
+    "questActions":[
+      {
+        "questId": "quest_witch",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_witch_activated"
+        }
+      },
+      {
+        "questId": "quest_witch",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_witch_completed"
+        }
+      },
+      {
+        "questId": "quest_witch",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_witch_finished"
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_witch"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"",
+            "type":"DIALOG",
+            "value":"quest_witch"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_witch_finished"
+        },
+        "inputEvents":[
+          {
+            "sourceId":"",
+            "type":"DIALOG",
+            "value":"quest_completed"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[]
+  }
+]

@@ -21,6 +21,13 @@
     ]
   },
   {
+    "id": "house3_chest",
+    "items": [
+      "Hammer",
+      "Toaster"
+    ]
+  },
+  {
     "id": "east_land10_chest1",
     "items": [
       "VialRed",

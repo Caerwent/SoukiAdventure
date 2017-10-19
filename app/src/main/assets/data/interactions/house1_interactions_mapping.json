@@ -76,5 +76,11 @@
     ],
     "eventsAction":[],
     "outputEvents":[]
+  },
+  {
+    "id": "rich_cat",
+    "template": "rich_cat.json",
+    "properties": {
+    }
   }
 ]

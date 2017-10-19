@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="10" height="10" tilewidth="32" tileheight="32" nextobjectid="12">
+ <tileset firstgid="1" source="Celianna_TileA2.tsx"/>
+ <tileset firstgid="481" source="spring_E2_Candacis.tsx"/>
+ <tileset firstgid="737" source="cottage.tsx"/>
+ <tileset firstgid="993" source="cottage_roof.tsx"/>
+ <tileset firstgid="1249" source="terrain.tsx"/>
+ <layer name="ground1" width="10" height="10">
+  <data encoding="base64">
+   mwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAJsAAACbAAAAmwAAAA==
+  </data>
+ </layer>
+ <layer name="ground2" width="10" height="10">
+  <data encoding="base64">
+   rwIAAK4CAACvAgAAvwIAAL4CAAC/AgAAvgIAAL8CAAC+AgAAvwIAAL8CAADPAgAAzgIAAM8CAADOAgAAzwIAAM4CAADPAgAAzgIAAL4CAADPAgAA0AIAAN4CAADfAgAA3gIAAN8CAADeAgAA3wIAAN4CAADOAgAA3wIAAOACAAAAAAAAAAAAAAAAAAAXAwAAGAMAABkDAAAAAAAArQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAMAABUDAAAWAwAAAAAAAL0CAAAAAAAAgAIAAAAAAAAAAAAAAAAAAOoCAADrAgAA7AIAAAAAAACtAgAAjwIAAJACAAAAAAAAAAAAAAAAAAAKAwAACwMAAAwDAAAAAAAAvQIAAJ8CAACgAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK0CAACvAgAAsAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACOAgAAnwIAAI8CAACOAgAAjwIAAI4CAACPAgAAjgIAAI8CAACOAgAArwIAAA==
+  </data>
+ </layer>
+ <layer name="terrain1" width="10" height="10">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADqAwAA6wMAAOwDAADtAwAA7gMAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+gMAAPsDAAD8AwAA/QMAAP4DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoEAAALBAAADAQAAA0EAAAOBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaBAAAGwQAABwEAAAdBAAAHgQAAAAAAAB/AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASgUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH4CAAB/AgAAfgIAAH8CAAB+AgAAfwIAAH4CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="3" x="0" y="-1" width="319" height="96"/>
+  <object id="4" x="-5" y="286.667" width="327" height="32.3333"/>
+  <object id="5" x="288.667" y="49.3333" width="32" height="266"/>
+  <object id="6" x="162" y="225.333">
+   <polygon points="0,0 92,0 91.3333,-90.6667 52.6667,-131.333 38.6667,-131.333 0,-94"/>
+  </object>
+  <object id="7" x="0.666667" y="194">
+   <polygon points="-2,-12.6667 24,-5.33333 38,1.33333 59.3333,24 60,110.667 -0.666667,104"/>
+  </object>
+  <object id="8" x="-0.666667" y="130">
+   <polygon points="0,0 13.3333,-0.666667 31.3333,-35.3333 30,-112.667 0,-112.667"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="interactions">
+  <object id="1" name="portal1" gid="1294" x="5.33333" y="170.333" width="32" height="32"/>
+  <object id="2" name="portal2" gid="1294" x="193" y="230.333" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="zindex">
+  <object id="9" x="-2" y="162">
+   <polygon points="0,0 12,-0.666667 34,28.6667 32.6667,106 1.33333,108.667"/>
+  </object>
+  <object id="10" x="151.333" y="96">
+   <polygon points="0,0 0.666667,125.333 122.667,123.333 122,6.66667 56.6667,-56.6667"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="items">
+  <object id="11" name="KeyWood" type="ITEM" gid="1294" x="258" y="161.334" width="32" height="32"/>
+ </objectgroup>
+</map>

@@ -1,0 +1,12 @@
+witch.png
+size: 20, 55
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+idle
+  rotate: false
+  xy: 0,0
+  size: 20, 55
+  orig: 20, 55
+  offset: 0, 0
+  index: -1

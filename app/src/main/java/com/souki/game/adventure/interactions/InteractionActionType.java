@@ -13,7 +13,8 @@ public class InteractionActionType {
         CLOSE,
         REMOVED,
         LAUNCH_EFFECT,
-        ACTIVATE_QUEST;
+        ACTIVATE_QUEST,
+        SET_PATH;
     }
 
     public ActionType type;

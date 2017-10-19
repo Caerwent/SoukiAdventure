@@ -1,0 +1,360 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest6",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest8"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator",
+    "template": "activator_type1.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_bottom_right.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "barrier2",
+    "template": "barrier_wood_right_bottom.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "activator_push_pull1",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull2",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "barrier3",
+    "template": "barrier_wood_left_top.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "monster_tank",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wood1",
+    "template": "obstacle_log_wood.json"
+  }
+,
+  {
+    "id": "wood2",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood3",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood4",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood5",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood6",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood7",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood8",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood9",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood10",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood11",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "woodV1",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "woodV2",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "woodV3",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "woodV4",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "woodV5",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "woodV6",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "woodV7",
+    "template": "obstacle_log_wood2.json"
+  }
+]

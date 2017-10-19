@@ -9,5 +9,15 @@
     },
     "eventsAction":[],
     "outputEvents":[]
-  }
+  },
+  {
+    "id":"chest",
+    "template":"chest_type1.json",
+    "properties": {
+      "requiredItem":"KeyWood"
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
+  },
 ]

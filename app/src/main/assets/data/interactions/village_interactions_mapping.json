@@ -1,82 +1,146 @@
 [
   {
-    "id":"portal1",
-    "template":"portal.json",
+    "id": "portal1",
+    "template": "portal.json",
     "properties": {
-      "targetMapId":"east_land1"
+      "targetMapId": "east_land1"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"portal3",
-    "template":"portal_clickable.json",
+    "id": "portal3",
+    "template": "portal_clickable.json",
     "properties": {
-      "targetMapId":"house1",
-      "width":32,
-      "height":60
+      "targetMapId": "house1",
+      "width": 32,
+      "height": 60
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"portal4",
-    "template":"portal_clickable.json",
+    "id": "portal4",
+    "template": "portal_clickable.json",
     "properties": {
-      "targetMapId":"home",
-      "width":32,
-      "height":60
+      "targetMapId": "home",
+      "width": 32,
+      "height": 60
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-  "id":"portal5",
-  "template":"portal_clickable.json",
-  "properties": {
-    "targetMapId":"house3",
-    "activatedByQuestId":"quest_start",
-    "width":32,
-    "height":60
-  },
-  "eventsAction":[],
-  "outputEvents":[]
-},
-  {
-    "id":"portal6",
-    "template":"portal_clickable.json",
+    "id": "portal5",
+    "template": "portal_clickable.json",
     "properties": {
-      "targetMapId":"village_tower1",
-      "width":32,
-      "height":60
+      "targetMapId": "house3",
+      "activatedByQuestId": "quest_start",
+      "width": 32,
+      "height": 60
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"defaultPortal",
-    "template":"portal.json",
+    "id": "portal6",
+    "template": "portal_clickable.json",
     "properties": {
-      "isDefaultStart":"true"
+      "targetMapId": "village_tower1",
+      "width": 32,
+      "height": 60
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"carriage",
-    "template":"carriage_type1.json",
+    "id": "portal7",
+    "template": "portal.json",
     "properties": {
+      "targetMapId": "village_dock"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"malo",
-    "template":"malo.json",
-    "properties":{
-      "dialogId":"quest_malo"
+    "id": "defaultPortal",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true"
     },
-    "questActions":[
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "cow",
+    "template": "cow.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "lapin_bleu",
+    "template": "lapin_bleu.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "carriage",
+    "template": "carriage_type1.json",
+    "properties": {
+      "startState": "BROKEN",
+      "autoStart": "false",
+      "pathId": "path_carriage"
+    },
+    "questActions": [
+      {
+        "questId": "quest_malo",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "path_malo1",
+            "type": "END_PATH",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "path_carriage",
+            "type": "END_PATH",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "malo",
+    "template": "malo.json",
+    "properties": {
+      "dialogId": "quest_malo",
+      "pathId": "path_malo1",
+      "autoStart": "false"
+    },
+    "questActions": [
       {
         "questId": "quest_malo",
         "questState": "NOT_COMPLETED",
@@ -101,74 +165,115 @@
           "value": ""
         }
       }
-
     ],
-    "eventsAction":[
+    "eventsAction": [
       {
         "action": {
           "type": "ACTIVATE_QUEST",
           "value": "quest_malo"
         },
-        "inputEvents":[
+        "inputEvents": [
           {
-            "sourceId":"",
-            "type":"DIALOG",
-            "value":"quest_malo"
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_malo"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_malo_completed"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path_malo2"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "path_malo1",
+            "type": "END_PATH",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "path_malo2",
+            "type": "END_PATH",
+            "value": ""
           }
         ]
       }
     ],
-    "outputEvents":[]
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "MOVE_LEFT"
+      }
+    ]
   },
-
   {
-    "id":"chien_jaune",
-    "template":"npc_chien_jaune.json",
-    "properties":{
-      "dialogId":"quest_guitar"
+    "id": "chien_jaune",
+    "template": "npc_chien_jaune.json",
+    "properties": {
+      "dialogId": "quest_guitar"
     },
-    "questActions":[
-    {
-      "questId": "quest_guitar",
-      "questState": "NOT_COMPLETED",
-      "action": {
-        "type": "DIALOG",
-        "value": "quest_guitar_activated"
+    "questActions": [
+      {
+        "questId": "quest_guitar",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_guitar_activated"
+        }
+      },
+      {
+        "questId": "quest_guitar",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_guitar_completed"
+        }
+      },
+      {
+        "questId": "quest_guitar",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_guitar_finished"
+        }
       }
-    },
-    {
-      "questId": "quest_guitar",
-      "questState": "COMPLETED",
-      "action": {
-        "type": "DIALOG",
-        "value": "quest_guitar_completed"
-      }
-    },
-    {
-      "questId": "quest_guitar",
-      "questState": "FINISHED",
-      "action": {
-        "type": "DIALOG",
-        "value": "quest_guitar_finished"
-      }
-    }
-
-  ],
-    "eventsAction":[
+    ],
+    "eventsAction": [
       {
         "action": {
           "type": "ACTIVATE_QUEST",
           "value": "quest_guitar"
         },
-        "inputEvents":[
+        "inputEvents": [
           {
-            "sourceId":"",
-            "type":"DIALOG",
-            "value":"quest_guitar"
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_guitar"
           }
         ]
       }
     ],
-    "outputEvents":[]
+    "outputEvents": []
   }
 ]

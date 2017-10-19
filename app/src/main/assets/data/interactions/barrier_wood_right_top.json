@@ -7,8 +7,8 @@
   "isRendable": "true",
   "isMovable": "false",
   "properties": {
-    "hasCollisionWhenOpen":"true",
-    "closedBoundsAsObstacle":"true"
+    "hasCollisionWhenOpen": "true",
+    "closedBoundsAsObstacle": "true"
   },
   "states": [
     {
@@ -24,6 +24,44 @@
       "frames": [
         "barrier_face_top"
       ]
+    }
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "CLOSE",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "STATE",
+      "value": "CLOSED"
+    },
+    {
+      "type": "STATE",
+      "value": "OPEN"
     }
   ]
 }

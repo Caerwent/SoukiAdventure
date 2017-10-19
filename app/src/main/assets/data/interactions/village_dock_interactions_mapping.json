@@ -1,0 +1,37 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "village",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+
+
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "island1",
+      "width": 96,
+      "height": 32
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+
+  {
+    "id": "carriage",
+    "template": "carriage_type1.json"
+  },
+  {
+    "id": "malo",
+    "template": "malo.json",
+    "properties": {
+      "dialogId": "quest_malo_finished"
+    }
+  }
+]

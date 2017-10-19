@@ -1,0 +1,13 @@
+
+cow.png
+size: 32,79
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 0, 0
+  size: 32,79
+  orig: 32,79
+  offset: 0, 0
+  index: -1

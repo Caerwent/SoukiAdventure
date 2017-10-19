@@ -1,0 +1,21 @@
+[
+  {
+    "id": "portal1",
+    "template": "forest3_tower2.json",
+    "properties": {
+      "targetMapId": "elves_forest1",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

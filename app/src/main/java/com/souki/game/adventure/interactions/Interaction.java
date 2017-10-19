@@ -513,23 +513,23 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             }
         }
         mCurrentFrame = mCurrentState.getTextureRegion(mStateTime);
+        if (visual != null && mCurrentFrame!=null) {
+            visual.region = mCurrentFrame;
+            float width = visual.region.getRegionWidth();
+            float height = visual.region.getRegionHeight();
+            float halfWidth = width / 2f;
+            float halfHeight = height / 2f;
+            //Allow for Offset
+            float originX = 0;//transform.originOffset.x;
+            float originY = 0;//transform.originOffset.y;
 
-        visual.region = mCurrentFrame;
-        float width = visual.region.getRegionWidth();
-        float height = visual.region.getRegionHeight();
-        float halfWidth = width / 2f;
-        float halfHeight = height / 2f;
-        //Allow for Offset
-        float originX = 0;//transform.originOffset.x;
-        float originY = 0;//transform.originOffset.y;
-
-        batch.draw(visual.region,
-                transform.position.x + transform.originOffset.x, transform.position.y + transform.originOffset.y,
-                originX, originY,
-                width, height,
-                transform.scale, transform.scale,
-                transform.angle);
-
+            batch.draw(visual.region,
+                    transform.position.x + transform.originOffset.x, transform.position.y + transform.originOffset.y,
+                    originX, originY,
+                    width, height,
+                    transform.scale, transform.scale,
+                    transform.angle);
+        }
         renderEffect(batch);
     }
 
@@ -694,7 +694,8 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     boolean performed = false;
                     for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                         if ((expectedEvent.sourceId == null || expectedEvent.sourceId.isEmpty() || expectedEvent.sourceId.equals(aEvent.sourceId)) && expectedEvent.type.equals(aEvent.type)) {
-                            expectedEvent.setPerformed(expectedEvent.value.equals(aEvent.value) || (expectedEvent.value == null && aEvent.value.isEmpty()) || (aEvent.value == null && expectedEvent.value.isEmpty()));
+                            boolean conditionValue = expectedEvent.value.equals(aEvent.value) || (expectedEvent.value == null && aEvent.value.isEmpty()) || (aEvent.value == null && expectedEvent.value.isEmpty());
+                            expectedEvent.setPerformed(conditionValue || (expectedEvent.isNotValue && !conditionValue));
                             performed = expectedEvent.isPerformed();
                             break;
                         }

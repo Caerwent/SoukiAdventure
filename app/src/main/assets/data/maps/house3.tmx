@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-up" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="42">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="44">
  <tileset firstgid="1" source="house_inside_full.tsx"/>
  <tileset firstgid="901" source="house_inside_full2.tsx"/>
  <tileset firstgid="1405" source="Celianna_TileA5.tsx"/>
@@ -93,6 +93,7 @@
  </objectgroup>
  <objectgroup name="interactions">
   <object id="1" name="portal1" gid="2338" x="226" y="440" width="32" height="32"/>
+  <object id="43" name="chest" gid="2091" x="316.667" y="116.667" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="zindex">
   <object id="6" x="-1" y="417">

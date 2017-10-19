@@ -1,6 +1,8 @@
 package com.souki.game.adventure.box2d;
 
 import com.badlogic.gdx.math.Vector2;
+import com.souki.game.adventure.events.EventDispatcher;
+import com.souki.game.adventure.interactions.InteractionEvent;
 
 import java.util.ArrayList;
 
@@ -14,6 +16,7 @@ public class PathMap {
     protected int currentPointIndex;
     protected int nextPointIndex;
     protected boolean mIsCompleted = false;
+    protected String mId;
 
     protected boolean isRevert = false;
     protected boolean isLoop = false;
@@ -22,7 +25,8 @@ public class PathMap {
     static public final float CHECK_RADIUS = 0.05f;
     public float mVelocityCte = 2;
 
-    public PathMap() {
+    public PathMap(String aId) {
+        mId = aId;
         positions = new ArrayList<Vector2>();
     }
 
@@ -91,6 +95,8 @@ public class PathMap {
             } else {
                 mIsCompleted = true;
                 mVelocity.set(0, 0);
+                InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.END_PATH.name(), null);
+                EventDispatcher.getInstance().onInteractionEvent(event);
             }
 
         }

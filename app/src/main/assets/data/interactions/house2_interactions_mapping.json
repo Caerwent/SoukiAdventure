@@ -27,5 +27,11 @@
 
     "eventsAction":[],
     "outputEvents":[]
+  },
+  {
+    "id": "frog",
+    "template": "frog.json",
+    "properties": {
+    }
   }
 ]

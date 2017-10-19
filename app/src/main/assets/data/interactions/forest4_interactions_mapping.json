@@ -19,6 +19,104 @@
     "outputEvents": []
   },
   {
+    "id": "barrier",
+    "template": "barrier_wood_top_left.json",
+    "properties": {
+      "startState":"CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          },
+          {
+            "sourceId": "challenge2",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_puzzle.json",
+    "persistence":"NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_tower.png",
+      "size":3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge2",
+    "template": "challenge_puzzle.json",
+    "persistence":"NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_pumpkin.png",
+      "size":3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
     "id": "npc_elf",
     "template": "elf.json",
     "properties": {
@@ -128,5 +226,119 @@
         "type":"STATE",
         "value":"IDLE"
       }]
+  },
+
+
+  {
+    "id": "barrier2",
+    "template": "barrier_wood_left_top.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "OPEN",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "OPEN"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "CLOSE",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "STATE",
+            "value": "CLOSED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "STATE",
+        "value": "CLOSED"
+      },
+      {
+        "type": "STATE",
+        "value": "OPEN"
+      }
+    ]
+  },
+  {
+    "id": "activator",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 5.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator2",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2.0
+    },
+    "eventsAction": []
   }
 ]

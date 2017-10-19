@@ -1,0 +1,13 @@
+
+rich_cat.png
+size: 25, 69
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 0, 0
+  size: 25, 69
+  orig: 25, 69
+  offset: 0, 0
+  index: -1

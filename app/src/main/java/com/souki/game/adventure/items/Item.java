@@ -52,6 +52,7 @@ public class Item {
         KeyMoon,
         KeyRed,
         KeyRoyal,
+        KeyWood,
         Lantern,
         Lantern2,
         Letter,
@@ -109,6 +110,7 @@ public class Item {
         TeddyBear,
         Torch,
         TorchFire,
+        Toaster,
         VialBlue,
         VialGreen,
         VialRed

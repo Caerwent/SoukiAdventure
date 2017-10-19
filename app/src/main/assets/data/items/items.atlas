@@ -27,7 +27,7 @@ Book
   index: -1
 BookDark
   rotate: false
-  xy: 545, 55
+  xy: 659, 187
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
@@ -265,7 +265,7 @@ KeyDark
   index: -1
 KeyIron
   rotate: false
-  xy: 659, 197
+  xy: 686, 197
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
@@ -289,6 +289,13 @@ KeyRoyal
   xy: 340, 112
   size: 32, 32
   orig: 32, 32
+  offset: 0, 0
+  index: -1
+KeyWood
+  rotate: false
+  xy: 714, 197
+  size: 26, 15
+  orig: 26, 15
   offset: 0, 0
   index: -1
 Lantern
@@ -419,7 +426,7 @@ PotionYellowSmall
   index: -1
 RingGold
   rotate: false
-  xy: 687, 196
+  xy: 742, 196
   size: 18, 16
   orig: 18, 16
   offset: 0, 0
@@ -475,70 +482,70 @@ Scroll06
   index: -1
 Scroll07
   rotate: false
-  xy: 341, 78
+  xy: 307, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll08
   rotate: false
-  xy: 375, 78
+  xy: 341, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll09
   rotate: false
-  xy: 375, 44
+  xy: 341, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll10
   rotate: false
-  xy: 409, 78
+  xy: 375, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll11
   rotate: false
-  xy: 409, 44
+  xy: 375, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll12
   rotate: false
-  xy: 443, 78
+  xy: 409, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll13
   rotate: false
-  xy: 443, 44
+  xy: 409, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll14
   rotate: false
-  xy: 36, 10
+  xy: 443, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll15
   rotate: false
-  xy: 307, 44
+  xy: 443, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Scroll16
   rotate: false
-  xy: 341, 44
+  xy: 36, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -674,6 +681,13 @@ TeddyBear
   xy: 545, 82
   size: 28, 30
   orig: 28, 30
+  offset: 0, 0
+  index: -1
+Toaster
+  rotate: false
+  xy: 545, 53
+  size: 32, 27
+  orig: 32, 27
   offset: 0, 0
   index: -1
 Torch

@@ -2,10 +2,10 @@
   "type":"NPC",
   "atlas":"carriage.atlas",
   "persistence":"GAME",
-  "defaultState":"BROKEN",
+  "defaultState":"IDLE",
   "isClickable": "false",
   "isRendable": "true",
-  "isMovable": "true",
+  "isMovable": "false",
   "states": [
     {
       "name": "IDLE",

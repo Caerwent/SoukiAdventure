@@ -21,7 +21,7 @@ import com.souki.game.adventure.screens.GenericUI;
  * Created by vincent on 14/02/2017.
  */
 
-public class InteractionNPC extends Interaction {
+public class InteractionNPC extends InteractionFollowPath {
     private static final String KEY_DIALOG_ID = "dialog_id";
 
     private boolean mIsInteractionShown = false;
@@ -36,7 +36,7 @@ public class InteractionNPC extends Interaction {
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.NPC;
         mInteractionTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("InteractionDialog");
-        initialize(x,y,aMapping);
+        initialize(x, y, aMapping);
         mMarkShape = new RectangleShape();
         updateInteractionMarkShape();
 
@@ -44,17 +44,17 @@ public class InteractionNPC extends Interaction {
 
     @Override
     public void initialize(float x, float y, InteractionMapping aMapping) {
-        super.initialize(x,y,aMapping);
+        super.initialize(x, y, aMapping);
         if (mProperties != null) {
             mDialogId = (String) mProperties.get("dialogId");
         }
     }
 
-        @Override
+    @Override
     public void restoreFromPersistence(GameSession aGameSession) {
         String dialogId = (String) aGameSession.getSessionDataForMapAndEntity(mMap.getMapName(), getId(), KEY_DIALOG_ID);
         if (dialogId != null) {
-            mDialogId=dialogId;
+            mDialogId = dialogId;
         }
 
     }
@@ -105,11 +105,9 @@ public class InteractionNPC extends Interaction {
 
     public void setDialogId(String aDialogId) {
         mDialogId = aDialogId;
-        if(getPersistence()!=Persistence.NONE)
-        {
+        if (getPersistence() != Persistence.NONE) {
             saveInPersistence();
         }
-
 
 
     }
@@ -143,12 +141,12 @@ public class InteractionNPC extends Interaction {
     /************************ INTERACTION *********************************/
     @Override
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return aEntity.mInteraction.getType()==Type.HERO;
+        return aEntity.mInteraction.getType() == Type.HERO;
     }
 
     @Override
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if(isClickable()) {
+        if (isClickable()) {
             mIsInteractionShown = true;
         }
     }
@@ -171,12 +169,11 @@ public class InteractionNPC extends Interaction {
     public void onTouchInteraction() {
         QuestManager.getInstance().onNPC(this);
         if (getDialogId() != null) {
-            Gdx.app.debug("DEBUG", "start dialog "+getDialogId());
+            Gdx.app.debug("DEBUG", "start dialog " + getDialogId());
 
             EventDispatcher.getInstance().onStartDialog(DialogsManager.getInstance().getDialog(getDialogId()));
         }
     }
-
 
 
     /************************ EVENTS*********************************/
@@ -191,19 +188,12 @@ public class InteractionNPC extends Interaction {
     @Override
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
-        Gdx.app.debug("DEBUG", "doAction target="+getId()+" actionType="+aAction.type.name()+" value="+aAction.value);
-        if (!res && aAction != null && InteractionActionType.ActionType.DIALOG==aAction.type) {
+        Gdx.app.debug("DEBUG", "doAction target=" + getId() + " actionType=" + aAction.type.name() + " value=" + aAction.value);
+        if (!res && aAction != null && InteractionActionType.ActionType.DIALOG == aAction.type) {
             setDialogId(aAction.value);
-        }
-        else if(!res && aAction!=null && InteractionActionType.ActionType.LAUNCH_EFFECT==aAction.type)
-        {
+        } else if (!res && aAction != null && InteractionActionType.ActionType.LAUNCH_EFFECT == aAction.type) {
             launchEffect(EffectFactory.getInstance().getEffect(Effect.Type.valueOf(aAction.value)));
-        }
-        else if(!res && aAction!=null && InteractionActionType.ActionType.DIALOG==aAction.type)
-        {
-            setDialogId(aAction.value);
-        }
-        else if (!res && aAction != null && InteractionActionType.ActionType.REMOVED==aAction.type) {
+        } else if (!res && aAction != null && InteractionActionType.ActionType.REMOVED == aAction.type) {
             mMap.getInteractions().removeValue(this, true);
             destroy();
             return true;

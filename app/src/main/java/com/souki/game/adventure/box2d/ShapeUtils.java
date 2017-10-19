@@ -253,8 +253,8 @@ public class ShapeUtils {
         if (aShape.getType() == Shape.Type.POLYGON) {
             Polygon poly = ((PolygonShape) aShape).getShape();
             float[] vertices = poly.getTransformedVertices();
-            return isPointInPolygon(vertices, 0, vertices.length, p1.x, p1.y ) ||
-                    isPointInPolygon(vertices, 0, vertices.length, p2.x, p2.y ) ||
+            return isPointInPolygon(vertices, 0, vertices.length, p1.x, p1.y) ||
+                    isPointInPolygon(vertices, 0, vertices.length, p2.x, p2.y) ||
                     Intersector.intersectSegmentPolygon(p1, p2, ((PolygonShape) aShape).getShape());
         } else if (aShape.getType() == Shape.Type.CIRCLE) {
             Circle circle = ((CircleShape) aShape).getShape();
@@ -307,7 +307,8 @@ public class ShapeUtils {
                 return true;
             }
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.RECT) {
-            if (Intersector.overlaps(((RectangleShape) aShape).getShape(), ((RectangleShape) aOtherShape).getShape())) {
+            if (Intersector.overlaps(((RectangleShape) aShape).getShape(), ((RectangleShape) aOtherShape).getShape()) ||
+                    Intersector.overlaps(((RectangleShape) aOtherShape).getShape(), ((RectangleShape) aShape).getShape())) {
                 return true;
             }
         }
@@ -319,20 +320,16 @@ public class ShapeUtils {
         if (aShape.getType() == Shape.Type.POLYGON && aOtherShape.getType() == Shape.Type.POLYGON) {
             if (intersectPolygons(((PolygonShape) aShape).getShape(), ((PolygonShape) aOtherShape).getShape())) {
                 return true;
-            }
-            else
-            {
+            } else {
                 Polygon poly = ((PolygonShape) aShape).getShape();
                 float[] vertices = poly.getTransformedVertices();
                 Vector2 p1 = new Vector2();
                 Vector2 p2 = new Vector2();
-                for(int i=0;i<vertices.length-2;i+=2)
-                {
-                    p1.set(vertices[i], vertices[i+1]);
-                    p2.set(vertices[i]+aTranslation.x, vertices[i+1]+aTranslation.y);
+                for (int i = 0; i < vertices.length - 2; i += 2) {
+                    p1.set(vertices[i], vertices[i + 1]);
+                    p2.set(vertices[i] + aTranslation.x, vertices[i + 1] + aTranslation.y);
                 }
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
             }
@@ -340,40 +337,32 @@ public class ShapeUtils {
         } else if (aShape.getType() == Shape.Type.POLYGON && aOtherShape.getType() == Shape.Type.CIRCLE) {
             if (ShapeUtils.overlaps(((PolygonShape) aShape).getShape(), ((CircleShape) aOtherShape).getShape())) {
                 return true;
-            }
-            else
-            {
+            } else {
                 Polygon poly = ((PolygonShape) aShape).getShape();
                 float[] vertices = poly.getTransformedVertices();
                 Vector2 p1 = new Vector2();
                 Vector2 p2 = new Vector2();
-                for(int i=0;i<vertices.length-2;i+=2)
-                {
-                    p1.set(vertices[i], vertices[i+1]);
-                    p2.set(vertices[i]+aTranslation.x, vertices[i+1]+aTranslation.y);
+                for (int i = 0; i < vertices.length - 2; i += 2) {
+                    p1.set(vertices[i], vertices[i + 1]);
+                    p2.set(vertices[i] + aTranslation.x, vertices[i + 1] + aTranslation.y);
                 }
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
             }
         } else if (aShape.getType() == Shape.Type.POLYGON && aOtherShape.getType() == Shape.Type.RECT) {
             if (ShapeUtils.overlaps(((PolygonShape) aShape).getShape(), ((RectangleShape) aOtherShape).getShape())) {
                 return true;
-            }
-            else
-            {
+            } else {
                 Polygon poly = ((PolygonShape) aShape).getShape();
                 float[] vertices = poly.getTransformedVertices();
                 Vector2 p1 = new Vector2();
                 Vector2 p2 = new Vector2();
-                for(int i=0;i<vertices.length-2;i+=2)
-                {
-                    p1.set(vertices[i], vertices[i+1]);
-                    p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
+                for (int i = 0; i < vertices.length - 2; i += 2) {
+                    p1.set(vertices[i], vertices[i + 1]);
+                    p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
                 }
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
             }
@@ -393,35 +382,29 @@ public class ShapeUtils {
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.POLYGON) {
             if (ShapeUtils.overlaps(((PolygonShape) aOtherShape).getShape(), ((RectangleShape) aShape).getShape())) {
                 return true;
-            }
-            else
-            {
+            } else {
                 Rectangle rect = ((RectangleShape) aShape).getShape();
                 Vector2 p1 = new Vector2();
                 Vector2 p2 = new Vector2();
 
                 p1.set(rect.getX(), rect.getY());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX(), rect.getY()+rect.getHeight());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX(), rect.getY() + rect.getHeight());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX()+rect.getWidth(), rect.getY()+rect.getHeight());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX() + rect.getWidth(), rect.getY() + rect.getHeight());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX()+rect.getWidth(), rect.getY());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX() + rect.getWidth(), rect.getY());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
             }
@@ -429,35 +412,29 @@ public class ShapeUtils {
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.CIRCLE) {
             if (Intersector.overlaps(((CircleShape) aOtherShape).getShape(), ((RectangleShape) aShape).getShape())) {
                 return true;
-            }
-            else
-            {
+            } else {
                 Rectangle rect = ((RectangleShape) aShape).getShape();
                 Vector2 p1 = new Vector2();
                 Vector2 p2 = new Vector2();
 
                 p1.set(rect.getX(), rect.getY());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX(), rect.getY()+rect.getHeight());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX(), rect.getY() + rect.getHeight());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX()+rect.getWidth(), rect.getY()+rect.getHeight());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX() + rect.getWidth(), rect.getY() + rect.getHeight());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX()+rect.getWidth(), rect.getY());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX() + rect.getWidth(), rect.getY());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
             }
@@ -465,35 +442,29 @@ public class ShapeUtils {
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.RECT) {
             if (Intersector.overlaps(((RectangleShape) aShape).getShape(), ((RectangleShape) aOtherShape).getShape())) {
                 return true;
-            }
-            else
-            {
+            } else {
                 Rectangle rect = ((RectangleShape) aShape).getShape();
                 Vector2 p1 = new Vector2();
                 Vector2 p2 = new Vector2();
 
                 p1.set(rect.getX(), rect.getY());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX(), rect.getY()+rect.getHeight());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX(), rect.getY() + rect.getHeight());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX()+rect.getWidth(), rect.getY()+rect.getHeight());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX() + rect.getWidth(), rect.getY() + rect.getHeight());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
-                p1.set(rect.getX()+rect.getWidth(), rect.getY());
-                p2.set(p1.x+aTranslation.x, p1.y+aTranslation.y);
-                if(segmentIntersectShape(p1,p2,aOtherShape))
-                {
+                p1.set(rect.getX() + rect.getWidth(), rect.getY());
+                p2.set(p1.x + aTranslation.x, p1.y + aTranslation.y);
+                if (segmentIntersectShape(p1, p2, aOtherShape)) {
                     return true;
                 }
             }
@@ -524,7 +495,7 @@ public class ShapeUtils {
 
         if (aShape.getType() == Shape.Type.POLYGON && aOtherShape.getType() == Shape.Type.POLYGON) {
             return Intersector.overlapConvexPolygons(((PolygonShape) aShape).getShape(), ((PolygonShape) aOtherShape).getShape(),
-            mvt);
+                    mvt);
 
         } else if (aShape.getType() == Shape.Type.POLYGON && aOtherShape.getType() == Shape.Type.CIRCLE) {
             CircleShape shape = ((CircleShape) aOtherShape);
@@ -534,7 +505,7 @@ public class ShapeUtils {
         } else if (aShape.getType() == Shape.Type.POLYGON && aOtherShape.getType() == Shape.Type.RECT) {
             RectangleShape shape = ((RectangleShape) aOtherShape);
 
-            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight() , 0, shape.getShape().getHeight()});
+            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight(), 0, shape.getShape().getHeight()});
             polygon.setPosition(shape.getX(), shape.getY());
             return Intersector.overlapConvexPolygons(((PolygonShape) aShape).getShape(), polygon,
                     mvt);
@@ -554,19 +525,19 @@ public class ShapeUtils {
             CircleShape shape = ((CircleShape) aShape);
             float[] circlePoly = circleToPolygon(shape.getX(), shape.getY(), shape.getShape().radius, 16);
             RectangleShape otherShape = ((RectangleShape) aOtherShape);
-            Polygon polygon = new Polygon(new float[]{0, 0, otherShape.getShape().getWidth(), 0, otherShape.getShape().getWidth(), otherShape.getShape().getHeight() , 0, otherShape.getShape().getHeight()});
+            Polygon polygon = new Polygon(new float[]{0, 0, otherShape.getShape().getWidth(), 0, otherShape.getShape().getWidth(), otherShape.getShape().getHeight(), 0, otherShape.getShape().getHeight()});
             polygon.setPosition(otherShape.getX(), otherShape.getY());
             return Intersector.overlapConvexPolygons(circlePoly, ((PolygonShape) aOtherShape).getShape().getTransformedVertices(),
                     mvt);
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.POLYGON) {
             RectangleShape shape = ((RectangleShape) aShape);
-            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight() , 0, shape.getShape().getHeight()});
+            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight(), 0, shape.getShape().getHeight()});
             polygon.setPosition(shape.getX(), shape.getY());
             return Intersector.overlapConvexPolygons(polygon.getTransformedVertices(), ((PolygonShape) aOtherShape).getShape().getTransformedVertices(),
                     mvt);
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.CIRCLE) {
             RectangleShape shape = ((RectangleShape) aShape);
-            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight() , 0, shape.getShape().getHeight()});
+            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight(), 0, shape.getShape().getHeight()});
             polygon.setPosition(shape.getX(), shape.getY());
             CircleShape othershape = ((CircleShape) aOtherShape);
             float[] otherCirclePoly = circleToPolygon(othershape.getX(), othershape.getY(), othershape.getShape().radius, 16);
@@ -575,10 +546,10 @@ public class ShapeUtils {
 
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.RECT) {
             RectangleShape shape = ((RectangleShape) aShape);
-            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight() , 0, shape.getShape().getHeight()});
+            Polygon polygon = new Polygon(new float[]{0, 0, shape.getShape().getWidth(), 0, shape.getShape().getWidth(), shape.getShape().getHeight(), 0, shape.getShape().getHeight()});
             polygon.setPosition(shape.getX(), shape.getY());
             RectangleShape othershape = ((RectangleShape) aOtherShape);
-            Polygon otherpolygon = new Polygon(new float[]{0, 0, othershape.getShape().getWidth(), 0, othershape.getShape().getWidth(), othershape.getShape().getHeight() , 0, othershape.getShape().getHeight()});
+            Polygon otherpolygon = new Polygon(new float[]{0, 0, othershape.getShape().getWidth(), 0, othershape.getShape().getWidth(), othershape.getShape().getHeight(), 0, othershape.getShape().getHeight()});
             otherpolygon.setPosition(othershape.getX(), othershape.getY());
             return Intersector.overlapConvexPolygons(polygon.getTransformedVertices(), otherpolygon.getTransformedVertices(),
                     mvt);
@@ -694,8 +665,7 @@ public class ShapeUtils {
         int nbAxis = verticesA.length / 2 + verticesB.length / 2;
         float fVel2 = xVel.len2();
 
-        if (fVel2 > 0.00001f)
-        {
+        if (fVel2 > 0.00001f) {
             nbAxis++;
         }
         Vector2 xAxis[] = new Vector2[nbAxis];
@@ -828,10 +798,10 @@ public class ShapeUtils {
         aShapeToTest.setX(aTargetPos.x);
         aShapeToTest.setY(aTargetPos.y);
         if (aEntities != null && aEntities.length > 0) {
-            for (int i=0; i<aEntities.length; i++) {
+            for (int i = 0; i < aEntities.length; i++) {
 
                 CollisionObstacleComponent collision = aEntities[i].getComponent(CollisionObstacleComponent.class);
-                if (collision.mShape == aShapeToIgnore || collision.mShape == aShapeToTest)
+                if (collision == null || collision.mShape == aShapeToIgnore || collision.mShape == aShapeToTest)
                     continue;
 
                 if ((collision.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((collision.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {

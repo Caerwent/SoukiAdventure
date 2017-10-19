@@ -1,0 +1,26 @@
+{
+  "id": "quest_witch",
+  "title": "quest_witch_title",
+  "desc": "quest_witch_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": ["PotionRounededBrown"],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_witch_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "Banana",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_witch_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "witch",
+      "requiredCompletedTask": [
+        "quest_witch_task1"
+      ]
+    }
+  ]
+}
+

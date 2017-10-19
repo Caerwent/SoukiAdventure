@@ -1,0 +1,97 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "village_dock",
+      "isDefaultStart": "true"
+    }
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "island2"
+    }
+  },
+  {
+    "id": "ice1",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice2",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice3",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice3b",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice4",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice5",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice6",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice7",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice8",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice9",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice10",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice11",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice12",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice13",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice14",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice15",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice16",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice17",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice18",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice19",
+    "template": "obstacle_water_iceable.json"
+  }
+]

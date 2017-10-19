@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.OrderedMap;
+import com.souki.game.adventure.AssetsUtility;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,16 @@ public class DialogsManager {
                 Gdx.files.internal(DIALOGS_LIST));
         for (JsonValue v : list) {
             GameDialog dialog = _json.readValue(GameDialog.class, v);
+            if (dialog.getDialogs() != null) {
+                for (GameDialogStep step : dialog.getDialogs()) {
+                    step.speaker = AssetsUtility.getString(step.speaker);
+                    if (step.phrases != null) {
+                        for (int i = 0; i < step.phrases.size(); i++) {
+                            step.phrases.set(i, AssetsUtility.getString(step.phrases.get(i)));
+                        }
+                    }
+                }
+            }
             mDialogs.put(dialog.getId(), dialog);
         }
     }

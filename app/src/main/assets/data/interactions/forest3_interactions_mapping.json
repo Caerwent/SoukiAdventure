@@ -11,10 +11,12 @@
   },
   {
     "id": "portal2",
-    "template": "portal.json",
+    "template": "portal_clickable.json",
     "properties": {
       "targetMapId": "forest3_tower0",
-      "activatedByItem":"KeyCrystal"
+      "activatedByItem":"KeyCrystal",
+      "width":32,
+      "height":60
     },
     "eventsAction": [],
     "outputEvents": []

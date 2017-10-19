@@ -152,20 +152,19 @@ public class GameMap implements ICollisionObstacleHandler {
 
 
         if (isMapBackWithTownPortal) {
-            sTownPortalInfo=null;
+            sTownPortalInfo = null;
             // set hero at the town portal position
             mPlayer.getHero().setPosition(aTownPortalInfo.x, aTownPortalInfo.y);
             tryToSetCameraAtPosition(aTownPortalInfo.x, aTownPortalInfo.y);
             mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
         }
-        if(isCheckpointPortal)
-        {
-            for(IInteraction interaction : mInteractions) {
+        if (isCheckpointPortal) {
+            for (IInteraction interaction : mInteractions) {
                 if (interaction.getType() == IInteraction.Type.CHALLENGE &&
-                        ((InteractionChallenge) interaction).getChallengeType()== ChallengeUI.ChallengeType.PORTAL_CHECKPOINT) {
-                    sTownPortalInfo=null;
-                    mPlayer.getHero().setPosition(interaction.getX(),interaction.getY());
-                    tryToSetCameraAtPosition(interaction.getX(),interaction.getY());
+                        ((InteractionChallenge) interaction).getChallengeType() == ChallengeUI.ChallengeType.PORTAL_CHECKPOINT) {
+                    sTownPortalInfo = null;
+                    mPlayer.getHero().setPosition(interaction.getX(), interaction.getY());
+                    tryToSetCameraAtPosition(interaction.getX(), interaction.getY());
                     mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
                 }
             }
@@ -194,14 +193,10 @@ public class GameMap implements ICollisionObstacleHandler {
                     if (isDefaultMapArrivalFromTownPortal) {
                         sTownPortalInfo = aTownPortalInfo;
                         mPlayer.getHero().launchTownPortalArrivalEffect(aTownPortalInfo);
-                    }
-                    else if(isPortalToPortalCase && MyGame.getInstance().isDefaultMapOrAssociated(mMapName) && sTownPortalInfo!=null)
-                    {
+                    } else if (isPortalToPortalCase && MyGame.getInstance().isDefaultMapOrAssociated(mMapName) && sTownPortalInfo != null) {
                         mPlayer.getHero().setTownPortalInfo(sTownPortalInfo);
-                    }
-                    else
-                    {
-                        sTownPortalInfo=null;
+                    } else {
+                        sTownPortalInfo = null;
                     }
                     arrivalPortal = portal;
                     portal.setActivated(false);
@@ -245,19 +240,14 @@ public class GameMap implements ICollisionObstacleHandler {
             }
         }
 
-        if(mMapWidth<=mCamera.viewportWidth)
-        {
+        if (mMapWidth <= mCamera.viewportWidth) {
             mCamera.position.x = mMapWidth / 2;
             mCamera.update();
         }
-        if(mMapHeight<=mCamera.viewportHeight)
-        {
+        if (mMapHeight <= mCamera.viewportHeight) {
             mCamera.position.y = mMapHeight / 2;
             mCamera.update();
         }
-
-
-
 
 
         renderer = new MapAndSpritesRenderer2(this, MyGame.SCALE_FACTOR);
@@ -478,29 +468,26 @@ public class GameMap implements ICollisionObstacleHandler {
             }*/ else {
                 continue;
             }
-           if (isCollision && polygon != null) {
+            if (isCollision && polygon != null) {
 
-                BayazitDecomposer.maxPolygonVertices = Math.max(BayazitDecomposer.maxPolygonVertices,polygon.getVertices().length/2);
+                BayazitDecomposer.maxPolygonVertices = Math.max(BayazitDecomposer.maxPolygonVertices, polygon.getVertices().length / 2);
                 float[][] convexPolys = GeometryUtils.decompose(polygon.getTransformedVertices());
-               for(int currPolyId=0; currPolyId<convexPolys.length;currPolyId++)
-               {
-                   polygon = new Polygon(convexPolys[currPolyId]);
-                   PolygonShape shape = new PolygonShape();
-                   shape.setShape(polygon);
-                   bodies.add(shape);
-                   Entity entity = new Entity();
-                   entity.add(new CollisionObstacleComponent(CollisionObstacleComponent.OBSTACLE, shape, object.getName(), this, this));
-                   EntityEngine.getInstance().addEntity(entity);
-               }
+                for (int currPolyId = 0; currPolyId < convexPolys.length; currPolyId++) {
+                    polygon = new Polygon(convexPolys[currPolyId]);
+                    PolygonShape shape = new PolygonShape();
+                    shape.setShape(polygon);
+                    bodies.add(shape);
+                    Entity entity = new Entity();
+                    entity.add(new CollisionObstacleComponent(CollisionObstacleComponent.OBSTACLE, shape, object.getName(), this, this));
+                    EntityEngine.getInstance().addEntity(entity);
+                }
+
+            } else {
+                PolygonShape shape = new PolygonShape();
+                shape.setShape(polygon);
+                bodies.add(shape);
 
             }
-            else
-           {
-               PolygonShape shape = new PolygonShape();
-               shape.setShape(polygon);
-               bodies.add(shape);
-
-           }
 
         }
         Shape[] sortedShapes = bodies.toArray(Shape.class);
@@ -536,7 +523,7 @@ public class GameMap implements ICollisionObstacleHandler {
             if (object instanceof PolylineMapObject) {
                 float[] mapVertices = ((PolylineMapObject) object).getPolyline().getTransformedVertices();
                 float[] vertices = new float[mapVertices.length];
-                PathMap path = new PathMap();
+                PathMap path = new PathMap(object.getName());
                 for (int i = 0; i < vertices.length - 1; i += 2) {
                     path.addPoint(mapVertices[i] * MyGame.SCALE_FACTOR, mapVertices[i + 1] * MyGame.SCALE_FACTOR);
                 }
@@ -579,8 +566,7 @@ public class GameMap implements ICollisionObstacleHandler {
                     interaction.startToInteract();
                 }
 
-            }
-            else if (object instanceof RectangleMapObject) {
+            } else if (object instanceof RectangleMapObject) {
                 RectangleMapObject textureObject = (RectangleMapObject) object;
                 float x = textureObject.getRectangle().getX() * MyGame.SCALE_FACTOR;
                 float y = textureObject.getRectangle().getY() * MyGame.SCALE_FACTOR;
@@ -621,8 +607,7 @@ public class GameMap implements ICollisionObstacleHandler {
                     y = textureObject.getY() * MyGame.SCALE_FACTOR;
                     type = textureObject.getProperties().get("type", String.class);
                     name = textureObject.getName();
-                }
-                else if (object instanceof RectangleMapObject) {
+                } else if (object instanceof RectangleMapObject) {
                     RectangleMapObject textureObject = (RectangleMapObject) object;
                     x = textureObject.getRectangle().getX() * MyGame.SCALE_FACTOR;
                     y = textureObject.getRectangle().getY() * MyGame.SCALE_FACTOR;

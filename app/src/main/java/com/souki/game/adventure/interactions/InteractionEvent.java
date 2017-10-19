@@ -5,7 +5,7 @@ package com.souki.game.adventure.interactions;
  */
 
 public class InteractionEvent {
-    public static final String THIS="THIS";
+    public static final String THIS = "THIS";
 
     public static enum EventType {
         STATE,
@@ -13,30 +13,36 @@ public class InteractionEvent {
         DIALOG,
         EFFECT_START,
         EFFECT_STOP,
-        CHALLENGE_COMPLETED;
+        CHALLENGE_COMPLETED,
+        END_PATH;
     }
+
     public String sourceId;
     public String type;
     public String value;
+    public boolean isNotValue;
 
-    private boolean mIsPerformed=false;
+    private boolean mIsPerformed = false;
 
-    public boolean isPerformed()
-    {
+    public boolean isPerformed() {
         return mIsPerformed;
     }
 
-    public void setPerformed(boolean isPerformed)
-    {
-        mIsPerformed=isPerformed;
+    public void setPerformed(boolean isPerformed) {
+        mIsPerformed = isPerformed;
     }
 
-    public InteractionEvent(){}
+    public InteractionEvent() {
+    }
 
-    public InteractionEvent(String aSourceId, String aType, String aValue)
-    {
+    public InteractionEvent(String aSourceId, String aType, String aValue) {
+        this(aSourceId, aType, aValue, false);
+    }
+
+    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue) {
         sourceId = aSourceId;
-        type=aType;
-        value=aValue;
+        type = aType;
+        value = aValue;
+        isNotValue = aIsNotValue;
     }
- }
+}

@@ -65,6 +65,14 @@ public class InteractionFollowPath extends Interaction {
             }
             return true;
         }
+        if (!res && aAction != null && InteractionActionType.ActionType.SET_PATH == aAction.type) {
+            mPath = mMap.getPaths().get(aAction.value);
+            if (mPath != null) {
+                mPath.setLoop(false);
+                setMovable(true);
+            }
+            return true;
+        }
         return res;
     }
 

@@ -11,6 +11,13 @@ Interaction
   orig: 37, 32
   offset: 0, 0
   index: -1
+InteractionEmpty
+  rotate: false
+  xy: 903, 62
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1
 InteractionDialog
   rotate: false
   xy: 942, 94

@@ -1,0 +1,13 @@
+
+frog.png
+size: 27, 59
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 0, 0
+  size: 27, 59
+  orig: 27, 59
+  offset: 0, 0
+  index: -1

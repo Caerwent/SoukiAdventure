@@ -238,6 +238,17 @@
     ]
   },
   {
+    "id": "quest_malo_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_finished_phrase1"
+        ]
+      }
+    ]
+  },
+  {
     "id": "quest_farmer_shovel",
     "dialogs": [
       {
@@ -257,7 +268,6 @@
         "phrases": [
           "quest_farmer_shovel_phrase3",
           "quest_farmer_shovel_phrase4"
-
         ]
       },
       {
@@ -271,7 +281,6 @@
         "phrases": [
           "quest_farmer_shovel_phrase6",
           "quest_farmer_shovel_phrase7"
-
         ]
       }
     ]
@@ -343,7 +352,6 @@
           "quest_guitar_phrase3",
           "quest_guitar_phrase4",
           "quest_guitar_phrase5"
-
         ]
       },
       {
@@ -356,7 +364,6 @@
         "speaker": "npc_chien_jaune_name",
         "phrases": [
           "quest_guitar_phrase7"
-
         ]
       },
       {
@@ -369,7 +376,6 @@
         "speaker": "npc_chien_jaune_name",
         "phrases": [
           "quest_guitar_phrase9"
-
         ]
       }
     ]
@@ -408,10 +414,6 @@
       }
     ]
   },
-
-
-
-
   {
     "id": "wizard_obtain_ice_and_fire_dialog",
     "dialogs": [
@@ -473,7 +475,6 @@
         "speaker": "npc_elf_transformed_name",
         "phrases": [
           "quest_elf_phrase3"
-
         ]
       },
       {
@@ -489,7 +490,6 @@
           "quest_elf_phrase6",
           "quest_elf_phrase7",
           "quest_elf_phrase8"
-
         ]
       },
       {
@@ -598,7 +598,94 @@
         ]
       }
     ]
+  },
+  {
+    "id": "quest_witch",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_witch_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "npc_witch_name",
+        "phrases": [
+          "quest_witch_dialog_phrase2",
+          "quest_witch_dialog_phrase3"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_witch_dialog_phrase4"
+        ]
+      },
+      {
+        "speaker": "npc_witch_name",
+        "phrases": [
+          "quest_witch_dialog_phrase5",
+          "quest_witch_dialog_phrase6",
+          "quest_witch_dialog_phrase7",
+          "quest_witch_dialog_phrase8"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_witch_activated",
+    "dialogs": [
+      {
+        "speaker": "npc_witch_name",
+        "phrases": [
+          "quest_witch_activated_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_witch_activated_dialog_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_witch_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_witch_name",
+        "phrases": [
+          "quest_witch_completed_dialog_phrase1",
+          "quest_witch_completed_dialog_phrase2",
+          "quest_witch_completed_dialog_phrase3",
+          "quest_witch_completed_dialog_phrase4",
+          "quest_witch_completed_dialog_phrase5"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_witch_completed_dialog_phrase6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_witch_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_witch_name",
+        "phrases": [
+          "quest_witch_finished_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_witch_finished_dialog_phrase2"
+        ]
+      }
+    ]
   }
-
 ]
 

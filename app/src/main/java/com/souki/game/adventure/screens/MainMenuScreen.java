@@ -10,12 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
 import com.souki.game.adventure.items.Item;
-import com.souki.game.adventure.persistence.MapProfile;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
 import com.souki.game.adventure.quests.Quest;
@@ -73,7 +74,7 @@ public class MainMenuScreen implements Screen {
                                       @Override
                                       public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
-                                          if(PersistenceProvider.getInstance().hasProfile()) {
+                                          if (PersistenceProvider.getInstance().hasProfile()) {
                                               new Dialog("", GenericUI.getInstance().getSkin(), "dialog") {
                                                   protected void result(Object object) {
                                                       if (object instanceof Boolean) {
@@ -87,9 +88,7 @@ public class MainMenuScreen implements Screen {
                                                       button(AssetsUtility.getString("ui_dialog_continue"), true).
                                                       button(AssetsUtility.getString("ui_dialog_cancel"), false).key(Input.Keys.ENTER, true)
                                                       .key(Input.Keys.ESCAPE, false).show(_stage);
-                                          }
-                                          else
-                                          {
+                                          } else {
                                               MyGame.getInstance().newProfile();
                                               MyGame.getInstance().setScreen(MyGame.ScreenType.MainGame);
                                           }
@@ -145,17 +144,17 @@ public class MainMenuScreen implements Screen {
 
         debugButton.addListener(new ClickListener() {
 
-                                       @Override
-                                       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                                           AudioManager.getInstance().onAudioEvent(AudioManager.UI_CLIC_SOUND);
-                                           return true;
-                                       }
+                                    @Override
+                                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                                        AudioManager.getInstance().onAudioEvent(AudioManager.UI_CLIC_SOUND);
+                                        return true;
+                                    }
 
-                                       @Override
-                                       public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                                           onDebug();
-                                       }
-                                   }
+                                    @Override
+                                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                                        onDebug();
+                                    }
+                                }
         );
 
 
@@ -198,23 +197,35 @@ public class MainMenuScreen implements Screen {
         _stage.dispose();
     }
 
-    private void onDebug()
-    {
-        Quest quest = QuestManager.getInstance().getQuestFromId("quest_elf");
-        quest.setActivated(false);
+    private void onDebug() {
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_malo");
+        quest.setActivated(true);
         quest.setCompleted(false);
         quest.setTasks(new ArrayList<QuestTask>());
-        Profile.getInstance().updateQuestProfile("quest_elf", quest);
+        Profile.getInstance().updateQuestProfile("quest_malo", quest);
 
-        quest = QuestManager.getInstance().getQuestFromId("quest_elf_reward");
-        quest.setActivated(false);
-        quest.setCompleted(false);
-        quest.setTasks(new ArrayList<QuestTask>());
-        Profile.getInstance().updateQuestProfile("quest_elf_reward", quest);
 
-        MapProfile mapProfile = Profile.getInstance().getMapProfile("forest4");
+      /*  LocationProfile locationProfile = new LocationProfile();
+        locationProfile.mMapId = "forest8";
+        // locationProfile.mFromMapId = aFromMap;
+
+        Profile.getInstance().setLocationProfile(locationProfile);*/
+
+        Array<Item> inventory = new Array<Item>();
+        ArrayList<String> savedInventory = Profile.getInstance().getInventory();
+
+        if (savedInventory != null) {
+            for (String itemId : savedInventory) {
+                inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
+            }
+        }
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Hammer));
+
+        Profile.getInstance().updateInventory(inventory);
+
+       /* MapProfile mapProfile = Profile.getInstance().getMapProfile("forest4");
         mapProfile.items.remove(Item.ItemTypeID.PotionRounededBrown.name());
-        Profile.getInstance().updateMapProfile("forest4", mapProfile);
+        Profile.getInstance().updateMapProfile("forest4", mapProfile);*/
 
 
     }

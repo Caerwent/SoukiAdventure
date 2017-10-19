@@ -6,6 +6,7 @@ import com.souki.game.adventure.audio.AudioManager;
 import com.souki.game.adventure.box2d.CircleShape;
 import com.souki.game.adventure.box2d.Shape;
 import com.souki.game.adventure.dialogs.DialogsManager;
+import com.souki.game.adventure.dialogs.GameDialog;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.items.Chest;
@@ -18,7 +19,7 @@ import com.souki.game.adventure.persistence.GameSession;
  * Created by vincent on 14/02/2017.
  */
 
-public class InteractionChest extends Interaction{
+public class InteractionChest extends Interaction {
     private static final String KEY_IS_OPEN = "is_open";
     protected boolean mIsOpen;
     protected Chest mChest;
@@ -28,7 +29,7 @@ public class InteractionChest extends Interaction{
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.CHEST;
         initialize(x, y, aMapping);
-        mChest = ItemFactory.getInstance().getChest(aMap.getMapName()+"_"+getId());
+        mChest = ItemFactory.getInstance().getChest(aMap.getMapName() + "_" + getId());
 
     }
 
@@ -62,11 +63,9 @@ public class InteractionChest extends Interaction{
 
     @Override
     public Shape createShapeCollision() {
-        if(isRendable())
-        {
+        if (isRendable()) {
             return super.createShapeCollision();
-        }
-        else {
+        } else {
             mShapeCollision = new CircleShape();
             mShapeCollision.setY(0);
             mShapeCollision.setX(0);
@@ -86,19 +85,20 @@ public class InteractionChest extends Interaction{
 
         return getShapeInteraction().getBounds().contains(x, y) && !mIsOpen;
     }
+
     @Override
     public void onTouchInteraction() {
 
-        if(mRequiredItem!=null && !mRequiredItem.isEmpty())
-        {
+        if (mRequiredItem != null && !mRequiredItem.isEmpty()) {
             Array<Item> item = mMap.getPlayer().getItemsInventoryById(mRequiredItem);
-            if(item!=null && item.size >0)
-            {
+            if (item != null && item.size > 0) {
                 mMap.getPlayer().removeItem(item.get(0));
-            }
-            else
-            {
-                EventDispatcher.getInstance().onStartDialog(DialogsManager.getInstance().getDialog("needKey"));
+            } else {
+                GameDialog needDialog = DialogsManager.getInstance().getDialog("needKey").clone();
+                String msg = needDialog.getDialogs().get(0).phrases.get(0);
+                msg += " " + ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mRequiredItem)).getItemShortDescription();
+                needDialog.getDialogs().get(0).phrases.set(0, msg);
+                EventDispatcher.getInstance().onStartDialog(needDialog);
                 return;
             }
         }
@@ -112,8 +112,7 @@ public class InteractionChest extends Interaction{
 
         }
 
-        if(getPersistence()!=Persistence.NONE)
-        {
+        if (getPersistence() != Persistence.NONE) {
             saveInPersistence();
         }
 

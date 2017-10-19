@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="10" height="10" tilewidth="32" tileheight="32" nextobjectid="25">
+ <tileset firstgid="1" source="Celianna_TileA5.tsx"/>
+ <tileset firstgid="129" source="Celianna_TileA4.tsx"/>
+ <tileset firstgid="642" source="terrain.tsx"/>
+ <tileset firstgid="1666" source="house_inside_full.tsx"/>
+ <tileset firstgid="2566" source="house_inside_full2.tsx"/>
+ <tileset firstgid="3070" source="hole.tsx"/>
+ <layer name="ground1" width="10" height="10">
+  <data encoding="base64">
+   IgIAACMCAAAjAgAAIwIAACMCAAAjAgAAIwIAACMCAAAjAgAAJAIAAD0CAAA+AgAAPgIAAD4CAAA+AgAAPgIAAD4CAAA+AgAAPgIAAD8CAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAApAAAAKgAAACkAAAAqAAAAKQAAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+  </data>
+ </layer>
+ <layer name="ground2" width="10" height="10">
+  <data encoding="base64">
+   EQEAABIBAAASAQAAEgEAABIBAAASAQAAEgEAABIBAAASAQAAEwEAACwBAAAAAAAAAAAAAAAAAADrAgAAAAAAAAAAAAAAAAAAAAAAAC4BAAABDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBCQAABgwAAAoMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXwkAABIMAAAUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4BAAA7BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuAQAAWQcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWQcAAEAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+  </data>
+ </layer>
+ <layer name="terrain1" width="10" height="10">
+  <data encoding="base64">
+   AAAAAPkHAAAAAAAAAAAAAMsCAAAAAAAAAAAAAPcHAAD4BwAAAAAAAAAAAAAXCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVCAAAFggAAAAAAAAsAQAANQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwgAADQIAAAuAQAALAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALgEAACwBAAAAAAAAAAAAAHwIAADyCAAA8wgAAAAAAAAAAAAAAAAAAAAAAAAsAQAAAAAAAAAAAAAAAAAAmAgAAJgIAAAAAAAAAAAAAAAAAAAAAAAALAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALgEAAEcBAABIAQAASAEAAEgBAABIAQAASAEAAEgBAABIAQAASAEAAEkBAAAvAQAALwEAAC8BAAAvAQAALwEAAC8BAAAvAQAALwEAAC8BAAAvAQAALwEAAC8BAAAvAQAALwEAAC8BAAAvAQAALwEAAC8BAAAvAQAALwEAAA==
+  </data>
+ </layer>
+ <objectgroup name="collision">
+  <object id="4" x="0" y="1" width="316" height="61"/>
+  <object id="5" x="224" y="61" width="63" height="28"/>
+  <object id="6" x="31" y="64" width="32" height="25"/>
+  <object id="8" x="1" y="174" width="30" height="145"/>
+  <object id="9" x="-2" y="279" width="320" height="40"/>
+  <object id="10" x="287" y="25" width="32" height="101"/>
+  <object id="11" x="310" y="126" width="11" height="163"/>
+  <object id="12" x="289" y="204" width="28" height="18"/>
+  <object id="13" x="134" y="173" width="19" height="13"/>
+  <object id="14" x="167" y="172" width="18" height="13"/>
+  <object id="15" x="103" y="145" width="18" height="14"/>
+  <object id="16" x="129" y="138" width="65" height="20"/>
+  <object id="17" x="1" y="131">
+   <polygon points="0,0 27,22 42,21 60,-2 41,-30 29,-30 22,-76 0,-76"/>
+  </object>
+  <object id="18" x="-6" y="118" width="12" height="128"/>
+ </objectgroup>
+ <objectgroup name="zindex">
+  <object id="19" x="127" y="127" width="69" height="32"/>
+  <object id="20" x="100" y="127" width="24" height="32"/>
+  <object id="21" x="131" y="166" width="58" height="22"/>
+  <object id="22" x="286" y="188" width="32" height="35"/>
+  <object id="23" x="2" y="159" width="30" height="41"/>
+  <object id="24" x="-2" y="245" width="321" height="76"/>
+ </objectgroup>
+ <objectgroup name="interactions">
+  <object id="2" name="portal1" gid="687" x="127" y="68" width="32" height="32"/>
+  <object id="3" name="witch" gid="687" x="254" y="175" width="32" height="32"/>
+ </objectgroup>
+</map>

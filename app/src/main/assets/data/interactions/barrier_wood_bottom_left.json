@@ -1,31 +1,67 @@
 {
-  "type":"OBSTACLE",
-  "atlas":"barrier_wood.atlas",
-  "persistence":"NONE",
-  "defaultState":"CLOSED",
+  "type": "OBSTACLE",
+  "atlas": "barrier_wood.atlas",
+  "persistence": "NONE",
+  "defaultState": "CLOSED",
   "isClickable": "false",
   "isRendable": "true",
   "isMovable": "false",
   "properties": {
-    "hasCollisionWhenOpen":"true",
-    "openBoundsAsObstacle":"true"
+    "hasCollisionWhenOpen": "true",
+    "openBoundsAsObstacle": "true"
   },
   "states": [
     {
       "name": "CLOSED",
-      "fps":"0",
+      "fps": "0",
       "frames": [
         "barrier_face_bottom"
       ]
     },
     {
       "name": "OPEN",
-      "fps":"0",
+      "fps": "0",
       "frames": [
         "barrier_side_left"
       ]
     }
-
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "CLOSE",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "STATE",
+      "value": "CLOSED"
+    },
+    {
+      "type": "STATE",
+      "value": "OPEN"
+    }
   ]
-
 }

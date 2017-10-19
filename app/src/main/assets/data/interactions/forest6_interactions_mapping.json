@@ -13,8 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "forest2",
-      "height":60
+      "targetMapId": "forest7"
     },
     "eventsAction": [],
     "outputEvents": []

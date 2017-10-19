@@ -1,0 +1,61 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "island1",
+      "isDefaultStart": "true"
+    }
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "village"
+    }
+  },
+  {
+    "id": "ice1",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "turtle1",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle2",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle3",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle4",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle5",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle6",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle7",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle8",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle9",
+    "template": "obstacle_turtle.json"
+  },
+  {
+    "id": "turtle10",
+    "template": "obstacle_turtle.json"
+  }
+]
