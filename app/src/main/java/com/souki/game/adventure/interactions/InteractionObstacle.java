@@ -152,12 +152,12 @@ public class InteractionObstacle extends Interaction {
         return ret;
     }
 
-    /*
+
         @Override
         public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
             return mIsOpen && aEntity.mInteraction.getType() == Type.HERO;
         }
-
+/*
         @Override
         public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
             super.onStartCollisionInteraction(aEntity);
@@ -174,10 +174,7 @@ public class InteractionObstacle extends Interaction {
             }
         }
     */
-    @Override
-    public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return aEntity.mInteraction.getType() == Type.HERO;
-    }
+
 
     @Override
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
