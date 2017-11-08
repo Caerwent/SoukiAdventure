@@ -43,6 +43,7 @@ public class EffectsPanel extends Table {
         scrollPane.setScrollingDisabled(true, false);
         scrollPane.setFadeScrollBars(false);
         scrollPane.setFlickScroll(true);
+        scrollPane.setCancelTouchFocus(true);
         add(scrollPane).fillY().expand().left();
 
         add(mDetails).top().left();
@@ -61,15 +62,15 @@ public class EffectsPanel extends Table {
             slot.setBackground(GenericUI.getInstance().getSkin().getDrawable("window1"));
             mSlots.add(slot);
             slot.setColor(GenericUI.getInstance().getSkin().getColor("background-color-1"));
-            slot.setSize(68,68);
+            slot.setSize(68, 68);
 
 
-            if(availableEffects!=null && availableEffects.contains(effectType)) {
+            if (availableEffects != null && availableEffects.contains(effectType)) {
                 Image img = new Image(effect.getIcon());
                 img.setAlign(Align.center);
                 img.setScaling(Scaling.fit);
 
-                slot.center().add(img).size(68,68);
+                slot.center().add(img).size(68, 68);
                 slot.addListener(new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -82,9 +83,7 @@ public class EffectsPanel extends Table {
                                 if (selectedEffect != clickedEffect) {
                                     EventDispatcher.getInstance().onNewSelectedEffect(Effect.Type.values()[idx]);
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 EventDispatcher.getInstance().onNewSelectedEffect(Effect.Type.values()[idx]);
                             }
 

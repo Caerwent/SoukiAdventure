@@ -47,7 +47,7 @@ public class InventoryTable extends Table implements IPlayerListener {
         // setColor(UIStage.getInstance().getSkin().getColor("lt-blue"));
         mSlots = new ArrayMap();
         _dragAndDrop = new DragAndDrop();
-       // _dragAndDrop.setCancelTouchFocus(false);
+        _dragAndDrop.setCancelTouchFocus(true);
         mInventoryTable = new Table();
 
         mInventoryTable.setSkin(GenericUI.getInstance().getSkin());
@@ -60,6 +60,7 @@ public class InventoryTable extends Table implements IPlayerListener {
         mScrollPane.setScrollingDisabled(true, false);
         mScrollPane.setFadeScrollBars(false);
         mScrollPane.setFlickScroll(true);
+        mScrollPane.setCancelTouchFocus(true);
         mScrollPane.setSize(150,(Settings.TARGET_HEIGHT - 64) / 2);
         mDragListener = new DragScrollListener(mScrollPane);
 

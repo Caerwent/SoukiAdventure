@@ -57,6 +57,7 @@ public class HelpPanel extends Table {
         scrollPane.setScrollingDisabled(true, false);
         scrollPane.setFadeScrollBars(false);
         scrollPane.setFlickScroll(true);
+        scrollPane.setCancelTouchFocus(true);
         add(scrollPane).fillY().expand().left();
 
         add(mDetails).top().left();
