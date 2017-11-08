@@ -529,9 +529,14 @@ public class GameMap implements ICollisionObstacleHandler {
                 }
                 boolean isLoop = false;
                 if (object.getProperties().containsKey("isLoop")) {
-                    isLoop = Boolean.parseBoolean(object.getProperties().get("isLoop", String.class));
+                    isLoop = object.getProperties().get("isLoop", Boolean.class);
+                    path.setLoop(isLoop);
                 }
-                path.setLoop(isLoop);
+                if (object.getProperties().containsKey("isLoopReversing")) {
+                    isLoop = object.getProperties().get("isLoopReversing", Boolean.class);
+                    path.setLoopReversing(isLoop);
+                }
+
                 paths.put(object.getName(), path);
 
             } else {
