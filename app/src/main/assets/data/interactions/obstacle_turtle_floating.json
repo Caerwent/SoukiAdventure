@@ -1,6 +1,6 @@
 {
   "type":"OBSTACLE",
-  "atlas":"obstacle_turtle.atlas",
+  "atlas":"obstacle_turtle_floating.atlas",
   "persistence":"NONE",
   "defaultState":"OPEN",
   "isClickable": "false",
@@ -34,8 +34,7 @@
   "properties": {
     "closedBoundsAsObstacle":"true",
     "openZIndex":0,
-    "killableWhenClosed":"true",
-    "setStateOnCollision":"CLOSING"
+    "killableWhenClosed":"true"
   },
   "eventsAction": [
     {
