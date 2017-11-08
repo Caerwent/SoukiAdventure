@@ -3,7 +3,7 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "island1",
+      "targetMapId": "island2",
       "isDefaultStart": "true"
     }
   },
@@ -11,7 +11,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "island3"
+      "targetMapId": "island4"
     }
   },
   {
@@ -33,6 +33,32 @@
   {
     "id": "activator2",
     "template": "activator_type1.json"
+  },
+  {
+    "id": "activator3",
+    "template": "activator_type1.json"
+  },
+  {
+    "id": "turtle0",
+    "template": "obstacle_turtle.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "turtle1",
@@ -58,6 +84,28 @@
   },
   {
     "id": "turtle2",
+    "template": "obstacle_turtle.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "turtle2b",
     "template": "obstacle_turtle.json",
     "properties": {
       "startState": "CLOSED"
@@ -224,7 +272,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
+            "sourceId": "activator1",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -246,7 +294,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
+            "sourceId": "activator1",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -254,9 +302,10 @@
       }
     ]
   },
+
   {
-    "id": "turtle11",
-    "template": "obstacle_turtle.json",
+    "id": "floating1",
+    "template": "obstacle_turtle_floating.json",
     "properties": {
       "startState": "CLOSED"
     },
@@ -277,8 +326,8 @@
     ]
   },
   {
-    "id": "turtle12",
-    "template": "obstacle_turtle.json",
+    "id": "floating2",
+    "template": "obstacle_turtle_floating.json",
     "properties": {
       "startState": "CLOSED"
     },
@@ -299,8 +348,8 @@
     ]
   },
   {
-    "id": "turtle13",
-    "template": "obstacle_turtle.json",
+    "id": "floating3",
+    "template": "obstacle_turtle_floating.json",
     "properties": {
       "startState": "CLOSED"
     },
@@ -312,7 +361,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
+            "sourceId": "activator3",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -321,8 +370,8 @@
     ]
   },
   {
-    "id": "turtle14",
-    "template": "obstacle_turtle.json",
+    "id": "floating4",
+    "template": "obstacle_turtle_floating.json",
     "properties": {
       "startState": "CLOSED"
     },
@@ -334,7 +383,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
+            "sourceId": "activator3",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -343,8 +392,8 @@
     ]
   },
   {
-    "id": "turtle15",
-    "template": "obstacle_turtle.json",
+    "id": "floating5",
+    "template": "obstacle_turtle_floating.json",
     "properties": {
       "startState": "CLOSED"
     },
@@ -356,29 +405,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "turtle16",
-    "template": "obstacle_turtle.json",
-    "properties": {
-      "startState": "CLOSED"
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPENING"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator2",
+            "sourceId": "activator3",
             "type": "STATE",
             "value": "ACTIVATED"
           }

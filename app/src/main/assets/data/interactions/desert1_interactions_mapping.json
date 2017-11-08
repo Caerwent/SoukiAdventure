@@ -1,0 +1,42 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "island4",
+      "isDefaultStart": "true"
+    }
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "desert1"
+    }
+  },
+  {
+    "id": "challenge_portal_checkpoint",
+    "template": "challenge_portal_checkpoint.json",
+    "persistence":"GAME",
+    "properties": {
+      "type": "PORTAL_CHECKPOINT",
+      "zindex": 0
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

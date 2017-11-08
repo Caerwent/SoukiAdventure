@@ -57,41 +57,5 @@
   {
     "id": "ice10",
     "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice11",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice12",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice13",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice14",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice15",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice16",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice17",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice18",
-    "template": "obstacle_water_iceable.json"
-  },
-  {
-    "id": "ice19",
-    "template": "obstacle_water_iceable.json"
   }
 ]

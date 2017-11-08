@@ -1,7 +1,7 @@
 [
   {
     "id":"portal1",
-    "template":"portal.json",
+    "template":"portal_clickable.json",
     "properties": {
       "targetMapId":"forest3_tower1",
       "isDefaultStart":"true"
@@ -13,12 +13,182 @@
     "id": "portal2",
     "template": "portal_clickable.json",
     "properties": {
-      "targetMapId": "forest3",
-      "activatedByItem":"KeyCrystal",
-      "width":32,
-      "height":60
+      "targetMapId": "forest3"
     },
     "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator2",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2.0
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+      "startState":"OPEN"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+      "startState":"OPEN"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+      "startState":"OPEN"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics4",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "ghost1_path1",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+      {
+      "action": {
+        "type": "SET_PATH",
+        "value": "ghost1_path2"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "activator1",
+          "type": "STATE",
+          "value": "ACTIVATED"
+        }
+      ]
+    }
+    ],
     "outputEvents": []
   }
 ]
