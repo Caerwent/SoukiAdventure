@@ -131,9 +131,7 @@
   <object id="112" name="chest1" gid="299" x="302" y="282" width="32" height="32"/>
   <object id="113" name="ice1" gid="299" x="135" y="567" width="32" height="32"/>
   <object id="115" name="chest2" gid="299" x="415" y="515" width="32" height="32"/>
-  <object id="134" name="monster_slime1" gid="299" x="163" y="142" width="32" height="32"/>
-  <object id="135" name="monster_slime2" gid="299" x="536" y="134" width="32" height="32"/>
-  <object id="136" name="monster_tank1" gid="299" x="88" y="508" width="32" height="32"/>
+  <object id="136" name="monster_tank1" gid="299" x="115" y="511" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="items">
   <object id="116" name="Stone14" type="ITEM" gid="299" x="206" y="609" width="32" height="32"/>

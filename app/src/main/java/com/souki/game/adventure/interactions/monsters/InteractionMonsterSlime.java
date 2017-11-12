@@ -21,7 +21,7 @@ public class InteractionMonsterSlime extends InteractionFollowPlayer {
     }
 
     public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
-        return super.hasCollisionObstacle(aEntity) || (aEntity.mData != null && aEntity.mData instanceof InteractionMonsterSlime);
+        return super.hasCollisionObstacle(aEntity) && (aEntity.mData != null && !(aEntity.mData instanceof InteractionMonsterSlime));
     }
 
     @Override
@@ -29,9 +29,9 @@ public class InteractionMonsterSlime extends InteractionFollowPlayer {
 
         boolean ret = super.onCollisionObstacleStart(aEntity);
         if (ret) {
-
+            // no collision with other monster slime
             if (aEntity.mData != null && aEntity.mHandler instanceof InteractionMonsterSlime) {
-                setMovable(false);
+                setMovable(true);
                 return true;
             }
         }
@@ -43,7 +43,7 @@ public class InteractionMonsterSlime extends InteractionFollowPlayer {
 
         boolean ret = super.onCollisionObstacleStop(aEntity);
         if (ret) {
-            if ((aEntity.mData != null && aEntity.mHandler instanceof InteractionMonsterSlime) && (mEffectAction == null || mEffectAction.id != Effect.Type.FREEZE)) {
+            if ( mEffectAction == null || mEffectAction.id != Effect.Type.FREEZE) {
                 setMovable(true);
             }
         }

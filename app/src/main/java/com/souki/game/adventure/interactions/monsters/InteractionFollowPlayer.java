@@ -122,10 +122,11 @@ public class InteractionFollowPlayer extends Interaction {
     public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
 
         boolean ret = super.onCollisionObstacleStart(aEntity);
+
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {
-                if ((aEntity.mType & CollisionObstacleComponent.HERO) == 0) {
+                if ((aEntity.mType & CollisionObstacleComponent.HERO) != 0) {
                     setMovable(false);
                     return true;
                 } else {
@@ -146,7 +147,7 @@ public class InteractionFollowPlayer extends Interaction {
 
         boolean ret = super.onCollisionObstacleStop(aEntity);
         if (ret) {
-            if ((aEntity.mType & CollisionObstacleComponent.HERO) == 0 && (mEffectAction == null || mEffectAction.id != Effect.Type.FREEZE)) {
+            if ((aEntity.mType & CollisionObstacleComponent.HERO) != 0 && (mEffectAction == null || mEffectAction.id != Effect.Type.FREEZE)) {
                 setMovable(true);
             }
         }

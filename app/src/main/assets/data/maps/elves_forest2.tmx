@@ -21,19 +21,19 @@
   </data>
  </layer>
  <objectgroup name="interactions">
-  <object id="1" name="barrier1" gid="1038" x="159" y="156" width="32" height="32"/>
-  <object id="2" name="barrier2" gid="1038" x="161" y="349" width="32" height="32"/>
-  <object id="3" name="barrier3" gid="1038" x="163" y="549" width="32" height="32"/>
-  <object id="4" name="barrier4" gid="1038" x="287" y="222" width="32" height="32"/>
-  <object id="5" name="barrier5" gid="1038" x="289" y="483" width="32" height="32"/>
-  <object id="6" name="barrier7" gid="1038" x="349" y="353" width="32" height="32"/>
-  <object id="7" name="barrier6" gid="1038" x="351" y="157" width="32" height="32"/>
-  <object id="8" name="barrier8" gid="1038" x="350" y="546" width="32" height="32"/>
-  <object id="9" name="barrier9" gid="1038" x="386" y="288" width="32" height="32"/>
-  <object id="10" name="barrier10" gid="1038" x="385" y="478" width="32" height="32"/>
-  <object id="11" name="barrier11" gid="1038" x="511" y="286" width="32" height="32"/>
-  <object id="12" name="barrier12" gid="1038" x="449" y="351" width="32" height="32"/>
-  <object id="14" name="barrier13" gid="1038" x="513" y="416" width="32" height="32"/>
+  <object id="1" name="barrier1" gid="1038" x="159" y="148" width="32" height="32"/>
+  <object id="2" name="barrier2" gid="1038" x="161" y="344" width="32" height="32"/>
+  <object id="3" name="barrier3" gid="1038" x="163" y="537" width="32" height="32"/>
+  <object id="4" name="barrier4" gid="1038" x="294" y="222" width="32" height="32"/>
+  <object id="5" name="barrier5" gid="1038" x="297" y="483" width="32" height="32"/>
+  <object id="6" name="barrier7" gid="1038" x="350" y="347" width="32" height="32"/>
+  <object id="7" name="barrier6" gid="1038" x="352" y="153" width="32" height="32"/>
+  <object id="8" name="barrier8" gid="1038" x="350" y="539" width="32" height="32"/>
+  <object id="9" name="barrier9" gid="1038" x="389" y="288" width="32" height="32"/>
+  <object id="10" name="barrier10" gid="1038" x="390" y="477" width="32" height="32"/>
+  <object id="11" name="barrier11" gid="1038" x="524" y="286" width="32" height="32"/>
+  <object id="12" name="barrier12" gid="1038" x="449" y="345" width="32" height="32"/>
+  <object id="14" name="barrier13" gid="1038" x="525" y="414" width="32" height="32"/>
   <object id="15" name="activator1" gid="1038" x="64" y="190" width="32" height="32"/>
   <object id="16" name="activator2" type="activator2" gid="1038" x="66" y="295" width="32" height="32"/>
   <object id="17" name="activator3" gid="1038" x="56" y="453" width="32" height="32"/>

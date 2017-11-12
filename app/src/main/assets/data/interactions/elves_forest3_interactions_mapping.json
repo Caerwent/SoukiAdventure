@@ -1,0 +1,145 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest2",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "generic_hole"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ice1",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice2",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "monster_slime1",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime2",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime3",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "barrier",
+    "template": "barrier_wood_right_bottom.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "wood1_h",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood2_v",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "wood3_h",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood4_h",
+    "template": "obstacle_log_wood.json"
+  },
+  {
+    "id": "wood5_v",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "wood6_v",
+    "template": "obstacle_log_wood2.json"
+  },
+  {
+    "id": "wood7_h",
+    "template": "obstacle_log_wood.json"
+  }
+]

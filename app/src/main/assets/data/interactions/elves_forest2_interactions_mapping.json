@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "elves_forest2"
+      "targetMapId": "elves_forest3"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -22,6 +22,7 @@
     "id": "activator1",
     "template": "activator_type1.json",
     "properties": {
+      "startState": "IDLE"
     },
     "eventsAction": []
   },
@@ -29,6 +30,7 @@
     "id": "activator2",
     "template": "activator_type1.json",
     "properties": {
+      "startState": "IDLE"
     },
     "eventsAction": []
   },
@@ -36,6 +38,7 @@
     "id": "activator3",
     "template": "activator_type1.json",
     "properties": {
+      "startState": "IDLE"
     },
     "eventsAction": []
   },
@@ -54,17 +57,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -78,7 +84,8 @@
             "sourceId": "activator1",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -92,7 +99,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -106,20 +114,13 @@
             "sourceId": "activator3",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
@@ -137,17 +138,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -160,17 +164,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVACTED"
+            "value": "ACTIVACTED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -184,7 +191,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -198,20 +206,13 @@
             "sourceId": "activator3",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
@@ -229,17 +230,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -253,7 +257,8 @@
             "sourceId": "activator1",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -267,7 +272,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -281,24 +287,17 @@
             "sourceId": "activator3",
             "type": "STATE",
             "isNotValue": true,
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
-    "id": "barrier4",
+    "id": "barrier5",
     "template": "barrier_wood_top_right.json",
     "properties": {
     },
@@ -312,17 +311,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -335,17 +337,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVACTED"
+            "value": "ACTIVACTED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -358,12 +363,14 @@
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -376,7 +383,8 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -389,29 +397,23 @@
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
-    "id": "barrier5",
+    "id": "barrier4",
     "template": "barrier_wood_bottom_right.json",
     "properties": {
     },
@@ -425,17 +427,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -448,17 +453,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -471,7 +479,8 @@
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -484,7 +493,8 @@
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       }
@@ -505,17 +515,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -529,7 +542,8 @@
             "sourceId": "activator1",
             "type": "STATE",
             "isNotValue": true,
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -543,7 +557,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -557,20 +572,13 @@
             "sourceId": "activator3",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
@@ -588,17 +596,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -612,7 +623,8 @@
             "sourceId": "activator1",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -626,7 +638,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -640,20 +653,13 @@
             "sourceId": "activator3",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
@@ -671,17 +677,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -695,7 +704,8 @@
             "sourceId": "activator1",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -709,7 +719,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -723,20 +734,13 @@
             "sourceId": "activator3",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
@@ -754,17 +758,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -777,17 +784,20 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "IDLE"
+            "value": "IDLE",
+            "isPersistent": true
           }
         ]
       },
@@ -801,7 +811,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -815,7 +826,8 @@
             "sourceId": "activator2",
             "type": "STATE",
             "isNotValue": true,
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       },
@@ -828,30 +840,25 @@
           {
             "sourceId": "activator1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator2",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           },
           {
             "sourceId": "activator3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
+            "isPersistent": true
           }
         ]
       }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
   {
@@ -924,7 +931,7 @@
   },
   {
     "id": "barrier12",
-    "template": "barrier_wood_bottom_right.json",
+    "template": "barrier_wood_right_bottom.json",
     "properties": {
     },
     "eventsAction": [
@@ -935,7 +942,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "barrier5",
+            "sourceId": "barrier4",
             "type": "STATE",
             "value": "OPEN"
           }
@@ -948,7 +955,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "barrier5",
+            "sourceId": "barrier4",
             "type": "STATE",
             "value": "CLOSED"
           }

@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal_clickable.json",
     "properties": {
-      "targetMapId": "forest3"
+      "targetMapId": "elves_forest1"
     },
     "eventsAction": [],
     "outputEvents": []

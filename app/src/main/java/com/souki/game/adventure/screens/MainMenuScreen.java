@@ -10,20 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.items.Item;
-import com.souki.game.adventure.items.ItemFactory;
+import com.souki.game.adventure.persistence.LocationProfile;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
-import com.souki.game.adventure.quests.Quest;
-import com.souki.game.adventure.quests.QuestManager;
-import com.souki.game.adventure.quests.QuestTask;
-
-import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -198,18 +191,25 @@ public class MainMenuScreen implements Screen {
     }
 
     private void onDebug() {
+ /*
+ CHANGE QUEST STATE
         Quest quest = QuestManager.getInstance().getQuestFromId("quest_malo");
         quest.setActivated(true);
         quest.setCompleted(false);
         quest.setTasks(new ArrayList<QuestTask>());
         Profile.getInstance().updateQuestProfile("quest_malo", quest);
+*/
 
-
-      /*  LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "forest8";
+      /*
+       CHANGE LOCATION */
+       LocationProfile locationProfile = new LocationProfile();
+        locationProfile.mMapId = "elves_forest3";
         // locationProfile.mFromMapId = aFromMap;
 
-        Profile.getInstance().setLocationProfile(locationProfile);*/
+        Profile.getInstance().setLocationProfile(locationProfile);
+
+      /*
+      CHANGE ITEMS
 
         Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
@@ -222,8 +222,11 @@ public class MainMenuScreen implements Screen {
         inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Hammer));
 
         Profile.getInstance().updateInventory(inventory);
+*/
 
-       /* MapProfile mapProfile = Profile.getInstance().getMapProfile("forest4");
+       /*
+       CHANGE MAP ITEM STATE
+       MapProfile mapProfile = Profile.getInstance().getMapProfile("forest4");
         mapProfile.items.remove(Item.ItemTypeID.PotionRounededBrown.name());
         Profile.getInstance().updateMapProfile("forest4", mapProfile);*/
 

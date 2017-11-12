@@ -1,9 +1,9 @@
 [
   {
     "id": "portal1",
-    "template": "forest3_tower2.json",
+    "template": "portal_clickable.json",
     "properties": {
-      "targetMapId": "elves_forest1",
+      "targetMapId": "forest3_tower2",
       "isDefaultStart": "true"
     },
     "eventsAction": [],

@@ -37,7 +37,7 @@
   <object id="9" x="96" y="96" width="94" height="128"/>
  </objectgroup>
  <objectgroup name="interactions">
-  <object id="10" name="portal1" gid="782" x="126" y="228" width="32" height="32"/>
+  <object id="10" name="portal1" gid="782" x="126" y="227" width="32" height="32"/>
   <object id="11" name="portal2" gid="782" x="365" y="233" width="32" height="32"/>
  </objectgroup>
 </map>
