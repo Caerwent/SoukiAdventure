@@ -695,7 +695,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                         if ((expectedEvent.sourceId == null || expectedEvent.sourceId.isEmpty() || expectedEvent.sourceId.equals(aEvent.sourceId)) && expectedEvent.type.equals(aEvent.type)) {
                             boolean conditionValue = expectedEvent.value.equals(aEvent.value) || (expectedEvent.value == null && aEvent.value.isEmpty()) || (aEvent.value == null && expectedEvent.value.isEmpty());
-                            expectedEvent.setPerformed(conditionValue || (expectedEvent.isNotValue && !conditionValue));
+                            expectedEvent.setPerformed(expectedEvent.isNotValue ? !conditionValue : conditionValue);
                             performed = expectedEvent.isPerformed();
                             break;
                         }
@@ -709,6 +709,11 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                             }
                         }
                         if (allPerformed) {
+                            for (InteractionEvent expectedEvent : eventAction.inputEvents) {
+                                if (!expectedEvent.isPersistent) {
+                                    expectedEvent.setPerformed(false);
+                                }
+                            }
                             doAction(eventAction.action);
                         }
                     }
@@ -725,11 +730,15 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
      */
     protected boolean doAction(InteractionActionType aAction) {
         if (aAction != null && InteractionActionType.ActionType.SET_STATE == aAction.type) {
+            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+
             if (getState(aAction.value) != null) {
                 setState(aAction.value);
                 return true;
             }
         } else if (aAction != null && InteractionActionType.ActionType.ACTIVATE_QUEST == aAction.type) {
+            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+
             Quest quest = QuestManager.getInstance().getQuestFromId(aAction.value);
             if (quest != null && !quest.isActivated() && !quest.isCompleted()) {
 

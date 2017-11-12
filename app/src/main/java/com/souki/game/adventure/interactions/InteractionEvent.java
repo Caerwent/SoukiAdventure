@@ -20,6 +20,7 @@ public class InteractionEvent {
     public String sourceId;
     public String type;
     public String value;
+    public boolean isPersistent;
     public boolean isNotValue;
 
     private boolean mIsPerformed = false;
@@ -36,13 +37,18 @@ public class InteractionEvent {
     }
 
     public InteractionEvent(String aSourceId, String aType, String aValue) {
-        this(aSourceId, aType, aValue, false);
+        this(aSourceId, aType, aValue, false, false);
     }
 
-    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue) {
+    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue)
+    {
+        this(aSourceId, aType, aValue, false, false);
+    }
+    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue, boolean aIsPersistent) {
         sourceId = aSourceId;
         type = aType;
         value = aValue;
         isNotValue = aIsNotValue;
+        isPersistent = aIsPersistent;
     }
 }
