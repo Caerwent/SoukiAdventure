@@ -24,7 +24,7 @@ public class InventoryDetails extends Table {
         mItemDescLabel.setSize(aWidth, aHeight);
         mItemDescLabel.setAlignment(Align.topLeft);
         mScrollPane = new ScrollPane(mItemDescLabel, GenericUI.getInstance().getSkin(), "inventoryPane");
-        this.add(mScrollPane).width(aWidth).top().left().pad(5);
+        this.add(mScrollPane).width(aWidth).top().left().pad(5).expand().fill();
         mScrollPane.setScrollingDisabled(true, false);
         mScrollPane.setFadeScrollBars(false);
         mScrollPane.setFlickScroll(true);

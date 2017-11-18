@@ -107,7 +107,8 @@ public class InteractionChest extends Interaction {
 
         for (String itemId : mChest.getItems()) {
             Item item = ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId));
-            mMap.getPlayer().onItemFound(item);
+           // mMap.getPlayer().onItemFound(item);
+            EventDispatcher.getInstance().onItemFound(item);
             AudioManager.getInstance().onAudioEvent(AudioManager.ITEM_FOUND_SOUND);
 
         }

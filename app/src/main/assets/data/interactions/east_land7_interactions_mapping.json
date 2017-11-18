@@ -73,6 +73,19 @@
             "value":"quest_farmer_shovel"
           }
         ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_farmer_shovel_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_farmer_shovel_completed"
+          }
+        ]
       }
     ],
     "outputEvents":[]

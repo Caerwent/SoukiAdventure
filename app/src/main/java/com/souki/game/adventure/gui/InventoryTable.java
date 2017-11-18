@@ -64,8 +64,8 @@ public class InventoryTable extends Table implements IPlayerListener {
         mScrollPane.setSize(150,(Settings.TARGET_HEIGHT - 64) / 2);
         mDragListener = new DragScrollListener(mScrollPane);
 
-        add(mScrollPane).top().left();
-        add(mDetails).top().right();
+        add(mScrollPane).top().left().expandY().fillX();
+        add(mDetails).top().right().expand().fill();
         row();
         mDetails.setVisible(false);
 
@@ -95,6 +95,7 @@ public class InventoryTable extends Table implements IPlayerListener {
         }
         mSlotSources.clear();
         mSlots.clear();
+        mSelectedItem=null;
 
         for (Item item : aPlayer.getInventory()) {
             InventorySlot inventorySlot = mSlots.get(item.getItemTypeID());

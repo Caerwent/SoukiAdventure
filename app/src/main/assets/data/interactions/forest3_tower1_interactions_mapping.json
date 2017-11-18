@@ -124,16 +124,19 @@
         "inputEvents": [
           {
             "sourceId": "activator2",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator3",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator1",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -178,16 +181,19 @@
         "inputEvents": [
           {
             "sourceId": "activator2",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator3",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator1",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -232,16 +238,19 @@
         "inputEvents": [
           {
             "sourceId": "activator1",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator2",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "IDLE"
           },
           {
             "sourceId": "activator3",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -305,11 +314,13 @@
         "inputEvents": [
           {
             "sourceId": "activator1",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator3",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -373,11 +384,13 @@
         "inputEvents": [
           {
             "sourceId": "activator4",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator6",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -404,11 +417,13 @@
         "inputEvents": [
           {
             "sourceId": "activator6",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator5",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -568,11 +583,13 @@
         "inputEvents": [
           {
             "sourceId": "activator5",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           },
           {
             "sourceId": "activator6",
+            "isPersistent":"true",
             "type": "STATE",
             "value": "ACTIVATED"
           }

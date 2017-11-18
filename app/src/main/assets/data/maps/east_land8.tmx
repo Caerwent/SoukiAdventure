@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0.0" orientation="orthogonal" renderorder="right-up" width="21" height="16" tilewidth="32" tileheight="32" nextobjectid="26">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="21" height="16" tilewidth="32" tileheight="32" nextobjectid="26">
  <tileset firstgid="1" source="terrain.tsx"/>
  <tileset firstgid="1025" source="Celianna_TileA2.tsx"/>
  <layer name="ground1" width="21" height="16">
@@ -36,7 +36,7 @@
   <object id="11" name="ghost5" x="478" y="255" width="32" height="32"/>
   <object id="12" name="portal1" x="333" y="458" width="32" height="32"/>
   <object id="13" name="portal2" x="621" y="86" width="32" height="32"/>
-  <object id="14" name="barrier_push_1" x="319" y="466" width="32" height="32"/>
+  <object id="14" name="barrier_push_1" x="326" y="466" width="32" height="32"/>
   <object id="15" name="activator_push_1" x="330" y="429" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="collision">
