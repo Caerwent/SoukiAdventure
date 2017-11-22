@@ -5,44 +5,56 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.utils.ObjectMap;
 
 /**
  * @author trey miller
  */
 public class Styles {
 
-    public void styleSkin(Skin skin, TextureAtlas atlas) {
-        BitmapFont font18 = new BitmapFont(Gdx.files.internal("data/fonts/sans_serif_18.fnt"), false);
-        skin.add("default", font18);
+    ObjectMap<String, BitmapFont> fontMap = new ObjectMap<String, BitmapFont>();
 
 
-      /*  FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/fonts/CMSansSerif2012.ttf"));
+    public Skin addFreeTypeFont(Skin skin) {
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/fonts/Roboto-Medium.ttf"));
+
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 20;
+        parameter.color = Color.WHITE;
+        BitmapFont font_default = generator.generateFont(parameter); // font white color, size 18 pixels
+        skin.add("default-font", font_default, BitmapFont.class);
+        fontMap.put("default-font", font_default);
+
+        parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 11;
+        parameter.color = Color.WHITE;
+        BitmapFont font_small = generator.generateFont(parameter); // font white color, size 18 pixels
+        skin.add("small-font", font_small, BitmapFont.class);
+        fontMap.put("small-font", font_small);
+
+        parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 18;
         parameter.color = Color.WHITE;
-        BitmapFont font18 = generator.generateFont(parameter); // font white color, size 18 pixels
-        generator.dispose();
-        skin.add("default", font18, BitmapFont.class);*/
-        LabelStyle lbs = new LabelStyle();
-        lbs.font = font18;
-        lbs.fontColor = Color.WHITE;
-        skin.add("default", lbs);
+        BitmapFont font_normal_text = generator.generateFont(parameter); // font white color, size 18 pixels
+        skin.add("normal-text-font", font_normal_text, BitmapFont.class);
+        fontMap.put("normal-text-font", font_normal_text);
 
-
-     /*   parameter.size = 10;
-        BitmapFont font10 = generator.generateFont(parameter); // font white color, size 18 pixels
         generator.dispose();
-        skin.add("default-font", font10, BitmapFont.class);
 
-        parameter.size = 6;
-        BitmapFont font6 = generator.generateFont(parameter); // font white color, size 18 pixels
-        generator.dispose();
-        skin.add("small-font", font10, BitmapFont.class);
+        return skin;
+
+    }
+
+    public Skin styleSkin(Skin skin, TextureAtlas atlas) {
+   /*     BitmapFont font18 = new BitmapFont(Gdx.files.internal("data/fonts/sans_serif_18.fnt"), false);
+        skin.add("default", font18);
+
 */
+
 
         skin.add("background-color-1", new Color(0x94a9aaff));
         skin.add("background-color-2", new Color(0x768a9dff));
@@ -75,17 +87,17 @@ public class Styles {
         skin.add("tabInactive", tabInactive);
 
 
-
-
-        TextButtonStyle tbs = new TextButtonStyle(btn1up, btn1down, btn1down, font18);
+        TextButtonStyle tbs = new TextButtonStyle(btn1up, btn1down, btn1down, fontMap.get("default-font"));
         tbs.fontColor = skin.getColor("black");
         tbs.pressedOffsetX = Math.round(1f * Gdx.graphics.getDensity());
         tbs.pressedOffsetY = tbs.pressedOffsetX * -1f;
         skin.add("default", tbs);
 
-        tbs = new TextButtonStyle(tabInactive, tabActive, tabActive, font18);
+        tbs = new TextButtonStyle(tabInactive, tabActive, tabActive, fontMap.get("default-font"));
         tbs.fontColor = skin.getColor("black");
         skin.add("tab", tbs);
+
+        return skin;
 
     }
 }

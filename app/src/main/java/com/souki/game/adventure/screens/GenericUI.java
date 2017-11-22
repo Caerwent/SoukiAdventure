@@ -13,28 +13,26 @@ import com.souki.game.adventure.Styles;
 public class GenericUI {
     private static GenericUI sInstance;
 
-    public static synchronized void createInstance()
-    {
+    public static synchronized void createInstance() {
         sInstance = new GenericUI();
     }
 
-    public static GenericUI getInstance()
-    {
+    public static GenericUI getInstance() {
         return sInstance;
     }
+
     protected TextureAtlas atlas;
     protected Skin skin;
 
-    public TextureAtlas getTextureAtlas()
-    {
+    public TextureAtlas getTextureAtlas() {
         return atlas;
     }
-    public Skin getSkin()
-    {
+
+    public Skin getSkin() {
         return skin;
     }
 
-    public GenericUI () {
+    public GenericUI() {
         super();
         init();
     }
@@ -49,18 +47,17 @@ public class GenericUI {
         return AssetsUtility.UI_SKIN_PATH;
     }
 
-    protected void styleSkin(Skin skin, TextureAtlas atlas) {
-        new Styles().styleSkin(skin, atlas);
-    }
 
-    protected void init()
-    {
+    protected void init() {
         atlas = new TextureAtlas(atlasPath());
-        skin = new Skin(atlas);
+        skin = new Skin();
         String skinPath = skinPath();
+        Styles style = new Styles();
+        skin = style.addFreeTypeFont(skin);
+        skin.addRegions(atlas);
         if (skinPath != null)
             skin.load(Gdx.files.internal(skinPath));
-        styleSkin(skin, atlas);
+        skin = style.styleSkin(skin, atlas);
 
 
     }

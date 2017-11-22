@@ -49,17 +49,6 @@
       r: 0
     }
   },
-  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-    "default-font": {
-      "file": "data/fonts/SDS_6x6.fnt"
-    },
-    "small-font": {
-      "file": "data/fonts/SDS_6x6_small.fnt"
-    },
-    "smooth-font": {
-      "file": "data/fonts/sans_serif_18.fnt"
-    },
-  },
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
     "default": {
       "font": "default-font"
@@ -69,15 +58,15 @@
       "fontColor": "black"
     },
     "inventory-detail": {
-      "font": "smooth-font",
+      "font": "normal-text-font",
       "fontColor": "black"
     },
     "help-book-item": {
-      "font": "smooth-font",
+      "font": "normal-text-font",
       "fontColor": "black"
     },
     "dialog-detail": {
-      "font": "smooth-font",
+      "font": "normal-text-font",
       "fontColor": "white"
     },
     "dialog-speaker": {
@@ -93,12 +82,27 @@
     "default": {
       "font": "default-font",
       "fontColor": "white"
-    },
+    }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
-    "default":  { "vScroll": "default-scroll", "hScrollKnob": "slider2", "hScroll": "default-scroll", "vScrollKnob": "slider2" },
-    "inventoryPane": { "vScroll": "default-scroll", "hScrollKnob": "slider2", "hScroll": "default-scroll", "vScrollKnob": "slider2" },
-    "dialogPane":  { "vScroll": "default-scroll", "hScrollKnob": "slider2", "hScroll": "default-scroll", "vScrollKnob": "slider2"  }
+    "default": {
+      "vScroll": "default-scroll",
+      "hScrollKnob": "slider2",
+      "hScroll": "default-scroll",
+      "vScrollKnob": "slider2"
+    },
+    "inventoryPane": {
+      "vScroll": "default-scroll",
+      "hScrollKnob": "slider2",
+      "hScroll": "default-scroll",
+      "vScrollKnob": "slider2"
+    },
+    "dialogPane": {
+      "vScroll": "default-scroll",
+      "hScrollKnob": "slider2",
+      "hScroll": "default-scroll",
+      "vScrollKnob": "slider2"
+    }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle": {
     "default": {
@@ -112,39 +116,38 @@
     "dialog": {
       "titleFont": "default-font",
       "background": "dialog"
-    },
+    }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
     "default": {
-    },
-
+    }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle": {
     "default": {
-      "font": "smooth-font",
+      "font": "normal-text-font",
       "fontColor": "white"
-    },
-
-  },
-  "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
-  "default-horizontal": {
-    "background": "slider1",
-    "knob": "slider2" }
-},
-  "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
-  "default": {
-    "checkboxOn": "checkbox_checked",
-    "checkboxOff": "checkbox_unchecked",
-    "font": "default-font",
-    "fontColor": "white"
-  }
-},
-  "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle":{
-    "default":{
-      "font":"smooth-font",
-      "fontColorUnselected":"black",
-      "fontColorSelected":"white",
-      "selection": "checkbox_checked"
     }
   },
+  "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
+    "default-horizontal": {
+      "background": "slider1",
+      "knob": "slider2"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
+    "default": {
+      "checkboxOn": "checkbox_checked",
+      "checkboxOff": "checkbox_unchecked",
+      "font": "default-font",
+      "fontColor": "white"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle": {
+    "default": {
+      "font": "normal-text-font",
+      "fontColorUnselected": "black",
+      "fontColorSelected": "white",
+      "selection": "checkbox_checked"
+    }
+  }
 }
