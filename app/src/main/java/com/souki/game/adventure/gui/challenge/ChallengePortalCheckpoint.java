@@ -30,6 +30,7 @@ public class ChallengePortalCheckpoint extends ChallengeUI {
 
     public static enum PortalMap {
         FOREST("forest1", "EmptyStone13", Item.ItemTypeID.Stone13),
+        ELVES_FOREST("elves_forest4", "EmptyStone15", Item.ItemTypeID.Stone15),
         CAVES("village", "EmptyStone1", Item.ItemTypeID.Stone1),
         DESERT("desert1", "EmptyStone3", Item.ItemTypeID.Stone3),
         MOUNTAIN("village", "EmptyStone12", Item.ItemTypeID.Stone12),

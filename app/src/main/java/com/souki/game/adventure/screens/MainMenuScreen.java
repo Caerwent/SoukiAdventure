@@ -203,7 +203,7 @@ public class MainMenuScreen implements Screen {
       /*
        CHANGE LOCATION */
        LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "elves_forest3";
+        locationProfile.mMapId = "elves_forest4";
         // locationProfile.mFromMapId = aFromMap;
 
         Profile.getInstance().setLocationProfile(locationProfile);

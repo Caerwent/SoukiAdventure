@@ -1,0 +1,74 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest3",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest4"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge_portal_checkpoint",
+    "template": "challenge_portal_checkpoint.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "PORTAL_CHECKPOINT",
+      "zindex": 0
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "big_tree",
+    "template": "big_tree.json",
+    "persistence": "GAME",
+    "properties": {
+      "startState": "DEAD"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "npc_elf",
+    "template": "elf.json",
+    "properties": {
+      "startState":"IDLE"
+    }
+  }
+]

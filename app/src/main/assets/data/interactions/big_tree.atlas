@@ -1,0 +1,20 @@
+
+big_tree.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+big_tree_alive
+  rotate: false
+  xy: 2, 2
+  size: 145, 196
+  orig: 145, 196
+  offset: 0, 0
+  index: -1
+big_tree_dead
+  rotate: false
+  xy: 149, 38
+  size: 97, 160
+  orig: 97, 160
+  offset: 20, 16
+  index: -1

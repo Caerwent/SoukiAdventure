@@ -1,0 +1,36 @@
+{
+  "type": "OBSTACLE",
+  "atlas": "big_tree.atlas",
+  "persistence": "GAME",
+  "defaultState": "DEAD",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "properties": {
+    "hasCollisionWhenOpen": "true"
+  },
+  "states": [
+    {
+      "name": "DEAD",
+      "fps": "0",
+      "frames": [
+        "big_tree_dead"
+      ]
+    },
+    {
+      "name": "ALIVE",
+      "fps": "0",
+      "frames": [
+        "big_tree_alive"
+      ]
+    }
+  ],
+  "eventsAction": [
+  ],
+  "outputEvents": [
+    {
+      "type": "STATE",
+      "value": "ALIVE"
+    }
+  ]
+}

@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "elves_forest3"
+      "targetMapId": "elves_forest4"
     },
     "eventsAction": [],
     "outputEvents": []
