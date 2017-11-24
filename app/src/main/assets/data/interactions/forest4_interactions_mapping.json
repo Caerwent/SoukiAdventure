@@ -19,8 +19,18 @@
     "outputEvents": []
   },
   {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest4_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
     "id": "barrier",
     "template": "barrier_wood_top_left.json",
+    "persistence": "GAME",
     "properties": {
       "startState":"CLOSED"
     },

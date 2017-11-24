@@ -9,6 +9,9 @@
   "quest_guitar",
   "quest_elf",
   "quest_elf_reward",
-  "quest_witch"
+  "quest_witch",
+  "quest_tree",
+  "quest_tree_activation",
+  "quest_tree_alive"
 ]
 

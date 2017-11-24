@@ -3,7 +3,7 @@
     "id": "portal1",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "elves_forest4",
+      "targetMapId": "elves_forest5",
       "isDefaultStart": "true"
     },
     "eventsAction": [],
@@ -13,7 +13,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "elves_forest6"
+      "targetMapId": "elves_forest7"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -54,20 +54,6 @@
     "eventsAction": []
   },
   {
-    "id": "activator6",
-    "template": "activator_type1.json",
-    "properties": {
-    },
-    "eventsAction": []
-  },
-  {
-    "id": "activator7",
-    "template": "activator_type1.json",
-    "properties": {
-    },
-    "eventsAction": []
-  },
-  {
     "id": "barrier1",
     "template": "barrier_wood_left_top.json",
     "properties": {
@@ -80,7 +66,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
+            "sourceId": "activator5",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -93,7 +79,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator2",
+            "sourceId": "activator5",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -116,189 +102,6 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator1",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator1",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-    ]
-  }
-,
-  {
-    "id": "barrier3",
-    "template": "barrier_wood_top_left.json",
-    "properties": {
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator6",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator6",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-    ]
-  },
-  {
-    "id": "barrier4",
-    "template": "barrier_wood_left_bottom.json",
-    "properties": {
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator3",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator3",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-    ]
-  },
-
-  {
-    "id": "barrier5",
-    "template": "barrier_wood_left_bottom.json",
-    "properties": {
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator4",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator4",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-    ]
-  },
-
-  {
-    "id": "barrier6",
-    "template": "barrier_wood_top_right.json",
-    "properties": {
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator7",
-            "type": "STATE",
-            "value": "IDLE"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "OPEN"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "activator7",
-            "type": "STATE",
-            "value": "ACTIVATED"
-          }
-        ]
-      }
-    ],
-    "outputEvents": [
-    ]
-  },
-  {
-    "id": "barrier7",
-    "template": "barrier_wood_left_top.json",
-    "properties": {
-    },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "CLOSED"
-        },
-        "inputEvents": [
-          {
             "sourceId": "activator5",
             "type": "STATE",
             "value": "IDLE"
@@ -321,5 +124,239 @@
     ],
     "outputEvents": [
     ]
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics4",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost1",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost2",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost3",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime1",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime2",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime3",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime4",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime5",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime6",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
   }
 ]

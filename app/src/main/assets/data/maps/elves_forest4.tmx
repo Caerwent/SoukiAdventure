@@ -65,7 +65,7 @@
   <object id="42" name="challenge_portal_checkpoint" gid="1262" x="481" y="447" width="32" height="32"/>
   <object id="49" name="portal3" gid="1262" x="494" y="631" width="32" height="32"/>
   <object id="50" name="big_tree" gid="1262" x="424" y="287" width="145" height="196"/>
-  <object id="66" name="npc_elf" gid="1262" x="604" y="263" width="32" height="32"/>
+  <object id="66" name="npc_elf" gid="1262" x="575" y="261" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="zindex">
   <object id="22" x="-5" y="350" width="73" height="144"/>

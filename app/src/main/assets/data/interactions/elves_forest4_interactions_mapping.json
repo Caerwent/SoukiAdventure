@@ -2,8 +2,10 @@
   {
     "id": "portal1",
     "template": "portal.json",
+
     "properties": {
       "targetMapId": "elves_forest3",
+      "activateQuestId":"quest_tree_activation",
       "isDefaultStart": "true"
     },
     "eventsAction": [],
@@ -59,6 +61,24 @@
     "properties": {
       "startState": "DEAD"
     },
+    "questActions": [
+      {
+        "questId": "quest_tree_alive",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "SET_STATE",
+          "value": "ALIVE"
+        }
+      },
+      {
+        "questId": "quest_tree_alive",
+        "questState": "FINISHED",
+        "action": {
+          "type": "SET_STATE",
+          "value": "ALIVE"
+        }
+      }
+    ],
     "eventsAction": [
     ],
     "outputEvents": [
@@ -68,7 +88,72 @@
     "id": "npc_elf",
     "template": "elf.json",
     "properties": {
-      "startState":"IDLE"
-    }
+      "startState": "IDLE",
+      "dialogId": "quest_tree"
+    },
+    "questActions": [
+      {
+        "questId": "quest_tree",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_tree_activated"
+        }
+      },
+      {
+        "questId": "quest_tree",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_tree_alive"
+        }
+      },
+      {
+        "questId": "quest_tree_alive",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_tree_finished"
+        }
+      },
+      {
+        "questId": "quest_tree_alive",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_tree_finished"
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_tree"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_tree"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_tree_alive"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_tree_completed"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
   }
 ]

@@ -162,12 +162,16 @@ public class PathMap {
     public static void computeVelocityForDisplacement(Vector2 aVelocity, double dx, double dy, float aVelocityCte) {
         double D = Math.sqrt(dx * dx + dy * dy);
 
-        double angle = Math.acos(dx / D);
-        angle = angle * (dy < 0 ? -1d : 1d);
+        if (D == 0) {
+            aVelocity.set(0, 0);
+        } else {
+            double angle = Math.acos(dx / D);
+            angle = angle * (dy < 0 ? -1d : 1d);
 
-        double vx = Math.cos(angle) * aVelocityCte;
-        double vy = Math.sin(angle) * aVelocityCte;
+            double vx = Math.cos(angle) * aVelocityCte;
+            double vy = Math.sin(angle) * aVelocityCte;
 
-        aVelocity.set((float) vx, (float) vy);
+            aVelocity.set((float) vx, (float) vy);
+        }
     }
 }

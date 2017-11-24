@@ -1,0 +1,39 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest6",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest7"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "wolf1",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "HORIZONTAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

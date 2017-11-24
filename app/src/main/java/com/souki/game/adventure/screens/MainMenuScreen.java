@@ -14,9 +14,13 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.persistence.LocationProfile;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
+import com.souki.game.adventure.quests.Quest;
+import com.souki.game.adventure.quests.QuestManager;
+import com.souki.game.adventure.quests.QuestTask;
+
+import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -191,22 +195,26 @@ public class MainMenuScreen implements Screen {
     }
 
     private void onDebug() {
- /*
- CHANGE QUEST STATE
-        Quest quest = QuestManager.getInstance().getQuestFromId("quest_malo");
-        quest.setActivated(true);
+
+ /*CHANGE QUEST STATE*/
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_tree");
+        quest.setActivated(false);
         quest.setCompleted(false);
         quest.setTasks(new ArrayList<QuestTask>());
-        Profile.getInstance().updateQuestProfile("quest_malo", quest);
-*/
+        Profile.getInstance().updateQuestProfile("quest_tree", quest);
+        quest = QuestManager.getInstance().getQuestFromId("quest_tree_activation");
+        quest.setActivated(false);
+        quest.setCompleted(false);
+        quest.setTasks(new ArrayList<QuestTask>());
+        Profile.getInstance().updateQuestProfile("quest_tree_activation", quest);
 
       /*
-       CHANGE LOCATION */
+       CHANGE LOCATION
        LocationProfile locationProfile = new LocationProfile();
         locationProfile.mMapId = "elves_forest4";
         // locationProfile.mFromMapId = aFromMap;
 
-        Profile.getInstance().setLocationProfile(locationProfile);
+        Profile.getInstance().setLocationProfile(locationProfile); */
 
       /*
       CHANGE ITEMS

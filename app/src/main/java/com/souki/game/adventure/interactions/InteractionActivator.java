@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterTank;
+import com.souki.game.adventure.interactions.monsters.InteractionWalker;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
 
@@ -84,8 +85,12 @@ public class InteractionActivator extends Interaction{
 
         boolean ret = super.onCollisionObstacleStart(aEntity);
         if (ret &&
-                (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  && aEntity.mHandler instanceof InteractionMonsterTank) &&
-                (mMode==PUSH_ONLY || mMode==PUSH_PULL)) {
+                (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) ||
+                ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  &&
+                        (aEntity.mHandler instanceof InteractionMonsterTank ||
+                         aEntity.mHandler instanceof InteractionWalker
+                        )) &&
+                    (mMode==PUSH_ONLY || mMode==PUSH_PULL)) {
 
             if(mMode==PUSH_PULL && mDelay>0) {
                 mDelayTime=0;
@@ -101,9 +106,15 @@ public class InteractionActivator extends Interaction{
     public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity) {
 
         boolean ret = super.onCollisionObstacleStop(aEntity);
+
         if (ret &&
-                (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  && aEntity.mHandler instanceof InteractionMonsterTank) &&
-                 mMode==PUSH_PULL ) {
+                (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) ||
+                        ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  &&
+                                (
+                                    aEntity.mHandler instanceof InteractionMonsterTank ||
+                                    aEntity.mHandler instanceof InteractionWalker
+                                )) &&
+                        mMode==PUSH_PULL ) {
             if(mDelay>0) {
                 Gdx.app.debug("DEBUG", "onCollisionObstacleStop start delay");
                 mDelayTime=0;

@@ -1,0 +1,42 @@
+{
+  "id": "quest_tree",
+  "title": "quest_tree_title",
+  "desc": "quest_tree_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_tree_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "GlyphGreen",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_tree_task2",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "GlyphYellow",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_tree_task3",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "GlyphRed",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_tree_task4",
+      "type": "RETURN_ITEM",
+      "targetId": "npc_elf",
+      "requiredCompletedTask": [
+        "quest_task1",
+        "quest_task2",
+        "quest_task3"
+      ]
+    }
+  ]
+}
+

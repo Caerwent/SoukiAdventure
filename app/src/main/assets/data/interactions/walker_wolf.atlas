@@ -1,0 +1,145 @@
+walker_wolf.png
+size: 480, 128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+idle
+  rotate: false
+  xy: 0, 0
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+idle_up
+  rotate: false
+  xy: 0, 64
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+idle_left
+  rotate: false
+  xy: 160, 92
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+idle_right
+  rotate: false
+  xy: 160, 32
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_down_1
+  rotate: false
+  xy: 32, 0
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_down_2
+  rotate: false
+  xy: 64, 0
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_down_3
+  rotate: false
+  xy: 92, 0
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_down_4
+  rotate: false
+  xy: 128, 0
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_up_1
+  rotate: false
+  xy: 32, 64
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_up_2
+  rotate: false
+  xy: 64, 64
+  size: 64, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_up_3
+  rotate: false
+  xy: 92, 64
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_up_4
+  rotate: false
+  xy: 128, 64
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+move_left_1
+  rotate: false
+  xy: 224, 92
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_left_2
+  rotate: false
+  xy: 288, 92
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_left_3
+  rotate: false
+  xy: 352, 92
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_left_4
+  rotate: false
+  xy: 416, 92
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_right_1
+  rotate: false
+  xy: 224, 32
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_right_2
+  rotate: false
+  xy: 288, 32
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_right_3
+  rotate: false
+  xy: 352, 32
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+move_right_4
+  rotate: false
+  xy: 416, 32
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1

@@ -15,6 +15,7 @@ import com.souki.game.adventure.map.GameMap;
 public class InteractionFollowPath extends Interaction {
     protected PathMap mPath;
     protected boolean mIsAutoStart;
+    protected boolean mIsInterruptedByObstacle;
 
     public InteractionFollowPath(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
@@ -95,11 +96,26 @@ public class InteractionFollowPath extends Interaction {
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {
+                if(isMovable())
+                {
+                    mIsInterruptedByObstacle = true;
+                }
                 setMovable(false);
                 return true;
 
 
             }
+        }
+        return ret;
+    }
+
+    @Override
+    public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity) {
+        boolean ret = super.onCollisionObstacleStop(aEntity);
+        if(ret && mCollisionsObstacle.size<=0 && mIsInterruptedByObstacle && mPath!=null)
+        {
+            mIsInterruptedByObstacle = false;
+            setMovable(true);
         }
         return ret;
     }

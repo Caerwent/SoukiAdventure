@@ -7,6 +7,7 @@ import com.souki.game.adventure.interactions.monsters.InteractionMonster1;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterGhost1;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterSlime;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterTank;
+import com.souki.game.adventure.interactions.monsters.InteractionWalker;
 import com.souki.game.adventure.map.GameMap;
 
 /**
@@ -81,6 +82,9 @@ public class InteractionFactory {
             return interaction;
         } else if (def.type.compareTo("CHALLENGE") == 0) {
             InteractionChallenge interaction = new InteractionChallenge(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
+        } else if (def.type.compareTo("WALKER") == 0) {
+            InteractionWalker interaction = new InteractionWalker(def, x, y, aMapping, aProperties, aMap);
             return interaction;
         }
         return null;

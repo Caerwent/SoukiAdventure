@@ -452,10 +452,7 @@
         ]
       }
     ]
-  }
-
-
-
+  },
   {
     "id": "quest_elf",
     "dialogs": [
@@ -683,6 +680,137 @@
         "speaker": "hero_name",
         "phrases": [
           "quest_witch_finished_dialog_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_tree",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_phrase3",
+          "quest_tree_phrase4",
+          "quest_tree_phrase5"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_phrase6"
+        ]
+      },
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_phrase7"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_phrase8"
+        ]
+      },
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_phrase9"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_phrase10"
+        ]
+      },
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_phrase11"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_phrase12"
+        ]
+      },
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_phrase13"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_tree_activated",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_activated_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_activated_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_tree_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_activated_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_tree_alive",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_alive_phrase1",
+          "quest_tree_alive_phrase2",
+          "quest_tree_alive_phrase3"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_tree_alive_phrase4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_tree_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_elf_name",
+        "phrases": [
+          "quest_tree_finished_phrase1"
         ]
       }
     ]
