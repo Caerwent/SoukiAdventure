@@ -1,13 +1,13 @@
 [
   {
-    "id":"portal1",
-    "template":"portal.json",
+    "id": "portal1",
+    "template": "portal.json",
     "properties": {
-      "targetMapId":"forest4",
-      "isDefaultStart":"true"
+      "targetMapId": "forest4",
+      "isDefaultStart": "true"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
     "id": "portal2",
@@ -16,6 +16,32 @@
       "targetMapId": "forest4"
     },
     "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_puzzle.json",
+    "persistence": "NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_house.png",
+      "size": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
     "outputEvents": []
   }
 ]

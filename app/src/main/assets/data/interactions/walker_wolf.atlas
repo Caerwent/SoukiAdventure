@@ -47,7 +47,7 @@ move_down_2
   index: -1
 move_down_3
   rotate: false
-  xy: 92, 0
+  xy: 96, 0
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
@@ -69,13 +69,13 @@ move_up_1
 move_up_2
   rotate: false
   xy: 64, 64
-  size: 64, 64
+  size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 move_up_3
   rotate: false
-  xy: 92, 64
+  xy: 96, 64
   size: 32, 64
   orig: 32, 64
   offset: 0, 0

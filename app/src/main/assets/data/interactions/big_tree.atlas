@@ -7,14 +7,14 @@ repeat: none
 big_tree_alive
   rotate: false
   xy: 2, 2
-  size: 145, 196
-  orig: 145, 196
+  size: 125, 171
+  orig: 125, 171
   offset: 0, 0
   index: -1
 big_tree_dead
   rotate: false
-  xy: 149, 38
+  xy: 129, 13
   size: 97, 160
   orig: 97, 160
-  offset: 20, 16
+  offset: 12, 1
   index: -1

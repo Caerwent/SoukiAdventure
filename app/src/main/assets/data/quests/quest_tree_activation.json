@@ -3,7 +3,7 @@
   "title": "quest_tree_title",
   "desc": "quest_tree_desc",
   "requiredCompletedQuest": [],
-  "itemsReward": ["Stone15"],
+  "itemsReward": ["Stone15", "DaggerBroken"],
   "effectsReward": [],
   "tasks" : [
     {

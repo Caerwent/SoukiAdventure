@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="29" height="26" tilewidth="32" tileheight="32" nextobjectid="88">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="29" height="26" tilewidth="32" tileheight="32" nextobjectid="89">
  <tileset firstgid="1" source="Celianna_TileA2.tsx"/>
  <tileset firstgid="481" source="spring_E2_Candacis.tsx"/>
  <tileset firstgid="737" source="outside_decoration.tsx"/>
@@ -22,6 +22,7 @@
  <objectgroup name="interactions">
   <object id="26" name="portal2" gid="1038" x="19" y="437" width="32" height="32"/>
   <object id="84" name="portal1" gid="1038" x="682" y="55" width="32" height="32"/>
+  <object id="88" name="challenge1" gid="1038" x="378" y="223" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="29" x="0" y="804" width="930.667" height="28"/>

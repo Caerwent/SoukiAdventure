@@ -120,6 +120,8 @@
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
     "default": {
+      "up": "window1",
+      "down": "window1"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle": {

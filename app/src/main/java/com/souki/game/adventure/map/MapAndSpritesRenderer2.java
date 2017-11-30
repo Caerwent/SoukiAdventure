@@ -554,7 +554,14 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                 break;
             }
         }
-
+// draw all interaction with zindex = 0
+        for (int idx = 0; idx < mMapRendables.length; idx++) {
+            IMapRendable rendable = mMapRendables[idx];
+            if (rendable.isRendable() && !rendable.isRended() && rendable.getZIndex() == 0) {
+                rendable.render(getBatch());
+                rendable.setRended(true);
+            }
+        }
         if (mMap.getZindexCount() > 1) {
             renderLayerByLayer(startLayerIdx);
         } else {
@@ -582,6 +589,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
 //                        debug=true;
 //                        Gdx.app.debug("DEBUG", "hero overlaps tile row=" +row+" col="+col);
 //                    }
+
                     for (int i = 0; i < aZindexList.size; i++) {
                         Shape currentZIndex = aZindexList.get(i);
 //                        Gdx.app.debug("DEBUG", "check zindex " + ShapeUtils.logShape(currentZIndex));
@@ -644,6 +652,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
                         }
                     }
                 }
+
             }
 
         }

@@ -36,7 +36,7 @@ public class InteractionWalker extends Interaction {
     public InteractionWalker(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
         mType = Type.MONSTER;
-        mCollisionHeightFactor = 4;
+
         if (mProperties != null) {
 
 
@@ -51,6 +51,7 @@ public class InteractionWalker extends Interaction {
 
 
         }
+        mCollisionHeightFactor = mOrientation==Orientation.VERTICAL ? 2 : 4;
         initialize(x, y, aMapping);
 
 

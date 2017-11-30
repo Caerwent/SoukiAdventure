@@ -13,10 +13,53 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "elves_forest7"
+      "targetMapId": "elves_forest8"
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_left_top.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
   },
   {
     "id": "activator_push_pull_1",
@@ -27,11 +70,305 @@
     "eventsAction": []
   },
   {
+    "id": "barrier2",
+    "template": "barrier_wood_left_top.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "activator_push_pull_2",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 1.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_3",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_4",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+            "isPersistent": true
+          },
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+            "isPersistent": true
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+            "isPersistent": true
+          },
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+            "isPersistent": true
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics4",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+            "isPersistent": true
+          },
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+            "isPersistent": true
+          }
+        ]
+      }
+
+    ]
+  },
+  {
     "id": "wolf1",
     "template": "walker_wolf.json",
     "properties": {
       "autoStart": "true",
       "orientation": "HORIZONTAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf2",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "HORIZONTAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf3",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf4",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
     },
     "eventsAction": [],
     "outputEvents": []

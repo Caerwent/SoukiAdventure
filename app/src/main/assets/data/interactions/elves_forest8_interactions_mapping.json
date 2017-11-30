@@ -1,0 +1,262 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "elves_forest7",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_left_bottom.json",
+    "persistence": "GAME",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_puzzle.json",
+    "persistence": "NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_house.png",
+      "size": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge2",
+    "template": "challenge_puzzle.json",
+    "persistence": "NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_ghost.png",
+      "size": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "activator1",
+    "template": "activator_push.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost1",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost2",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge2",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost3",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge2",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost4",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost4",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge2",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "chest1",
+    "template": "chest_invisible.json",
+    "properties": {
+      "requiredItem": "DaggerBroken"
+    }
+  }
+]

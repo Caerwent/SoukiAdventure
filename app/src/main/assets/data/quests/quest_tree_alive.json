@@ -2,16 +2,18 @@
   "id": "quest_tree_alive",
   "title": "quest_tree_title",
   "desc": "quest_tree_desc",
-  "requiredCompletedQuest": ["quest_tree"],
-  "itemsReward": ["DaggerBroken"],
+  "requiredCompletedQuest": [
+    "quest_tree"
+  ],
+  "itemsReward": [],
   "effectsReward": [],
-  "tasks" : [
+  "tasks": [
     {
       "id": "quest_tree_alive_task",
-      "type":"DIALOG",
-      "targetId":"quest_tree_alive",
-      "value":"",
-      "requiredCompletedTask":[]
+      "type": "DIALOG",
+      "targetId": "quest_tree_alive",
+      "value": "",
+      "requiredCompletedTask": []
     }
   ]
 }
