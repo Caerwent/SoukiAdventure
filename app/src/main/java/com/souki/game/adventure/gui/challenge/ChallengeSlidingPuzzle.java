@@ -5,11 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.souki.game.adventure.AssetsUtility;
@@ -30,8 +34,11 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
     protected int mImgSizeInPx, mTotalSizeInPx;
     protected int[][] mPuzzleState;
     protected String mImageFile;
-    protected Image mCompletedImage;
+    protected Image mCompletedImage, mEasyImg, mHardImg;
     protected boolean mIsResolved = false;
+    protected boolean mEasyMode = false;
+    protected Table mButtonEasy, mButtonHard;
+    protected TextureRegionDrawable mEasyDisableDrawable, mEasyEnabledDrawable, mHardDisableDrawable, mHardEnabledDrawable;
 
 
     protected ClickListener mClickListener = new ClickListener() {
@@ -107,8 +114,68 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
     protected void createView() {
 
         mGroup = new WidgetGroup();
+        Table levelsLayout = new Table();
+        mContent.top().add(levelsLayout);
+        mContent.row();
+
+
+        mButtonEasy = new Table();
+        mButtonEasy.setBackground(new NinePatchDrawable(GenericUI.getInstance().getSkin().getPatch("bg")));
+        mButtonEasy.setColor(GenericUI.getInstance().getSkin().getColor("background-color-3"));
+        mButtonEasy.setSize(32, 32);
+        mEasyDisableDrawable = new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("level1_disabled"));
+        mEasyEnabledDrawable = new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("level1"));
+        mEasyImg = new Image(mEasyDisableDrawable);
+        mEasyImg.setSize(32, 32);
+        mButtonEasy.add(mEasyImg);
+        levelsLayout.add(mButtonEasy);
+        mButtonEasy.addListener(new InputListener() {
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                mEasyMode = true;
+                mPuzzleState = null;
+                mEasyImg.setDrawable(mEasyEnabledDrawable);
+                mHardImg.setDrawable(mHardDisableDrawable);
+                mButtonEasy.setColor(GenericUI.getInstance().getSkin().getColor("background-color-2"));
+                mButtonHard.setColor(GenericUI.getInstance().getSkin().getColor("background-color-3"));
+                createPuzzle();
+            }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        mButtonHard = new Table();
+        mButtonHard.setBackground(new NinePatchDrawable(GenericUI.getInstance().getSkin().getPatch("bg")));
+        mButtonHard.setColor(GenericUI.getInstance().getSkin().getColor("background-color-2"));
+        mButtonHard.setSize(32, 32);
+        mHardDisableDrawable = new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("level2_disabled"));
+        mHardEnabledDrawable = new TextureRegionDrawable(GenericUI.getInstance().getTextureAtlas().findRegion("level2"));
+        mHardImg = new Image(mHardEnabledDrawable);
+        mHardImg.setSize(32, 32);
+        mButtonHard.add(mHardImg);
+        levelsLayout.add(mButtonHard);
+        mButtonHard.addListener(new InputListener() {
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                mEasyMode = false;
+                mPuzzleState = null;
+                mEasyImg.setDrawable(mEasyDisableDrawable);
+                mHardImg.setDrawable(mHardEnabledDrawable);
+                mButtonHard.setColor(GenericUI.getInstance().getSkin().getColor("background-color-2"));
+                mButtonEasy.setColor(GenericUI.getInstance().getSkin().getColor("background-color-3"));
+                createPuzzle();
+            }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+
         mContent.align(Align.center);
-        mContent.top().add(mGroup).pad(20).expand().fill().center();
+        mContent.top().add(mGroup).pad(10).expand().fill().center();
 
     }
 
@@ -147,6 +214,69 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
         }
         createPuzzle();
     }
+
+    protected int randInRange(int min, int max) {
+        return min + (int) (Math.random() * ((max - min) + 1));
+    }
+
+    protected void shuffle2() {
+
+        int nb_permutations;
+        int[] tab = new int[mSize * mSize];
+        int[] tmp_tab = new int[mSize * mSize];
+        int parite;
+
+        do {
+            nb_permutations = 0;
+        /* Initialise le tableau */
+            for (int i = 0; i < tab.length; i++) {
+                tab[i] = i;
+            }
+        /* Generation aleatoire */
+            for (int i = 0; i < tab.length; i++) {
+                int x = randInRange(i, tab.length - 1 - i);
+                int tmp = tab[i];
+                tab[i] = tab[x];
+                tab[x] = tmp;
+            }
+        /* chercher la parite */
+            int i = 0;
+            for (i = 0; tab[i] != 0; i++) ;
+
+            parite = (mSize - 1) + (mSize - 1) - ((i / mSize) + (i % mSize));
+        /* copie du tableau pour comptage */
+            System.arraycopy(tab, 0, tmp_tab, 0, tab.length);
+        /* On positionne 0 en fin */
+            if (i < mSize * mSize - 1) {
+                int tmp = tmp_tab[mSize * mSize - 1];
+                tmp_tab[mSize * mSize - 1] = tmp_tab[i];
+                tmp_tab[i] = tmp;
+                nb_permutations++;
+            }
+        /* comptage des permutations restantes */
+            for (i = mSize * mSize - 1; i > 0; i--) {
+                if (tmp_tab[i - 1] < i) {
+                    for (int n = i - 1; n >= 0; n--) {
+                        if (tmp_tab[n] == i) {
+                            int tmp = tmp_tab[n];
+                            tmp_tab[n] = tmp_tab[i - 1];
+                            tmp_tab[i - 1] = tmp;
+                            nb_permutations++;
+                        }
+                    }
+                }
+            }
+        }
+        while (((nb_permutations % 2) ^ (parite % 2)) != 0);
+
+        for (int i = 0; i < mSize; i++) {
+            for (int j = 0; j < mSize; j++) {
+                int idxInTab = mSize * mSize - 1 - ((i * mSize) + j);
+                mPuzzleState[i][j] = tab[idxInTab];
+            }
+        }
+    }
+
 
     protected void shuffle() {
         int col = 0, row = 0;
@@ -222,80 +352,6 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
         }
     }
 
-    protected int countInversions(int i, int j) {
-        int inversions = 0;
-        int tileNum = j * (mSize) + i;
-        int lastTile = mSize * mSize;
-        int tileValue = mPuzzleState[i][j];
-        for (int q = tileNum + 1; q < lastTile; ++q) {
-            int k = q % mSize;
-            int l = (int) Math.floor(q / mSize);
-
-            int compValue = mPuzzleState[k][l];
-            if (tileValue > compValue && tileValue != 0) {
-                ++inversions;
-            }
-        }
-        return inversions;
-    }
-
-    protected int sumInversions() {
-        int inversions = 0;
-        for (int j = 0; j < mSize; ++j) {
-            for (int i = 0; i < mSize; ++i) {
-                inversions += countInversions(i, j);
-            }
-        }
-        return inversions;
-    }
-
-    protected boolean isSolvable(int width, int height, int emptyRow) {
-        if (width % 2 == 1) {
-            return (sumInversions() % 2 == 0);
-        } else {
-            return ((sumInversions() + height - emptyRow) % 2 == 0);
-        }
-    }
-
-    protected void initTiles() {
-        //https://www.sitepoint.com/randomizing-sliding-puzzle-tiles/
-        int i = mSize * mSize - 1;
-        int emptyRow = 0;
-        while (i > 0) {
-            int j = (int) Math.floor(Math.random() * i);
-            int xi = (int) i % mSize;
-            int yi = (int) Math.floor(i / mSize);
-            int xj = (int) j % mSize;
-            int yj = (int) Math.floor(j / mSize);
-            int tmp = mPuzzleState[xi][yi];
-            if (tmp == 0)
-                emptyRow = xi;
-            if (mPuzzleState[xj][yj] == 0)
-                emptyRow = xj;
-            mPuzzleState[xi][yi] = mPuzzleState[xj][yj];
-            mPuzzleState[xj][yj] = tmp;
-            if (!isSolvable(mSize, mSize, emptyRow + 1)) {
-                if (emptyRow == 0 && emptyRow <= 1) {
-                    tmp = mPuzzleState[mSize - 2][mSize - 1];
-                    if (tmp == 0)
-                        emptyRow = mSize - 2;
-                    if (mPuzzleState[mSize - 1][mSize - 1] == 0)
-                        emptyRow = mSize - 1;
-                    mPuzzleState[mSize - 2][mSize - 1] = mPuzzleState[mSize - 1][mSize - 1];
-                    mPuzzleState[mSize - 1][mSize - 1] = tmp;
-                } else {
-                    tmp = mPuzzleState[0][0];
-                    if (tmp == 0)
-                        emptyRow = 0;
-                    if (mPuzzleState[1][0] == 0)
-                        emptyRow = 1;
-                    mPuzzleState[0][0] = mPuzzleState[1][0];
-                    mPuzzleState[1][1] = tmp;
-                }
-            }
-            --i;
-        }
-    }
 
     protected void createPuzzle() {
 
@@ -319,8 +375,11 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                 }
 
             }
-            shuffle();
-            //initTiles();
+            if (mEasyMode) {
+                shuffle();
+            } else {
+                shuffle2();
+            }
         }
         mGroup.clear();
         mImgSizeInPx = mTotalSizeInPx / mSize;
