@@ -26,7 +26,7 @@ import com.souki.game.adventure.map.GameMap;
  * Created by vincent on 17/04/2017.
  */
 
-public class InteractionMonsterTank extends Interaction {
+public class InteractionMonsterTank extends Interaction implements IInteractionActivateBehavior {
 
 
     protected float mSpeedFactor;
@@ -65,10 +65,10 @@ public class InteractionMonsterTank extends Interaction {
     public void update(float dt) {
 
         VelocityComponent velocity = this.getComponent(VelocityComponent.class);
-        if (velocity == null && !mCurrentState.name.equals(InteractionState.STATE_KO)) {
+        if (velocity == null && !mCurrentState.name.equals(InteractionState.STATE_EXPLODE)) {
             boolean canMove = false;
 
-            if (mMap != null && mMap.getPlayer()!=null && mMap.getPlayer().getHero()!=null && mMap.getPlayer().getHero().getShapeInteraction()!=null && mShapeInteraction!=null) {
+            if (mMap != null && mMap.getPlayer() != null && mMap.getPlayer().getHero() != null && mMap.getPlayer().getHero().getShapeInteraction() != null && mShapeInteraction != null) {
                 Vector2 target = mMap.getPlayer().getHero().getPosition();
                 Rectangle rectTarget = mMap.getPlayer().getHero().getShapeInteraction().getBounds();
                 Rectangle bounds = mShapeInteraction.getBounds();
@@ -76,14 +76,13 @@ public class InteractionMonsterTank extends Interaction {
                 mPos2D.set(transform.position.x, transform.position.y);
 
 
-
                 float angleWithTarget = 0;
 
-                if (bounds.x+ bounds.width >= rectTarget.x && bounds.x<rectTarget.x+rectTarget.width) {
+                if (bounds.x + bounds.width >= rectTarget.x && bounds.x < rectTarget.x + rectTarget.width) {
 
                     angleWithTarget = bounds.y < rectTarget.y ? 90 : 270;
                     canMove = true;
-                } else if (bounds.y+ bounds.height >= rectTarget.y && bounds.y<rectTarget.y+rectTarget.height) {
+                } else if (bounds.y + bounds.height >= rectTarget.y && bounds.y < rectTarget.y + rectTarget.height) {
                     angleWithTarget = bounds.x < rectTarget.x ? 0 : 180;
                     canMove = true;
                 }
@@ -94,7 +93,7 @@ public class InteractionMonsterTank extends Interaction {
                         for (int i = 0; i < mEntities.length; i++) {
 
                             CollisionObstacleComponent collision = mEntities[i].getComponent(CollisionObstacleComponent.class);
-                            if (collision.mShape == mMap.getPlayer().getHero().getShapeCollision() || collision.mShape == getShapeCollision())
+                            if (collision.mShape == null || collision.mShape == mMap.getPlayer().getHero().getShapeCollision() || collision.mShape == getShapeCollision())
                                 continue;
 
                             if ((collision.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((collision.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
@@ -144,11 +143,11 @@ public class InteractionMonsterTank extends Interaction {
             if (hasCollisionObstacle(aEntity)) {
 
                 setMovable(false);
-                setState(InteractionState.STATE_KO);
+                setState(InteractionState.STATE_EXPLODE);
                 mEffectAction = new Effect();
                 mEffectAction.id = Effect.Type.WAVE;
                 mEffectAction.targetDuration = 5;
-                mEffectAction.targetState = InteractionState.STATE_KO;
+                mEffectAction.targetState = InteractionState.STATE_EXPLODE;
 
                 return true;
 

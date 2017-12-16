@@ -24,6 +24,7 @@ public class InteractionChest extends Interaction {
     protected boolean mIsOpen;
     protected Chest mChest;
     protected String mRequiredItem;
+    protected String mPersistentRequiredItem;
 
     public InteractionChest(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
@@ -38,6 +39,7 @@ public class InteractionChest extends Interaction {
         super.initialize(x, y, aMapping);
         if (mProperties != null) {
             mRequiredItem = (String) mProperties.get("requiredItem");
+            mPersistentRequiredItem = (String) mProperties.get("persistentRequiredItem");
         }
 
     }
@@ -89,26 +91,50 @@ public class InteractionChest extends Interaction {
     @Override
     public void onTouchInteraction() {
 
-        if (mRequiredItem != null && !mRequiredItem.isEmpty()) {
-            Array<Item> item = mMap.getPlayer().getItemsInventoryById(mRequiredItem);
-            if (item != null && item.size > 0) {
-                mMap.getPlayer().removeItem(item.get(0));
-            } else {
-                GameDialog needDialog = DialogsManager.getInstance().getDialog("needKey").clone();
-                String msg = needDialog.getDialogs().get(0).phrases.get(0);
-                msg += " " + ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mRequiredItem)).getItemShortDescription();
-                needDialog.getDialogs().get(0).phrases.set(0, msg);
-                EventDispatcher.getInstance().onStartDialog(needDialog);
-                return;
+        boolean needItem = mRequiredItem != null && !mRequiredItem.isEmpty();
+        boolean needPersistentItem = mPersistentRequiredItem != null && !mPersistentRequiredItem.isEmpty();
+        Item item = null;
+        if (needItem) {
+            Array<Item> items = mMap.getPlayer().getItemsInventoryById(mRequiredItem);
+            if (items != null && items.size > 0) {
+                item = items.get(0);
             }
+        }
+        Item persistentItem = null;
+        if (needPersistentItem) {
+            Array<Item> persistentItems = mMap.getPlayer().getItemsInventoryById(mPersistentRequiredItem);
+            if (persistentItems != null && persistentItems.size > 0) {
+                persistentItem = persistentItems.get(0);
+            }
+        }
+        if (needPersistentItem && persistentItem == null) {
+            GameDialog needDialog = DialogsManager.getInstance().getDialog("needKey").clone();
+            String msg = needDialog.getDialogs().get(0).phrases.get(0);
+            msg += " " + ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mPersistentRequiredItem)).getItemShortDescription();
+            needDialog.getDialogs().get(0).phrases.set(0, msg);
+            EventDispatcher.getInstance().onStartDialog(needDialog);
+            return;
+        }
+        if (needItem && item == null) {
+            GameDialog needDialog = DialogsManager.getInstance().getDialog("needKey").clone();
+            String msg = needDialog.getDialogs().get(0).phrases.get(0);
+            msg += " " + ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mRequiredItem)).getItemShortDescription();
+            needDialog.getDialogs().get(0).phrases.set(0, msg);
+            EventDispatcher.getInstance().onStartDialog(needDialog);
+            return;
+        }
+
+
+        if (needItem) {
+            mMap.getPlayer().removeItem(item);
         }
         mIsOpen = true;
         setState("OPEN");
 
         for (String itemId : mChest.getItems()) {
-            Item item = ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId));
-           // mMap.getPlayer().onItemFound(item);
-            EventDispatcher.getInstance().onItemFound(item);
+            Item foundItem = ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId));
+            // mMap.getPlayer().onItemFound(item);
+            EventDispatcher.getInstance().onItemFound(foundItem);
             AudioManager.getInstance().onAudioEvent(AudioManager.ITEM_FOUND_SOUND);
 
         }

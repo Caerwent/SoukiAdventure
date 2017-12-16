@@ -780,7 +780,7 @@
       {
         "speaker": "npc_elf_name",
         "phrases": [
-          "quest_tree_activated_phrase2"
+          "quest_tree_completed_phrase1"
         ]
       }
     ]
@@ -811,6 +811,31 @@
         "speaker": "npc_elf_name",
         "phrases": [
           "quest_tree_finished_phrase1"
+        ]
+      }
+    ]
+  }
+  {
+    "id": "quest_obtain_shockwave_dialog",
+    "dialogs": [
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_obtain_shockwave_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_obtain_shockwave_phrase2"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_obtain_shockwave_phrase3",
+          "quest_obtain_shockwave_phrase4",
+          "quest_obtain_shockwave_phrase5"
         ]
       }
     ]

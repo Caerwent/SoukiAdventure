@@ -21,7 +21,7 @@ public class InteractionState {
     public final static String STATE_BURNING = "BURNING";
     public final static String STATE_IDLE = "IDLE";
     public final static String STATE_OPEN = "OPEN";
-    public final static String STATE_KO = "KO";
+    public final static String STATE_EXPLODE = "EXPLODE";
     public String name;
     public boolean isLooping;
     public int fps;

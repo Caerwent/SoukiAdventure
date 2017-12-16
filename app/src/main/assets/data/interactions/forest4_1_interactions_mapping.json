@@ -13,35 +13,261 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "forest4"
+      "targetMapId": "forest4_2"
     },
     "eventsAction": [],
     "outputEvents": []
   },
   {
-    "id": "challenge1",
-    "template": "challenge_puzzle.json",
-    "persistence": "NONE",
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
     "properties": {
-      "type": "PUZZLE",
-      "image": "data/challenges/puzzle_house.png",
-      "size": 3
+      "delay": 3.0
+    },
+    "eventsAction": []
+  }, {
+  "id": "activator_push_pull_2",
+  "template": "activator_push_pull.json",
+  "properties": {
+    "delay": 3.0
+  },
+  "eventsAction": []
+}, {
+  "id": "activator_push_pull_3",
+  "template": "activator_push_pull.json",
+  "properties": {
+    "delay": 3.0
+  },
+  "eventsAction": []
+}, {
+  "id": "activator_push_pull_4",
+  "template": "activator_push_pull.json",
+  "properties": {
+    "delay": 3.0
+  },
+  "eventsAction": []
+}, {
+  "id": "activator_push_pull_5",
+  "template": "activator_push_pull.json",
+  "properties": {
+    "delay": 3.0
+  },
+  "eventsAction": []
+},
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
     },
     "eventsAction": [
+
       {
         "action": {
           "type": "SET_STATE",
-          "value": "ACTIVATED"
+          "value": "CLOSED"
         },
         "inputEvents": [
           {
-            "sourceId": "THIS",
-            "type": "CHALLENGE_COMPLETED",
-            "value": ""
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
           }
         ]
       }
-    ],
+
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics4",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_5",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_5",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": "pics5",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id":"chest1",
+    "template":"chest_type1.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "wolf1",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf2",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf3",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
     "outputEvents": []
   }
 ]

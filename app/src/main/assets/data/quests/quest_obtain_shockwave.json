@@ -1,0 +1,21 @@
+
+{
+	"id": "quest_obtain_shockwave",
+	"title":"quest_obtain_shockwave_title",
+	"desc":"quest_obtain_shockwave_desc",
+	"itemsReward":[],
+	"effectsReward":["WAVE"],
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "quest_obtain_shockwave_task1",
+			"type":"DIALOG",
+			"targetId":"quest_obtain_shockwave_dialog",
+			"value":"",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

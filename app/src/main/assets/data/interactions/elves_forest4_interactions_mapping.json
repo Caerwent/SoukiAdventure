@@ -22,9 +22,12 @@
   },
   {
     "id": "portal3",
-    "template": "portal.json",
+    "template": "portal_clickable.json",
     "properties": {
-      "targetMapId": "elves_forest4"
+      "targetMapId": "elves_forest_tower0",
+      "activatedByItem":"KeyMoon",
+      "width":32,
+      "height":60
     },
     "eventsAction": [],
     "outputEvents": []
@@ -54,6 +57,7 @@
     ],
     "outputEvents": []
   },
+
   {
     "id": "big_tree",
     "template": "big_tree.json",
@@ -64,7 +68,7 @@
     "questActions": [
       {
         "questId": "quest_tree_alive",
-        "questState": "COMPLETED",
+        "questState": "NOT_COMPLETED",
         "action": {
           "type": "SET_STATE",
           "value": "ALIVE"
@@ -103,6 +107,14 @@
       {
         "questId": "quest_tree",
         "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_tree_completed"
+        }
+      },
+      {
+        "questId": "quest_tree_alive",
+        "questState": "NOT_COMPLETED",
         "action": {
           "type": "DIALOG",
           "value": "quest_tree_alive"

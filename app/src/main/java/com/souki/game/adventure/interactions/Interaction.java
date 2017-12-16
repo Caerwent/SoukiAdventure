@@ -286,7 +286,8 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                     }
                 }
             }
-            if (mCurrentState.name.compareTo(InteractionState.STATE_FROZEN) == 0) {
+            if (mCurrentState.name.compareTo(InteractionState.STATE_FROZEN) == 0 ||
+                    mCurrentState.name.compareTo(InteractionState.STATE_EXPLODE) == 0) {
                 setMovable(false);
             }
         }
@@ -337,17 +338,25 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         }
         setPosition(x, y);
 
+        restoreFromPersistence();
+
+        // force state event if startState has been set
         if (mProperties.containsKey("startState")) {
             String initState = (String) mProperties.get("startState");
-            if (getState(initState) != null) {
+            InteractionState stateAfterPersistenceRestored = mCurrentState;
+            if (initState!=null) {
                 mCurrentState = null;
-                setState(initState);
+                if(stateAfterPersistenceRestored!=null)
+                {
+                    setState(stateAfterPersistenceRestored.name);
+                }
+                else if(getState(initState)!=null) {
+                    setState(initState);
+                }
 
             }
 
         }
-
-        restoreFromPersistence();
 
         updateRendering(0);
         updateCollision(0);
@@ -833,7 +842,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             mEffectActionTime += dt;
             float timeAction = mEffectAction.targetDuration;
             boolean isTerminated = false;
-            if (timeAction < 0) {
+            if (timeAction < 0 || !mCurrentState.isLooping) {
                 //timeAction =  mEffectAction.frames.size()/mEffectAction.fps;
                 isTerminated = mCurrentState.isCompleted(mStateTime);
             } else if (mEffectActionTime > timeAction) {

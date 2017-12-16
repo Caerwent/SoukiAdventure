@@ -1,0 +1,231 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "targetMapId": "elves_forest_tower0",
+      "isDefaultStart": "true",
+      "width": 32,
+      "height": 60
+    }
+  },
+  {
+    "id": "portal2",
+    "template": "portal_clickable.json",
+    "properties": {
+      "targetMapId": "mountain1",
+      "width": 32,
+      "height": 60
+    }
+  },
+  {
+    "id": "door1",
+    "template": "obstacle_door_wood.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "door2",
+    "template": "obstacle_door_wood.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "door3",
+    "template": "obstacle_door_wood.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "door4",
+    "template": "obstacle_door_wood.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json"
+  },
+  {
+    "id": "activator2",
+    "template": "activator_type1.json"
+  },
+  {
+    "id": "activator_push_pull1",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull2",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost1",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank2",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "chest1",
+    "template": "chest_type1.json",
+    "properties": {
+      "requiredItem": "KeyIron"
+    }
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  }
+]

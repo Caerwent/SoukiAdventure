@@ -16,7 +16,7 @@
       ]
     },
     {
-      "name": "KO",
+      "name": "EXPLODE",
       "isLooping":"true",
       "fps":"10",
       "frames": [
@@ -71,14 +71,23 @@
           "value": "WAVE"
         }
       ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "EXPLODE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "WAVE"
+        }
+      ]
     }
   ],
   "outputEvents": [
 
-    {
-      "type": "END_STATE",
-      "value": "KO"
-    }
   ]
 
 }

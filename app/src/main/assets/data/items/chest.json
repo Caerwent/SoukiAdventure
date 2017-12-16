@@ -35,6 +35,12 @@
     ]
   },
   {
+    "id": "east_land9_chest1",
+    "items": [
+      "Scroll15"
+    ]
+  },
+  {
     "id": "forest2_chest1",
     "items": [
       "VialGreen"
@@ -56,6 +62,31 @@
     "id": "elves_forest8_chest1",
     "items": [
       "GlyphGreen"
+    ]
+  },
+  {
+    "id": "forest4_1_chest1",
+    "items": [
+      "VialBlue"
+    ]
+  },
+  {
+    "id": "forest4_2_chest1",
+    "items": [
+      "GlyphRed"
+    ]
+  },
+  {
+    "id": "island3_2_chest1",
+    "items": [
+      "GlyphYellow"
+    ]
+  },
+  {
+    "id": "elves_forest_tower1_chest1",
+    "items": [
+      "Stone12",
+      "Scroll01"
     ]
   }
 ]

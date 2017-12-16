@@ -15,11 +15,26 @@
     }
   },
   {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "island3_1"
+    }
+  },
+  {
     "id": "ice1",
     "template": "obstacle_water_iceable.json"
   },
   {
     "id": "ice2",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice4",
+    "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "ice5",
     "template": "obstacle_water_iceable.json"
   },
   {
@@ -36,6 +51,10 @@
   },
   {
     "id": "activator3",
+    "template": "activator_type1.json"
+  },
+  {
+    "id": "activator4",
     "template": "activator_type1.json"
   },
   {
@@ -406,6 +425,72 @@
         "inputEvents": [
           {
             "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "floating6",
+    "template": "obstacle_turtle_floating.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "floating7",
+    "template": "obstacle_turtle_floating.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "floating8",
+    "template": "obstacle_turtle_floating.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
             "type": "STATE",
             "value": "ACTIVATED"
           }

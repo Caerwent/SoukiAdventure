@@ -210,10 +210,19 @@ public class InteractionPortal extends Interaction implements IQuestListener {
             float width_frame = mShapeInteraction.getWidth() / MyGame.SCALE_FACTOR;
             float height_frame = mShapeInteraction.getHeight() / MyGame.SCALE_FACTOR;
 
-            float width = mInteractionTextureRegion.getRegionWidth();
-            float height = mInteractionTextureRegion.getRegionHeight();
+            TextureRegion interactionRegion;
+            if(mActivatedByItem!=null)
+            {
+                interactionRegion = mInteractionEmptyTextureRegion;
+            }
+            else
+            {
+                interactionRegion = mInteractionTextureRegion;
+            }
+            float width = interactionRegion.getRegionWidth();
+            float height = interactionRegion.getRegionHeight();
 
-            batch.draw(mInteractionTextureRegion,
+            batch.draw(interactionRegion,
                     mMarkShape.getX(), mMarkShape.getY(),
                     0, 0,
                     width, height,

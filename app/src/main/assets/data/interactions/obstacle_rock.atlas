@@ -1,0 +1,118 @@
+
+obstacle_rock.png
+size: 1024,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+rock1
+  rotate: false
+  xy: 2, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock10
+  rotate: false
+  xy: 308, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock11
+  rotate: false
+  xy: 342, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock12
+  rotate: false
+  xy: 376, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock13
+  rotate: false
+  xy: 410, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock14
+  rotate: false
+  xy: 444, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock15
+  rotate: false
+  xy: 478, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock16
+  rotate: false
+  xy: 512, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock2
+  rotate: false
+  xy: 36, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock3
+  rotate: false
+  xy: 70, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock4
+  rotate: false
+  xy: 104, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock5
+  rotate: false
+  xy: 138, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock6
+  rotate: false
+  xy: 172, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock7
+  rotate: false
+  xy: 206, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock8
+  rotate: false
+  xy: 240, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1
+rock9
+  rotate: false
+  xy: 274, 2
+  size: 32, 58
+  orig: 32, 58
+  offset: 0, 0
+  index: -1

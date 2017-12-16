@@ -256,7 +256,7 @@
     "id": "chest1",
     "template": "chest_invisible.json",
     "properties": {
-      "requiredItem": "DaggerBroken"
+      "persistentRequiredItem": "DaggerBroken"
     }
   }
 ]

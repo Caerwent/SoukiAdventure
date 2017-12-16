@@ -64,10 +64,10 @@
     "particuleFile":"wave.p",
     "particuleScale":"0.2",
     "sound":"tornado.ogg",
-    "distance": "1",
+    "distance": "2",
     "duration": "3",
     "targetState": "EXPLODE",
-    "targetDuration": "-1",
+    "targetDuration": "5",
     "fps": "10",
     "icon": "SpellWave",
     "frames": [

@@ -18,7 +18,7 @@ import com.souki.game.adventure.persistence.GameSession;
  * Created by vincent on 17/04/2017.
  */
 
-public class InteractionWalker extends Interaction {
+public class InteractionWalker extends Interaction implements IInteractionActivateBehavior {
 
     public static enum Orientation {
         NONE,
@@ -40,22 +40,22 @@ public class InteractionWalker extends Interaction {
         if (mProperties != null) {
 
 
-                if (mProperties.containsKey("autoStart")) {
-                    mIsAutoStart = Boolean.valueOf((String) mProperties.get("autoStart"));
-                }
+            if (mProperties.containsKey("autoStart")) {
+                mIsAutoStart = Boolean.valueOf((String) mProperties.get("autoStart"));
+            }
 
-                if (mProperties.containsKey("orientation")) {
-                    mOrientation = Orientation.valueOf((String) mProperties.get("orientation"));
-                }
-
+            if (mProperties.containsKey("orientation")) {
+                mOrientation = Orientation.valueOf((String) mProperties.get("orientation"));
+            }
 
 
         }
-        mCollisionHeightFactor = mOrientation==Orientation.VERTICAL ? 2 : 4;
+        mCollisionHeightFactor = mOrientation == Orientation.VERTICAL ? 2 : 4;
         initialize(x, y, aMapping);
 
 
     }
+
     public void restoreFromSessionPersistence() {
         Boolean isDestroyed = (Boolean) GameSession.getInstance().getSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_IS_DESTROYED);
         if (isDestroyed != null && isDestroyed.booleanValue()) {
@@ -73,12 +73,11 @@ public class InteractionWalker extends Interaction {
     }
 
 
-
     @Override
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
-        if (!res && aAction != null && InteractionActionType.ActionType.REMOVED==aAction.type) {
-            mIsDestroyed=true;
+        if (!res && aAction != null && InteractionActionType.ActionType.REMOVED == aAction.type) {
+            mIsDestroyed = true;
             mMap.getInteractions().removeValue(this, true);
             destroy();
             return true;
@@ -95,14 +94,14 @@ public class InteractionWalker extends Interaction {
 
     protected void setVelocityForNonPathMovement() {
 
-            VelocityComponent velocity = this.getComponent(VelocityComponent.class);
-            if (velocity != null) {
-                Vector2 vel = new Vector2();
-                PathMap.computeVelocityForDisplacement(vel,
-                        mOrientation == Orientation.HORIZONTAL ? 1 : 0,
-                        mOrientation == Orientation.VERTICAL ? 1 : 0, PathHero.HERO_VELOCITY);
-                setVelocity(vel);
-            }
+        VelocityComponent velocity = this.getComponent(VelocityComponent.class);
+        if (velocity != null) {
+            Vector2 vel = new Vector2();
+            PathMap.computeVelocityForDisplacement(vel,
+                    mOrientation == Orientation.HORIZONTAL ? 1 : 0,
+                    mOrientation == Orientation.VERTICAL ? 1 : 0, PathHero.HERO_VELOCITY);
+            setVelocity(vel);
+        }
 
     }
 
@@ -131,7 +130,7 @@ public class InteractionWalker extends Interaction {
             if (hasCollisionObstacle(aEntity)) {
                 VelocityComponent velocity = this.getComponent(VelocityComponent.class);
                 if (velocity != null) {
-                    setVelocity(-1*velocity.x, -1*velocity.y); //change direction
+                    setVelocity(-1 * velocity.x, -1 * velocity.y); //change direction
                 }
             }
         }

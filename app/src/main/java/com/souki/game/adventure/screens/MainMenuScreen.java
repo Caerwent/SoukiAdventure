@@ -10,13 +10,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.persistence.LocationProfile;
+import com.souki.game.adventure.items.Item;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
+import com.souki.game.adventure.quests.Quest;
+import com.souki.game.adventure.quests.QuestManager;
+import com.souki.game.adventure.quests.QuestTask;
+
+import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -193,28 +200,44 @@ public class MainMenuScreen implements Screen {
     private void onDebug() {
 
  /*CHANGE QUEST STATE*/
-    /*    Quest quest = QuestManager.getInstance().getQuestFromId("quest_tree");
-        quest.setActivated(false);
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_tree");
+        quest.setActivated(true);
         quest.setCompleted(false);
-        quest.setTasks(new ArrayList<QuestTask>());
+        for(QuestTask task : quest.getTasks())
+        {
+            task.setCompleted(false);
+        }
         Profile.getInstance().updateQuestProfile("quest_tree", quest);
+
         quest = QuestManager.getInstance().getQuestFromId("quest_tree_activation");
         quest.setActivated(false);
-        quest.setCompleted(false);
-        quest.setTasks(new ArrayList<QuestTask>());
+        quest.setCompleted(true);
+        for(QuestTask task : quest.getTasks())
+        {
+            task.setCompleted(false);
+        }
         Profile.getInstance().updateQuestProfile("quest_tree_activation", quest);
-*/
+
+        quest = QuestManager.getInstance().getQuestFromId("quest_tree_alive");
+        quest.setActivated(false);
+        quest.setCompleted(false);
+        for(QuestTask task : quest.getTasks())
+        {
+            task.setCompleted(false);
+        }
+        Profile.getInstance().updateQuestProfile("quest_tree_alive", quest);
+
       /*
        CHANGE LOCATION*/
-        LocationProfile locationProfile = new LocationProfile();
+  /*      LocationProfile locationProfile = new LocationProfile();
         locationProfile.mMapId = "elves_forest8";
         // locationProfile.mFromMapId = aFromMap;
 
         Profile.getInstance().setLocationProfile(locationProfile);
-
+*/
       /*
       CHANGE ITEMS*/
-/*
+
         Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
@@ -223,10 +246,12 @@ public class MainMenuScreen implements Screen {
                 inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.DaggerBroken));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.GlyphGreen));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.GlyphRed));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.GlyphYellow));
 
         Profile.getInstance().updateInventory(inventory);
-*/
+
 
        /*
        CHANGE MAP ITEM STATE

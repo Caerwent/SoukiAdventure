@@ -1,0 +1,71 @@
+{
+  "type":"OBSTACLE",
+  "atlas":"obstacle_rock.atlas",
+  "persistence":"NONE",
+  "defaultState":"CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps":"0",
+      "frames": [
+        "rock1"
+      ]
+    },
+    {
+      "name": "EXPLODE",
+      "fps":"10",
+      "isLooping":"false",
+      "frames": [
+        "rock1", "rock2", "rock3",
+        "rock4", "rock5", "rock6",
+        "rock7", "rock8", "rock9",
+        "rock10", "rock11", "rock12",
+        "rock13", "rock14", "rock15", "rock16"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps":"0",
+      "frames": [ "rock16"]
+    }
+
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "REMOVED",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "EXPLODE"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "EXPLODE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "WAVE"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "END_STATE",
+      "value": "EXPLODE"
+    }
+  ]
+
+}

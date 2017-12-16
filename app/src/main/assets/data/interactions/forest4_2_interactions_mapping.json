@@ -1,0 +1,219 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "forest4_1",
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_2",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_3",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_4",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3.0
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "wolf1",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf2",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf3",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wolf4",
+    "template": "walker_wolf.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_puzzle.json",
+    "persistence": "NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_house.png",
+      "size": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_right_bottom.json",
+    "persistence": "GAME",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": "",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "chest1",
+    "template": "chest_invisible.json",
+    "properties": {
+      "persistentRequiredItem": "DaggerBroken"
+    }
+  }
+]

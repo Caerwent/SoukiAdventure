@@ -1,0 +1,78 @@
+[
+  {
+    "id":"portal1",
+    "template":"portal_clickable.json",
+    "properties": {
+      "targetMapId":"elves_forest_tower1",
+      "isDefaultStart":"true",
+      "activateQuestId":"quest_obtain_shockwave",
+      "width": 32,
+      "height": 60
+    },
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "mountain1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wizard",
+    "template": "wizard.json",
+    "properties": {
+      "dialogId": "quest_obtain_shockwave_dialog"
+    },
+    "questActions": [
+      {
+        "questId": "quest_obtain_shockwave",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "LAUNCH_EFFECT",
+          "value": "PORTAL"
+        }
+      },
+      {
+        "questId": "quest_obtain_shockwave",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "wizard",
+            "type": "EFFECT_STOP",
+            "value": "PORTAL"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "rock",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "monster_tank",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]
