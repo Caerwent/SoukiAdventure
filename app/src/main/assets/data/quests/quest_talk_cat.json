@@ -1,0 +1,21 @@
+
+{
+	"id": "quest_talk_cat",
+	"title":"quest_talk_cat_title",
+	"desc":"quest_talk_cat_desc",
+	"itemsReward":[],
+	"effectsReward":[],
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "qquest_talk_cat_task1",
+			"type":"DIALOG",
+			"targetId":"dialog_cat",
+			"value":"",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

@@ -13,6 +13,9 @@
   "quest_tree",
   "quest_tree_activation",
   "quest_tree_alive",
-  "quest_obtain_shockwave"
+  "quest_obtain_shockwave",
+  "quest_talk_cow",
+  "quest_talk_cat",
+  "quest_teddy_bear"
 ]
 

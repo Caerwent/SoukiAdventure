@@ -1,28 +1,29 @@
 [
   {
-    "id":"portal1",
-    "template":"portal.json",
+    "id": "portal1",
+    "template": "portal.json",
     "properties": {
-      "targetMapId":"village",
-      "isDefaultStart":"true"
+      "targetMapId": "village",
+      "isDefaultStart": "true",
+      "activateQuestId":"quest_talk_cat"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"portal2",
-    "template":"portal.json",
+    "id": "portal2",
+    "template": "portal.json",
     "properties": {
-      "targetMapId":"house2"
+      "targetMapId": "house2"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
-    "id":"lapin_jaune",
-    "template":"npc_lapin_jaune.json",
-    "properties":{
-      "dialogId":"npc_lapin_jaune"
+    "id": "lapin_jaune",
+    "template": "npc_lapin_jaune.json",
+    "properties": {
+      "dialogId": "npc_lapin_jaune"
     },
     "questActions": [
       {
@@ -50,8 +51,8 @@
         }
       },
       {
-        "questId":"quest_return_ring",
-        "questState":"NOT_COMPLETED",
+        "questId": "quest_return_ring",
+        "questState": "NOT_COMPLETED",
         "action": {
           "type": "DIALOG",
           "value": "quest_return_ring_dialog"
@@ -74,13 +75,14 @@
         }
       }
     ],
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
     "id": "rich_cat",
     "template": "rich_cat.json",
     "properties": {
+      "dialogId": "dialog_cat"
     }
   }
 ]

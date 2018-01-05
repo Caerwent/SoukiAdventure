@@ -14,7 +14,8 @@
     "properties": {
       "targetMapId": "house1",
       "width": 32,
-      "height": 60
+      "height": 60,
+      "activateQuestId":"quest_talk_cow"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -75,7 +76,19 @@
     "id": "cow",
     "template": "cow.json",
     "properties": {
-    }
+      "dialogId": "dialog_cow"
+    },
+    "questActions": [
+      {
+        "questId": "quest_teddy_bear",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_teddy_bear_activated"
+        }
+      }
+    ],
+    "eventsAction": []
   },
   {
     "id": "lapin_bleu",

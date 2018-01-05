@@ -1,0 +1,26 @@
+{
+  "id": "quest_teddy_bear",
+  "title": "quest_teddy_bear_title",
+  "desc": "quest_teddy_bear_desc",
+  "requiredCompletedQuest": ["quest_talk_cat", "quest_talk_cow"],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_teddy_bear_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "TeddyBear",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_teddy_bear_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "rich_cat",
+      "requiredCompletedTask": [
+        "quest_teddy_bear_task1"
+      ]
+    }
+  ]
+}
+

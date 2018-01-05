@@ -203,6 +203,35 @@
     ]
   },
   {
+    "id": "dialog_cow",
+    "dialogs": [
+      {
+        "speaker": "npc_cow_name",
+        "phrases": [
+          "dialog_cow_phrase1",
+          "dialog_cow_phrase2"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "dialog_cow_phrase3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dialog_cat",
+    "dialogs": [
+      {
+        "speaker": "npc_cat_name",
+        "phrases": [
+          "dialog_cat_phrase"
+        ]
+      }
+    ]
+  },
+  {
     "id": "quest_malo_activated",
     "dialogs": [
       {
@@ -836,6 +865,39 @@
           "quest_obtain_shockwave_phrase3",
           "quest_obtain_shockwave_phrase4",
           "quest_obtain_shockwave_phrase5"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_teddy_bear_activated",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_teddy_bear_phrase1"
+        ]
+      },
+      {
+        "speaker": "npc_cow_name",
+        "phrases": [
+          "quest_teddy_bear_phrase2",
+          "quest_teddy_bear_phrase3",
+          "quest_teddy_bear_phrase4",
+          "quest_teddy_bear_phrase5",
+          "quest_teddy_bear_phrase6"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_teddy_bear_phrase7"
+        ]
+      },
+      {
+        "speaker": "npc_cow_name",
+        "phrases": [
+          "quest_teddy_bear_phrase8"
         ]
       }
     ]
