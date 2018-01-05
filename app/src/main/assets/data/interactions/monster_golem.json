@@ -1,0 +1,85 @@
+{
+  "type":"MOVABLE",
+  "atlas":"monster_golem.atlas",
+  "persistence":"NONE",
+  "defaultState":"IDLE",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "golem"
+      ]
+    },
+    {
+      "name": "MOVE_DOWN",
+      "isLooping":"false",
+      "fps":"15",
+      "frames": [
+        "golem1","golem2","golem3","golem4","golem5","golem6","golem5","golem4","golem3","golem2","golem1"
+      ]
+    },
+    {
+      "name": "MOVE_UP",
+      "isLooping":"false",
+      "fps":"15",
+      "frames": [
+        "golem1","golem2","golem3","golem4","golem5","golem6","golem5","golem4","golem3","golem2","golem1"
+      ]
+    },
+    {
+      "name": "MOVE_LEFT",
+      "isLooping":"false",
+      "fps":"15",
+      "frames": [
+        "golem1","golem2","golem3","golem4","golem5","golem6","golem5","golem4","golem3","golem2","golem1"
+      ]
+    },
+    {
+      "name": "MOVE_RIGHT",
+      "isLooping":"false",
+      "fps":"15",
+      "frames": [
+        "golem1","golem2","golem3","golem4","golem5","golem6","golem5","golem4","golem3","golem2","golem1"
+      ]
+    }
+
+  ]
+  ,
+  "eventsAction": [
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "IDLE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_STOP",
+          "value": "WAVE"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "EXPLODE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "WAVE"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+
+  ]
+
+}

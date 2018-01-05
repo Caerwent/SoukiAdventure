@@ -1,0 +1,55 @@
+
+monster_golem.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+golem
+  rotate: false
+  xy: 2, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
+golem1
+  rotate: false
+  xy: 36, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
+golem2
+  rotate: false
+  xy: 70, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
+golem3
+  rotate: false
+  xy: 104, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
+golem4
+  rotate: false
+  xy: 138, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
+golem5
+  rotate: false
+  xy: 172, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
+golem6
+  rotate: false
+  xy: 206, 2
+  size: 32, 80
+  orig: 32, 80
+  offset: 0, 0
+  index: -1
