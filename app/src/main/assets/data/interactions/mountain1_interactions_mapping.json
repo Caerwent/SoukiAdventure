@@ -16,7 +16,7 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "mountain1"
+      "targetMapId": "mountain2"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -65,14 +65,5 @@
   {
     "id": "rock",
     "template": "obstacle_rock.json"
-  },
-  {
-    "id": "monster_tank",
-    "template": "monster_tank.json",
-    "properties": {
-      "speedFactor": "2"
-    },
-    "eventsAction": [],
-    "outputEvents": []
   }
 ]

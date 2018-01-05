@@ -88,5 +88,14 @@
       "Stone12",
       "Scroll01"
     ]
+  },
+  {
+    "id": "mountain4_chest1",
+    "items": [
+      "VialRed",
+      "VialRed",
+      "VialGreen",
+      "NecklaceJewelBlue"
+    ]
   }
 ]

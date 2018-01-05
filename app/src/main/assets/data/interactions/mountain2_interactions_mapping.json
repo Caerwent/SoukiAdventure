@@ -1,0 +1,76 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart":"true",
+      "targetMapId": "mountain1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "mountain3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "monster_tank",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    }
+  },
+  {
+    "id": "rock",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "arch",
+    "template": "obstacle_arch.json",
+    "properties": {
+      "persistence":"GAME",
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "activator_push_pull",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          }
+        ]
+      }
+    ]
+  }
+]
