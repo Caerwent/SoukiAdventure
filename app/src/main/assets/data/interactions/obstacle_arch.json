@@ -1,0 +1,162 @@
+{
+  "type": "OBSTACLE",
+  "atlas": "obstacle_arch.atlas",
+  "persistence": "NONE",
+  "defaultState": "CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps": "0",
+      "frames": [
+        "arch1"
+      ]
+    },
+    {
+      "name": "CLOSING",
+      "fps": "10",
+      "isLooping": "false",
+      "frames": [
+        "arch_none",
+        "arch16",
+        "arch15",
+        "arch14",
+        "arch13",
+        "arch12",
+        "arch11",
+        "arch10",
+        "arch9",
+        "arch8",
+        "arch7",
+        "arch6",
+        "arch5",
+        "arch4",
+        "arch3",
+        "arch2",
+        "arch1"
+      ]
+    },
+    {
+      "name": "OPENING",
+      "fps": "10",
+      "isLooping": "false",
+      "frames": [
+        "arch1",
+        "arch2",
+        "arch3",
+        "arch4",
+        "arch5",
+        "arch6",
+        "arch7",
+        "arch8",
+        "arch9",
+        "arch10",
+        "arch11",
+        "arch12",
+        "arch13",
+        "arch14",
+        "arch15",
+        "arch16",
+        "arch_none"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps": "0",
+      "frames": [
+        "arch_none"
+      ]
+    }
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "OPEN"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "OPENING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "CLOSED"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "CLOSING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPENING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "CLOSE",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type":"STATE",
+      "value":"OPEN"
+    },
+    {
+      "type":"STATE",
+      "value":"CLOSED"
+    },
+    {
+      "type":"STATE",
+      "value":"OPENING"
+    },
+    {
+      "type": "END_STATE",
+      "value": "OPENING"
+    },
+    {
+      "type": "END_STATE",
+      "value": "CLOSING"
+    }
+  ]
+}

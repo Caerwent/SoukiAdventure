@@ -1,0 +1,125 @@
+
+obstacle_arch.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arch_none
+  rotate: false
+  xy: 0, 0
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+arch1
+  rotate: false
+  xy: 2, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch10
+  rotate: false
+  xy: 306, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch11
+  rotate: false
+  xy: 382, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch12
+  rotate: false
+  xy: 382, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch13
+  rotate: false
+  xy: 458, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch14
+  rotate: false
+  xy: 458, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch15
+  rotate: false
+  xy: 534, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch16
+  rotate: false
+  xy: 534, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch2
+  rotate: false
+  xy: 2, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch3
+  rotate: false
+  xy: 78, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch4
+  rotate: false
+  xy: 78, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch5
+  rotate: false
+  xy: 154, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch6
+  rotate: false
+  xy: 154, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch7
+  rotate: false
+  xy: 230, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch8
+  rotate: false
+  xy: 230, 2
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
+arch9
+  rotate: false
+  xy: 306, 109
+  size: 74, 105
+  orig: 74, 105
+  offset: 0, 0
+  index: -1
