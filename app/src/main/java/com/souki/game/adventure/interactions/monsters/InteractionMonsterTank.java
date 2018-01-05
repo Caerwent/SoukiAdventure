@@ -161,7 +161,7 @@ public class InteractionMonsterTank extends Interaction implements IInteractionA
     }
 
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if (aEntity.mHandler != null) {
+        if (aEntity.mHandler != null && !mCurrentState.name.equals(InteractionState.STATE_EXPLODE)) {
             EventDispatcher.getInstance().onMapReloadRequested(mMap.getMapName(), mMap.getFromMapId());
         }
 
