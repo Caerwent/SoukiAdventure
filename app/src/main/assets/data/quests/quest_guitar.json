@@ -16,7 +16,7 @@
     {
       "id": "quest_guitar_task2",
       "type": "RETURN_ITEM",
-      "targetId": "npc_chien_jaune",
+      "targetId": "chien_jaune",
       "requiredCompletedTask": [
         "quest_guitar_task1"
       ]
