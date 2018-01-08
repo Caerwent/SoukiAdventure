@@ -4,7 +4,7 @@
     "template": "portal.json",
     "properties": {
       "isDefaultStart":"true",
-      "targetMapId": "mountain5"
+      "targetMapId": "mountain6"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -22,7 +22,6 @@
     "id": "activator_push_pull_1",
     "template": "activator_push_pull.json",
     "properties": {
-      "startState":"ACTIVATED"
     },
     "eventsAction": []
   },
@@ -37,20 +36,16 @@
     "id": "activator_push_pull_3",
     "template": "activator_push_pull.json",
     "properties": {
+      "delay":3
     },
     "eventsAction": []
   },
   {
-    "id": "rock1",
-    "template": "obstacle_rock.json"
-  },
-  {
-    "id": "rock2",
-    "template": "obstacle_rock.json"
-  },
-  {
-    "id": "rock3",
-    "template": "obstacle_rock.json"
+    "id": "activator_push_pull_4",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
   },
   {
     "id": "golem1",
@@ -71,10 +66,10 @@
     "outputEvents": []
   },
   {
-    "id": "monster_slime1",
-    "template": "monster_slime.json",
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
     "properties": {
-      "speedFactor": "0.5"
+      "speedFactor": "2"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -95,11 +90,17 @@
           {
             "sourceId": "activator_push_pull_1",
             "type": "STATE",
-            "value": "IDLE",
+            "value": "ACTIVATED",
             "isPersistent": "true"
           },
           {
             "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator_push_pull_3",
             "type": "STATE",
             "value": "ACTIVATED",
             "isPersistent": "true"
@@ -121,7 +122,7 @@
           {
             "sourceId": "activator_push_pull_1",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "IDLE"
           }
         ]
       },
@@ -146,6 +147,19 @@
         "inputEvents": [
           {
             "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
             "type": "STATE",
             "value": "IDLE"
           }
