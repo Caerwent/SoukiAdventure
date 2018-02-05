@@ -1,0 +1,20 @@
+
+portal_mountain_cave.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+portal_cave_empty
+  rotate: false
+  xy: 2, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1
+portal_cave_full
+  rotate: false
+  xy: 68, 2
+  size: 64, 96
+  orig: 64, 96
+  offset: 0, 0
+  index: -1

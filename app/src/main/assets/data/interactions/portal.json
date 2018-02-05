@@ -2,7 +2,7 @@
   "type":"PORTAL",
   "atlas":"",
   "persistence":"GAME",
-  "defaultState":"IDLE",
+  "defaultState":"ACTIVATED",
   "isClickable": "false",
   "isRendable": "false",
   "isMovable": "false",

@@ -19,6 +19,7 @@ import com.souki.game.adventure.items.Item;
 import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.map.IMapRendable;
+import com.souki.game.adventure.persistence.GameSession;
 import com.souki.game.adventure.quests.Quest;
 import com.souki.game.adventure.quests.QuestManager;
 import com.souki.game.adventure.quests.QuestTask;
@@ -29,6 +30,9 @@ import com.souki.game.adventure.screens.GenericUI;
  */
 
 public class InteractionPortal extends Interaction implements IQuestListener {
+
+    private static final String KEY_STATE = "state";
+
     protected String mTargetMapId;
     protected boolean mIsDefaultStart = false;
     boolean mIsActivated = false;
@@ -77,46 +81,50 @@ public class InteractionPortal extends Interaction implements IQuestListener {
             mInteractionEmptyTextureRegion = GenericUI.getInstance().getTextureAtlas().findRegion("InteractionEmpty");
             mMarkShape = new RectangleShape();
             updateInteractionMarkShape();
-            final IMapRendable self = this;
-            this.add(new VisualComponent(mInteractionTextureRegion, new IMapRendable() {
+            if (!isRendable()) {
+                final IMapRendable self = this;
+                this.add(new VisualComponent(mInteractionTextureRegion, new IMapRendable() {
 
-                boolean mIsRended = false;
+                    boolean mIsRended = false;
 
-                @Override
-                public boolean isRendable() {
-                    return true;
-                }
+                    @Override
+                    public boolean isRendable() {
+                        return true;
+                    }
 
-                @Override
-                public boolean isRended() {
-                    return mIsRended;
-                }
+                    @Override
+                    public boolean isRended() {
+                        return mIsRended;
+                    }
 
-                @Override
-                public void setRended(boolean aRended) {
-                    mIsRended = aRended;
-                }
+                    @Override
+                    public void setRended(boolean aRended) {
+                        mIsRended = aRended;
+                    }
 
-                @Override
-                public void render(Batch batch) {
-                    renderMark(batch);
-                }
+                    @Override
+                    public void render(Batch batch) {
+                        renderMark(batch);
+                    }
 
-                @Override
-                public Shape getShapeRendering() {
-                    return mMarkShape;
-                }
+                    @Override
+                    public Shape getShapeRendering() {
+                        return mMarkShape;
+                    }
 
-                @Override
-                public int getZIndex() {
-                    return 2;
-                }
-            }));
+                    @Override
+                    public int getZIndex() {
+                        return 2;
+                    }
+                }));
 
+            }
         }
 
 
-        remove(CollisionObstacleComponent.class);
+        if (!isRendable()) {
+            remove(CollisionObstacleComponent.class);
+        }
         remove(CollisionEffectComponent.class);
         if (mActivatedByQuestId != null) {
             Quest quest = QuestManager.getInstance().getQuestFromId(mActivatedByQuestId);
@@ -126,6 +134,22 @@ public class InteractionPortal extends Interaction implements IQuestListener {
                 EventDispatcher.getInstance().addQuestListener(this);
             }
         }
+    }
+
+    @Override
+    public void restoreFromPersistence(GameSession aGameSession) {
+        String state = (String) aGameSession.getSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_STATE);
+        if (state != null) {
+            mCurrentState = getState(state);
+        }
+
+    }
+
+    @Override
+    public GameSession saveInPersistence(GameSession aGameSession) {
+        aGameSession.putSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_STATE, mCurrentState.name);
+
+        return aGameSession;
     }
 
     @Override
@@ -177,13 +201,18 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     @Override
     public void startToInteract() {
         super.startToInteract();
-        remove(CollisionObstacleComponent.class);
+        if (!isRendable()) {
+            remove(CollisionObstacleComponent.class);
+        }
         remove(CollisionEffectComponent.class);
 
     }
 
     @Override
     public Shape createShapeInteraction() {
+        if (isRendable()) {
+            return super.createShapeInteraction();
+        }
         mShapeInteraction = new CircleShape();
         mShapeInteraction.setY(getPosition().x);
         mShapeInteraction.setX(getPosition().y);
@@ -193,7 +222,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     }
 
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return mActivatedByQuestId == null && mIsActivated && aEntity.mInteraction.getType() == Type.HERO;
+        return mActivatedByQuestId == null && mIsActivated && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name) && aEntity.mInteraction.getType() == Type.HERO;
     }
 
 
@@ -203,6 +232,12 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     }
 
     /************************ RENDERING *********************************/
+    @Override
+    public void render(Batch batch) {
+        super.render(batch);
+        renderMark(batch);
+    }
+
     public void renderMark(Batch batch) {
 
 
@@ -211,12 +246,9 @@ public class InteractionPortal extends Interaction implements IQuestListener {
             float height_frame = mShapeInteraction.getHeight() / MyGame.SCALE_FACTOR;
 
             TextureRegion interactionRegion;
-            if(mActivatedByItem!=null)
-            {
+            if (mActivatedByItem != null) {
                 interactionRegion = mInteractionEmptyTextureRegion;
-            }
-            else
-            {
+            } else {
                 interactionRegion = mInteractionTextureRegion;
             }
             float width = interactionRegion.getRegionWidth();
@@ -228,11 +260,10 @@ public class InteractionPortal extends Interaction implements IQuestListener {
                     width, height,
                     MyGame.SCALE_FACTOR, MyGame.SCALE_FACTOR,
                     0);
-            if(mActivatedByItem!=null)
-            {
+            if (mActivatedByItem != null) {
                 Item item = ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(mActivatedByItem));
                 batch.draw(item.getTextureRegion(),
-                        mMarkShape.getX()+(width-item.getTextureRegion().getRegionWidth())/2*MyGame.SCALE_FACTOR, mMarkShape.getY()+(height-item.getTextureRegion().getRegionHeight())/2*MyGame.SCALE_FACTOR,
+                        mMarkShape.getX() + (width - item.getTextureRegion().getRegionWidth()) / 2 * MyGame.SCALE_FACTOR, mMarkShape.getY() + (height - item.getTextureRegion().getRegionHeight()) / 2 * MyGame.SCALE_FACTOR,
                         0, 0,
                         item.getTextureRegion().getRegionWidth(), item.getTextureRegion().getRegionHeight(),
                         MyGame.SCALE_FACTOR, MyGame.SCALE_FACTOR,
@@ -243,10 +274,9 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     @Override
     public void onTouchInteraction() {
-        if(mActivatedByItem==null) {
+        if (mActivatedByItem == null && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name)) {
             teleport();
-        }
-        else {
+        } else {
 
         }
     }
@@ -264,13 +294,11 @@ public class InteractionPortal extends Interaction implements IQuestListener {
             teleport();
         } else {
             mIsInteractionShown = true;
-            if(mActivatedByItem!=null)
-            {
+            if (mActivatedByItem != null) {
                 Array<Item> items = mMap.getPlayer().getItemsInventoryById(mActivatedByItem);
-                if(items.size>0)
-                {
-                    mActivatedByItem=null;
-                  //  mMap.getPlayer().removeItem(items.first());
+                if (items.size > 0) {
+                    mActivatedByItem = null;
+                    //  mMap.getPlayer().removeItem(items.first());
                     // TO DO store activation in persitence before removing item
                 }
             }

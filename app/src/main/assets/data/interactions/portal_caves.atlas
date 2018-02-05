@@ -1,0 +1,20 @@
+
+portal_caves.png
+size: 64,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+portal_caves_empty
+  rotate: false
+  xy: 2, 68
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+portal_caves_full
+  rotate: false
+  xy: 2, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
