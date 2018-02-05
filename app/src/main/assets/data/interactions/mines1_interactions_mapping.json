@@ -1,0 +1,43 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart":"true",
+      "targetMapId": "mountain8"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_caves.json",
+    "properties": {
+      "targetMapId": "mines1"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  }
+]

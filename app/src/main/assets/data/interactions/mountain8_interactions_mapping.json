@@ -4,7 +4,7 @@
     "template": "portal.json",
     "properties": {
       "isDefaultStart":"true",
-      "targetMapId": "mountain6"
+      "targetMapId": "mountain7"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -13,32 +13,10 @@
     "id": "portal2",
     "template": "portal.json",
     "properties": {
-      "targetMapId": "mountain8"
+      "targetMapId": "mines1"
     },
     "eventsAction": [],
     "outputEvents": []
-  },
-  {
-    "id": "activator_push_pull_1",
-    "template": "activator_push_pull.json",
-    "properties": {
-    },
-    "eventsAction": []
-  },
-  {
-    "id": "activator_push_pull_2",
-    "template": "activator_push_pull.json",
-    "properties": {
-    },
-    "eventsAction": []
-  },
-  {
-    "id": "activator_push_pull_3",
-    "template": "activator_push_pull.json",
-    "properties": {
-      "delay":2
-    },
-    "eventsAction": []
   },
   {
     "id": "monster_slime1",
@@ -77,6 +55,34 @@
     "outputEvents": []
   },
   {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_2",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_3",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_4",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": []
+  },
+  {
     "id": "arch1",
     "template": "obstacle_arch.json",
     "properties": {
@@ -93,20 +99,7 @@
           {
             "sourceId": "activator_push_pull_1",
             "type": "STATE",
-            "value": "ACTIVATED",
-            "isPersistent": "true"
-          },
-          {
-            "sourceId": "activator_push_pull_2",
-            "type": "STATE",
-            "value": "ACTIVATED",
-            "isPersistent": "true"
-          },
-          {
-            "sourceId": "activator_push_pull_3",
-            "type": "STATE",
-            "value": "ACTIVATED",
-            "isPersistent": "true"
+            "value": "ACTIVATED"
           }
         ]
       },
@@ -119,14 +112,27 @@
           {
             "sourceId": "activator_push_pull_1",
             "type": "STATE",
-            "value": "IDLE",
-            "isPersistent":"true"
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
           },
           {
-            "sourceId": "THIS",
+            "sourceId": "activator_push_pull_3",
             "type": "STATE",
-            "value": "OPEN",
-            "isPersistent":"true"
+            "value": "ACTIVATED",
+            "isPersistent": "true"
           }
         ]
       },
@@ -139,12 +145,12 @@
           {
             "sourceId": "activator_push_pull_2",
             "type": "STATE",
-            "value": "IDLE", "isPersistent":"true"
+            "value": "IDLE"
           },
           {
-            "sourceId": "THIS",
+            "sourceId": "activator_push_pull_3",
             "type": "STATE",
-            "value": "OPEN",
+            "value": "ACTIVATED",
             "isPersistent":"true"
           }
         ]
@@ -158,13 +164,69 @@
           {
             "sourceId": "activator_push_pull_3",
             "type": "STATE",
-            "value": "IDLE", "isPersistent":"true"
+            "value": "IDLE"
           },
           {
-            "sourceId": "THIS",
+            "sourceId": "activator_push_pull_2",
             "type": "STATE",
-            "value": "OPEN",
+            "value": "ACTIVATED",
             "isPersistent":"true"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arch2",
+    "template": "obstacle_arch.json",
+    "properties": {
+      "persistence": "SESSION",
+      "startState":"CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPENING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSING"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
           }
         ]
       }
