@@ -220,7 +220,7 @@ public class InteractionObstacle extends Interaction {
             } else {
                 mCollisionHeightFactor = 8;
             }
-            if (getComponent(CollisionObstacleComponent.class) == null) {
+            if (getComponent(CollisionObstacleComponent.class) == null && mCollisionObstacleComponent!=null) {
                 Gdx.app.debug("DEBUG", "add obstacle when close" + getId());
                 add(mCollisionObstacleComponent);
             }
