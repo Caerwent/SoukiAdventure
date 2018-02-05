@@ -26,7 +26,8 @@ public class ChallengeUI extends Window {
         TEST(ChallengeTest.class),
         MACHINE(ChallengeMachine.class),
         PUZZLE(ChallengeSlidingPuzzle.class),
-        PORTAL_CHECKPOINT(ChallengePortalCheckpoint.class);
+        PORTAL_CHECKPOINT(ChallengePortalCheckpoint.class),
+        STEAM_MACHINE(ChallengeSteamMachine.class);
 
         protected Class mClass;
 

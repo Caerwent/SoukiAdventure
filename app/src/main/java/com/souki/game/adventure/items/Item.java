@@ -18,6 +18,7 @@ public class Item {
         Boots,
         ChessClosed,
         ChessOpen,
+        Coal,
         Compass,
         CrystalAnimBlue,
         CrystalAnimGreen,

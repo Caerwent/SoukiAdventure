@@ -20,6 +20,7 @@ public class InteractionState {
     public final static String STATE_FROZEN = "FROZEN";
     public final static String STATE_BURNING = "BURNING";
     public final static String STATE_IDLE = "IDLE";
+    public final static String STATE_ACTIVATED = "ACTIVATED";
     public final static String STATE_OPEN = "OPEN";
     public final static String STATE_EXPLODE = "EXPLODE";
     public String name;

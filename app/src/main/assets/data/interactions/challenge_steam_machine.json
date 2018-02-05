@@ -1,0 +1,89 @@
+{
+  "type":"CHALLENGE",
+  "atlas":"challenge_steam_machine.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"false",
+      "fps":"0",
+      "frames": [
+        "steam_machine_small_idle"
+      ]
+    },
+    {
+      "name": "HAS_FIRE_ONLY",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "steam_machine_small_fire_1",
+        "steam_machine_small_fire_2",
+        "steam_machine_small_fire_3"
+      ]
+    },
+    {
+      "name": "COMPLETED",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "steam_machine_small_fire_gear_1",
+        "steam_machine_small_fire_gear_2",
+        "steam_machine_small_fire_gear_3",
+        "steam_machine_small_fire_gear_4"
+      ]
+    },
+    {
+      "name": "HAS_GEAR_ONLY",
+      "isLooping":"false",
+      "fps":"10",
+      "frames": [
+        "steam_machine_small_idle_gear"
+      ]
+    }
+  ,
+    {
+      "name": "IDLE_BIG",
+      "isLooping":"false",
+      "fps":"0",
+      "frames": [
+        "steam_machine_idle"
+      ]
+    },
+    {
+      "name": "COMPLETED_BIG",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "steam_machine_fire_gear_1",
+        "steam_machine_fire_gear_2",
+        "steam_machine_fire_gear_3",
+        "steam_machine_fire_gear_4"
+      ]
+    },
+    {
+      "name": "HAS_GEAR_ONLY_BIG",
+      "isLooping":"false",
+      "fps":"10",
+      "frames": [
+        "steam_machine_idle_gear"
+      ]
+    },
+    {
+      "name": "HAS_FIRE_ONLY_BIG",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "steam_machinel_fire_1",
+        "steam_machine_fire_2",
+        "steam_machine_fire_3"
+      ]
+    }
+
+
+  ]
+
+}

@@ -1,0 +1,132 @@
+
+challenge_steam_machine.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+steam_machine_fire_1
+  rotate: false
+  xy: 2, 812
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_fire_2
+  rotate: false
+  xy: 2, 600
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_fire_3
+  rotate: false
+  xy: 234, 812
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_fire_gear_1
+  rotate: false
+  xy: 2, 388
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_fire_gear_2
+  rotate: false
+  xy: 234, 600
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_fire_gear_3
+  rotate: false
+  xy: 466, 812
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_fire_gear_4
+  rotate: false
+  xy: 2, 176
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_idle
+  rotate: false
+  xy: 234, 388
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_idle_gear
+  rotate: false
+  xy: 466, 600
+  size: 230, 210
+  orig: 230, 210
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_1
+  rotate: false
+  xy: 698, 966
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_2
+  rotate: false
+  xy: 2, 118
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_3
+  rotate: false
+  xy: 234, 330
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_gear_1
+  rotate: false
+  xy: 466, 542
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_gear_2
+  rotate: false
+  xy: 698, 908
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_gear_3
+  rotate: false
+  xy: 764, 966
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_fire_gear_4
+  rotate: false
+  xy: 2, 60
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_idle
+  rotate: false
+  xy: 2, 2
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+steam_machine_small_idle_gear
+  rotate: false
+  xy: 68, 118
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1

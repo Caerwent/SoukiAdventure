@@ -94,6 +94,8 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     protected Effect mEffectAction;
     protected float mEffectActionTime;
 
+    protected boolean mShouldNotfyStartState = false;
+
     protected String mAtlasFilename;
 
     public String getAtlasFilename() {
@@ -259,7 +261,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     }
 
 
-    protected InteractionState getState(String aStateName) {
+    public InteractionState getState(String aStateName) {
         if (aStateName == null)
             return null;
         for (InteractionState state : mDef.states) {
@@ -270,7 +272,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         return null;
     }
 
-    protected void setState(String aStateName) {
+    public void setState(String aStateName) {
         InteractionState state = getState(aStateName);
         if (state != null && state != mCurrentState) {
 
@@ -340,6 +342,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
         restoreFromPersistence();
 
+        mShouldNotfyStartState = false;
         // force state event if startState has been set
         if (mProperties.containsKey("startState")) {
             String initState = (String) mProperties.get("startState");
@@ -349,9 +352,11 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                 if(stateAfterPersistenceRestored!=null)
                 {
                     setState(stateAfterPersistenceRestored.name);
+                    mShouldNotfyStartState=true;
                 }
                 else if(getState(initState)!=null) {
                     setState(initState);
+                    mShouldNotfyStartState=true;
                 }
 
             }
@@ -610,6 +615,19 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         if (mQuestsActions != null) {
             for (InteractionQuestAction action : mQuestsActions) {
                 onQuestEvent(QuestManager.getInstance().getQuestFromId(action.questId));
+            }
+        }
+        if(mShouldNotfyStartState)
+        {
+            mShouldNotfyStartState = false;
+            if (mOutputEvents != null) {
+                for (InteractionEvent event : mOutputEvents) {
+
+                    if (InteractionEvent.EventType.STATE == InteractionEvent.EventType.valueOf(event.type) &&
+                            mCurrentState.name.equals(event.value)) {
+                        EventDispatcher.getInstance().onInteractionEvent(event);
+                    }
+                }
             }
         }
 
