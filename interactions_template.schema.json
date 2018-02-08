@@ -1,0 +1,242 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "interactions_template.schema.json",
+	"description": "schema for an interaction",
+	"definitions": {
+
+		"state": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"isLooping": {
+					"type": "boolean"
+				},
+				"fps": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"frames": {
+					"description": "array of regions defined in referenced atlas file",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"persistence": {
+			"type": "string",
+			"enum": ["NONE",
+				"SESSION",
+				"GAME"
+			]
+		},
+		"event": {
+			"type": "object",
+			"description": "event than can be emitted and received by an interaction",
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["STATE",
+        					"END_STATE",
+        					"DIALOG",
+        					"EFFECT_START",
+        					"EFFECT_STOP",
+        					"CHALLENGE_COMPLETED",
+        					"END_PATH"]
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"required": ["type", "value"]
+		},
+
+
+		"inputEvent": {
+			"type": "object",
+			"description": "describe events that can handled by the interaction",
+			"allOf": [{
+					"$ref": "#/definitions/event"
+				},
+				{
+					"properties": {
+					
+						"sourceId": {
+							"description": "id of the emitted interaction, if it equals THIS, interaction handles its own emitted event",
+							"type": "string"
+						},
+						"isPersistent": {
+							"description": "true if event should not be reset after associated action has been realized, use it for action realized on activator state for example",
+							"type": "boolean"
+						},
+						"isVolatile": {
+							"description": "true if event state is not memorized, the associated action can be realized only if all other events have been triggered when this event occurs. Only one volatile event must be used for each action",
+							"type": "boolean"
+						},
+						"isNotValue": {
+							"description": "true if occured event should not have the expected value",
+							"type": "boolean"
+						}
+					}
+				}
+			],
+			"required": ["sourceId"]
+		},
+
+		"action": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": ["DIALOG",
+						"SET_STATE",
+						"WAKEUP",
+						"OPEN",
+						"CLOSE",
+						"REMOVED",
+						"LAUNCH_EFFECT",
+						"ACTIVATE_QUEST",
+						"SET_PATH"
+					]
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"required": ["type", "value"]
+		},
+
+		"eventAction": {
+			"type": "object",
+
+			"properties": {
+				"action": {
+					"$ref": "#/definitions/action"
+				},
+				"inputEvents": {
+					"description": "action is performed only when all events have been triggered",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/inputEvent"
+					}
+				}
+			},
+			"required": ["action", "inputEvents"]
+		},
+
+		"questAction": {
+			"type": "object",
+			"allOf": [{
+					"$ref": "#/definitions/action"
+				},
+				{
+					"properties": {
+						"questId": {
+							"description": "the id of the quest on which the quest state is checked",
+							"type": "string"
+						},
+						"questState": {
+							"type": "string",
+							"enum": ["NOT_ACTIVATED",
+								"NOT_COMPLETED",
+								"COMPLETED",
+								"FINISHED"
+							]
+						}
+					}
+				}
+			],
+			"required": ["questId", "questState"]
+		},
+
+		"map": {
+			"description": "describe a list of properties",
+			"type": "array",
+			"maxItems": 50,
+			"items": {
+				"type": "array",
+				"items": [{
+						"type": "string"
+					},
+					{
+						"anyOf": [{
+								"type": "string"
+							},
+							{
+								"type": "number"
+							}
+						]
+					}
+				],
+				"additionalItems": false
+			}
+		}
+
+
+	},
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["HERO",
+				"CHEST",
+				"NPC",
+				"PORTAL",
+				"MONSTER",
+				"ACTIVATOR",
+				"OBSTACLE",
+				"CHALLENGE"
+			]
+		},
+		"atlas": {
+			"description": "relative path of the atlas file",
+			"type": "string"
+		},
+		"persistence": {
+			"$ref": "#/definitions/persistence"
+		},
+		"defaultState": {
+			"type": "string"
+		},
+		"isClickable": {
+			"type": "boolean"
+		},
+		"isRendable": {
+			"type": "boolean"
+		},
+		"isMovable": {
+			"type": "boolean"
+		},
+		"properties": {
+			"$ref": "#/definitions/map"
+		},
+		"states": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/state"
+			}
+		},
+		"eventsAction": {
+			"description": "define all handled input events and associated actions",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/eventAction"
+			}
+		},
+		"outputEvents": {
+			"description": "define all emitted events",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/event"
+			}
+		}
+	},
+	"required": ["type", "atlas", "persistence", "defaultState"]
+
+
+
+
+}

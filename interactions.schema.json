@@ -1,0 +1,38 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+
+	"$id": "interactions.json",
+	"type": "array",
+	"items": {
+		"$ref": "#/definitions/interaction"
+	},
+
+	"definitions": {
+
+		"interaction": {
+			"type": "object",
+			"allOf": [{
+					"$id": "interactions_template.schema.json"
+				},
+				{
+					"properties": {
+						"id": {
+							"description": "the interaction id, it must be the same as in the tiles file",
+							"type": "string"
+						},
+						"template": {
+							"description": "the template file (with relative path)",
+							"type": "string"
+						}
+
+
+					}
+				}
+			],
+
+			"required": ["id", "template"]
+		}
+
+	}
+
+}
