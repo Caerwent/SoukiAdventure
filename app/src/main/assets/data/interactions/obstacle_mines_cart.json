@@ -1,0 +1,83 @@
+{
+  "type": "MONSTER1",
+  "atlas": "obstacle_mines_cart.atlas",
+  "persistence": "NONE",
+  "defaultState": "IDLE",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "true",
+  "states": [
+    {
+      "name": "IDLE",
+      "fps": "0",
+      "isLooping": "true",
+      "frames": [
+        "vertical"
+      ]
+    },
+    {
+      "name": "MOVE_DOWN",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "vertical"
+      ]
+    },
+    {
+      "name": "MOVE_UP",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "vertical"
+      ]
+    },
+    {
+      "name": "MOVE_LEFT",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "horizontal"
+      ]
+    },
+    {
+      "name": "MOVE_LEFT_UP",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "diagonal_left"
+      ]
+    },
+    {
+      "name": "MOVE_LEFT_DOWN",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "diagonal_right"
+      ]
+    },
+    {
+      "name": "MOVE_RIGHT",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "horizontal"
+      ]
+    },
+    {
+      "name": "MOVE_RIGHT_UP",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "diagonal_right"
+      ]
+    },
+    {
+      "name": "MOVE_RIGHT_DOWN",
+      "isLooping": "false",
+      "fps": "0",
+      "frames": [
+        "diagonal_left"
+      ]
+    }
+  ]
+}

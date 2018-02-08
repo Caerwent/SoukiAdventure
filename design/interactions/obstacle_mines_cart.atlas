@@ -1,0 +1,116 @@
+obstacle_mines_cart.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+vertical
+  rotate: false
+  xy: 0, 20
+  size: 32, 40
+  orig: 32, 40
+  offset: -16, -12
+  index: -1
+horizontal
+  rotate: false
+  xy: 36, 22
+  size: 56, 37
+  orig: 56, 37
+  offset: -28, -12
+  index: -1
+diagonal_right
+  rotate: false
+  xy: 98, 12
+  size: 58, 46
+  orig: 58, 46
+  offset: -30, -12
+  index: -1
+diagonal_left
+  rotate: false
+  xy: 164, 12
+  size: 58, 46
+  orig: 58, 46
+  offset: -26, -12
+  index: -1
+vertical_wood
+  rotate: false
+  xy: 0, 83
+  size: 32, 40
+  orig: 32, 40
+  offset: -16, -12
+  index: -1
+horizontal_wood
+  rotate: false
+  xy: 36, 86
+  size: 56, 37
+  orig: 56, 37
+  offset: -28, -12
+  index: -1
+diagonal_right_wood
+  rotate: false
+  xy: 98, 76
+  size: 58, 46
+  orig: 58, 46
+  offset: -30, -12
+  index: -1
+diagonal_left_wood
+  rotate: false
+  xy: 164, 76
+  size: 58, 46
+  orig: 58, 46
+  offset: -26, -12
+  index: -1
+vertical_full
+  rotate: false
+  xy: 0, 147
+  size: 32, 40
+  orig: 32, 40
+  offset: -16, -12
+  index: -1
+horizontal_full
+  rotate: false
+  xy: 36, 149
+  size: 56, 37
+  orig: 56, 37
+  offset: -28, -12
+  index: -1
+diagonal_right_full
+  rotate: false
+  xy: 98, 140
+  size: 58, 46
+  orig: 58, 46
+  offset: -30, -12
+  index: -1
+diagonal_left_full
+  rotate: false
+  xy: 164, 140
+  size: 58, 46
+  orig: 58, 46
+  offset: -26, -12
+  index: -1
+vertical_wood_full
+  rotate: false
+  xy: 0, 211
+  size: 32, 40
+  orig: 32, 40
+  offset: -16, -12
+  index: -1
+horizontal_wood_full
+  rotate: false
+  xy: 36, 213
+  size: 56, 37
+  orig: 56, 37
+  offset: -28, -12
+  index: -1
+diagonal_right_wood_full
+  rotate: false
+  xy: 98, 204
+  size: 58, 46
+  orig: 58, 46
+  offset: -30, -12
+  index: -1
+diagonal_left_wood_full
+  rotate: false
+  xy: 164, 204
+  size: 58, 46
+  orig: 58, 46
+  offset: -26, -12
+  index: -1

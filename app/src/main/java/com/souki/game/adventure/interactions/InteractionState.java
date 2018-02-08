@@ -14,7 +14,11 @@ import java.util.ArrayList;
 public class InteractionState {
 
     public final static String STATE_MOVE_LEFT = "MOVE_LEFT";
+    public final static String STATE_MOVE_LEFT_UP = "MOVE_LEFT_UP";
+    public final static String STATE_MOVE_LEFT_DOWN = "MOVE_LEFT_DOWN";
     public final static String STATE_MOVE_RIGHT = "MOVE_RIGHT";
+    public final static String STATE_MOVE_RIGHT_UP = "MOVE_RIGHT_UP";
+    public final static String STATE_MOVE_RIGHT_DOWN = "MOVE_RIGHT_DOWN";
     public final static String STATE_MOVE_DOWN = "MOVE_DOWN";
     public final static String STATE_MOVE_UP = "MOVE_UP";
     public final static String STATE_FROZEN = "FROZEN";

@@ -42,6 +42,12 @@ public class InteractionFollowPath extends Interaction {
     }
 
     @Override
+    protected void setEndMoveState()
+    {
+        // stay on last state
+    }
+
+    @Override
     public void update(float dt) {
         super.update(dt);
         VelocityComponent velocity = this.getComponent(VelocityComponent.class);

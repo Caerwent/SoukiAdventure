@@ -90,6 +90,11 @@ public class PathMap {
             currentPointIndex = nextPointIndex;
             lastTime = 0;
             if (hasNextPoint()) {
+                if (hasFinishPath())
+                {
+                    InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.END_PATH.name(), null);
+                    EventDispatcher.getInstance().onInteractionEvent(event);
+                }
                 nextPointIndex = getNextPoint();
                 mIsCompleted = false;
             } else {
@@ -106,6 +111,14 @@ public class PathMap {
         return mVelocity;
     }
 
+    protected boolean hasFinishPath()
+    {
+        if (isRevert) {
+            return currentPointIndex <= 0;
+        } else {
+            return currentPointIndex >= positions.size() - 1;
+        }
+    }
     public boolean hasNextPoint() {
         if (isLoop || isLoopReversing)
             return true;

@@ -39,5 +39,46 @@
     "properties": {
       "type": "STEAM_MACHINE"
     }
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "cart1",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "pathId": "path1",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path2"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "path1",
+            "type": "END_PATH",
+            "value": "",
+            "isVolatile":"true"
+          }
+
+        ]
+      }
+    ],
+    "outputEvents": []
   }
+
+
 ]

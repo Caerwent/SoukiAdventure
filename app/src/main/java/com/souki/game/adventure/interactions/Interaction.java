@@ -347,16 +347,14 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         if (mProperties.containsKey("startState")) {
             String initState = (String) mProperties.get("startState");
             InteractionState stateAfterPersistenceRestored = mCurrentState;
-            if (initState!=null) {
+            if (initState != null) {
                 mCurrentState = null;
-                if(stateAfterPersistenceRestored!=null)
-                {
+                if (stateAfterPersistenceRestored != null) {
                     setState(stateAfterPersistenceRestored.name);
-                    mShouldNotfyStartState=true;
-                }
-                else if(getState(initState)!=null) {
+                    mShouldNotfyStartState = true;
+                } else if (getState(initState) != null) {
                     setState(initState);
-                    mShouldNotfyStartState=true;
+                    mShouldNotfyStartState = true;
                 }
 
             }
@@ -494,6 +492,10 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         return mShapeRendering;
     }
 
+    protected void setEndMoveState() {
+        setState(mDef.defaultState);
+    }
+
     @Override
     public void render(Batch batch) {
         TransformComponent transform = this.getComponent(TransformComponent.class);
@@ -502,7 +504,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
         if (velocity != null) {
             if (velocity.y == 0 && velocity.x == 0) {
-                setState(mDef.defaultState);
+                setEndMoveState();
                 mStateTime = 0;
             } else {
                 if (velocity.y == 0) {
@@ -510,11 +512,22 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                 } else {
                     double angle = Math.atan2(velocity.y, velocity.x);
                     double PI4 = Math.PI / 4;
+                    double PI8 = Math.PI / 8;
                     if (angle < 0) {
                         angle += Math.PI * 2;
                     }
 
-                    if (angle > 7 * PI4 || angle <= PI4) {
+                    if ((angle > PI8 && angle <= 3 * PI8) && getState(InteractionState.STATE_MOVE_RIGHT_UP) != null) {
+                        setState(InteractionState.STATE_MOVE_RIGHT_UP);
+                    } else if ((angle > 13 * PI8 && angle <= 15 * PI8) && getState(InteractionState.STATE_MOVE_RIGHT_DOWN) != null) {
+                        setState(InteractionState.STATE_MOVE_RIGHT_DOWN);
+                    } else if ((angle > 5 * PI8 && angle <= 7 * PI8) && getState(InteractionState.STATE_MOVE_LEFT_UP) != null) {
+                        setState(InteractionState.STATE_MOVE_LEFT_UP);
+                    } else if ((angle > 5 * PI8 && angle <= 7 * PI8) && getState(InteractionState.STATE_MOVE_LEFT_UP) != null) {
+                        setState(InteractionState.STATE_MOVE_LEFT_UP);
+                    } else if ((angle > 9 * PI8 && angle <= 11 * PI8) && getState(InteractionState.STATE_MOVE_LEFT_DOWN) != null) {
+                        setState(InteractionState.STATE_MOVE_LEFT_DOWN);
+                    } else if (angle > 7 * PI4 || angle <= PI4) {
                         setState(InteractionState.STATE_MOVE_RIGHT);
                     } else if (angle > PI4 && angle <= 3 * PI4) {
                         setState(InteractionState.STATE_MOVE_UP);
@@ -527,7 +540,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             }
         }
         mCurrentFrame = mCurrentState.getTextureRegion(mStateTime);
-        if (visual != null && mCurrentFrame!=null) {
+        if (visual != null && mCurrentFrame != null) {
             visual.region = mCurrentFrame;
             float width = visual.region.getRegionWidth();
             float height = visual.region.getRegionHeight();
@@ -617,8 +630,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                 onQuestEvent(QuestManager.getInstance().getQuestFromId(action.questId));
             }
         }
-        if(mShouldNotfyStartState)
-        {
+        if (mShouldNotfyStartState) {
             mShouldNotfyStartState = false;
             if (mOutputEvents != null) {
                 for (InteractionEvent event : mOutputEvents) {
@@ -718,32 +730,44 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         if (mEventsAction != null && aEvent != null) {
             for (InteractionEventAction eventAction : mEventsAction) {
                 if (eventAction.inputEvents != null) {
-                    boolean performed = false;
+                    boolean eventFound = false;
+                    boolean eventPerformed = false;
+                    boolean allPerformed = true;
                     for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                         if ((expectedEvent.sourceId == null || expectedEvent.sourceId.isEmpty() || expectedEvent.sourceId.equals(aEvent.sourceId)) && expectedEvent.type.equals(aEvent.type)) {
                             boolean conditionValue = expectedEvent.value.equals(aEvent.value) || (expectedEvent.value == null && aEvent.value.isEmpty()) || (aEvent.value == null && expectedEvent.value.isEmpty());
-                            expectedEvent.setPerformed(expectedEvent.isNotValue ? !conditionValue : conditionValue);
-                            performed = expectedEvent.isPerformed();
-                            break;
-                        }
-                    }
-                    if (performed) {
-                        boolean allPerformed = true;
-                        for (InteractionEvent expectedEvent : eventAction.inputEvents) {
-                            if (!expectedEvent.isPerformed()) {
-                                allPerformed = false;
-                                break;
+                            eventPerformed = expectedEvent.isNotValue ? !conditionValue : conditionValue;
+                            expectedEvent.setPerformed(expectedEvent.isVolatile ? false : eventPerformed);
+                            eventFound=true;
+                            if(!eventPerformed)
+                            {
+                                allPerformed=false;
+                                break; // no need to check more events
                             }
                         }
-                        if (allPerformed) {
-                            for (InteractionEvent expectedEvent : eventAction.inputEvents) {
-                                if (!expectedEvent.isPersistent) {
-                                    expectedEvent.setPerformed(false);
+                        else
+                        {
+                            if (eventFound && !allPerformed) {
+                                break; // no need to check more events
+                            } else if (!expectedEvent.isPerformed()) {
+                                allPerformed = false; // at least one is not performed
+                                if (eventFound) {
+                                    break; // if current event has been found, non need to check more
                                 }
                             }
-                            doAction(eventAction.action);
                         }
+
                     }
+
+                    if (allPerformed) {
+                        for (InteractionEvent expectedEvent : eventAction.inputEvents) {
+                            if (!expectedEvent.isPersistent) {
+                                expectedEvent.setPerformed(false);
+                            }
+                        }
+                        doAction(eventAction.action);
+                    }
+
                 }
             }
         }

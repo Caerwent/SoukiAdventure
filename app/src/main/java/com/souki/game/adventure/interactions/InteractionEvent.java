@@ -21,6 +21,7 @@ public class InteractionEvent {
     public String type;
     public String value;
     public boolean isPersistent;
+    public boolean isVolatile;
     public boolean isNotValue;
 
     private boolean mIsPerformed = false;
