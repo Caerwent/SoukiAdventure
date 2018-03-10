@@ -164,6 +164,9 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
         this.add(new TransformComponent());
 
+        if (mProperties.containsKey("collisionHeightFactor")) {
+            mCollisionHeightFactor = ((Float) mProperties.get("CollisionHeightFactor")).intValue();
+        }
         setMovable(mDef.isMovable);
         if (mProperties.containsKey("startState")) {
 
@@ -592,10 +595,19 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
         if (!mCollisionsObstacle.contains(aEntity, false)) {
             mCollisionsObstacle.add(aEntity);
+            if (mOutputEvents != null) {
+                for (InteractionEvent event : mOutputEvents) {
+                    if (InteractionEvent.EventType.COLLISION == InteractionEvent.EventType.valueOf(event.type)) {
+                        InteractionEvent emittedEvent = event.clone();
+                        emittedEvent.value = aEntity.mName;
+                        EventDispatcher.getInstance().onInteractionEvent(emittedEvent);
+                    }
+                }
+            }
             return true;
         }
         return false;
@@ -738,15 +750,12 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                             boolean conditionValue = expectedEvent.value.equals(aEvent.value) || (expectedEvent.value == null && aEvent.value.isEmpty()) || (aEvent.value == null && expectedEvent.value.isEmpty());
                             eventPerformed = expectedEvent.isNotValue ? !conditionValue : conditionValue;
                             expectedEvent.setPerformed(expectedEvent.isVolatile ? false : eventPerformed);
-                            eventFound=true;
-                            if(!eventPerformed)
-                            {
-                                allPerformed=false;
+                            eventFound = true;
+                            if (!eventPerformed) {
+                                allPerformed = false;
                                 break; // no need to check more events
                             }
-                        }
-                        else
-                        {
+                        } else {
                             if (eventFound && !allPerformed) {
                                 break; // no need to check more events
                             } else if (!expectedEvent.isPerformed()) {
@@ -759,7 +768,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
                     }
 
-                    if (allPerformed) {
+                    if (allPerformed && eventFound) {
                         for (InteractionEvent expectedEvent : eventAction.inputEvents) {
                             if (!expectedEvent.isPersistent) {
                                 expectedEvent.setPerformed(false);

@@ -11,34 +11,12 @@
   },
   {
     "id": "portal2",
-    "template": "portal_caves.json",
+    "template": "portal.json",
     "properties": {
-      "targetMapId": "mines1"
+      "targetMapId": "generic_hole"
     },
-    "eventsAction": [
-      {
-        "action": {
-          "type": "SET_STATE",
-          "value": "ACTIVATED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "challenge1",
-            "type": "CHALLENGE_COMPLETED",
-            "value": ""
-          }
-        ]
-      }
-    ],
+    "eventsAction": [],
     "outputEvents": []
-  },
-  {
-    "id": "challenge1",
-    "template": "challenge_steam_machine.json",
-    "persistence": "GAME",
-    "properties": {
-      "type": "STEAM_MACHINE"
-    }
   },
   {
     "id": "activator1",
@@ -47,14 +25,41 @@
     ]
   },
   {
+    "id": "activator2",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator3",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+
+  {
     "id": "cart1",
     "template": "obstacle_mines_cart.json",
     "properties": {
-      "pathId": "path1",
+      "startState":"MOVE_RIGHT",
       "autoStart": "true",
-      "looping": "true"
+      "looping": "false"
     },
     "eventsAction": [
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path1"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+
+        ]
+      },
       {
         "action": {
           "type": "SET_PATH",
@@ -62,7 +67,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator1",
+            "sourceId": "activator2",
             "type": "STATE",
             "value": "ACTIVATED",
             "isPersistent":"true"
@@ -71,13 +76,122 @@
             "sourceId": "path1",
             "type": "END_PATH",
             "value": "",
-            "isVolatile":"true"
+            "isPersistent":"true"
+          }
+
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path3"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "path2",
+            "type": "END_PATH",
+            "value": "",
+            "isPersistent":"true"
           }
 
         ]
       }
     ],
     "outputEvents": []
+  },
+  {
+    "id": "mine_barrier1",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier2",
+    "template": "obstacle_mines_barrier_vertical.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "activator_pull_push1",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_pull_push1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_pull_push1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+
+    ]
   }
 
 

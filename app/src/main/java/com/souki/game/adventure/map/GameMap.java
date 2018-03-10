@@ -419,7 +419,7 @@ public class GameMap implements ICollisionObstacleHandler {
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
         return false;
     }
 

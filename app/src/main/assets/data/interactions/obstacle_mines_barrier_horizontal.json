@@ -1,0 +1,71 @@
+{
+  "type":"OBSTACLE",
+  "atlas":"obstacle_mines_barrier.atlas",
+  "persistence": "NONE",
+  "defaultState": "CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "properties": {
+    "openZIndex": 0
+  },
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps": "0",
+      "frames": [
+        "horizontal"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps": "0",
+      "frames": [
+        "destroyed"
+      ]
+    }
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "CLOSE",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "STATE",
+      "value": "CLOSED"
+    },
+    {
+      "type": "STATE",
+      "value": "OPEN"
+    },
+    {
+      "type": "COLLISION",
+      "value": ""
+    }
+  ]
+
+}

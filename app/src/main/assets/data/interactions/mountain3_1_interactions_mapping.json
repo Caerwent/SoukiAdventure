@@ -1,0 +1,94 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mountain3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "mines2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "rock1",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "rock2",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "rock3",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "rock4",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "rock5",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "rock6",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "rock7",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "golem1",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem2",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem3",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem4",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

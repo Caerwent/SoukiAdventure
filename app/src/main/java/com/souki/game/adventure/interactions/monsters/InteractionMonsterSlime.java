@@ -21,13 +21,14 @@ public class InteractionMonsterSlime extends InteractionFollowPlayer {
     }
 
     public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
-        return super.hasCollisionObstacle(aEntity) && (aEntity.mData != null && !(aEntity.mData instanceof InteractionMonsterSlime));
+        return super.hasCollisionObstacle(aEntity) && (aEntity.mData != null && !(aEntity.mData instanceof InteractionMonsterSlime)
+                && !(aEntity.mData instanceof InteractionMonsterGhost1));
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
             // no collision with other monster slime
             if (aEntity.mData != null && aEntity.mHandler instanceof InteractionMonsterSlime) {

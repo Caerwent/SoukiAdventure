@@ -10,13 +10,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.persistence.GameSession;
+import com.souki.game.adventure.items.Item;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
+import com.souki.game.adventure.quests.Quest;
+import com.souki.game.adventure.quests.QuestManager;
+import com.souki.game.adventure.quests.QuestTask;
+
+import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -193,58 +200,41 @@ public class MainMenuScreen implements Screen {
     private void onDebug() {
 
  /*CHANGE QUEST STATE*/
-    /*    Quest quest = QuestManager.getInstance().getQuestFromId("quest_tree");
+
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_malo_blacksmith");
         quest.setActivated(true);
         quest.setCompleted(false);
         for(QuestTask task : quest.getTasks())
         {
             task.setCompleted(false);
         }
-        Profile.getInstance().updateQuestProfile("quest_tree", quest);
+        Profile.getInstance().updateQuestProfile("quest_malo_blacksmith", quest);
 
-        quest = QuestManager.getInstance().getQuestFromId("quest_tree_activation");
-        quest.setActivated(false);
-        quest.setCompleted(true);
-        for(QuestTask task : quest.getTasks())
-        {
-            task.setCompleted(false);
-        }
-        Profile.getInstance().updateQuestProfile("quest_tree_activation", quest);
-
-        quest = QuestManager.getInstance().getQuestFromId("quest_tree_alive");
-        quest.setActivated(false);
-        quest.setCompleted(false);
-        for(QuestTask task : quest.getTasks())
-        {
-            task.setCompleted(false);
-        }
-        Profile.getInstance().updateQuestProfile("quest_tree_alive", quest);
-*/
       /*
        CHANGE LOCATION*/
-      /*
+/*
         LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "mountain3";
+        locationProfile.mMapId = "mines2";
         // locationProfile.mFromMapId = aFromMap;
 
-        Profile.getInstance().setLocationProfile(locationProfile);
-*/
+        Profile.getInstance().setLocationProfile(locationProfile);*/
+
       /*
       CHANGE ITEMS*/
 
-      /*  Array<Item> inventory = new Array<Item>();
+        Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
             for (String itemId : savedInventory) {
-                inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
+                if(!Item.ItemTypeID.Dagger.name().equals(itemId))
+                    inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Coal));
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Gear));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.DaggerBroken));
 
         Profile.getInstance().updateInventory(inventory);
-*/
+
 
        /*
        CHANGE MAP ITEM STATE*/
@@ -257,10 +247,10 @@ public class MainMenuScreen implements Screen {
 
        /** CHANGE INTERACTION STATE **/
 
-        GameSession session = Profile.getInstance().getPersistentGameSession();
+      /*  GameSession session = Profile.getInstance().getPersistentGameSession();
         session.putSessionDataForMapAndEntity("mountain8", "portal2","state", "ACTIVATED");
 
-        Profile.getInstance().updatePersistentGameSession(session);
+        Profile.getInstance().updatePersistentGameSession(session);*/
     }
 
 }

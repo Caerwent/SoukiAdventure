@@ -65,7 +65,5 @@
   <object id="42" name="arch2" gid="1070" x="133.333" y="84" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="zindex"/>
- <objectgroup name="items">
-  <object id="61" name="Coal" type="ITEM" gid="1070" x="68" y="830" width="32" height="32"/>
- </objectgroup>
+ <objectgroup name="items"/>
 </map>

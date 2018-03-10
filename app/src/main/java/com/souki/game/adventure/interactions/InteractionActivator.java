@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
-import com.souki.game.adventure.interactions.monsters.IInteractionActivateBehavior;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
 
@@ -80,9 +79,9 @@ public class InteractionActivator extends Interaction{
 
     }
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret &&
                 (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) ||
                 ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  && aEntity.mHandler instanceof IInteractionActivateBehavior) &&

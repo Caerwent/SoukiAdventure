@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Array;
  */
 
 public interface ICollisionObstacleHandler {
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity);
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction);
 
     public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity);
 

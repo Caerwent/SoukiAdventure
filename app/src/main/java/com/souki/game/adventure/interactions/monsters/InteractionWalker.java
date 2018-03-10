@@ -6,6 +6,7 @@ import com.souki.game.adventure.box2d.PathHero;
 import com.souki.game.adventure.box2d.PathMap;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
+import com.souki.game.adventure.interactions.IInteractionActivateBehavior;
 import com.souki.game.adventure.interactions.Interaction;
 import com.souki.game.adventure.interactions.InteractionActionType;
 import com.souki.game.adventure.interactions.InteractionDef;
@@ -122,9 +123,9 @@ public class InteractionWalker extends Interaction implements IInteractionActiva
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {

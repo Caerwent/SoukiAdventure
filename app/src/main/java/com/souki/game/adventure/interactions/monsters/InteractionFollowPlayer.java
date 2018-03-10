@@ -119,9 +119,9 @@ public class InteractionFollowPlayer extends Interaction {
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
 
         if (ret) {
 

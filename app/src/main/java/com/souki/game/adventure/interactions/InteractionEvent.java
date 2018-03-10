@@ -14,7 +14,8 @@ public class InteractionEvent {
         EFFECT_START,
         EFFECT_STOP,
         CHALLENGE_COMPLETED,
-        END_PATH;
+        END_PATH,
+        COLLISION;
     }
 
     public String sourceId;
@@ -38,18 +39,26 @@ public class InteractionEvent {
     }
 
     public InteractionEvent(String aSourceId, String aType, String aValue) {
-        this(aSourceId, aType, aValue, false, false);
+        this(aSourceId, aType, aValue, false, false, false);
     }
 
-    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue)
-    {
-        this(aSourceId, aType, aValue, false, false);
+    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue) {
+        this(aSourceId, aType, aValue, aIsNotValue, false, false);
     }
+
     public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue, boolean aIsPersistent) {
+        this(aSourceId, aType, aValue, aIsNotValue, aIsPersistent, false );
+    }
+
+    public InteractionEvent(String aSourceId, String aType, String aValue, boolean aIsNotValue, boolean aIsPersistent, boolean isVolatile) {
         sourceId = aSourceId;
         type = aType;
         value = aValue;
         isNotValue = aIsNotValue;
         isPersistent = aIsPersistent;
+    }
+
+    public InteractionEvent clone() {
+        return new InteractionEvent(sourceId, type, value, isNotValue, isPersistent, isVolatile);
     }
 }

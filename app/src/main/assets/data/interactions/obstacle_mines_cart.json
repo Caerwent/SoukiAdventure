@@ -1,11 +1,12 @@
 {
-  "type": "MONSTER1",
+  "type": "FOLLOW_PATH_ACTIVATOR",
   "atlas": "obstacle_mines_cart.atlas",
   "persistence": "NONE",
   "defaultState": "IDLE",
   "isClickable": "false",
   "isRendable": "true",
-  "isMovable": "true",
+  "isMovable": "false",
+
   "states": [
     {
       "name": "IDLE",
@@ -79,5 +80,7 @@
         "diagonal_left"
       ]
     }
+  ],
+  "outputEvents": [
   ]
 }

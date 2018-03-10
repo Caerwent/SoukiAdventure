@@ -14,7 +14,8 @@ public class InteractionActionType {
         REMOVED,
         LAUNCH_EFFECT,
         ACTIVATE_QUEST,
-        SET_PATH;
+        SET_PATH,
+        SET_PATH_REVERSE;
     }
 
     public ActionType type;

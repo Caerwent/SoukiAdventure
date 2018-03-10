@@ -34,10 +34,10 @@
   <object id="9" name="ghost3" x="192" y="260" width="32" height="32"/>
   <object id="10" name="ghost4" x="318" y="257" width="32" height="32"/>
   <object id="11" name="ghost5" x="478" y="255" width="32" height="32"/>
-  <object id="12" name="portal1" x="333" y="458" width="32" height="32"/>
+  <object id="12" name="portal1" x="338" y="459" width="32" height="32"/>
   <object id="13" name="portal2" x="621" y="86" width="32" height="32"/>
-  <object id="14" name="barrier_push_1" x="326" y="466" width="32" height="32"/>
-  <object id="15" name="activator_push_1" x="330" y="429" width="32" height="32"/>
+  <object id="14" name="barrier_push_1" x="324" y="469" width="32" height="32"/>
+  <object id="15" name="activator_push_1" x="331" y="421" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="16" x="309" y="500">

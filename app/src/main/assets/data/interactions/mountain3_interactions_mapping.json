@@ -19,6 +19,15 @@
     "outputEvents": []
   },
   {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "mountain3_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
     "id": "challenge_portal_checkpoint",
     "template": "challenge_portal_checkpoint.json",
     "persistence": "GAME",

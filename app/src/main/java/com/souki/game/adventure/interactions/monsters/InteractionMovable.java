@@ -14,6 +14,7 @@ import com.souki.game.adventure.entity.components.CollisionEffectComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
+import com.souki.game.adventure.interactions.IInteractionActivateBehavior;
 import com.souki.game.adventure.interactions.InteractionDef;
 import com.souki.game.adventure.interactions.InteractionFollowPath;
 import com.souki.game.adventure.interactions.InteractionMapping;
@@ -51,9 +52,9 @@ public class InteractionMovable extends InteractionFollowPath implements IIntera
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {

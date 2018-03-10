@@ -120,9 +120,9 @@ public class InteractionHero extends Interaction {
 
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
 
             if ((aEntity.mType & CollisionObstacleComponent.ITEM) != 0) {
@@ -135,6 +135,7 @@ public class InteractionHero extends Interaction {
                     mPath.destroy();
                     mPath = null;
                     setVelocity(0, 0);
+
                 }
                 return true;
 

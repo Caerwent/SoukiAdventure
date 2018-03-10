@@ -16,6 +16,7 @@ public class InteractionFollowPath extends Interaction {
     protected PathMap mPath;
     protected boolean mIsAutoStart;
     protected boolean mIsInterruptedByObstacle;
+    protected boolean mIsStopOnObstacle;
 
     public InteractionFollowPath(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
@@ -33,7 +34,9 @@ public class InteractionFollowPath extends Interaction {
                     mPath.setLoopReversing(Boolean.valueOf((String) mProperties.get("loopingReversing")));
                 }
             }
-
+            if (mProperties.containsKey("stopOnObstacle")) {
+                mIsStopOnObstacle = Boolean.valueOf((String) mProperties.get("stopOnObstacle"));
+            }
 
         }
         initialize(x, y, aMapping);
@@ -79,6 +82,17 @@ public class InteractionFollowPath extends Interaction {
             }
             return true;
         }
+        if (!res && aAction != null && InteractionActionType.ActionType.SET_PATH_REVERSE == aAction.type) {
+            if(mPath!=mMap.getPaths().get(aAction.value)) {
+                mPath = mMap.getPaths().get(aAction.value);
+            }
+            if (mPath != null) {
+                mPath.setRevert(!mPath.isRevert());
+                setMovable(true);
+            }
+            return true;
+        }
+
         return res;
     }
 
@@ -92,13 +106,13 @@ public class InteractionFollowPath extends Interaction {
     }
 
     public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
-        return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0);
+        return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 || (aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0;
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {
@@ -121,7 +135,9 @@ public class InteractionFollowPath extends Interaction {
         if(ret && mCollisionsObstacle.size<=0 && mIsInterruptedByObstacle && mPath!=null)
         {
             mIsInterruptedByObstacle = false;
-            setMovable(true);
+            if(!mIsStopOnObstacle) {
+                setMovable(true);
+            }
         }
         return ret;
     }

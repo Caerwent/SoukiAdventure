@@ -1,0 +1,146 @@
+
+obstacle_firebarrel.png
+size: 1024,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+firebarrel0
+  rotate: false
+  xy: 2, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel1
+  rotate: false
+  xy: 52, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel10
+  rotate: false
+  xy: 502, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel11
+  rotate: false
+  xy: 552, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel12
+  rotate: false
+  xy: 602, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel13
+  rotate: false
+  xy: 652, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel14
+  rotate: false
+  xy: 702, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel15
+  rotate: false
+  xy: 752, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel16
+  rotate: false
+  xy: 802, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel17
+  rotate: false
+  xy: 852, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel18
+  rotate: false
+  xy: 902, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel19
+  rotate: false
+  xy: 952, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel2
+  rotate: false
+  xy: 102, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel3
+  rotate: false
+  xy: 152, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel4
+  rotate: false
+  xy: 202, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel5
+  rotate: false
+  xy: 252, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel6
+  rotate: false
+  xy: 302, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel7
+  rotate: false
+  xy: 352, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel8
+  rotate: false
+  xy: 402, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+firebarrel9
+  rotate: false
+  xy: 452, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,25 @@
+obstacle_mines_barrier.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+horizontal
+  rotate: false
+  xy: 0, 2
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+vertical
+  rotate: false
+  xy: 36, 0
+  size: 22, 32
+  orig: 22, 32
+  offset: 0, 0
+  index: -1
+destroyed
+  rotate: false
+  xy: 68, 5
+  size: 28, 27
+  orig: 28, 27
+  offset: 0, 0
+  index: -1

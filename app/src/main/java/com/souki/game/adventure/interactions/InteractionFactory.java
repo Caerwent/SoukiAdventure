@@ -90,6 +90,9 @@ public class InteractionFactory {
         } else if (def.type.compareTo("MOVABLE") == 0) {
             InteractionMovable interaction = new InteractionMovable(def, x, y, aMapping, aProperties, aMap);
             return interaction;
+        }  else if (def.type.compareTo("FOLLOW_PATH_ACTIVATOR") == 0) {
+            InteractionFollowPathWithActivationBehavior interaction = new InteractionFollowPathWithActivationBehavior(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
         }
         return null;
     }

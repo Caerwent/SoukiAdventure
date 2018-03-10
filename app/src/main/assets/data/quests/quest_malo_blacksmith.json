@@ -1,0 +1,26 @@
+{
+  "id": "quest_malo_blacksmith",
+  "title": "quest_malo_blacksmith_title",
+  "desc": "quest_malo_blacksmith_desc",
+  "requiredCompletedQuest": ["quest_tree_activation"],
+  "itemsReward": ["Dagger"],
+  "effectsReward": [],
+  "tasks" : [
+    {
+      "id": "quest_malo_blacksmith_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "DaggerBroken",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_malo_blacksmith_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "malo",
+      "requiredCompletedTask": [
+        "quest_malo_blacksmith_task1"
+      ]
+    }
+  ]
+}
+

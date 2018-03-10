@@ -278,6 +278,93 @@
     ]
   },
   {
+    "id": "quest_malo_blacksmith",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase1"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase2"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase3"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_malo_blacksmith_completed",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase1"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase2"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase3"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_phrase4"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_completed_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_malo_blacksmith_completed_dialog_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_completed_dialog_phrase3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_malo_blacksmith_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_malo_blacksmith_finished_phrase1"
+        ]
+      }
+    ]
+  },
+  {
     "id": "quest_farmer_shovel",
     "dialogs": [
       {

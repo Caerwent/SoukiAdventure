@@ -32,6 +32,49 @@
     "template": "malo.json",
     "properties": {
       "dialogId": "quest_malo_finished"
-    }
+    },
+    "questActions":[
+      {
+        "questId": "quest_malo_blacksmith",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_blacksmith"
+        }
+      },
+      {
+        "questId": "quest_malo_blacksmith",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_blacksmith_completed"
+        }
+      },
+      {
+        "questId": "quest_malo_blacksmith",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_blacksmith_finished"
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_malo_blacksmith_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_malo_blacksmith_completed"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[]
   }
 ]

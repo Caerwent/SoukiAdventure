@@ -271,6 +271,30 @@ public class ShapeUtils {
         return false;
     }
 
+    static public boolean isBoundsOverlap(Shape aShape, Shape aOtherShape, float addExtraBounds) {
+        Rectangle bounds = aShape.getBounds() ;
+        Rectangle otherBounds = aOtherShape.getBounds();
+        if (Intersector.overlaps(bounds, otherBounds) ||
+                Intersector.overlaps(otherBounds, bounds)) {
+            return true;
+        }
+        if(addExtraBounds>0)
+        {
+            Rectangle expBounds = new Rectangle(bounds);
+            expBounds.merge(expBounds.x-addExtraBounds, expBounds.y-addExtraBounds);
+            expBounds.merge(expBounds.x + expBounds.width +addExtraBounds, expBounds.y + expBounds.height +addExtraBounds);
+            Rectangle expOtherBounds = new Rectangle(otherBounds);
+            expOtherBounds.merge(expOtherBounds.x-addExtraBounds, expOtherBounds.y-addExtraBounds);
+            expOtherBounds.merge(expOtherBounds.x + expOtherBounds.width +addExtraBounds, expOtherBounds.y + expOtherBounds.height +addExtraBounds);
+
+            if (Intersector.overlaps(expBounds, expOtherBounds) ||
+                    Intersector.overlaps(expOtherBounds, expBounds)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     static public boolean overlaps(Shape aShape, Shape aOtherShape) {
 

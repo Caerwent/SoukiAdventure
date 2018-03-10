@@ -26,6 +26,7 @@ public class InteractionObstacle extends Interaction {
     protected boolean mKillableWhenClosed;
     protected boolean mHasCollisionWhenOpen;
     protected String mSetStateOnCollision;
+    protected int mDefaultCollisionHeightFactor;
 
     public InteractionObstacle(InteractionDef aDef, float x, float y, InteractionMapping aMapping, MapProperties aProperties, GameMap aMap) {
         super(aDef, x, y, aMapping, aProperties, aMap);
@@ -62,6 +63,7 @@ public class InteractionObstacle extends Interaction {
 
 
         }
+        mDefaultCollisionHeightFactor = mCollisionHeightFactor;
         initialize(x, y, aMapping);
 
 
@@ -81,7 +83,7 @@ public class InteractionObstacle extends Interaction {
     }
 
     public int getZIndex() {
-        return mOpenZIndex;
+        return mIsOpen ? mOpenZIndex : super.getZIndex();
     }
 
     @Override
@@ -146,12 +148,12 @@ public class InteractionObstacle extends Interaction {
 
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
-        Gdx.app.debug("DEBUG", "onCollisionObstacleStart id=" + getId() + " aEntity=" + aEntity.mName + " ret=" + ret);
+        boolean ret = super.onCollisionObstacleStart(aEntity,  aIsPrediction);
+       // Gdx.app.debug("DEBUG", "onCollisionObstacleStart id=" + getId() + " aEntity=" + aEntity.mName + " ret=" + ret);
 
-        if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 && !mIsOpen && mKillableWhenClosed && aEntity.mHandler != null && aEntity.mHandler == mMap.getPlayer().getHero()) {
+        if (ret && (aEntity.mType & CollisionObstacleComponent.HERO) != 0 && !mIsOpen && mKillableWhenClosed && !aIsPrediction && aEntity.mHandler != null && aEntity.mHandler == mMap.getPlayer().getHero()) {
             EventDispatcher.getInstance().onMapReloadRequested(mMap.getMapName(), mMap.getFromMapId());
             return false;
 
@@ -205,23 +207,38 @@ public class InteractionObstacle extends Interaction {
                 if (mOpenBoundsAsObstacle) {
                     mCollisionHeightFactor = 1;
                 } else {
-                    mCollisionHeightFactor = 8;
+                    mCollisionHeightFactor = mDefaultCollisionHeightFactor;
                 }
                 if (getComponent(CollisionObstacleComponent.class) == null) {
+                    if(mCollisionObstacleComponent==null && isRendable())
+                    {
+                        mCollisionObstacleComponent =new CollisionObstacleComponent(mCollisionType, getShapeCollision(), mId, this, this);
+                    }
                     add(mCollisionObstacleComponent);
                 }
             } else {
                 Gdx.app.debug("DEBUG", "remove obstacle when open" + getId());
+                for(CollisionObstacleComponent otherCollisionObstacleComponent:mCollisionsObstacle)
+                {
+                    if(otherCollisionObstacleComponent.mHandler!=null) {
+                        otherCollisionObstacleComponent.mHandler.onCollisionObstacleStop(getComponent(CollisionObstacleComponent.class));
+                    }
+                }
+                mCollisionsObstacle.clear();
                 remove(CollisionObstacleComponent.class);
             }
         } else {
             if (mClosedBoundsAsObstacle) {
                 mCollisionHeightFactor = 1;
             } else {
-                mCollisionHeightFactor = 8;
+                mCollisionHeightFactor = mDefaultCollisionHeightFactor;
             }
-            if (getComponent(CollisionObstacleComponent.class) == null && mCollisionObstacleComponent!=null) {
+            if (getComponent(CollisionObstacleComponent.class) == null) {
                 Gdx.app.debug("DEBUG", "add obstacle when close" + getId());
+                if(mCollisionObstacleComponent==null && isRendable())
+                {
+                    mCollisionObstacleComponent =new CollisionObstacleComponent(mCollisionType, getShapeCollision(), mId, this, this);
+                }
                 add(mCollisionObstacleComponent);
             }
         }

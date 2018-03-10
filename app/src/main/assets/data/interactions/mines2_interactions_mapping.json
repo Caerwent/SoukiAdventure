@@ -1,0 +1,409 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mountain3_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_caves.json",
+    "properties": {
+      "targetMapId": "mines2"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+  {
+    "id": "activator_push_1",
+    "template": "activator_push.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_2",
+    "template": "activator_push.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "rock",
+    "template": "obstacle_rock.json"
+  },
+  {
+    "id": "activator2",
+    "template": "activator_type1.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator3",
+    "template": "activator_type1.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator4",
+    "template": "activator_type1.json",
+    "properties": {
+      "startState":"IDLE"
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "obstacle_firebarrel1",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel2",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel3",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel4",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel5",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel6",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel7",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel8",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel9",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel10",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "mine_barrier1",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier2",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier3",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart3"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier4",
+    "template": "obstacle_mines_barrier_vertical.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart2"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier5",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "cart1",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "pathId": "path1",
+      "autoStart": "false",
+      "looping": "false"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path4"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "path1",
+            "type": "END_PATH",
+            "value": "",
+            "isPersistent": "true"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+
+  {
+    "id": "cart2",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "pathId": "path2",
+      "autoStart": "false",
+      "looping": "false"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+
+  {
+    "id": "cart3",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "pathId": "path3",
+      "autoStart": "false",
+      "looping": "false"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

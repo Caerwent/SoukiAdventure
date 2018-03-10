@@ -47,7 +47,8 @@ public class InteractionMonsterGhost1 extends InteractionMonster1 {
     @Override
     public boolean hasCollisionObstacle(CollisionObstacleComponent aEntity) {
         return (aEntity.mType & CollisionObstacleComponent.OBSTACLE) != 0 ||
-                (((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0) && !(aEntity.mHandler instanceof InteractionMonsterGhost1));
+                (((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0) && !(aEntity.mHandler instanceof InteractionMonsterGhost1)
+                        && !(aEntity.mHandler instanceof InteractionMonsterSlime));
     }
 
 }

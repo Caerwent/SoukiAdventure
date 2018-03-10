@@ -114,7 +114,7 @@ public class ItemInteraction extends Entity implements IItemInteraction, IMapRen
         return 1;
     }
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
         if ((aEntity.mType & CollisionObstacleComponent.HERO) !=0) {
             mMap.removeItem(this);
             EntityEngine.getInstance().removeEntity(this);

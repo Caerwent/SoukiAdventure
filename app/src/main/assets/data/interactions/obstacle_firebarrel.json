@@ -1,0 +1,102 @@
+{
+  "type":"OBSTACLE",
+  "atlas":"obstacle_firebarrel.atlas",
+  "persistence":"NONE",
+  "defaultState":"CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "properties": {
+    "startState":"CLOSED",
+    "openZIndex": 0
+  },
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps":"0",
+      "frames": [
+        "firebarrel0"
+      ]
+    },
+    {
+      "name": "BURNING",
+      "fps":"15",
+      "isLooping":"false",
+      "frames": [
+        "firebarrel1", "firebarrel2", "firebarrel3",
+        "firebarrel4", "firebarrel5", "firebarrel6",
+        "firebarrel7", "firebarrel8", "firebarrel9",
+        "firebarrel10", "firebarrel11", "firebarrel12",
+        "firebarrel13", "firebarrel14", "firebarrel15",
+        "firebarrel16", "firebarrel17", "firebarrel18"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps":"0",
+      "frames": [ "firebarrel19"]
+    }
+
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "OPEN"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "BURNING"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "BURNING"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "BURN"
+        },
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED",
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "END_STATE",
+      "value": "BURNING"
+    },
+    {
+      "type":"STATE",
+      "value":"OPEN"
+    },
+    {
+      "type":"STATE",
+      "value":"CLOSED"
+    }
+  ]
+
+}

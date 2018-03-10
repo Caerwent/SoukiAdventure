@@ -15,6 +15,7 @@ import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
 import com.souki.game.adventure.events.EventDispatcher;
+import com.souki.game.adventure.interactions.IInteractionActivateBehavior;
 import com.souki.game.adventure.interactions.Interaction;
 import com.souki.game.adventure.interactions.InteractionDef;
 import com.souki.game.adventure.interactions.InteractionHero;
@@ -135,9 +136,9 @@ public class InteractionMonsterTank extends Interaction implements IInteractionA
     }
 
     @Override
-    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity) {
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
-        boolean ret = super.onCollisionObstacleStart(aEntity);
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {
