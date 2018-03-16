@@ -12,8 +12,9 @@
   {
     "id": "portal2",
     "template": "portal_caves.json",
+    "persistence": "GAME",
     "properties": {
-      "targetMapId": "mines2"
+      "targetMapId": "mines3"
     },
     "eventsAction": [
       {
