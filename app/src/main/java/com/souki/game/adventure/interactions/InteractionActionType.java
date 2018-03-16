@@ -9,6 +9,7 @@ public class InteractionActionType {
         DIALOG,
         SET_STATE,
         WAKEUP,
+        SLEEP,
         OPEN,
         CLOSE,
         REMOVED,

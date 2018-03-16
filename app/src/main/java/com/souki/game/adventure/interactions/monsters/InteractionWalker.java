@@ -90,6 +90,10 @@ public class InteractionWalker extends Interaction implements IInteractionActiva
             }
             return true;
         }
+        if (!res && aAction != null && InteractionActionType.ActionType.SLEEP == aAction.type) {
+            setMovable(false);
+            return true;
+        }
         return res;
     }
 
