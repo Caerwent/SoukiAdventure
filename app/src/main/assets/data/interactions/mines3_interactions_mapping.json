@@ -14,7 +14,7 @@
     "template": "portal_caves.json",
     "persistence": "GAME",
     "properties": {
-      "targetMapId": "mines3"
+      "targetMapId": "mines4"
     },
     "eventsAction": [
       {
@@ -40,6 +40,24 @@
     "properties": {
       "type": "STEAM_MACHINE"
     }
+  },
+  {
+    "id": "activator_push_1",
+    "template": "activator_push.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_2",
+    "template": "activator_push.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_3",
+    "template": "activator_push.json",
+    "eventsAction": [
+    ]
   },
   {
     "id": "activator_push_pull_1",
@@ -181,12 +199,70 @@
     ]
   },
   {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "activator_push_2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
     "id": "activator1",
     "template": "activator_type1.json",
     "eventsAction": []
   },
   {
     "id": "obstacle_firebarrel1",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel2",
     "template": "obstacle_firebarrel.json"
   },
   {
@@ -221,6 +297,74 @@
             "sourceId": "activator1",
             "type": "STATE",
             "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "cart2",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "pathId": "path2",
+      "autoStart": "false"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier1",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart2"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier2",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart2"
           }
         ]
       }
@@ -264,9 +408,13 @@
     }
   },
   {
-    "id": "door2",
-    "template": "obstacle_door_wood.json",
+    "id":"chest1",
+    "template":"chest_type1.json",
     "properties": {
-    }
+      "requiredItem":"KeyIron"
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
   }
 ]

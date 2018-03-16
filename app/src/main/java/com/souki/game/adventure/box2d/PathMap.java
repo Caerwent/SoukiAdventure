@@ -132,6 +132,28 @@ public class PathMap {
 
     }
 
+    public void setNearestPoint(Vector2 bodyPosition)
+    {
+        int nearestIndex=-1;
+        float minD = Float.MAX_VALUE;
+        for(int i=0; i<positions.size(); i++)
+        {
+            Vector2 nextPointPosition = positions.get(i);
+            float d = nextPointPosition.dst2(bodyPosition);
+            if(d<minD)
+            {
+                nearestIndex = i;
+                minD=d;
+            }
+        }
+        if(nearestIndex>=0)
+        {
+            currentPointIndex=nearestIndex;
+            nextPointIndex=nearestIndex;
+        }
+
+    }
+
     int getNextPoint() {
         if (isRevert) {
             if (currentPointIndex <= 0) {

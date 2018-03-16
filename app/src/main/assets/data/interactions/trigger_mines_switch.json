@@ -1,0 +1,45 @@
+{
+  "type":"TRIGGER",
+  "atlas":"trigger_mines_switch.atlas",
+  "persistence":"NONE",
+  "defaultState":"CLOSED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "CLOSED",
+      "fps":"0",
+      "frames": [
+        "cross"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "fps":"0",
+      "frames": [ "ortho"]
+    }
+
+  ],
+  "properties": {
+  },
+  "eventsAction": [
+
+  ],
+  "outputEvents": [
+    {
+      "type":"STATE",
+      "value":"OPEN"
+    },
+    {
+      "type":"STATE",
+      "value":"CLOSED"
+    },
+    {
+      "type":"COLLISION",
+      "value":""
+    }
+  ]
+
+
+}

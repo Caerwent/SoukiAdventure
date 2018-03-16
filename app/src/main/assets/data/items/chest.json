@@ -97,5 +97,14 @@
       "VialGreen",
       "NecklaceJewelBlue"
     ]
+  },
+  {
+    "id": "mines3_chest1",
+    "items": [
+      "VialRed",
+      "VialRed",
+      "VialGreen",
+      "Gear"
+    ]
   }
 ]

@@ -1,0 +1,133 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mines3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_caves.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "mines4"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger1",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "OPEN"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cart1",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "pathId": "path1",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path1"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger1",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile":"true"
+          },
+          { "sourceId": "trigger1",
+            "type": "STATE",
+            "value": "CLOSED",
+            "isPersistent": "true"}
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path2"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger1",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile":"true"
+          },
+          { "sourceId": "trigger1",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"}
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

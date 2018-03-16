@@ -93,6 +93,9 @@ public class InteractionFactory {
         }  else if (def.type.compareTo("FOLLOW_PATH_ACTIVATOR") == 0) {
             InteractionFollowPathWithActivationBehavior interaction = new InteractionFollowPathWithActivationBehavior(def, x, y, aMapping, aProperties, aMap);
             return interaction;
+        }  else if (def.type.compareTo("TRIGGER") == 0) {
+            InteractionTrigger interaction = new InteractionTrigger(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
         }
         return null;
     }

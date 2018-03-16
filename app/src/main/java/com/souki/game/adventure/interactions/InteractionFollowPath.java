@@ -45,8 +45,7 @@ public class InteractionFollowPath extends Interaction {
     }
 
     @Override
-    protected void setEndMoveState()
-    {
+    protected void setEndMoveState() {
         // stay on last state
     }
 
@@ -66,6 +65,16 @@ public class InteractionFollowPath extends Interaction {
         }
     }
 
+    protected void setNearestPathPoint() {
+        TransformComponent transform = this.getComponent(TransformComponent.class);
+        if (transform != null && mPath != null) {
+            Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
+            mPath.setNearestPoint(pos2D);
+
+        }
+
+    }
+
     @Override
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
@@ -82,17 +91,35 @@ public class InteractionFollowPath extends Interaction {
             return true;
         }
         if (!res && aAction != null && InteractionActionType.ActionType.SET_PATH == aAction.type) {
-            mPath = mMap.getPaths().get(aAction.value);
+            if (mPath != mMap.getPaths().get(aAction.value)) {
+                mPath = mMap.getPaths().get(aAction.value);
+                setNearestPathPoint();
+                if (mProperties.containsKey("looping")) {
+                    mPath.setLoop(Boolean.valueOf((String) mProperties.get("looping")));
+                }
+                if (mProperties.containsKey("loopingReversing")) {
+                    mPath.setLoopReversing(Boolean.valueOf((String) mProperties.get("loopingReversing")));
+                }
+            }
             if (mPath != null) {
+
                 setMovable(true);
             }
             return true;
         }
         if (!res && aAction != null && InteractionActionType.ActionType.SET_PATH_REVERSE == aAction.type) {
-            if(mPath!=mMap.getPaths().get(aAction.value)) {
+            if (mPath != mMap.getPaths().get(aAction.value)) {
                 mPath = mMap.getPaths().get(aAction.value);
+                if (mProperties.containsKey("looping")) {
+                    mPath.setLoop(Boolean.valueOf((String) mProperties.get("looping")));
+                }
+                if (mProperties.containsKey("loopingReversing")) {
+                    mPath.setLoopReversing(Boolean.valueOf((String) mProperties.get("loopingReversing")));
+                }
             }
             if (mPath != null) {
+                setNearestPathPoint();
+
                 mPath.setRevert(!mPath.isRevert());
                 setMovable(true);
             }
@@ -122,8 +149,7 @@ public class InteractionFollowPath extends Interaction {
         if (ret) {
 
             if (hasCollisionObstacle(aEntity)) {
-                if(isMovable())
-                {
+                if (isMovable()) {
                     mIsInterruptedByObstacle = true;
                 }
                 setMovable(false);
@@ -138,10 +164,9 @@ public class InteractionFollowPath extends Interaction {
     @Override
     public boolean onCollisionObstacleStop(CollisionObstacleComponent aEntity) {
         boolean ret = super.onCollisionObstacleStop(aEntity);
-        if(ret && mCollisionsObstacle.size<=0 && mIsInterruptedByObstacle && mPath!=null)
-        {
+        if (ret && mCollisionsObstacle.size <= 0 && mIsInterruptedByObstacle && mPath != null) {
             mIsInterruptedByObstacle = false;
-            if(!mIsStopOnObstacle) {
+            if (!mIsStopOnObstacle) {
                 setMovable(true);
             }
         }
