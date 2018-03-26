@@ -27,7 +27,7 @@ Book
   index: -1
 BookDark
   rotate: false
-  xy: 659, 187
+  xy: 633, 187
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
@@ -153,63 +153,70 @@ FoodBiscuit
   index: -1
 FoodBread
   rotate: false
-  xy: 701, 214
-  size: 32, 32
-  orig: 32, 32
+  xy: 660, 191
+  size: 26, 21
+  orig: 26, 21
   offset: 0, 0
   index: -1
 FoodBread2
   rotate: false
-  xy: 599, 191
+  xy: 688, 191
+  size: 26, 21
+  orig: 26, 21
+  offset: 0, 0
+  index: -1
+FoodBread3
+  rotate: false
+  xy: 716, 191
   size: 26, 21
   orig: 26, 21
   offset: 0, 0
   index: -1
 FoodShank
   rotate: false
-  xy: 170, 112
+  xy: 701, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GameCards
   rotate: false
-  xy: 430, 146
+  xy: 170, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Gear
   rotate: false
-  xy: 735, 214
+  xy: 430, 146
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Gloves
   rotate: false
-  xy: 204, 112
+  xy: 735, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GlyphGreen
   rotate: false
-  xy: 464, 146
+  xy: 204, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GlyphRed
   rotate: false
-  xy: 769, 214
+  xy: 464, 146
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 GlyphYellow
   rotate: false
-  xy: 238, 112
+  xy: 769, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -223,35 +230,35 @@ Guitar
   index: -1
 Hammer
   rotate: false
-  xy: 803, 214
+  xy: 238, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 HammerSmall
   rotate: false
-  xy: 272, 112
+  xy: 803, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Jewels
   rotate: false
-  xy: 837, 214
+  xy: 272, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 JewelsBlue
   rotate: false
-  xy: 306, 112
+  xy: 837, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 JewelsRed
   rotate: false
-  xy: 871, 214
+  xy: 306, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -265,21 +272,21 @@ KeyCrystal
   index: -1
 KeyDark
   rotate: false
-  xy: 627, 195
+  xy: 744, 195
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
   index: -1
 KeyIron
   rotate: false
-  xy: 686, 197
+  xy: 776, 197
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
   index: -1
 KeyMoon
   rotate: false
-  xy: 340, 112
+  xy: 871, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -293,28 +300,35 @@ KeyRed
   index: -1
 KeyRoyal
   rotate: false
-  xy: 905, 214
+  xy: 340, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 KeyWood
   rotate: false
-  xy: 714, 197
+  xy: 804, 197
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
   index: -1
-Lantern
+LanternEmpty
   rotate: false
-  xy: 374, 112
+  xy: 905, 214
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Lantern2
+LanternFull
   rotate: false
-  xy: 939, 214
+  xy: 905, 214
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+LanternOn
+  rotate: false
+  xy: 374, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -324,6 +338,13 @@ Letter
   xy: 2, 36
   size: 31, 32
   orig: 31, 32
+  offset: 0, 0
+  index: -1
+Matches
+  rotate: false
+  xy: 939, 214
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 Mirror
@@ -361,373 +382,380 @@ NecklaceJewelRed
   orig: 32, 32
   offset: 0, 0
   index: -1
-Pick
+Oil
   rotate: false
   xy: 35, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionBlueSmall
+Pick
   rotate: false
   xy: 69, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionGreenSmall
+PotionBlueSmall
   rotate: false
   xy: 69, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionRedSmall
+PotionGreenSmall
   rotate: false
   xy: 103, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionRounededBrown
+PotionRedSmall
   rotate: false
   xy: 103, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionSilver
+PotionRounededBrown
   rotate: false
   xy: 137, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionTealBig
+PotionSilver
   rotate: false
   xy: 137, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionVioletLarge
+PotionTealBig
   rotate: false
   xy: 171, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionYellowLarge
+PotionVioletLarge
   rotate: false
   xy: 171, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PotionYellowSmall
+PotionYellowLarge
   rotate: false
   xy: 205, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-RingGold
-  rotate: false
-  xy: 742, 196
-  size: 18, 16
-  orig: 18, 16
-  offset: 0, 0
-  index: -1
-RobeBlue
+PotionYellowSmall
   rotate: false
   xy: 205, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll01
+RingGold
+  rotate: false
+  xy: 832, 196
+  size: 18, 16
+  orig: 18, 16
+  offset: 0, 0
+  index: -1
+RobeBlue
   rotate: false
   xy: 239, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll02
+Scroll01
   rotate: false
   xy: 239, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll03
+Scroll02
   rotate: false
   xy: 273, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll04
+Scroll03
   rotate: false
   xy: 273, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll05
+Scroll04
   rotate: false
   xy: 307, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll06
+Scroll05
   rotate: false
   xy: 307, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll07
+Scroll06
   rotate: false
   xy: 341, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll08
+Scroll07
   rotate: false
   xy: 341, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll09
+Scroll08
   rotate: false
   xy: 375, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll10
+Scroll09
   rotate: false
   xy: 375, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll11
+Scroll10
   rotate: false
   xy: 409, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll12
+Scroll11
   rotate: false
   xy: 409, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll13
+Scroll12
   rotate: false
   xy: 443, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll14
+Scroll13
   rotate: false
   xy: 443, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll15
+Scroll14
   rotate: false
   xy: 36, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Scroll16
+Scroll15
   rotate: false
   xy: 70, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Shovel
-  rotate: false
-  xy: 545, 80
-  size: 31, 31
-  orig: 31, 31
-  offset: 0, 0
-  index: -1
-Shovel2
+Scroll16
   rotate: false
   xy: 104, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone1
+Shovel
+  rotate: false
+  xy: 545, 46
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+Shovel2
   rotate: false
   xy: 138, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone10
-  rotate: false
-  xy: 444, 10
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone11
-  rotate: false
-  xy: 476, 112
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone12
-  rotate: false
-  xy: 477, 78
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone13
-  rotate: false
-  xy: 477, 44
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone14
-  rotate: false
-  xy: 478, 10
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone15
-  rotate: false
-  xy: 498, 146
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone16
-  rotate: false
-  xy: 510, 112
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Stone2
+Stone1
   rotate: false
   xy: 172, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone3
+Stone10
   rotate: false
-  xy: 206, 10
+  xy: 476, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone4
+Stone11
   rotate: false
-  xy: 240, 10
+  xy: 477, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone5
+Stone12
   rotate: false
-  xy: 274, 10
+  xy: 477, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone6
+Stone13
   rotate: false
-  xy: 308, 10
+  xy: 478, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone7
+Stone14
   rotate: false
-  xy: 342, 10
+  xy: 498, 146
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone8
+Stone15
   rotate: false
-  xy: 376, 10
+  xy: 510, 112
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Stone9
-  rotate: false
-  xy: 410, 10
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-TeddyBear
-  rotate: false
-  xy: 545, 48
-  size: 28, 30
-  orig: 28, 30
-  offset: 0, 0
-  index: -1
-Toaster
-  rotate: false
-  xy: 546, 19
-  size: 32, 27
-  orig: 32, 27
-  offset: 0, 0
-  index: -1
-Torch
+Stone16
   rotate: false
   xy: 511, 78
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-TorchFire
+Stone2
+  rotate: false
+  xy: 206, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone3
+  rotate: false
+  xy: 240, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone4
+  rotate: false
+  xy: 274, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone5
+  rotate: false
+  xy: 308, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone6
+  rotate: false
+  xy: 342, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone7
+  rotate: false
+  xy: 376, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone8
+  rotate: false
+  xy: 410, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Stone9
+  rotate: false
+  xy: 444, 10
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+TeddyBear
+  rotate: false
+  xy: 546, 14
+  size: 28, 30
+  orig: 28, 30
+  offset: 0, 0
+  index: -1
+Toaster
+  rotate: false
+  xy: 599, 185
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: -1
+Torch
   rotate: false
   xy: 511, 44
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-VialBlue
+TorchFire
   rotate: false
   xy: 512, 10
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-VialGreen
+VialBlue
   rotate: false
   xy: 532, 147
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-VialRed
+VialGreen
   rotate: false
   xy: 544, 113
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+VialRed
+  rotate: false
+  xy: 545, 79
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

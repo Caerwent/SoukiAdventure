@@ -207,28 +207,28 @@ public class MainMenuScreen implements Screen {
        CHANGE LOCATION*/
 
         LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "mines3";
+        locationProfile.mMapId = "mines4";
         // locationProfile.mFromMapId = aFromMap;
 
         Profile.getInstance().setLocationProfile(locationProfile);
 
 
 /*      CHANGE ITEMS*/
-/*
-        Array<Item> inventory = new Array<Item>();
+
+ /*       Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
             for (String itemId : savedInventory) {
-                if(!Item.ItemTypeID.Dagger.name().equals(itemId))
+                if(!Item.ItemTypeID.FoodBread2.name().equals(itemId) && !Item.ItemTypeID.DaggerBroken.name().equals(itemId))
                     inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.DaggerBroken));
-
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Dagger));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.FoodBread));
         Profile.getInstance().updateInventory(inventory);
-
 */
+
        /*
        CHANGE MAP ITEM STATE*/
        /*

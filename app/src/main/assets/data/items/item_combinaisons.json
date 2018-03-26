@@ -1,14 +1,30 @@
 [
 {
-	"item1":Lantern,
+	"item1":LanternOn,
 	"item2":Torch,
-	"resultItems":["TorchFire", "Lantern"]
+	"resultItems":["TorchFire", "LanternOn"]
 },
 	{
-		"item1":Lantern2,
-		"item2":Torch,
-		"resultItems":["TorchFire", "Lantern2"]
+		"item1":LanternEmpty,
+		"item2":Oil,
+		"resultItems":["LanternFull"]
 	}
-
-
+,
+	{
+		"item1":LanternFull,
+		"item2":Matches,
+		"resultItems":["LanternOn"]
+	}
+,
+	{
+		"item1":FoodBread,
+		"item2":Dagger,
+		"resultItems":["Dagger", "FoodBread2"]
+	}
+,
+	{
+		"item1":FoodBread2,
+		"item2":Toaster,
+		"resultItems":["Toaster", "FoodBread3"]
+	}
 ]

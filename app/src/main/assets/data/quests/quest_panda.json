@@ -1,0 +1,50 @@
+{
+  "id": "quest_panda",
+  "title": "quest_panda_title",
+  "desc": "quest_panda_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": ["KeyRoyal"],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_panda_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "FoodBread3",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_panda_task2",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "FoodShank",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_panda_task3",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "FoodAle",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_panda_task4",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "FoodBiscuit",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_panda_task5",
+      "type": "RETURN_ITEM",
+      "targetId": "panda",
+      "requiredCompletedTask": [
+        "quest_panda_task1",
+        "quest_panda_task2",
+        "quest_panda_task3",
+        "quest_panda_task4"
+      ]
+    }
+  ]
+}
+

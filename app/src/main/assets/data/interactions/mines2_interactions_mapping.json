@@ -345,9 +345,9 @@
             "value": "ACTIVATED"
           },
           {
-            "sourceId": "path1",
+            "sourceId": "THIS",
             "type": "END_PATH",
-            "value": "",
+            "value": "path1",
             "isPersistent": "true"
           }
         ]

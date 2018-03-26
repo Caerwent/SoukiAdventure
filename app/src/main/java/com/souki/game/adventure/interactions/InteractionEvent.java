@@ -15,6 +15,7 @@ public class InteractionEvent {
         EFFECT_STOP,
         CHALLENGE_COMPLETED,
         END_PATH,
+        START_PATH,
         COLLISION;
     }
 

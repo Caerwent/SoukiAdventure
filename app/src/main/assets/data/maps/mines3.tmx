@@ -27,9 +27,9 @@
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="27" x="196" y="0" width="313" height="97"/>
+  <object id="27" x="196" y="0" width="309" height="97"/>
   <object id="28" x="-1" y="0" width="159" height="97"/>
-  <object id="29" x="547" y="0" width="475" height="98"/>
+  <object id="29" x="550" y="0" width="472" height="98"/>
   <object id="33" x="2" y="91" width="29" height="581"/>
   <object id="34" x="2" y="635" width="1022" height="37"/>
   <object id="35" x="993" y="74" width="31" height="580"/>
@@ -55,8 +55,8 @@
   <object id="187" x="480" y="96" width="8" height="126"/>
  </objectgroup>
  <objectgroup name="interactions">
-  <object id="1" name="portal2" gid="846" x="160" y="97.3333" width="32" height="32"/>
-  <object id="2" name="portal1" gid="846" x="512.333" y="102.667" width="32" height="32"/>
+  <object id="1" name="portal2" gid="846" x="160" y="104.333" width="32" height="32"/>
+  <object id="2" name="portal1" gid="846" x="512.333" y="106.667" width="32" height="32"/>
   <object id="130" name="cart1" gid="846" x="749.333" y="122.667" width="32" height="32"/>
   <object id="131" name="walker_spider_1" gid="846" x="824" y="125" width="32" height="32"/>
   <object id="132" name="walker_spider_2" gid="846" x="712" y="191.333" width="32" height="32"/>

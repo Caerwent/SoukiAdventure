@@ -97,7 +97,7 @@ public class InteractionHero extends Interaction {
                 TransformComponent transform = this.getComponent(TransformComponent.class);
                 // float heroShapeHalfWidth = mMap.getPlayer().getHero().getShapeRendering().getWidth() / 2;
                 Vector2 pos2D = new Vector2(transform.position.x /*+ heroShapeHalfWidth*/, transform.position.y);
-                Vector2 velocity = mPath.getVelocityForPosAndTime(pos2D, dt);
+                Vector2 velocity = mPath.getVelocityForPosAndTime(pos2D, dt, mId);
                 setVelocity(velocity);
 
                 stateTime += dt;

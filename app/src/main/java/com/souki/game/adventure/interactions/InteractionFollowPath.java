@@ -6,6 +6,7 @@ import com.souki.game.adventure.box2d.PathMap;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
+import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.map.GameMap;
 
 /**
@@ -57,7 +58,7 @@ public class InteractionFollowPath extends Interaction {
             if (mPath != null && mPath.hasNextPoint()) {
                 TransformComponent transform = this.getComponent(TransformComponent.class);
                 Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
-                setVelocity(mPath.getVelocityForPosAndTime(pos2D, dt));
+                setVelocity(mPath.getVelocityForPosAndTime(pos2D, dt, mId));
             } else {
                 setMovable(false);
             }
@@ -102,8 +103,10 @@ public class InteractionFollowPath extends Interaction {
                 }
             }
             if (mPath != null) {
-
                 setMovable(true);
+                InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.START_PATH.name(), aAction.value);
+                EventDispatcher.getInstance().onInteractionEvent(event);
+
             }
             return true;
         }
@@ -122,6 +125,8 @@ public class InteractionFollowPath extends Interaction {
 
                 mPath.setRevert(!mPath.isRevert());
                 setMovable(true);
+                InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.START_PATH.name(), aAction.value);
+                EventDispatcher.getInstance().onInteractionEvent(event);
             }
             return true;
         }

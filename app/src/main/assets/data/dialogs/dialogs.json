@@ -988,6 +988,155 @@
         ]
       }
     ]
+  },
+  {
+    "id": "quest_lapin_bleu",
+    "dialogs": [
+      {
+        "speaker": "lapin_bleu_name",
+        "phrases": [
+          "quest_lapin_bleu_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_lapin_bleu_completed",
+    "dialogs": [
+      {
+        "speaker": "lapin_bleu_name",
+        "phrases": [
+          "quest_lapin_bleu_completed_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_lapin_bleu_completed_dialog_phrase2",
+          "quest_lapin_bleu_completed_dialog_phrase3"
+        ]
+      },
+      {
+        "speaker": "lapin_bleu_name",
+        "phrases": [
+          "quest_lapin_bleu_completed_dialog_phrase4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_lapin_bleu_finished",
+    "dialogs": [
+      {
+        "speaker": "lapin_bleu_name",
+        "phrases": [
+          "quest_lapin_bleu_finished_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_panda",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_panda_phrase1"
+        ]
+      },
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_phrase2"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_panda_phrase3"
+        ]
+      },
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_phrase4",
+          "quest_panda_phrase5"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_panda_phrase6"
+        ]
+      },
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_phrase7"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_panda_phrase8"
+        ]
+      },
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_phrase9",
+          "quest_panda_phrase10"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_panda_phrase11"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_panda_activated",
+    "dialogs": [
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_activated_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_panda_activated_dialog_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_panda_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_panda_completed_dialog_phrase1"
+        ]
+      },
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_completed_dialog_phrase2",
+          "quest_panda_completed_dialog_phrase3",
+          "quest_panda_completed_dialog_phrase4"
+        ]
+      },
+      {
+        "speaker": "npc_malo_name",
+        "phrases": [
+          "quest_panda_completed_dialog_phrase2"
+        ]
+      }
+    ]
   }
 ]
 

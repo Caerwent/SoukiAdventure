@@ -16,7 +16,7 @@
     "id": "house2_chest1",
     "items": [
       "Compass",
-      "Lantern2",
+      "LanternEmpty",
       "Scroll06"
     ]
   },
@@ -80,6 +80,14 @@
     "id": "island3_2_chest1",
     "items": [
       "GlyphYellow"
+    ]
+  },
+  {
+    "id": "desert1_chest1",
+    "items": [
+      "Oil",
+      "Mirror",
+      "Boots"
     ]
   },
   {

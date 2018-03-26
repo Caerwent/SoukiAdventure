@@ -38,5 +38,93 @@
       }
     ],
     "outputEvents": []
+  },
+  {
+    "id":"chest1",
+    "template":"chest_type1.json",
+    "properties": {
+      "requiredItem":"KeyRoyal"
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
+  },
+  {
+    "id": "panda",
+    "template": "npc_panda.json",
+    "properties": {
+      "dialogId": "quest_panda"
+    },
+    "questActions": [
+      {
+        "questId": "quest_panda",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_panda_activated"
+        }
+      },
+      {
+        "questId": "quest_panda",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_panda_completed"
+        }
+      },
+      {
+        "questId": "quest_panda",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_panda"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_panda"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path1"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_panda_completed"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+      }
+    ]
   }
 ]

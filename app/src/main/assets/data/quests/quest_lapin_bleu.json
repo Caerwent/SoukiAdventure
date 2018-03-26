@@ -1,0 +1,26 @@
+{
+  "id": "quest_lapin_bleu",
+  "title": "quest_lapin_bleu_title",
+  "desc": "quest_lapin_bleu_desc",
+  "requiredCompletedQuest": ["quest_teddy_bear"],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks" : [
+    {
+      "id": "quest_lapin_bleu_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "TeddyBear",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_lapin_bleu_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "lapin_bleu",
+      "requiredCompletedTask": [
+        "quest_lapin_bleu_task1"
+      ]
+    }
+  ]
+}
+

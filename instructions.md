@@ -44,9 +44,9 @@
             "isPersistent":"true"
           },
           {
-            "sourceId": "path1",
+            "sourceId": "THIS",
             "type": "END_PATH",
-            "value": "",
+            "value": "path1",
             "isVolatile":"true"
           }
 

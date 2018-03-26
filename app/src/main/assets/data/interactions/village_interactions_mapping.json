@@ -94,7 +94,50 @@
     "id": "lapin_bleu",
     "template": "lapin_bleu.json",
     "properties": {
-    }
+      "dialogId": "quest_lapin_bleu"
+    },
+    "questActions":[
+      {
+        "questId": "quest_lapin_bleu",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_lapin_bleu"
+        }
+      },
+      {
+        "questId": "quest_lapin_bleu",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_lapin_bleu_completed"
+        }
+      },
+      {
+        "questId": "quest_lapin_bleu",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_lapin_bleu_finished"
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_lapin_bleu_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_lapin_bleu_completed"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "carriage",
@@ -122,9 +165,9 @@
         },
         "inputEvents": [
           {
-            "sourceId": "path_malo1",
+            "sourceId": "THIS",
             "type": "END_PATH",
-            "value": ""
+            "value": "path_malo1"
           }
         ]
       },
@@ -135,9 +178,9 @@
         },
         "inputEvents": [
           {
-            "sourceId": "path_carriage",
+            "sourceId": "THIS",
             "type": "END_PATH",
-            "value": ""
+            "value": "path_carriage"
           }
         ]
       }
@@ -213,9 +256,9 @@
         },
         "inputEvents": [
           {
-            "sourceId": "path_malo1",
+            "sourceId": "THIS",
             "type": "END_PATH",
-            "value": ""
+            "value": "path_malo1"
           }
         ]
       },
@@ -226,9 +269,9 @@
         },
         "inputEvents": [
           {
-            "sourceId": "path_malo2",
+            "sourceId": "THIS",
             "type": "END_PATH",
-            "value": ""
+            "value": "path_malo2"
           }
         ]
       }

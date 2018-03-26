@@ -3,7 +3,7 @@
   "title": "quest_farmer_shovel_title",
   "desc": "quest_farmer_shovel_desc",
   "requiredCompletedQuest": [],
-  "itemsReward": ["FoodBread2"],
+  "itemsReward": ["FoodBread"],
   "effectsReward": [],
   "tasks": [
     {

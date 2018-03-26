@@ -81,32 +81,38 @@ public class PathMap {
     }
 
 
-    public Vector2 getVelocityForPosAndTime(Vector2 bodyPosition, float dT) {
+    public Vector2 getVelocityForPosAndTime(Vector2 bodyPosition, float dT, String aSourceId) {
         lastTime += dT;
         Vector2 nextPointPosition = positions.get(nextPointIndex);
         float d = nextPointPosition.dst2(bodyPosition);
-        boolean hasReachedNextPoint = false;
+        boolean hasLooped = false;
         if (d < CHECK_RADIUS) {
             currentPointIndex = nextPointIndex;
             lastTime = 0;
             if (hasNextPoint()) {
                 if (hasFinishPath())
                 {
-                    InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.END_PATH.name(), null);
+                    InteractionEvent event = new InteractionEvent(aSourceId, InteractionEvent.EventType.END_PATH.name(), mId);
                     EventDispatcher.getInstance().onInteractionEvent(event);
+                    hasLooped=true;
                 }
                 nextPointIndex = getNextPoint();
                 mIsCompleted = false;
             } else {
                 mIsCompleted = true;
                 mVelocity.set(0, 0);
-                InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.END_PATH.name(), null);
+                InteractionEvent event = new InteractionEvent(aSourceId, InteractionEvent.EventType.END_PATH.name(), mId);
                 EventDispatcher.getInstance().onInteractionEvent(event);
             }
 
         }
         if (!mIsCompleted) {
             computeVelocity(bodyPosition, dT);
+            if(hasLooped)
+            {
+                InteractionEvent event = new InteractionEvent(aSourceId, InteractionEvent.EventType.START_PATH.name(), mId);
+                EventDispatcher.getInstance().onInteractionEvent(event);
+            }
         }
         return mVelocity;
     }
