@@ -21,9 +21,8 @@
     "outputEvents":[]
   },
   {
-    "id": "﻿challenge_the_machine",
+    "id": "challenge_the_machine",
     "template": "challenge_the_machine.json",
-    "persistence":"GAME",
     "properties": {
       "type": "MACHINE"
     },

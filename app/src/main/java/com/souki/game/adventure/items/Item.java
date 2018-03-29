@@ -59,6 +59,7 @@ public class Item {
         LanternFull,
         LanternOn,
         Letter,
+        MachineActivator,
         Matches,
         Mirror,
         NecklaceJewelBlue,

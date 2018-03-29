@@ -18,6 +18,13 @@ theMachine_bubble_on
   orig: 18, 20
   offset: 0, 0
   index: -1
+theMachine_pipe
+  rotate: false
+  xy: 64, 4
+  size: 31, 21
+  orig: 31, 21
+  offset: 0, 0
+  index: -1
 theMachine_liquid_activator_off
   rotate: false
   xy: 440, 183

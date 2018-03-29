@@ -220,12 +220,11 @@ public class MainMenuScreen implements Screen {
 
         if (savedInventory != null) {
             for (String itemId : savedInventory) {
-                if(!Item.ItemTypeID.FoodBread2.name().equals(itemId) && !Item.ItemTypeID.DaggerBroken.name().equals(itemId))
+                //if(!Item.ItemTypeID.FoodBread2.name().equals(itemId) && !Item.ItemTypeID.DaggerBroken.name().equals(itemId))
                     inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Dagger));
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.FoodBread));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.MachineActivator));
         Profile.getInstance().updateInventory(inventory);
 */
 

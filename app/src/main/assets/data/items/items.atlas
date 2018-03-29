@@ -153,21 +153,21 @@ FoodBiscuit
   index: -1
 FoodBread
   rotate: false
-  xy: 660, 191
+  xy: 688, 191
   size: 26, 21
   orig: 26, 21
   offset: 0, 0
   index: -1
 FoodBread2
   rotate: false
-  xy: 688, 191
+  xy: 716, 191
   size: 26, 21
   orig: 26, 21
   offset: 0, 0
   index: -1
 FoodBread3
   rotate: false
-  xy: 716, 191
+  xy: 744, 191
   size: 26, 21
   orig: 26, 21
   offset: 0, 0
@@ -272,14 +272,14 @@ KeyCrystal
   index: -1
 KeyDark
   rotate: false
-  xy: 744, 195
+  xy: 772, 195
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
   index: -1
 KeyIron
   rotate: false
-  xy: 776, 197
+  xy: 804, 197
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
@@ -307,7 +307,7 @@ KeyRoyal
   index: -1
 KeyWood
   rotate: false
-  xy: 804, 197
+  xy: 832, 197
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
@@ -338,6 +338,13 @@ Letter
   xy: 2, 36
   size: 31, 32
   orig: 31, 32
+  offset: 0, 0
+  index: -1
+MachineActivator
+  rotate: false
+  xy: 660, 188
+  size: 26, 24
+  orig: 26, 24
   offset: 0, 0
   index: -1
 Matches
@@ -461,7 +468,7 @@ PotionYellowSmall
   index: -1
 RingGold
   rotate: false
-  xy: 832, 196
+  xy: 860, 196
   size: 18, 16
   orig: 18, 16
   offset: 0, 0
