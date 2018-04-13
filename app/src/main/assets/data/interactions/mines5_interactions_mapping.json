@@ -1,0 +1,302 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mines4"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_caves.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "mines5_1"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge1",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+  {
+    "id": "portal3",
+    "template": "portal_caves.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "mines5_2"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge2",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge2",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+  {
+    "id": "portal4",
+    "template": "portal_caves.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "mines5_3"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge3",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge3",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+  {
+    "id": "portal5",
+    "template": "portal_caves.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "mines5_4"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge4",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge4",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+  {
+    "id": "portal6",
+    "template": "portal_caves.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "mines6"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge5",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "challenge5",
+    "template": "challenge_steam_machine.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "STEAM_MACHINE"
+    }
+  },
+  {
+    "id": "monster_ghost",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank2",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "lego",
+    "template": "npc_lego.json",
+    "properties": {
+      "dialogId": "quest_crystals"
+    },
+    "questActions": [
+      {
+        "questId": "quest_crystals",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_crystals_dialog_activated"
+        }
+      },
+      {
+        "questId": "quest_crystals",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_crystals_dialog_completed"
+        }
+      },
+      {
+        "questId": "quest_crystals",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_crystals"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_crystals"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_crystals_dialog_activated"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_crystals"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_crystals_dialog_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_crystals_dialog_completed"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path_lego"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_crystals_dialog_finished"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path_lego"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

@@ -1,0 +1,124 @@
+
+npc_lego.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 0, 0
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_down_1
+  rotate: false
+  xy: 0, 0
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_down_2
+  rotate: false
+  xy: 32, 0
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_down_3
+  rotate: false
+  xy: 64, 0
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_down_4
+  rotate: false
+  xy: 96, 0
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_up_1
+  rotate: false
+  xy: 0, 147
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_up_2
+  rotate: false
+  xy: 32, 147
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_up_3
+  rotate: false
+  xy: 64, 147
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_up_4
+  rotate: false
+  xy: 96, 147
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_right_1
+  rotate: false
+  xy: 0, 98
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_right_2
+  rotate: false
+  xy: 32, 98
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_right_3
+  rotate: false
+  xy: 64, 98
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_right_4
+  rotate: false
+  xy: 96, 98
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_left_1
+  rotate: false
+  xy: 0, 49
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_left_2
+  rotate: false
+  xy: 32, 49
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_left_3
+  rotate: false
+  xy: 64, 49
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1
+move_left_4
+  rotate: false
+  xy: 96, 49
+  size: 32, 49
+  orig: 32, 49
+  offset: 0, 0
+  index: -1

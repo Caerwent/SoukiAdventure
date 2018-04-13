@@ -296,5 +296,14 @@
   {
     "id": "ice1",
     "template": "obstacle_water_iceable.json"
+  },
+  {
+    "id": "chest1",
+    "template": "chest_type1.json",
+    "properties": {
+      "requiredItem": "KeyIron"
+    },
+    "eventsAction": [],
+    "outputEvents": []
   }
 ]

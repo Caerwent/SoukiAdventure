@@ -122,9 +122,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
         }
 
 
-        if (!isRendable()) {
-            remove(CollisionObstacleComponent.class);
-        }
+        remove(CollisionObstacleComponent.class);
         remove(CollisionEffectComponent.class);
         if (mActivatedByQuestId != null) {
             Quest quest = QuestManager.getInstance().getQuestFromId(mActivatedByQuestId);
@@ -201,9 +199,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     @Override
     public void startToInteract() {
         super.startToInteract();
-        if (!isRendable()) {
-            remove(CollisionObstacleComponent.class);
-        }
+        remove(CollisionObstacleComponent.class);
         remove(CollisionEffectComponent.class);
 
     }

@@ -24,7 +24,8 @@
     "id": "house3_chest",
     "items": [
       "Hammer",
-      "Toaster"
+      "Toaster",
+      "Scroll07"
     ]
   },
   {
@@ -107,12 +108,24 @@
     ]
   },
   {
+    "id": "mountain5_chest1",
+    "items": [
+      "TeddyBear"
+    ]
+  },
+  {
     "id": "mines3_chest1",
     "items": [
       "VialRed",
       "VialRed",
       "VialGreen",
       "Gear"
+    ]
+  },
+  {
+    "id": "mines5_2_chest1",
+    "items": [
+      "JewelsRed"
     ]
   }
 ]

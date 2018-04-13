@@ -1,0 +1,798 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mines5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "chest1",
+    "template": "chest_type1.json",
+    "properties": {
+      "requiredItem": "KeyIron"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier1",
+    "template": "obstacle_mines_barrier_horizontal.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "activator0",
+    "template": "activator_type1.json",
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "IDLE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "cart1",
+            "type": "END_PATH",
+            "value": "path11"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger0",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "OPEN"
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "trigger1",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator2",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger2",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator3",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger3",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator4",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger4",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator5",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger5",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator5",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator5",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator6",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger6",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator6",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator6",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator7",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger7",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator7",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator7",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator8",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger8",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator8",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator8",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator9",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger9",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator9",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator9",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "activator10",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "trigger10",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "CLOSED"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator10",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator10",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cart1",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "autoStart": "true",
+      "startState": "MOVE_RIGHT"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path1"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger0",
+            "type": "COLLISION",
+            "value": "cart1"
+          },
+          {
+            "sourceId": "activator0",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path3"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger1",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger1",
+            "type": "STATE",
+            "value": "CLOSED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path2"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger1",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger1",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path6"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger2",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger2",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path4"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger4",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger4",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path7"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger3",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger3",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path5"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger9",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger9",
+            "type": "STATE",
+            "value": "CLOSED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path4"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger9",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger9",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path8"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger5",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger5",
+            "type": "STATE",
+            "value": "CLOSED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path9"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger7",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger7",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path10"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger10",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile": "true"
+          },
+          {
+            "sourceId": "trigger10",
+            "type": "STATE",
+            "value": "OPEN",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path11"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path3",
+            "isVolatile": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path11"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path4",
+            "isVolatile": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path4"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path7",
+            "isVolatile": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path7"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path8",
+            "isVolatile": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path7"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path9",
+            "isVolatile": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path7"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path10",
+            "isVolatile": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path3"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "END_PATH",
+            "value": "path5",
+            "isVolatile": "true"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

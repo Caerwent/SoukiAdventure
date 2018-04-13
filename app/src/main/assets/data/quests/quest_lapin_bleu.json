@@ -3,7 +3,7 @@
   "title": "quest_lapin_bleu_title",
   "desc": "quest_lapin_bleu_desc",
   "requiredCompletedQuest": ["quest_teddy_bear"],
-  "itemsReward": [],
+  "itemsReward": ["FoodBiscuit"],
   "effectsReward": [],
   "tasks" : [
     {

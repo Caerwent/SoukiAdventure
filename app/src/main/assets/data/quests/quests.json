@@ -8,6 +8,7 @@
   "quest_farmer_shovel",
   "quest_obtain_ice_and_fire",
   "quest_guitar",
+  "quest_boots",
   "quest_elf",
   "quest_elf_reward",
   "quest_witch",
@@ -19,6 +20,8 @@
   "quest_talk_cat",
   "quest_teddy_bear",
   "quest_lapin_bleu",
-  "quest_panda"
+  "quest_panda",
+  "quest_frog",
+  "quest_crystals"
 ]
 

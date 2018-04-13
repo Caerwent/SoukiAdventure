@@ -83,6 +83,40 @@
     "template": "rich_cat.json",
     "properties": {
       "dialogId": "dialog_cat"
-    }
+    },
+    "questActions":[
+      {
+        "questId": "quest_teddy_bear",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_teddy_bear_completed"
+        }
+      },
+      {
+        "questId": "quest_teddy_bear",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_teddy_bear_cat_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_teddy_bear_completed"
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -10,13 +10,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
+import com.souki.game.adventure.items.Item;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.persistence.LocationProfile;
+import com.souki.game.adventure.persistence.MapProfile;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
+import com.souki.game.adventure.quests.Quest;
+import com.souki.game.adventure.quests.QuestManager;
+import com.souki.game.adventure.quests.QuestTask;
+
+import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -192,52 +201,53 @@ public class MainMenuScreen implements Screen {
 
     private void onDebug() {
 
- /*CHANGE QUEST STATE*/
+        /*CHANGE QUEST STATE*/
 
-  /*      Quest quest = QuestManager.getInstance().getQuestFromId("quest_malo_blacksmith");
-        quest.setActivated(true);
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_crystals");
+        quest.setActivated(false);
         quest.setCompleted(false);
-        for(QuestTask task : quest.getTasks())
-        {
+        for (QuestTask task : quest.getTasks()) {
             task.setCompleted(false);
         }
-        Profile.getInstance().updateQuestProfile("quest_malo_blacksmith", quest);
-*/
-      /*
-       CHANGE LOCATION*/
+        Profile.getInstance().updateQuestProfile("quest_crystals", quest);
+
+        /*CHANGE LOCATION*/
 
         LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "mines4";
+        locationProfile.mMapId = "mines5";
         // locationProfile.mFromMapId = aFromMap;
 
         Profile.getInstance().setLocationProfile(locationProfile);
 
 
-/*      CHANGE ITEMS*/
+        /* CHANGE ITEMS*/
 
- /*       Array<Item> inventory = new Array<Item>();
+        Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
             for (String itemId : savedInventory) {
-                //if(!Item.ItemTypeID.FoodBread2.name().equals(itemId) && !Item.ItemTypeID.DaggerBroken.name().equals(itemId))
+                if (!Item.ItemTypeID.JewelsBlue.name().equals(itemId) &&
+                        !Item.ItemTypeID.JewelsRed.name().equals(itemId) &&
+                        !Item.ItemTypeID.CrystalsGreen.name().equals(itemId) &&
+                        !Item.ItemTypeID.CrystalsPurple.name().equals(itemId))
                     inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.MachineActivator));
+        // inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Guitar));
         Profile.getInstance().updateInventory(inventory);
-*/
-
-       /*
-       CHANGE MAP ITEM STATE*/
-       /*
-       MapProfile mapProfile = Profile.getInstance().getMapProfile("mountain8");
-        mapProfile.items.remove(Item.ItemTypeID.Coal.name());
-        Profile.getInstance().updateMapProfile("mountain8", mapProfile);
-        */
 
 
-       /** CHANGE INTERACTION STATE **/
+        /*CHANGE MAP ITEM STATE*/
+
+        MapProfile mapProfile = Profile.getInstance().getMapProfile("mines5_1");
+        if (mapProfile != null && mapProfile.items != null) {
+            mapProfile.items.remove(Item.ItemTypeID.JewelsBlue.name());
+            Profile.getInstance().updateMapProfile("mines5_1", mapProfile);
+        }
+
+
+/** CHANGE INTERACTION STATE **/
 
       /*  GameSession session = Profile.getInstance().getPersistentGameSession();
         session.putSessionDataForMapAndEntity("mountain8", "portal2","state", "ACTIVATED");

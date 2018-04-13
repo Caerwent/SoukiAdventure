@@ -6,6 +6,10 @@
   "isClickable": "true",
   "isRendable": "true",
   "isMovable": "false",
+  "properties": {
+    "ZIndex":0
+  },
+
   "states": [
     {
       "name": "IDLE",

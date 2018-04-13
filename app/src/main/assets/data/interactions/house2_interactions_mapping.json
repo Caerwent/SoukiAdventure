@@ -32,6 +32,62 @@
     "id": "frog",
     "template": "frog.json",
     "properties": {
-    }
+      "dialogId": "quest_frog"
+    },
+    "questActions":[
+      {
+        "questId": "quest_frog",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_frog_activated"
+        }
+      },
+      {
+        "questId": "quest_frog",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_frog_completed"
+        }
+      },
+      {
+        "questId": "quest_frog",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_frog_finished"
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "ACTIVATE_QUEST",
+          "value": "quest_frog"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_frog"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_frog_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_frog_completed"
+          }
+        ]
+      }
+    ]
   }
 ]

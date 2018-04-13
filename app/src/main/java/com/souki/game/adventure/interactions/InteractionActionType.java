@@ -21,4 +21,5 @@ public class InteractionActionType {
 
     public ActionType type;
     public String value;
+    public boolean stopPropagation;
 }

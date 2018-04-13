@@ -1,0 +1,50 @@
+{
+  "id": "quest_crystals",
+  "title": "quest_crystals_title",
+  "desc": "quest_crystals_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": ["FoodAle","Torch"],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_crystals_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "JewelsBlue",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_crystals_task2",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "JewelsRed",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": " quest_crystals_task3",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "CrystalsGreen",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_crystals_task4",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "CrystalsPurple",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_crystals_task5",
+      "type": "RETURN_ITEM",
+      "targetId": "lego",
+      "requiredCompletedTask": [
+        "quest_crystals_task1",
+        "quest_crystals_task2",
+        "quest_crystals_task3",
+        "quest_crystals_task4"
+      ]
+    }
+  ]
+}
+

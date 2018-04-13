@@ -1,0 +1,26 @@
+{
+  "id": "quest_frog",
+  "title": "quest_frog_title",
+  "desc": "quest_frog_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": ["Matches"],
+  "effectsReward": [],
+  "tasks" : [
+    {
+      "id": "quest_frog_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "Letter",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_frog_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "frog",
+      "requiredCompletedTask": [
+        "quest_frog_task1"
+      ]
+    }
+  ]
+}
+

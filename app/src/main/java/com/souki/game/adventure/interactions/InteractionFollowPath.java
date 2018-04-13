@@ -94,6 +94,7 @@ public class InteractionFollowPath extends Interaction {
         if (!res && aAction != null && InteractionActionType.ActionType.SET_PATH == aAction.type) {
             if (mPath != mMap.getPaths().get(aAction.value)) {
                 mPath = mMap.getPaths().get(aAction.value);
+                mPath.setCompleted(false);
                 setNearestPathPoint();
                 if (mProperties.containsKey("looping")) {
                     mPath.setLoop(Boolean.valueOf((String) mProperties.get("looping")));
@@ -121,6 +122,7 @@ public class InteractionFollowPath extends Interaction {
                 }
             }
             if (mPath != null) {
+                mPath.setCompleted(false);
                 setNearestPathPoint();
 
                 mPath.setRevert(!mPath.isRevert());

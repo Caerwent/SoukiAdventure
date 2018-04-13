@@ -14,7 +14,7 @@
     "template": "portal_caves.json",
     "persistence": "GAME",
     "properties": {
-      "targetMapId": "mines4"
+      "targetMapId": "mines5"
     },
     "eventsAction": [
       {

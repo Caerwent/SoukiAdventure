@@ -1,0 +1,12 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mines5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

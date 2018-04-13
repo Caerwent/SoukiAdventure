@@ -86,9 +86,60 @@
           "type": "DIALOG",
           "value": "quest_teddy_bear_activated"
         }
+      },
+      {
+        "questId": "quest_teddy_bear",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_teddy_bear_cow_finished"
+        }
       }
+
     ],
-    "eventsAction": []
+    "eventsAction":[
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_teddy_bear_cow_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_teddy_bear_completed"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rich_cat",
+    "template": "rich_cat.json",
+    "properties": {
+      "dialogId": "quest_teddy_bear_cat_finished"
+    },
+    "questActions":[
+      {
+        "questId": "quest_teddy_bear",
+        "questState": "NOT_ACTIVATED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      },
+      {
+        "questId": "quest_teddy_bear",
+        "questState": "NOT_COMPLETED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+
+    ],
+    "eventsAction":[
+    ]
   },
   {
     "id": "lapin_bleu",
@@ -307,11 +358,19 @@
         }
       },
       {
-        "questId": "quest_guitar",
-        "questState": "FINISHED",
+        "questId": "quest_boots",
+        "questState": "NOT_COMPLETED",
         "action": {
           "type": "DIALOG",
-          "value": "quest_guitar_finished"
+          "value": "quest_boots_activated"
+        }
+      },
+      {
+        "questId": "quest_boots",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_boots_completed"
         }
       }
     ],
@@ -326,6 +385,32 @@
             "sourceId": "",
             "type": "DIALOG",
             "value": "quest_guitar"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_guitar_activated"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_guitar"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_boots_activated"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_guitar_completed"
           }
         ]
       }

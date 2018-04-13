@@ -1,0 +1,297 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mines5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "activator3",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "activator2",
+    "template": "activator_type1.json",
+    "eventsAction": []
+  },
+  {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay":7
+    },
+    "eventsAction": []
+  },
+  {
+    "id": "walker_spider1",
+    "template": "walker_spider.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "trigger1",
+    "template": "trigger_mines_switch.json",
+    "properties": {
+      "startState": "OPEN"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cart1",
+    "template": "obstacle_mines_cart.json",
+    "properties": {
+      "autoStart": "false",
+      "startState":"MOVE_RIGHT"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path1",
+          "stopPropagation":true
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "THIS",
+            "type": "START_PATH",
+            "value": "path2",
+            "isPersistent": "true",
+            "isNotValue": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path3",
+          "stopPropagation":true
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "THIS",
+            "type": "START_PATH",
+            "value": "path2",
+            "isPersistent": "true",
+            "isNotValue": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path2",
+          "stopPropagation":true
+        },
+        "inputEvents": [
+          {
+            "sourceId": "trigger1",
+            "type": "COLLISION",
+            "value": "cart1",
+            "isVolatile":"true"
+          },
+          { "sourceId": "trigger1",
+            "type": "STATE",
+            "value": "CLOSED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "THIS",
+            "type": "START_PATH",
+            "value": "path1"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_PATH",
+          "value": "path1",
+          "stopPropagation":true
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+      {
+        "type": "START_PATH",
+        "value": "path1"
+      },
+      {
+        "type": "START_PATH",
+        "value": "path2"
+      },
+      {
+        "type": "START_PATH",
+        "value": "path3"
+      }
+    ]
+  },
+  {
+    "id": "mine_barrier1",
+    "template": "obstacle_mines_barrier_vertical.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier2",
+    "template": "obstacle_mines_barrier_vertical.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "mine_barrier3",
+    "template": "obstacle_mines_barrier_vertical.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "COLLISION",
+            "value": "cart1"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  }
+]

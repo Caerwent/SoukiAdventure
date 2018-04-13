@@ -73,6 +73,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     protected Shape mShapeInteraction;
     protected Shape mShapeRendering;
     protected float[] mVertices = new float[8];
+    protected int mZIndex = 1;
 
 
     protected Camera mCamera;
@@ -163,7 +164,9 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
 
         this.add(new TransformComponent());
-
+        if (mProperties.containsKey("ZIndex")) {
+            mZIndex = ((Float) mProperties.get("ZIndex")).intValue();
+        }
         if (mProperties.containsKey("collisionHeightFactor")) {
             mCollisionHeightFactor = ((Float) mProperties.get("CollisionHeightFactor")).intValue();
         }
@@ -450,7 +453,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     @Override
     public int getZIndex() {
-        return 1;
+        return mZIndex;
     }
 
     @Override
@@ -775,6 +778,9 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                             }
                         }
                         doAction(eventAction.action);
+                        if (eventAction.action.stopPropagation) {
+                            return;
+                        }
                     }
 
                 }

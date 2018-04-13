@@ -3,7 +3,7 @@
   "title": "quest_teddy_bear_title",
   "desc": "quest_teddy_bear_desc",
   "requiredCompletedQuest": ["quest_talk_cat", "quest_talk_cow"],
-  "itemsReward": [],
+  "itemsReward": ["TeddyBear"],
   "effectsReward": [],
   "tasks": [
     {

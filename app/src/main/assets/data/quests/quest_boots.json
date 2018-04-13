@@ -1,0 +1,26 @@
+{
+  "id": "quest_boots",
+  "title": "quest_boots_title",
+  "desc": "quest_boots_desc",
+  "requiredCompletedQuest": ["quest_guitar"],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks": [
+    {
+      "id": "quest_boots_task1",
+      "value": "1",
+      "type": "FIND_ITEM",
+      "targetId": "Boots",
+      "requiredCompletedTask": []
+    },
+    {
+      "id": "quest_boots_task2",
+      "type": "RETURN_ITEM",
+      "targetId": "chien_jaune",
+      "requiredCompletedTask": [
+        "quest_boots_task1"
+      ]
+    }
+  ]
+}
+
