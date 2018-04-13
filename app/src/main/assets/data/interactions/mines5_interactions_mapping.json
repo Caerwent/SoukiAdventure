@@ -10,6 +10,31 @@
     "outputEvents": []
   },
   {
+    "id": "challenge_portal_checkpoint",
+    "template": "challenge_portal_checkpoint.json",
+    "persistence":"GAME",
+    "properties": {
+      "type": "PORTAL_CHECKPOINT",
+      "zindex": 0
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+  {
     "id": "portal2",
     "template": "portal_caves.json",
     "persistence": "GAME",

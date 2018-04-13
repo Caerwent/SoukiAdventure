@@ -1,0 +1,30 @@
+{
+  "type":"CHALLENGE",
+  "atlas":"../challenges/challenge_inputcode.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "inputcode_off"
+      ]
+    },
+    {
+      "name": "COMPLETED",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "inputcode_on"
+      ]
+    }
+
+  ]
+
+
+}

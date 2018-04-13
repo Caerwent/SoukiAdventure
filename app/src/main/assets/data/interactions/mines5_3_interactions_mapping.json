@@ -8,5 +8,14 @@
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+  {
+    "id": "challenge_inputcode",
+    "template": "challenge_inputcode.json",
+    "persistence":"GAME",
+    "properties": {
+      "type": "INPUT_CODE",
+      "code": 1234
+    }
   }
 ]

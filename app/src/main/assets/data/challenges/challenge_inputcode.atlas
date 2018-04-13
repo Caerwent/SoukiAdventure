@@ -1,0 +1,118 @@
+
+challenge_inputcode.png
+size: 1024,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bubble_off
+  rotate: false
+  xy: 470, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+bubble_on
+  rotate: false
+  xy: 504, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+digit
+  rotate: false
+  xy: 2, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 0
+digit
+  rotate: false
+  xy: 40, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 1
+digit
+  rotate: false
+  xy: 78, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 2
+digit
+  rotate: false
+  xy: 116, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 3
+digit
+  rotate: false
+  xy: 154, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 4
+digit
+  rotate: false
+  xy: 192, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 5
+digit
+  rotate: false
+  xy: 230, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 6
+digit
+  rotate: false
+  xy: 268, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 7
+digit
+  rotate: false
+  xy: 306, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 8
+digit
+  rotate: false
+  xy: 344, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: 9
+digit_null
+  rotate: false
+  xy: 382, 2
+  size: 36, 60
+  orig: 36, 60
+  offset: 0, 0
+  index: -1
+inputcode_off
+  rotate: false
+  xy: 538, 28
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: -1
+inputcode_on
+  rotate: false
+  xy: 562, 28
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: -1
+keyboard
+  rotate: false
+  xy: 420, 21
+  size: 48, 41
+  orig: 48, 41
+  offset: 0, 0
+  index: -1

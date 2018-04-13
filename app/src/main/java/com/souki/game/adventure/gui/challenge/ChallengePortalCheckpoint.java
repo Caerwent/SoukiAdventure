@@ -34,7 +34,7 @@ public class ChallengePortalCheckpoint extends ChallengeUI {
         CAVES("village", "EmptyStone1", Item.ItemTypeID.Stone1),
         DESERT("desert1", "EmptyStone3", Item.ItemTypeID.Stone3),
         MOUNTAIN("mountain3", "EmptyStone12", Item.ItemTypeID.Stone12),
-        MINES("village", "EmptyStone4", Item.ItemTypeID.Stone4),
+        MINES("mines5", "EmptyStone4", Item.ItemTypeID.Stone4),
         VILLAGE("village_tower2", "EmptyStone14", Item.ItemTypeID.Stone14);
 
         PortalMap(String aMapName, String aEmptyStone, Item.ItemTypeID aActivateStone) {

@@ -10,22 +10,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.items.Item;
-import com.souki.game.adventure.items.ItemFactory;
+import com.souki.game.adventure.persistence.GameSession;
 import com.souki.game.adventure.persistence.LocationProfile;
-import com.souki.game.adventure.persistence.MapProfile;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
-import com.souki.game.adventure.quests.Quest;
-import com.souki.game.adventure.quests.QuestManager;
-import com.souki.game.adventure.quests.QuestTask;
-
-import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -203,18 +195,18 @@ public class MainMenuScreen implements Screen {
 
         /*CHANGE QUEST STATE*/
 
-        Quest quest = QuestManager.getInstance().getQuestFromId("quest_crystals");
+   /*     Quest quest = QuestManager.getInstance().getQuestFromId("quest_crystals");
         quest.setActivated(false);
         quest.setCompleted(false);
         for (QuestTask task : quest.getTasks()) {
             task.setCompleted(false);
         }
         Profile.getInstance().updateQuestProfile("quest_crystals", quest);
-
+*/
         /*CHANGE LOCATION*/
 
         LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "mines5";
+        locationProfile.mMapId = "mines5_3";
         // locationProfile.mFromMapId = aFromMap;
 
         Profile.getInstance().setLocationProfile(locationProfile);
@@ -222,7 +214,7 @@ public class MainMenuScreen implements Screen {
 
         /* CHANGE ITEMS*/
 
-        Array<Item> inventory = new Array<Item>();
+/*        Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
@@ -237,22 +229,23 @@ public class MainMenuScreen implements Screen {
         // inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Guitar));
         Profile.getInstance().updateInventory(inventory);
 
-
+*/
         /*CHANGE MAP ITEM STATE*/
 
-        MapProfile mapProfile = Profile.getInstance().getMapProfile("mines5_1");
+/*        MapProfile mapProfile = Profile.getInstance().getMapProfile("mines5_1");
         if (mapProfile != null && mapProfile.items != null) {
             mapProfile.items.remove(Item.ItemTypeID.JewelsBlue.name());
             Profile.getInstance().updateMapProfile("mines5_1", mapProfile);
         }
-
+*/
 
 /** CHANGE INTERACTION STATE **/
 
-      /*  GameSession session = Profile.getInstance().getPersistentGameSession();
-        session.putSessionDataForMapAndEntity("mountain8", "portal2","state", "ACTIVATED");
+        GameSession session = Profile.getInstance().getPersistentGameSession();
+        session.putSessionDataForMapAndEntity("mines5_3", "challenge_inputcode","IS_RESOLVED", false);
+        session.putSessionDataForMapAndEntity("mines5_3", "challenge_inputcode","state", "IDLE");
 
-        Profile.getInstance().updatePersistentGameSession(session);*/
+        Profile.getInstance().updatePersistentGameSession(session);
     }
 
 }

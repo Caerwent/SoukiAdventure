@@ -94,7 +94,7 @@ public class InteractionMonsterTank extends Interaction implements IInteractionA
                         for (int i = 0; i < mEntities.length; i++) {
 
                             CollisionObstacleComponent collision = mEntities[i].getComponent(CollisionObstacleComponent.class);
-                            if (collision== null || collision.mShape == null || collision.mShape == mMap.getPlayer().getHero().getShapeCollision() || collision.mShape == getShapeCollision())
+                            if (collision == null || collision.mShape == null || collision.mShape == mMap.getPlayer().getHero().getShapeCollision() || collision.mShape == getShapeCollision())
                                 continue;
 
                             if ((collision.mType & CollisionObstacleComponent.OBSTACLE) != 0 || ((collision.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)) {
@@ -143,13 +143,14 @@ public class InteractionMonsterTank extends Interaction implements IInteractionA
 
             if (hasCollisionObstacle(aEntity)) {
 
-                setMovable(false);
-                setState(InteractionState.STATE_EXPLODE);
-                mEffectAction = new Effect();
-                mEffectAction.id = Effect.Type.WAVE;
-                mEffectAction.targetDuration = 5;
-                mEffectAction.targetState = InteractionState.STATE_EXPLODE;
-
+                if (isMovable()) {
+                    setMovable(false);
+                    setState(InteractionState.STATE_EXPLODE);
+                    mEffectAction = new Effect();
+                    mEffectAction.id = Effect.Type.WAVE;
+                    mEffectAction.targetDuration = 5;
+                    mEffectAction.targetState = InteractionState.STATE_EXPLODE;
+                }
                 return true;
 
             }
@@ -162,7 +163,7 @@ public class InteractionMonsterTank extends Interaction implements IInteractionA
     }
 
     public void onStartCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if (aEntity.mHandler != null && !mCurrentState.name.equals(InteractionState.STATE_EXPLODE)) {
+        if (aEntity.mHandler != null && !mCurrentState.name.equals(InteractionState.STATE_EXPLODE) && isMovable()) {
             EventDispatcher.getInstance().onMapReloadRequested(mMap.getMapName(), mMap.getFromMapId());
         }
 

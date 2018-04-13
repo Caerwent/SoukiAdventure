@@ -36,23 +36,12 @@
  </objectgroup>
  <objectgroup name="interactions">
   <object id="1" name="portal1" gid="846" x="98" y="97.3333" width="32" height="32"/>
-  <object id="286" name="activator_push_pull_1" gid="846" x="635" y="133" width="32" height="32"/>
-  <object id="288" name="walker_spider1" gid="846" x="638" y="319" width="32" height="32"/>
-  <object id="289" name="monster_tank1" gid="846" x="291" y="383" width="32" height="32"/>
-  <object id="290" name="activator1" gid="846" x="50" y="163" width="32" height="32"/>
-  <object id="291" name="cart1" gid="846" x="63" y="213" width="32" height="32"/>
-  <object id="296" name="mine_barrier1" gid="846" x="450" y="223" width="32" height="32"/>
-  <object id="297" name="pics1" gid="846" x="49" y="511" width="32" height="32"/>
-  <object id="299" name="trigger1" gid="846" x="352" y="543" width="32" height="32"/>
+  <object id="290" name="challenge_inputcode" gid="846" x="253" y="314" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="zindex">
   <object id="36" x="31" y="611" width="647" height="61"/>
  </objectgroup>
  <objectgroup name="zindex_terrain2"/>
  <objectgroup name="path"/>
- <objectgroup name="items">
-  <object id="301" name="JewelsBlue" type="ITEM" gid="846" x="43" y="594" width="32" height="32"/>
-  <object id="302" name="Coal" type="ITEM" gid="846" x="553" y="614" width="32" height="32"/>
-  <object id="303" name="Gear" type="ITEM" gid="846" x="636" y="495" width="32" height="32"/>
- </objectgroup>
+ <objectgroup name="items"/>
 </map>

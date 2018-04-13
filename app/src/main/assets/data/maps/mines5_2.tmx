@@ -41,7 +41,7 @@
   <object id="1" name="portal1" gid="846" x="98" y="97.3333" width="32" height="32"/>
   <object id="290" name="activator0" gid="846" x="126" y="170" width="32" height="32"/>
   <object id="291" name="cart1" gid="846" x="185" y="115" width="32" height="32"/>
-  <object id="296" name="mine_barrier1" gid="846" x="608" y="287" width="32" height="32"/>
+  <object id="296" name="mine_barrier1" gid="846" x="608" y="286" width="32" height="32"/>
   <object id="299" name="trigger1" gid="846" x="320" y="161" width="32" height="32"/>
   <object id="321" name="activator1" gid="846" x="360" y="121" width="32" height="32"/>
   <object id="322" name="trigger2" gid="846" x="417" y="224" width="32" height="32"/>
