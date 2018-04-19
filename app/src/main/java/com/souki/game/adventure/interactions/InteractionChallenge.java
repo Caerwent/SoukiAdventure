@@ -86,7 +86,7 @@ public class InteractionChallenge extends Interaction {
     public void restoreFromPersistence(GameSession aGameSession) {
         String state = (String) aGameSession.getSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_STATE);
         if (state != null) {
-            mCurrentState = getState(state);
+            setState(state);
         }
         if (mChallengeUI != null) {
             mChallengeUI.restoreFromPersistence(aGameSession);

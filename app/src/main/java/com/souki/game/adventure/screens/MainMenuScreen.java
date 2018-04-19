@@ -214,7 +214,7 @@ public class MainMenuScreen implements Screen {
 
         /* CHANGE ITEMS*/
 
-/*        Array<Item> inventory = new Array<Item>();
+ /*       Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
@@ -226,10 +226,10 @@ public class MainMenuScreen implements Screen {
                     inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        // inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Guitar));
+       //  inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Scroll16));
         Profile.getInstance().updateInventory(inventory);
-
 */
+
         /*CHANGE MAP ITEM STATE*/
 
 /*        MapProfile mapProfile = Profile.getInstance().getMapProfile("mines5_1");

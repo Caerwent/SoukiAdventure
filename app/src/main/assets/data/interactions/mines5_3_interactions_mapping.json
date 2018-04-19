@@ -12,10 +12,399 @@
   {
     "id": "challenge_inputcode",
     "template": "challenge_inputcode.json",
-    "persistence":"GAME",
+    "persistence": "GAME",
     "properties": {
       "type": "INPUT_CODE",
-      "code": 1234
+      "code": 4731
     }
+  },
+  {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_pull_2",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_pull_3",
+    "template": "activator_push_pull.json",
+    "properties": {
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_pull_4",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "persistence": "GAME",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_inputcode",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics4",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics5",
+    "template": "obstacle_pics.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_inputcode",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics6",
+    "template": "obstacle_pics.json",
+    "persistence": "GAME",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "monster_ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost1",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost2",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_ghost3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost3",
+      "autoStart": "true",
+      "loopingReversing": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem1",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem2",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem3",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "obstacle_firebarrel1",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel2",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "obstacle_firebarrel3",
+    "template": "obstacle_firebarrel.json"
+  },
+  {
+    "id": "walker_spider_1",
+    "template": "walker_spider.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "walker_spider_2",
+    "template": "walker_spider.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime1",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime2",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime3",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_slime4",
+    "template": "monster_slime.json",
+    "properties": {
+      "speedFactor": "0.5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
   }
 ]

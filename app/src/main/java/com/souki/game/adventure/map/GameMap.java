@@ -568,7 +568,6 @@ public class GameMap implements ICollisionObstacleHandler {
                 if (interaction != null) {
                     interaction.setCamera(mCamera);
                     mInteractions.add(interaction);
-                    interaction.startToInteract();
                 }
 
             } else if (object instanceof RectangleMapObject) {
@@ -583,10 +582,14 @@ public class GameMap implements ICollisionObstacleHandler {
                 if (interaction != null) {
                     interaction.setCamera(mCamera);
                     mInteractions.add(interaction);
-                    interaction.startToInteract();
+
                 }
 
             }
+        }
+        for(IInteraction interaction : mInteractions)
+        {
+            interaction.startToInteract();
         }
     }
 

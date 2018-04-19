@@ -103,7 +103,7 @@
   </object>
  </objectgroup>
  <objectgroup name="items">
-  <object id="302" name="Coal" type="ITEM" gid="846" x="472" y="118" width="32" height="32"/>
-  <object id="303" name="Gear" type="ITEM" gid="846" x="35" y="619" width="32" height="32"/>
+  <object id="302" name="Coal" type="ITEM" gid="846" x="38" y="617" width="32" height="32"/>
+  <object id="303" name="Gear" type="ITEM" gid="846" x="472" y="131" width="32" height="32"/>
  </objectgroup>
 </map>

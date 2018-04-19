@@ -796,7 +796,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
      */
     protected boolean doAction(InteractionActionType aAction) {
         if (aAction != null && InteractionActionType.ActionType.SET_STATE == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId+" value="+aAction.value);
 
             if (getState(aAction.value) != null) {
                 setState(aAction.value);

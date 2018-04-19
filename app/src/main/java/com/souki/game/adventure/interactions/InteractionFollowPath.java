@@ -104,6 +104,7 @@ public class InteractionFollowPath extends Interaction {
                 }
             }
             if (mPath != null) {
+                mPath.setRevert(false);
                 setMovable(true);
                 InteractionEvent event = new InteractionEvent(mId, InteractionEvent.EventType.START_PATH.name(), aAction.value);
                 EventDispatcher.getInstance().onInteractionEvent(event);
@@ -122,6 +123,8 @@ public class InteractionFollowPath extends Interaction {
                 }
             }
             if (mPath != null) {
+                mPath.setRevert(true);
+
                 mPath.setCompleted(false);
                 setNearestPathPoint();
 
