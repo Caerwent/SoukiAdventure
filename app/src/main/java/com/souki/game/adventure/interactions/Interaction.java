@@ -3,6 +3,7 @@ package com.souki.game.adventure.interactions;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.input.GestureDetector;
@@ -28,12 +29,14 @@ import com.souki.game.adventure.entity.components.ICollisionInteractionHandler;
 import com.souki.game.adventure.entity.components.ICollisionObstacleHandler;
 import com.souki.game.adventure.entity.components.InputComponent;
 import com.souki.game.adventure.entity.components.InteractionComponent;
+import com.souki.game.adventure.entity.components.LightComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
 import com.souki.game.adventure.entity.components.VisualComponent;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.events.IInteractionEventListener;
 import com.souki.game.adventure.events.IQuestListener;
+import com.souki.game.adventure.gui.challenge.ChallengeLaser;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.persistence.GameSession;
 import com.souki.game.adventure.persistence.Profile;
@@ -175,6 +178,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
             mCurrentState = getState((String) mProperties.get("startState"));
         }
+
         if (mCurrentState == null) {
             mCurrentState = getState(mDef.defaultState);
         }
@@ -187,7 +191,62 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         mShapeCollision = createShapeCollision();
         mShapeInteraction = createShapeInteraction();
         mShapeRendering = createShapeRendering();
+        if (mProperties.containsKey("hasLight") && (Boolean) mProperties.get("hasLight")) {
+            LightComponent lightComponent = new LightComponent();
+            if (mProperties.containsKey("lightColor")) {
+                lightComponent.setColor(Color.valueOf((String) mProperties.get("lightColor")));
+            }
+            if (mProperties.containsKey("lightRadius")) {
+                lightComponent.setRadius((Float) mProperties.get("lightRadius"));
+            }
+            this.add(lightComponent);
+        }
 
+    }
+
+    protected void initLight(String aColor) {
+        Color color;
+
+        try {
+            color = ChallengeLaser.LASER_COLOR.valueOf(aColor).mColor;
+
+        } catch (Exception e) {
+            try {
+                color = Color.valueOf(aColor);
+
+            } catch (Exception e2) {
+
+                return;
+            }
+        }
+
+        LightComponent lightComponent = getComponent(LightComponent.class);
+        if (lightComponent == null) {
+            lightComponent = new LightComponent();
+        }
+        lightComponent.setColor(color);
+        if (mProperties.containsKey("lightRadius")) {
+            lightComponent.setRadius((Float) mProperties.get("lightRadius"));
+        }
+        TransformComponent transformComponent = this.getComponent(TransformComponent.class);
+
+        if (mShapeRendering != null) {
+            lightComponent.setPosition(transformComponent.position.x + transformComponent.originOffset.x + mShapeRendering.getWidth() / 2, transformComponent.position.y + transformComponent.originOffset.y + mShapeRendering.getHeight() / 2);
+        } else {
+            lightComponent.setPosition(transformComponent.position.x + transformComponent.originOffset.x, transformComponent.position.y + transformComponent.originOffset.y);
+        }
+
+
+        this.add(lightComponent);
+
+    }
+
+    protected void removeLight() {
+
+        LightComponent lightComponent = getComponent(LightComponent.class);
+        if (lightComponent != null) {
+            remove(LightComponent.class);
+        }
 
     }
 
@@ -197,9 +256,23 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     public void restoreFromPersistence(GameSession aGameSession) {
 
+        String lightColor = (String) aGameSession.getSessionDataForMapAndEntity(getMap().getMapName(), getId(), "LIGHT");
+        if (lightColor != null) {
+            initLight(lightColor);
+        }
+
+
     }
 
     public GameSession saveInPersistence(GameSession aGameSession) {
+
+
+        LightComponent lightComponent = this.getComponent(LightComponent.class);
+        if(lightComponent!=null)
+        {
+            aGameSession.putSessionDataForMapAndEntity(getMap().getMapName(), getId(), "LIGHT", lightComponent.color.toString());
+
+        }
         return aGameSession;
     }
 
@@ -370,6 +443,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         updateRendering(0);
         updateCollision(0);
         updateInteraction(0);
+        updateLight();
 
         if (mEventsAction != null) {
             EventDispatcher.getInstance().addInteractionEventListener(this);
@@ -387,6 +461,14 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         TransformComponent transformComponent = this.getComponent(TransformComponent.class);
         transformComponent.position.x = x;
         transformComponent.position.y = y;
+        LightComponent lightComponent = this.getComponent(LightComponent.class);
+        if (lightComponent != null) {
+            if (mShapeRendering != null) {
+                lightComponent.setPosition(transformComponent.position.x + transformComponent.originOffset.x + mShapeRendering.getWidth() / 2, transformComponent.position.y + transformComponent.originOffset.y + mShapeRendering.getHeight() / 2);
+            } else {
+                lightComponent.setPosition(transformComponent.position.x + transformComponent.originOffset.x, transformComponent.position.y + transformComponent.originOffset.y);
+            }
+        }
 
     }
 
@@ -394,7 +476,14 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         TransformComponent transformComponent = this.getComponent(TransformComponent.class);
         transformComponent.position.x = pos.x;
         transformComponent.position.y = pos.y;
-
+        LightComponent lightComponent = this.getComponent(LightComponent.class);
+        if (lightComponent != null) {
+            if (mShapeRendering != null) {
+                lightComponent.setPosition(transformComponent.position.x + transformComponent.originOffset.x + mShapeRendering.getWidth() / 2, transformComponent.position.y + transformComponent.originOffset.y + mShapeRendering.getHeight() / 2);
+            } else {
+                lightComponent.setPosition(transformComponent.position.x + transformComponent.originOffset.x, transformComponent.position.y + transformComponent.originOffset.y);
+            }
+        }
     }
 
     public Vector2 getPosition() {
@@ -490,6 +579,22 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         }
         mShapeRendering.setX(tfm.position.x + tfm.originOffset.x);
         mShapeRendering.setY(tfm.position.y + tfm.originOffset.y);
+
+    }
+
+    public void updateLight() {
+        TransformComponent tfm = this.getComponent(TransformComponent.class);
+
+        LightComponent lightComponent = this.getComponent(LightComponent.class);
+        if (lightComponent != null) {
+            if (mShapeRendering != null) {
+                lightComponent.setPosition(tfm.position.x + tfm.originOffset.x + mShapeRendering.getWidth() / 2, tfm.position.y + tfm.originOffset.y + mShapeRendering.getHeight() / 2);
+            } else if (mShapeCollision != null) {
+                lightComponent.setPosition(tfm.position.x + tfm.originOffset.x + mShapeCollision.getWidth() / 2, tfm.position.y + tfm.originOffset.y + mShapeCollision.getHeight() / 2);
+            } else {
+                lightComponent.setPosition(tfm.position.x + tfm.originOffset.x, tfm.position.y + tfm.originOffset.y);
+            }
+        }
     }
 
     @Override
@@ -636,6 +741,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         updateRendering(0);
         updateCollision(0);
         updateInteraction(0);
+        updateLight();
         if (isRendable()) {
             this.add(new CollisionObstacleComponent(mCollisionType, getShapeCollision(), mId, this, this));
         }
@@ -745,6 +851,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         if (mEventsAction != null && aEvent != null) {
             for (InteractionEventAction eventAction : mEventsAction) {
                 if (eventAction.inputEvents != null) {
+
                     boolean eventFound = false;
                     boolean eventPerformed = false;
                     boolean allPerformed = true;
@@ -754,6 +861,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                             eventPerformed = expectedEvent.isNotValue ? !conditionValue : conditionValue;
                             expectedEvent.setPerformed(expectedEvent.isVolatile ? false : eventPerformed);
                             eventFound = true;
+                            //  Gdx.app.debug("DEBUG", "id=" + getId() + " expectedEvent.sourceId=" + expectedEvent.sourceId + " expectedEvent.type=" + expectedEvent.type + " expectedEvent.value=" + expectedEvent.value+" eventPerformed=" + eventPerformed);
                             if (!eventPerformed) {
                                 allPerformed = false;
                                 break; // no need to check more events
@@ -770,6 +878,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
                         }
 
                     }
+                    // Gdx.app.debug("DEBUG", "id=" + getId() + " check action=" + eventAction.action.type.name()+ " with value=" + eventAction.action.value+" allPerformed="+allPerformed);
 
                     if (allPerformed && eventFound) {
                         for (InteractionEvent expectedEvent : eventAction.inputEvents) {
@@ -796,12 +905,20 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
      */
     protected boolean doAction(InteractionActionType aAction) {
         if (aAction != null && InteractionActionType.ActionType.SET_STATE == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId+" value="+aAction.value);
+            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
 
             if (getState(aAction.value) != null) {
                 setState(aAction.value);
                 return true;
             }
+        } else if (aAction != null && InteractionActionType.ActionType.SET_LIGHT == aAction.type) {
+            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
+            initLight(aAction.value);
+            return true;
+        } else if (aAction != null && InteractionActionType.ActionType.REMOVE_LIGHT == aAction.type) {
+            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
+            removeLight();
+            return true;
         } else if (aAction != null && InteractionActionType.ActionType.ACTIVATE_QUEST == aAction.type) {
             Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 

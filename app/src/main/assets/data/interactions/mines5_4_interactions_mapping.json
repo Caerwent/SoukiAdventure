@@ -530,9 +530,14 @@
         },
         "inputEvents": [
           {
-            "sourceId": "trigger5",
+            "sourceId": "activator3",
             "type": "STATE",
-            "value": "CLOSED"
+            "value": "ACTIVATED"
+          },
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "IDLE"
           }
         ]
       },
@@ -543,9 +548,22 @@
         },
         "inputEvents": [
           {
-            "sourceId": "trigger5",
+            "sourceId": "activator3",
             "type": "STATE",
-            "value": "OPEN"
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
           }
         ]
       }
@@ -614,7 +632,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator3",
+            "sourceId": "activator4",
             "type": "STATE",
             "value": "ACTIVATED"
           }
@@ -627,7 +645,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "activator3",
+            "sourceId": "activator4",
             "type": "STATE",
             "value": "IDLE"
           }
@@ -711,8 +729,7 @@
     "template": "obstacle_mines_cart.json",
     "properties": {
       "autoStart": "true",
-      "startState": "MOVE_BOTTOM",
-      "stopOnObstacle":"true"
+      "startState": "MOVE_BOTTOM"
     },
     "eventsAction": [
       {
@@ -1017,8 +1034,7 @@
       },
       {
         "action": {
-          "type": "SET_PATH_REVERSE",
-          "value": "path1"
+          "type": "SLEEP"
         },
         "inputEvents": [
           {
@@ -1026,37 +1042,13 @@
             "type": "COLLISION",
             "value": "cart1",
             "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path1"
           }
         ]
       },
       {
         "action": {
-          "type": "SET_PATH_REVERSE",
-          "value": "path3"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier1",
-            "type": "COLLISION",
-            "value": "cart1",
-            "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path3"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_PATH",
-          "value": "path2"
+          "type": "SLEEP",
+          "value": ""
         },
         "inputEvents": [
           {
@@ -1064,37 +1056,13 @@
             "type": "COLLISION",
             "value": "cart1",
             "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path_end"
           }
         ]
       },
       {
         "action": {
-          "type": "SET_PATH",
-          "value": "path_end"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier3",
-            "type": "COLLISION",
-            "value": "cart1",
-            "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path2"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_PATH",
-          "value": "path10"
+          "type": "SLEEP",
+          "value": ""
         },
         "inputEvents": [
           {
@@ -1102,11 +1070,6 @@
             "type": "COLLISION",
             "value": "cart1",
             "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path4"
           }
         ]
       },
@@ -1124,10 +1087,11 @@
           }
         ]
       },
+
       {
         "action": {
-          "type": "SET_PATH",
-          "value": "path1"
+          "type": "SLEEP",
+          "value": ""
         },
         "inputEvents": [
           {
@@ -1135,37 +1099,13 @@
             "type": "COLLISION",
             "value": "cart1",
             "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path8"
           }
         ]
       },
       {
         "action": {
-          "type": "SET_PATH",
-          "value": "path8"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier4",
-            "type": "COLLISION",
-            "value": "cart1",
-            "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path1"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_PATH",
-          "value": "path11"
+          "type": "SLEEP",
+          "value": ""
         },
         "inputEvents": [
           {
@@ -1173,11 +1113,6 @@
             "type": "COLLISION",
             "value": "cart1",
             "isVolatile": "true"
-          },
-          {
-            "sourceId": "THIS",
-            "type": "START_PATH",
-            "value": "path6"
           }
         ]
       },

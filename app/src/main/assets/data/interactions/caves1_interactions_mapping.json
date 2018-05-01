@@ -1,0 +1,87 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "activateQuestId":"quest_bat"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_clickable.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "caves2",
+      "activatedByItem":"LanternOn",
+      "width": 56,
+      "height": 44
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id":"npc_bat",
+    "template":"npc_bat.json",
+    "properties":{
+      "dialogId":"quest_bat"
+    },
+    "questActions":[
+      {
+        "questId": "quest_bat",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_bat_completed"
+        }
+      },
+      {
+        "questId": "quest_bat",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_bat_finished"
+        }
+      }
+
+    ],
+    "eventsAction":[
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_bat_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_bat_completed"
+          }
+        ]
+      }
+    ],
+    "outputEvents":[]
+  },
+  {
+    "id": "steel_door1",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    }
+  }
+]

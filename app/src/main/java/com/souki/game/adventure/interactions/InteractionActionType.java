@@ -16,7 +16,9 @@ public class InteractionActionType {
         LAUNCH_EFFECT,
         ACTIVATE_QUEST,
         SET_PATH,
-        SET_PATH_REVERSE;
+        SET_PATH_REVERSE,
+        SET_LIGHT,
+        REMOVE_LIGHT;
     }
 
     public ActionType type;

@@ -42,7 +42,7 @@
   },
   {
     "id": "activator0",
-    "template": "activator_type1.json",
+    "template": "activator_push.json",
     "eventsAction": [
       {
         "action": {

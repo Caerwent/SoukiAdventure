@@ -1,0 +1,27 @@
+{
+  "type":"PORTAL",
+  "atlas":"portal_caves_light.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "properties": {
+    "ZIndex":0
+  },
+
+  "states": [
+    {
+      "name": "IDLE",
+      "fps":"0",
+      "frames": [ "caves_portal_light_idle"]
+    },
+    {
+      "name": "ACTIVATED",
+      "fps":"0",
+      "frames": [ "caves_portal_light_activated"]
+    }
+
+  ]
+
+}

@@ -47,8 +47,10 @@ public class InteractionFactory {
         }
 
         InteractionDef def = mJson.fromJson(InteractionDef.class, Gdx.files.internal("data/interactions/" + aMapping.template));
-
-        if (def.type.compareTo("MONSTER1") == 0) {
+        if (def.type.compareTo("NULL") == 0) {
+            InteractionNull interaction = new InteractionNull(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
+        } else if (def.type.compareTo("MONSTER1") == 0) {
             InteractionMonster1 interaction = new InteractionMonster1(def, x, y, aMapping, aProperties, aMap);
             return interaction;
         } else if (def.type.compareTo("MONSTER_GHOST1") == 0) {
@@ -90,10 +92,10 @@ public class InteractionFactory {
         } else if (def.type.compareTo("MOVABLE") == 0) {
             InteractionMovable interaction = new InteractionMovable(def, x, y, aMapping, aProperties, aMap);
             return interaction;
-        }  else if (def.type.compareTo("FOLLOW_PATH_ACTIVATOR") == 0) {
+        } else if (def.type.compareTo("FOLLOW_PATH_ACTIVATOR") == 0) {
             InteractionFollowPathWithActivationBehavior interaction = new InteractionFollowPathWithActivationBehavior(def, x, y, aMapping, aProperties, aMap);
             return interaction;
-        }  else if (def.type.compareTo("TRIGGER") == 0) {
+        } else if (def.type.compareTo("TRIGGER") == 0) {
             InteractionTrigger interaction = new InteractionTrigger(def, x, y, aMapping, aProperties, aMap);
             return interaction;
         }

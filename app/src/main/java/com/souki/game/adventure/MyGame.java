@@ -32,7 +32,7 @@ import com.souki.game.adventure.screens.SettingsScreen;
 public class MyGame extends Game implements ISystemEventListener {
     public static float SCALE_FACTOR = 1.0F / 32.0F;
     public static String DEFAULT_MAP_NAME = "village";
-    protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[] {DEFAULT_MAP_NAME, "home", "house1", "house2", "house3", "village_tower1", "village_tower2"};
+    protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[]{DEFAULT_MAP_NAME, "home", "house1", "house2", "house3", "village_tower1", "village_tower2"};
     public static String INIT_MAP_START = "home";
     public static String QUEST_START_ID = "quest_start";
     public static String QUEST_EFFECT_ID = "quest_obtain_portal";
@@ -46,21 +46,21 @@ public class MyGame extends Game implements ISystemEventListener {
 
     /**
      * check if a mapname is the default map or associated (house from village)
-     * @param aMapName  the map name to test
-     * @return  true if it's a default map name or associated
+     *
+     * @param aMapName the map name to test
+     * @return true if it's a default map name or associated
      */
-    public boolean isDefaultMapOrAssociated(String aMapName)
-    {
-        if(aMapName==null || aMapName.isEmpty())
+    public boolean isDefaultMapOrAssociated(String aMapName) {
+        if (aMapName == null || aMapName.isEmpty())
             return false;
-        for(String name : DEFAULT_MAP_NAME_OR_ASSOCIATED)
-        {
-            if(aMapName.compareTo(name)==0)
+        for (String name : DEFAULT_MAP_NAME_OR_ASSOCIATED) {
+            if (aMapName.compareTo(name) == 0)
                 return true;
         }
 
         return false;
     }
+
     @Override
     public void onNewMapRequested(String aMapId, MapTownPortalInfo aTownPortalInfo) {
         if (mGameScreen != null) {
@@ -75,7 +75,7 @@ public class MyGame extends Game implements ISystemEventListener {
         if (mGameScreen != null) {
             mScreenRequested = mLoadingScreen;
             mIsGameReadyToBeShown = false;
-            mGameScreen.loadMap(aMapId, aFromMapId,null);
+            mGameScreen.loadMap(aMapId, aFromMapId, null);
         }
     }
 
@@ -90,8 +90,7 @@ public class MyGame extends Game implements ISystemEventListener {
     }
 
     @Override
-    public void onEffectFound(Effect.Type aEffectType)
-    {
+    public void onEffectFound(Effect.Type aEffectType) {
         Profile.getInstance().getAvailableEffects().add(aEffectType);
     }
 
@@ -193,8 +192,7 @@ public class MyGame extends Game implements ISystemEventListener {
             mCurrentScreen = mScreenRequested;
             setScreen(mCurrentScreen);
         }
-        if(mCurrentScreen!=mGameScreen && mGameScreen!=null && mGameScreen.isUnloading())
-        {
+        if (mCurrentScreen != mGameScreen && mGameScreen != null && mGameScreen.isUnloading()) {
             mGameScreen.render(Gdx.graphics.getDeltaTime());
         }
 
@@ -231,6 +229,11 @@ public class MyGame extends Game implements ISystemEventListener {
             mGameScreen.dispose();
             mGameScreen = null;
         }
+    }
+
+    public void exit() {
+        dispose();
+        Gdx.app.exit();
     }
 
 

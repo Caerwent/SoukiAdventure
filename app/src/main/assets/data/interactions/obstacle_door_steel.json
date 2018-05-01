@@ -38,6 +38,80 @@
       ]
     }
 
-  ]
+  ],
+  "eventsAction": [
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "FROZEN"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "FREEZE"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "EXPLODE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "FROZEN"
+        },
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "WAVE",
+          "isVolatile":"true"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "OPEN"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "END_STATE",
+          "value": "EXPLODE"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "OPEN",
+        "value": ""
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "OPEN"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
 
+    {
+      "type": "STATE",
+      "value": "OPEN"
+    },
+    {
+      "type": "STATE",
+      "value": "FROZEN"
+    },
+    {
+      "type": "END_STATE",
+      "value": "EXPLODE"
+    }
+  ]
 }

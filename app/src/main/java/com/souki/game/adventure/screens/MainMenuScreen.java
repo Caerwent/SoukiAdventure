@@ -10,14 +10,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
+import com.souki.game.adventure.items.Item;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.persistence.GameSession;
-import com.souki.game.adventure.persistence.LocationProfile;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
+
+import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -130,7 +134,7 @@ public class MainMenuScreen implements Screen {
 
                                    @Override
                                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                                       Gdx.app.exit();
+                                       MyGame.getInstance().exit();
                                    }
 
                                }
@@ -195,46 +199,52 @@ public class MainMenuScreen implements Screen {
 
         /*CHANGE QUEST STATE*/
 
-   /*     Quest quest = QuestManager.getInstance().getQuestFromId("quest_crystals");
+     /*   Quest quest = QuestManager.getInstance().getQuestFromId("quest_panda");
         quest.setActivated(false);
         quest.setCompleted(false);
         for (QuestTask task : quest.getTasks()) {
             task.setCompleted(false);
         }
-        Profile.getInstance().updateQuestProfile("quest_crystals", quest);
-*/
+        Profile.getInstance().updateQuestProfile("quest_panda", quest);*/
+
         /*CHANGE LOCATION*/
 
-        LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "mines5_3";
+   /*     LocationProfile locationProfile = new LocationProfile();
+        locationProfile.mMapId = "mines5";
         // locationProfile.mFromMapId = aFromMap;
 
-        Profile.getInstance().setLocationProfile(locationProfile);
+        Profile.getInstance().setLocationProfile(locationProfile);*/
 
 
         /* CHANGE ITEMS*/
 
- /*       Array<Item> inventory = new Array<Item>();
+        Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
             for (String itemId : savedInventory) {
-                if (!Item.ItemTypeID.JewelsBlue.name().equals(itemId) &&
-                        !Item.ItemTypeID.JewelsRed.name().equals(itemId) &&
-                        !Item.ItemTypeID.CrystalsGreen.name().equals(itemId) &&
-                        !Item.ItemTypeID.CrystalsPurple.name().equals(itemId))
+               // if (!Item.ItemTypeID.JewelsBlue.name().equals(itemId) &&
+               //         !Item.ItemTypeID.JewelsRed.name().equals(itemId) &&
+               //         !Item.ItemTypeID.CrystalsGreen.name().equals(itemId) &&
+               //         !Item.ItemTypeID.CrystalsPurple.name().equals(itemId) &&
+               //         !Item.ItemTypeID.KeyIron.name().equals(itemId) &&
+               //         !Item.ItemTypeID.Coal.name().equals(itemId) && !Item.ItemTypeID.Gear.name().equals(itemId))
                     inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-       //  inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Scroll16));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.TorchFire));
+         inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.CrystalAnimBlue));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionVioletLarge));
         Profile.getInstance().updateInventory(inventory);
-*/
+
 
         /*CHANGE MAP ITEM STATE*/
 
-/*        MapProfile mapProfile = Profile.getInstance().getMapProfile("mines5_1");
+  /*      MapProfile mapProfile = Profile.getInstance().getMapProfile("mines5_1");
         if (mapProfile != null && mapProfile.items != null) {
             mapProfile.items.remove(Item.ItemTypeID.JewelsBlue.name());
+            mapProfile.items.remove(Item.ItemTypeID.Gear.name());
+            mapProfile.items.remove(Item.ItemTypeID.Coal.name());
             Profile.getInstance().updateMapProfile("mines5_1", mapProfile);
         }
 */
@@ -242,8 +252,13 @@ public class MainMenuScreen implements Screen {
 /** CHANGE INTERACTION STATE **/
 
         GameSession session = Profile.getInstance().getPersistentGameSession();
-        session.putSessionDataForMapAndEntity("mines5_3", "challenge_inputcode","IS_RESOLVED", false);
-        session.putSessionDataForMapAndEntity("mines5_3", "challenge_inputcode","state", "IDLE");
+        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","IS_RESOLVED", false);
+        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","HAS_POTION", false);
+        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","HAS_TORCH", false);
+        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","HAS_CRYSTAL", false);
+        session.putSessionDataForMapAndEntity("caves2", "portal2","state", "IDLE");
+        session.putSessionDataForMapAndEntity("caves2", "portal2","LIGHT", null);
+
 
         Profile.getInstance().updatePersistentGameSession(session);
     }

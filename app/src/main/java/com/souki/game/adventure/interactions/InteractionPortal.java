@@ -136,6 +136,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     @Override
     public void restoreFromPersistence(GameSession aGameSession) {
+        super.restoreFromPersistence(aGameSession);
         String state = (String) aGameSession.getSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_STATE);
         if (state != null) {
             mCurrentState = getState(state);
@@ -145,6 +146,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     @Override
     public GameSession saveInPersistence(GameSession aGameSession) {
+        super.saveInPersistence(aGameSession);
         aGameSession.putSessionDataForMapAndEntity(mMap.getMapName(), mId, KEY_STATE, mCurrentState.name);
 
         return aGameSession;

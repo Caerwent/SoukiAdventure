@@ -33,7 +33,7 @@
       }
     ],
     "outputEvents": []
-  }
+  },
   {
     "id": "portal2",
     "template": "portal_caves.json",
@@ -206,7 +206,7 @@
     "outputEvents": []
   },
   {
-    "id": "monster_tank1",
+    "id": "monster_tank",
     "template": "monster_tank.json",
     "properties": {
       "speedFactor": "2"
@@ -215,10 +215,9 @@
     "outputEvents": []
   },
   {
-    "id": "monster_tank2",
-    "template": "monster_tank.json",
+    "id": "chest1",
+    "template": "chest_type1.json",
     "properties": {
-      "speedFactor": "2"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -323,5 +322,38 @@
       }
     ],
     "outputEvents": []
+  },
+  {
+    "id": "challenge_inputcode",
+    "template": "challenge_inputcode.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "INPUT_CODE",
+      "code": 9967
+    }
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "persistence": "GAME",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_inputcode",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
   }
 ]

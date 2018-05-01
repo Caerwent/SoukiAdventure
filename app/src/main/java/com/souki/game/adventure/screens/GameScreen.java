@@ -250,6 +250,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
 
         if(!mIsUnloading)
         {
+            //EventDispatcher.getInstance().processInteractionEvent();
             UIStage.getInstance().act(delta);
 
 

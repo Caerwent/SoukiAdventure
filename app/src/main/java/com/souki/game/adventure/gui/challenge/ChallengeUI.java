@@ -28,8 +28,8 @@ public class ChallengeUI extends Window {
         PUZZLE(ChallengeSlidingPuzzle.class),
         PORTAL_CHECKPOINT(ChallengePortalCheckpoint.class),
         STEAM_MACHINE(ChallengeSteamMachine.class),
-        INPUT_CODE(ChallengeInputCode.class);
-
+        INPUT_CODE(ChallengeInputCode.class),
+        LASER(ChallengeLaser.class);
         protected Class mClass;
 
         ChallengeType(Class aClass) {

@@ -16,6 +16,7 @@ public interface IInteraction extends IMapRendable {
     }
 
     public enum Type {
+        NULL,
         HERO,
         CHEST,
         NPC,

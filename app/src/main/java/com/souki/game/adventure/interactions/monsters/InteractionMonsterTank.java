@@ -137,7 +137,6 @@ public class InteractionMonsterTank extends Interaction implements IInteractionA
 
     @Override
     public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
-
         boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
         if (ret) {
 

@@ -1,0 +1,25 @@
+{
+  "type":"NPC",
+  "atlas":"npc_bat.atlas",
+  "persistence":"GAME",
+  "defaultState":"IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "idle"
+      ]
+    }
+
+  ],
+  "eventsAction":[
+  ]
+
+
+
+}

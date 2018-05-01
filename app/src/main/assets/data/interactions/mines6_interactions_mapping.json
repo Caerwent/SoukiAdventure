@@ -1,0 +1,72 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "mines5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal4",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path1",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost2",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path2",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "ghost3",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path3",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

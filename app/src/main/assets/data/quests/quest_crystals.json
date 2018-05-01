@@ -3,7 +3,7 @@
   "title": "quest_crystals_title",
   "desc": "quest_crystals_desc",
   "requiredCompletedQuest": [],
-  "itemsReward": ["FoodAle","Torch"],
+  "itemsReward": [],
   "effectsReward": [],
   "tasks": [
     {

@@ -26,6 +26,7 @@ public class EventDispatcher implements IDialogListener, IItemListener, IQuestLi
     private ArrayList<IPlayerListener> mPlayerListeners = new ArrayList<IPlayerListener>();
     private ArrayList<ISystemEventListener> mSystemEventListeners = new ArrayList<ISystemEventListener>();
     private ArrayList<IInteractionEventListener> mInteractionEventListeners = new ArrayList<IInteractionEventListener>();
+    private ArrayList<InteractionEvent> mEventsQueue = new ArrayList<>();
 
     public static EventDispatcher getInstance() {
         if (_instance == null) {
@@ -242,9 +243,9 @@ public class EventDispatcher implements IDialogListener, IItemListener, IQuestLi
             }
         }
     }
+
     @Override
-    public void onMapReloadRequested(String aMapId, String aFromMapId)
-    {
+    public void onMapReloadRequested(String aMapId, String aFromMapId) {
         synchronized (mSystemEventListeners) {
             ISystemEventListener[] listeners = new ISystemEventListener[mSystemEventListeners.size()];
             listeners = mSystemEventListeners.toArray(listeners);
@@ -316,13 +317,44 @@ public class EventDispatcher implements IDialogListener, IItemListener, IQuestLi
 
     @Override
     public void onInteractionEvent(InteractionEvent aEvent) {
+      /*  synchronized (mEventsQueue) {
+            //Gdx.app.debug("DEBUG","--- onInteractionEvent --------");
+            mEventsQueue.add(aEvent);
+        }*/
         synchronized (mInteractionEventListeners) {
+
             IInteractionEventListener[] listeners = new IInteractionEventListener[mInteractionEventListeners.size()];
             listeners = mInteractionEventListeners.toArray(listeners);
-            for (IInteractionEventListener listener: listeners) {
+
+            for (IInteractionEventListener listener : listeners) {
                 listener.onInteractionEvent(aEvent);
 
             }
+
         }
+
+
     }
+/*
+    public void processInteractionEvent()
+    {
+
+        synchronized (mInteractionEventListeners) {
+            synchronized (mEventsQueue) {
+               // Gdx.app.debug("DEBUG","--- processInteractionEvent --------");
+                InteractionEvent[] eventsQueue = new InteractionEvent[mEventsQueue.size()];
+                eventsQueue = mEventsQueue.toArray(eventsQueue);
+                IInteractionEventListener[] listeners = new IInteractionEventListener[mInteractionEventListeners.size()];
+                listeners = mInteractionEventListeners.toArray(listeners);
+                for (InteractionEvent event : eventsQueue) {
+
+                    for (IInteractionEventListener listener : listeners) {
+                        listener.onInteractionEvent(event);
+
+                    }
+                    mEventsQueue.remove(event);
+                }
+            }
+        }
+    }*/
 }

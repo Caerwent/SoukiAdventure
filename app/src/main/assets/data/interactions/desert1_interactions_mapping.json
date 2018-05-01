@@ -97,6 +97,19 @@
       },
       {
         "action": {
+          "type": "DIALOG",
+          "value": "quest_panda_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_panda_completed"
+          }
+        ]
+      },
+      {
+        "action": {
           "type": "SET_PATH",
           "value": "path1"
         },
@@ -123,8 +136,6 @@
       }
     ],
     "outputEvents": [
-      {
-      }
     ]
   }
 ]

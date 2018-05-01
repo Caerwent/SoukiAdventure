@@ -1,0 +1,75 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_caves_light.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "caves2",
+      "lightRadius": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "PURPLE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "light1",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "challenge_laser",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "PURPLE"
+    }
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

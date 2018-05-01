@@ -3,7 +3,7 @@
   "title": "quest_frog_title",
   "desc": "quest_frog_desc",
   "requiredCompletedQuest": [],
-  "itemsReward": ["Matches"],
+  "itemsReward": [],
   "effectsReward": [],
   "tasks" : [
     {

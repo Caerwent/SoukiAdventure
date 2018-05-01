@@ -204,6 +204,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
     }
 
 
+    @Override
     protected void setProperties(HashMap aProperties) {
 
         if (aProperties != null && aProperties.containsKey("size")) {

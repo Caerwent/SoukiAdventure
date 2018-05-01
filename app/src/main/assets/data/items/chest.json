@@ -45,7 +45,8 @@
   {
     "id": "forest2_chest1",
     "items": [
-      "VialGreen"
+      "VialGreen",
+      "Scroll08"
     ]
   },
   {
@@ -89,7 +90,10 @@
     "items": [
       "Oil",
       "Mirror",
-      "Boots"
+      "Boots",
+      "Torch",
+      "VialBlue",
+      "Letter"
     ]
   },
   {
@@ -124,10 +128,24 @@
     ]
   },
   {
-    "id": "mines5_2_chest1",
+    "id": "mines4_chest1",
     "items": [
-      "JewelsRed",
       "Stone4"
     ]
+  },
+  {
+    "id": "mines5_2_chest1",
+    "items": [
+      "JewelsRed"
+    ]
+  },
+  {
+    "id": "mines5_chest1",
+    "items": [
+      "FoodShank",
+      "VialGreen",
+      "Matches"
+    ]
   }
+
 ]

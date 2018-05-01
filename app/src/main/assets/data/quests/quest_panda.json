@@ -24,7 +24,7 @@
       "id": "quest_panda_task3",
       "value": "1",
       "type": "FIND_ITEM",
-      "targetId": "FoodAle",
+      "targetId": "Compass",
       "requiredCompletedTask": []
     },
     {

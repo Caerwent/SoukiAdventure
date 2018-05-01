@@ -372,6 +372,14 @@
           "type": "DIALOG",
           "value": "quest_boots_completed"
         }
+      },
+      {
+        "questId": "quest_boots",
+        "questState": "FINISHED",
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_boots_finished"
+        }
       }
     ],
     "eventsAction": [
@@ -411,6 +419,19 @@
             "sourceId": "",
             "type": "DIALOG",
             "value": "quest_guitar_completed"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "DIALOG",
+          "value": "quest_boots_finished"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "",
+            "type": "DIALOG",
+            "value": "quest_boots_completed"
           }
         ]
       }

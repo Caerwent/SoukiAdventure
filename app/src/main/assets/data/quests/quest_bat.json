@@ -1,0 +1,18 @@
+{
+  "id": "quest_bat",
+  "title": "quest_bat_title",
+  "desc": "quest_bat_desc",
+  "requiredCompletedQuest": [],
+  "itemsReward": [],
+  "effectsReward": [],
+  "tasks" : [
+    {
+      "id": "quest_bat_task1",
+      "type":"DIALOG",
+      "targetId":"quest_bat",
+      "value":"",
+      "requiredCompletedTask":[]
+    }
+  ]
+}
+

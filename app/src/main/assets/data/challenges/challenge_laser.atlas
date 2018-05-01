@@ -1,0 +1,69 @@
+
+challenge_laser.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+laser_bkg
+  rotate: false
+  xy: 2, 104
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+laser_blue
+  rotate: false
+  xy: 2, 70
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_green
+  rotate: false
+  xy: 132, 200
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_purple
+  rotate: false
+  xy: 2, 36
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_red
+  rotate: false
+  xy: 132, 166
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_small
+  rotate: false
+  xy: 68, 38
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+laser_teal
+  rotate: false
+  xy: 2, 2
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_white
+  rotate: false
+  xy: 132, 132
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_yellow
+  rotate: false
+  xy: 132, 98
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1

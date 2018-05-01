@@ -1,10 +1,18 @@
 package com.souki.game.adventure.map;
 
+import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
@@ -19,6 +27,7 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioEvent;
@@ -34,6 +43,7 @@ import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
 import com.souki.game.adventure.entity.components.ICollisionObstacleHandler;
 import com.souki.game.adventure.entity.components.InteractionComponent;
+import com.souki.game.adventure.entity.components.LightComponent;
 import com.souki.game.adventure.entity.components.PathComponent;
 import com.souki.game.adventure.entity.components.TransformComponent;
 import com.souki.game.adventure.entity.components.VelocityComponent;
@@ -69,6 +79,7 @@ import java.util.HashMap;
 public class GameMap implements ICollisionObstacleHandler {
     public final static String TAG = GameMap.class.getSimpleName();
 
+    private static final String LIGHT_TEXTURE = "data/maps/light.png";
     private static MapTownPortalInfo sTownPortalInfo;
     private TiledMap map;
     private String mMapName;
@@ -100,6 +111,11 @@ public class GameMap implements ICollisionObstacleHandler {
     private boolean mIsZoomOut = false;
     private float mCamXBeforeZoomOut, mCamYBeforeZoomOut;
 
+    private Texture mLightTexture;
+    private Sprite mLightSprite;
+    private FrameBuffer mLightFrameBuffer;
+    private SpriteBatch mLightSpriteBatch;
+    private ComponentMapper<LightComponent> cm = ComponentMapper.getFor(LightComponent.class);
 
     public GameMap(String aMapName, String aFromMap, OrthographicCamera aCamera, MapTownPortalInfo aTownPortalInfo) {
         mMapName = aMapName;
@@ -269,6 +285,39 @@ public class GameMap implements ICollisionObstacleHandler {
         }
         mPlayer.getHero().startToInteract();
         mIsInitialized = true;
+
+        buildLight(map);
+
+    }
+
+    private void buildLight(Map map) {
+
+        if (!map.getProperties().get("hasLight", Boolean.FALSE, Boolean.class)) {
+             mLightSpriteBatch = null;
+        } else {
+            mLightSpriteBatch = new SpriteBatch();
+            AssetsUtility.loadTextureAsset(LIGHT_TEXTURE);
+            mLightTexture = AssetsUtility.getTextureAsset(LIGHT_TEXTURE);
+            mLightSprite = new Sprite(mLightTexture);
+            mLightSprite.setSize(6, 6);
+            int frameWidth = mMapWidth * mMapTileWidth;
+            int frameHeight = mMapHeight * mMapTileHeight;
+            if (mLightFrameBuffer != null && (mLightFrameBuffer.getWidth() != frameWidth || mLightFrameBuffer.getHeight() != frameHeight)) {
+                mLightFrameBuffer.dispose();
+                mLightFrameBuffer = null;
+            }
+
+            if (mLightFrameBuffer == null) {
+                try {
+                    mLightFrameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, frameWidth, frameHeight, false);
+                } catch (GdxRuntimeException e) {
+                    mLightFrameBuffer = new FrameBuffer(Pixmap.Format.RGB565, frameWidth, frameHeight, false);
+                }
+            }
+        }
+
+
+
     }
 
     public void zoomOut(boolean isZoomOut) {
@@ -354,11 +403,16 @@ public class GameMap implements ICollisionObstacleHandler {
         mInteractions.clear();
         String filename = "data/maps/" + mMapName + ".tmx";
         AssetsUtility.unloadAsset(filename);
+        if (mLightTexture != null) {
+            AssetsUtility.unloadAsset(LIGHT_TEXTURE);
+        }
     }
 
     public void render() {
         if (!mIsInitialized)
             return;
+
+
         MapProperties mapProperties = map.getProperties();
         int mapWidth = mapProperties.get("width", Integer.class);
         int mapTileWidth = mapProperties.get("tilewidth", Integer.class);
@@ -383,6 +437,59 @@ public class GameMap implements ICollisionObstacleHandler {
         mCamera.update();
         renderer.setView(mCamera);
         renderer.render();
+        renderLight();
+
+
+    }
+
+    private void renderLight()
+    {
+        if (mLightSpriteBatch != null) {
+            mLightFrameBuffer.begin();
+
+            Gdx.gl.glClearColor(.3f, .3f, .3f, 1f);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+            mLightSpriteBatch.setProjectionMatrix(mCamera.combined);
+            mLightSpriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
+            mLightSpriteBatch.begin();
+            mLightSprite.setSize(6,6);
+            mLightSprite.setCenterX(mPlayer.getHero().getShapeInteraction().getX() + mPlayer.getHero().getShapeInteraction().getWidth() / 2);
+            mLightSprite.setCenterY(mPlayer.getHero().getShapeInteraction().getY() + mPlayer.getHero().getShapeInteraction().getHeight() / 2);
+
+            mLightSprite.setColor(Color.WHITE);
+            mLightSprite.draw(mLightSpriteBatch);
+
+
+
+            ImmutableArray<Entity> entities = EntityEngine.getInstance().getEntitiesFor(Family.all(LightComponent.class).get());
+            for (Entity entity : entities) {
+
+                LightComponent col = cm.get(entity);
+                mLightSprite.setSize(col.getRadius(), col.getRadius());
+                mLightSprite.setCenterX(col.position.x);
+                mLightSprite.setCenterY(col.position.y);
+                mLightSprite.setColor(col.getColor());
+
+                mLightSprite.draw(mLightSpriteBatch);
+
+
+            }
+
+            mLightSpriteBatch.end();
+
+            mLightFrameBuffer.end();
+
+            mLightSpriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+            mLightSpriteBatch.setProjectionMatrix(mLightSpriteBatch.getProjectionMatrix().idt());
+
+            mLightSpriteBatch.setBlendFunction(GL20.GL_ZERO, GL20.GL_SRC_COLOR);
+            mLightSpriteBatch.begin();
+
+            mLightSpriteBatch.draw(mLightFrameBuffer.getColorBufferTexture(), -1, 1, 2, -2);
+            mLightSpriteBatch.end();
+        }
     }
 
 
@@ -587,9 +694,11 @@ public class GameMap implements ICollisionObstacleHandler {
 
             }
         }
-        for(IInteraction interaction : mInteractions)
-        {
-            interaction.startToInteract();
+        IInteraction[] interactions = new IInteraction[mInteractions.size];
+        interactions = mInteractions.toArray(IInteraction.class);
+
+        for (int i = 0; i < interactions.length; i++) {
+            interactions[i].startToInteract();
         }
     }
 

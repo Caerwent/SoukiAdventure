@@ -1,0 +1,12 @@
+npc_bat.png
+size: 50, 35
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+idle
+  rotate: false
+  xy: 0,0
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1

@@ -41,7 +41,14 @@
       "type": "STEAM_MACHINE"
     }
   },
-
+  {
+    "id": "chest1",
+    "template": "chest_type1.json",
+    "properties": {
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
   {
     "id": "activator1",
     "template": "activator_type1.json",

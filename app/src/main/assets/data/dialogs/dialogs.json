@@ -579,8 +579,17 @@
       }
     ]
   },
-
-
+  {
+    "id": "quest_boots_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_chien_jaune_name",
+        "phrases": [
+          "quest_boots_finished_phrase1"
+        ]
+      }
+    ]
+  },
   {
     "id": "wizard_obtain_ice_and_fire_dialog",
     "dialogs": [
@@ -1249,12 +1258,22 @@
       {
         "speaker": "hero_name",
         "phrases": [
-          "quest_panda_completed_dialog_phrase2"
+          "quest_panda_completed_dialog_phrase5"
         ]
       }
     ]
   },
-
+  {
+    "id": "quest_panda_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_panda_name",
+        "phrases": [
+          "quest_panda_finished_dialog_phrase1"
+        ]
+      }
+    ]
+  },
   {
     "id": "quest_frog",
     "dialogs": [
@@ -1316,20 +1335,7 @@
       {
         "speaker": "npc_frog_name",
         "phrases": [
-          "quest_frog_completed_dialog_phrase5",
-          "quest_frog_completed_dialog_phrase6"
-        ]
-      },
-      {
-        "speaker": "hero_name",
-        "phrases": [
-          "quest_frog_completed_dialog_phrase7"
-        ]
-      },
-      {
-        "speaker": "npc_frog_name",
-        "phrases": [
-          "quest_frog_completed_dialog_phrase8"
+          "quest_frog_completed_dialog_phrase5"
         ]
       }
     ]
@@ -1348,7 +1354,6 @@
   {
     "id": "quest_crystals",
     "dialogs": [
-
       {
         "speaker": "hero_name",
         "phrases": [
@@ -1409,7 +1414,7 @@
         "speaker": "npc_lego_name",
         "phrases": [
           "quest_crystals_completed_dialog_phrase3",
-          "quest_crystals_completed_dialog_phrase3"
+          "quest_crystals_completed_dialog_phrase4"
         ]
       }
     ]
@@ -1421,6 +1426,78 @@
         "speaker": "npc_lego_name",
         "phrases": [
           "quest_crystals_finished_dialog_phrase1"
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "quest_bat",
+    "dialogs": [
+      {
+        "speaker": "npc_bat",
+        "phrases": [
+          "quest_bat_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_bat_phrase2"
+        ]
+      },
+      {
+        "speaker": "npc_bat",
+        "phrases": [
+          "quest_bat_phrase3",
+          "quest_bat_phrase4"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_bat_phrase5"
+        ]
+      },
+      {
+        "speaker": "npc_bat",
+        "phrases": [
+          "quest_bat_phrase6",
+          "quest_bat_phrase7"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_bat_phrase8"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_bat_completed",
+    "dialogs": [
+      {
+        "speaker": "npc_bat",
+        "phrases": [
+          "quest_bat_completed_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_bat_finished",
+    "dialogs": [
+      {
+        "speaker": "npc_bat",
+        "phrases": [
+          "quest_bat_finished_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_bat_finished_phrase2"
         ]
       }
     ]

@@ -1,0 +1,37 @@
+{
+  "type": "CHALLENGE",
+  "atlas": "../challenges/challenge_laser.atlas",
+  "persistence": "GAME",
+  "defaultState": "IDLE",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping": "true",
+      "fps": "0",
+      "frames": [
+        "laser_small"
+      ]
+    },
+    {
+      "name": "COMPLETED",
+      "isLooping": "true",
+      "fps": "0",
+      "frames": [
+        "laser_small"
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type": "STATE",
+      "value": "ACTIVATED"
+    },
+    {
+      "type": "STATE",
+      "value": "IDLE"
+    }
+  ]
+}

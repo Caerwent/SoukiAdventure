@@ -302,17 +302,6 @@
     "outputEvents": []
   },
   {
-    "id": "monster_ghost3",
-    "template": "monster_ghost1.json",
-    "properties": {
-      "pathId": "path_ghost3",
-      "autoStart": "true",
-      "loopingReversing": "true"
-    },
-    "eventsAction": [],
-    "outputEvents": []
-  },
-  {
     "id": "golem1",
     "template": "monster_golem.json",
     "properties": {
