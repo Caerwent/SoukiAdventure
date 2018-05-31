@@ -1,0 +1,71 @@
+[
+  {
+    "id": "defaultPortal",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "final_portal",
+    "template": "portal_final.json",
+    "properties": {
+      "targetMapId": "FINAL_PORTAL_TARGET"
+    }
+  },
+  {
+    "id": "cow",
+    "template": "cow.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  },
+  {
+    "id": "rich_cat",
+    "template": "rich_cat.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  },
+  {
+    "id": "lapin_bleu",
+    "template": "lapin_bleu.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  },
+  {
+    "id": "carriage",
+    "template": "carriage_type1.json"
+  },
+  {
+    "id": "malo",
+    "template": "malo.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  },
+  {
+    "id": "chien_jaune",
+    "template": "npc_chien_jaune.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  },
+  {
+    "id": "lapin_jaune",
+    "template": "npc_lapin_jaune.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  },
+  {
+    "id": "frog",
+    "template": "frog.json",
+    "properties": {
+      "dialogId": "final_finished_npc_dialog"
+    }
+  }
+]

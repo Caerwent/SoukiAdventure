@@ -1,0 +1,13 @@
+
+portal_hole.png
+size: 84,80
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+hole
+  rotate: false
+  xy: 0, 0
+  size: 84,80
+  orig: 84,80
+  offset: 0, 0
+  index: -1

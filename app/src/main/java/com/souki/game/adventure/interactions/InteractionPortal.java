@@ -43,6 +43,8 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     protected int mWidth = -1;
     protected int mHeight = -1;
 
+    protected boolean mCollisionObstacle=false;
+
     private RectangleShape mMarkShape;
     private TextureRegion mInteractionTextureRegion;
     private TextureRegion mInteractionEmptyTextureRegion;
@@ -73,6 +75,9 @@ public class InteractionPortal extends Interaction implements IQuestListener {
             }
             if (mProperties.containsKey("height")) {
                 mHeight = ((Float) aMapping.properties.get("height")).intValue();
+            }
+            if (mProperties.containsKey("forceObstacleCollision")) {
+                mCollisionObstacle = ((Boolean) aMapping.properties.get("forceObstacleCollision")).booleanValue();
             }
         }
         initialize(x, y, aMapping);
@@ -122,7 +127,10 @@ public class InteractionPortal extends Interaction implements IQuestListener {
         }
 
 
-        remove(CollisionObstacleComponent.class);
+        if(!mCollisionObstacle)
+        {
+            remove(CollisionObstacleComponent.class);
+        }
         remove(CollisionEffectComponent.class);
         if (mActivatedByQuestId != null) {
             Quest quest = QuestManager.getInstance().getQuestFromId(mActivatedByQuestId);
@@ -225,8 +233,30 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
 
     protected void teleport() {
-        if (mIsActivated && mTargetMapId != null)
+        if (mIsActivated && mTargetMapId != null && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name))
             EventDispatcher.getInstance().onNewMapRequested(mTargetMapId, null);
+    }
+
+    /*************************************** PHYSICAL COLLISION ************************************/
+    @Override
+    public Shape createShapeCollision() {
+        mShapeCollision = new CircleShape();
+        mShapeCollision.setY(getPosition().x);
+        mShapeCollision.setX(getPosition().y);
+        float radius = 0.5F;
+        ((CircleShape) mShapeCollision).setRadius(radius);
+        return mShapeCollision;
+    }
+
+    @Override
+    public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
+
+        boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
+        if(ret && mActivatedByItem == null && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name))
+        {
+            teleport();
+        }
+        return ret;
     }
 
     /************************ RENDERING *********************************/
@@ -305,7 +335,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     @Override
     public void onStopCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if (mActivatedByQuestId == null) {
+        if (mActivatedByQuestId == null  && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name)) {
             mIsActivated = true;
         }
         mIsInteractionShown = false;
