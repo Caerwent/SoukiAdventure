@@ -255,6 +255,7 @@ public class ChallengeLaser extends ChallengeUI {
     protected void checkIsResolved() {
         mIsResolved = mHasCrystal && mHasTorch && mhasPotion;
         if(mIsResolved) {
+            mInteractionChallenge.setState("COMPLETED");
             challengeCompleted();
         }
     }

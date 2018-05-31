@@ -26,16 +26,7 @@
     },
     "eventsAction": [],
     "outputEvents": []
-  },
-  {
-    "id": "portal4",
-    "template": "portal.json",
-    "properties": {
-      "targetMapId": "caves1"
-    },
-    "eventsAction": [],
-    "outputEvents": []
-  },
+  }
   {
     "id": "ghost1",
     "template": "monster_ghost1.json",

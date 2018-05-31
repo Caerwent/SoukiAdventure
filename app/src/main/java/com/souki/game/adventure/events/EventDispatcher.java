@@ -267,6 +267,18 @@ public class EventDispatcher implements IDialogListener, IItemListener, IQuestLi
     }
 
     @Override
+    public void onMapUnloaded(String aMapName) {
+        synchronized (mSystemEventListeners) {
+            ISystemEventListener[] listeners = new ISystemEventListener[mSystemEventListeners.size()];
+            listeners = mSystemEventListeners.toArray(listeners);
+            for (ISystemEventListener listener : listeners) {
+                listener.onMapUnloaded(aMapName);
+            }
+        }
+    }
+
+
+    @Override
     public void onNewSelectedEffect(Effect.Type aEffectType) {
         synchronized (mSystemEventListeners) {
             ISystemEventListener[] listeners = new ISystemEventListener[mSystemEventListeners.size()];

@@ -1,0 +1,250 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves4_2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves4_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal4",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator1",
+    "template": "activator_push.json",
+    "properties": {
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator2",
+    "template": "activator_push.json",
+    "properties": {
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "steel_door1",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "persistence": "GAME",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_puzzle",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "challenge_puzzle",
+    "template": "challenge_puzzle.json",
+    "persistence": "NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_chest.png",
+      "size": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "fireball_generator1",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay": "2",
+      "orientation": "LEFT"
+    },
+    "eventsAction": [
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "fireball_generator2",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay": "1.5",
+      "orientation": "BOTTOM"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SLEEP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          },
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent": "true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "light1",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 5
+    }
+  },
+  {
+    "id": "light2",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 5
+    }
+  },
+  {
+    "id": "light3",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 5
+    }
+  },
+  {
+    "id": "light4",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light5",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 10
+    }
+  },
+  {
+    "id": "light6",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 10
+    }
+  },
+  {
+    "id": "steel_door1",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    }
+  }
+]

@@ -23,7 +23,7 @@
     "particuleScale":"0.5",
     "sound":"fire.wav",
     "distance": "1",
-    "duration": "3",
+    "duration": "1",
     "targetState": "BURNING",
     "targetDuration": "-1",
     "fps": "10",

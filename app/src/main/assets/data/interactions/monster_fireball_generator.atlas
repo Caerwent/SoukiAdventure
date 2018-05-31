@@ -1,0 +1,41 @@
+
+monster_fireball_generator.png
+size: 32,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fireball_generator0
+  rotate: false
+  xy: 2, 138
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1
+fireball_generator1
+  rotate: false
+  xy: 2, 104
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1
+fireball_generator2
+  rotate: false
+  xy: 2, 70
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1
+fireball_generator3
+  rotate: false
+  xy: 2, 36
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1
+fireball_generator4
+  rotate: false
+  xy: 2, 2
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1

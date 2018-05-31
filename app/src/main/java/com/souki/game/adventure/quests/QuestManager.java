@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.souki.game.adventure.AssetsUtility;
+import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.dialogs.DialogsManager;
 import com.souki.game.adventure.dialogs.GameDialog;
 import com.souki.game.adventure.effects.Effect;
@@ -275,6 +276,10 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
     private void internalQuestcompleted(Quest aQuest) {
         Gdx.app.debug("QestManager", "quest completed " + aQuest.getId());
 
+        if(aQuest.id.compareTo(MyGame.QUEST_FINAL_ID)==0)
+        {
+            Profile.getInstance().setGameMode(Profile.GAME_MODE.MODE_FINAL);
+        }
         updateItemsFromFoundTask(aQuest);
         if (aQuest.getItemsReward() != null) {
             for (Item.ItemTypeID itemID : aQuest.getItemsReward()) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="22" height="21" tilewidth="32" tileheight="32" infinite="0" nextobjectid="256">
+<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="22" height="21" tilewidth="32" tileheight="32" infinite="0" nextobjectid="257">
  <tileset firstgid="1" source="caves.tsx"/>
  <tileset firstgid="673" source="Celianna_TileA5.tsx"/>
  <tileset firstgid="801" source="terrain.tsx"/>
@@ -125,5 +125,6 @@
  <objectgroup name="items">
   <object id="246" name="Gear" type="ITEM" gid="846" x="38" y="591" width="32" height="32"/>
   <object id="247" name="Coal" type="ITEM" gid="846" x="436" y="596" width="32" height="32"/>
+  <object id="256" name="CrystalAnimBlue" type="ITEM" gid="846" x="437" y="502" width="32" height="32"/>
  </objectgroup>
 </map>

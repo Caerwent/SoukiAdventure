@@ -14,6 +14,12 @@ import java.util.HashMap;
  */
 
 public class Profile {
+
+    public static enum GAME_MODE {
+        MODE_NORMAL,
+        MODE_FINAL,
+        MODE_ENDED
+    }
     HashMap<String, MapProfile> maps = new HashMap<>();
     ArrayList<String> inventory = new ArrayList<>();
     ArrayList<String> foundScrolls = new ArrayList<>();
@@ -23,6 +29,7 @@ public class Profile {
     ArrayList<Effect.Type> mAvailableEffects = new ArrayList();
     GameSession mPersistentGameSession = new GameSession();
     ArrayList<String>  mPortalCheckpointMap = new ArrayList<>();
+    GAME_MODE mGameMode = GAME_MODE.MODE_NORMAL;
 
     static private Profile sProfile;
 
@@ -148,6 +155,17 @@ public class Profile {
         mPortalCheckpointMap=PortalCheckpoints;
         PersistenceProvider.getInstance().savePortalCheckpoints(mPortalCheckpointMap);
 
+    }
+
+    public final GAME_MODE getGameMode()
+    {
+        return mGameMode;
+    }
+
+    public void setGameMode(GAME_MODE aGameMode)
+    {
+        mGameMode = aGameMode;
+        PersistenceProvider.getInstance().saveGameMode(mGameMode);
     }
 
 }

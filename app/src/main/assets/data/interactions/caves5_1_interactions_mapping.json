@@ -1,0 +1,108 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves4_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves5"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "light1",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 13
+    }
+  },
+  {
+    "id": "light4",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 14
+    }
+  },
+  {
+    "id": "light5",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 14
+    }
+  },
+  {
+    "id": "light6",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 13
+    }
+  },
+  {
+    "id": "light2",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 5
+    }
+  },
+  {
+    "id": "light3",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 6
+    }
+  },
+  {
+    "id": "challenge_inputcode",
+    "template": "challenge_inputcode.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "INPUT_CODE",
+      "code": 3789
+    }
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "persistence": "GAME",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_inputcode",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  }
+]

@@ -1,0 +1,101 @@
+{
+  "type":"MONSTER_FIREBALL",
+  "atlas":"monster_fireball.atlas",
+  "persistence":"NONE",
+  "defaultState":"IDLE",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "true",
+  "properties": {
+    "collisionHeightFactor": 1
+  },
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "fireball0"
+      ]
+    },
+    {
+      "name": "EXPLODE",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "fireball1", "fireball2", "fireball3",
+        "fireball4", "fireball5", "fireball6",
+        "fireball7", "fireball8"
+      ]
+    },
+    {
+      "name": "MOVE_DOWN",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "fireball0"
+      ]
+    },
+    {
+      "name": "MOVE_UP",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "fireball0"
+      ]
+    },
+    {
+      "name": "MOVE_LEFT",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "fireball0"
+      ]
+    },
+    {
+      "name": "MOVE_RIGHT",
+      "isLooping":"true",
+      "fps":"0",
+      "frames": [
+        "fireball0"
+      ]
+    }
+
+  ]
+  ,
+  "eventsAction": [
+    {
+      "action": {
+        "type": "REMOVED",
+        "value": ""
+      },
+      "inputEvents":[
+        {
+          "sourceId":"THIS",
+          "type":"END_STATE",
+          "value":"EXPLODE"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "EXPLODE"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_START",
+          "value": "BURN"
+        }
+      ]
+    }
+  ],
+  "outputEvents": [
+    {
+      "type":"END_STATE",
+      "value":"EXPLODE"
+    }
+  ]
+
+}

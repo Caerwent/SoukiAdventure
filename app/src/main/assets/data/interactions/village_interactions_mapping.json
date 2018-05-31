@@ -73,6 +73,61 @@
     "outputEvents": []
   },
   {
+    "id": "﻿portal_hole1",
+    "template": "portal_hole.json",
+    "properties": {
+      "targetMapId": "generic_hole"
+    },
+    "questActions": [
+      {
+        "questId": "quest_obtain_ice_and_fire",
+        "questState": "NOT_ACTIVATED",
+        "action": {
+          "type": "REMOVED"
+        }
+      }
+    ],
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "﻿portal_hole2",
+    "template": "portal_hole.json",
+    "properties": {
+      "targetMapId": "generic_hole"
+    },
+    "questActions": [
+      {
+        "questId": "quest_panda",
+        "questState": "NOT_ACTIVATED",
+        "action": {
+          "type": "REMOVED"
+        }
+      }
+    ],
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  ,
+  {
+    "id": "﻿portal_hole3",
+    "template": "portal_hole.json",
+    "properties": {
+      "targetMapId": "generic_hole"
+    },
+    "questActions": [
+      {
+        "questId": "quest_tree_alive",
+        "questState": "NOT_ACTIVATED",
+        "action": {
+          "type": "REMOVED"
+        }
+      }
+    ],
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
     "id": "cow",
     "template": "cow.json",
     "properties": {

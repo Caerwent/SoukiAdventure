@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.utils.Json;
 import com.souki.game.adventure.interactions.monsters.InteractionMonster1;
+import com.souki.game.adventure.interactions.monsters.InteractionMonsterFireball;
+import com.souki.game.adventure.interactions.monsters.InteractionMonsterFireballGenerator;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterGhost1;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterSlime;
 import com.souki.game.adventure.interactions.monsters.InteractionMonsterTank;
@@ -97,6 +99,12 @@ public class InteractionFactory {
             return interaction;
         } else if (def.type.compareTo("TRIGGER") == 0) {
             InteractionTrigger interaction = new InteractionTrigger(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
+        } else if (def.type.compareTo("MONSTER_FIREBALL") == 0) {
+            InteractionMonsterFireball interaction = new InteractionMonsterFireball(def, x, y, aMapping, aProperties, aMap);
+            return interaction;
+        } else if (def.type.compareTo("MONSTER_FIREBALL_GENERATOR") == 0) {
+            InteractionMonsterFireballGenerator interaction = new InteractionMonsterFireballGenerator(def, x, y, aMapping, aProperties, aMap);
             return interaction;
         }
         return null;

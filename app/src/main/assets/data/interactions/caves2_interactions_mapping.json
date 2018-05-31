@@ -13,7 +13,7 @@
     "template": "portal_caves_light.json",
     "persistence": "GAME",
     "properties": {
-      "targetMapId": "caves2",
+      "targetMapId": "caves3",
       "lightRadius": 3
     },
     "eventsAction": [
@@ -24,7 +24,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "challenge_laser",
+            "sourceId": "challenge_laser1",
             "type": "CHALLENGE_COMPLETED",
             "value": ""
           }
@@ -37,7 +37,44 @@
         },
         "inputEvents": [
           {
-            "sourceId": "challenge_laser",
+            "sourceId": "challenge_laser1",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "portal3",
+    "template": "portal_caves_light.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "caves5",
+      "lightRadius": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "TEAL"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
             "type": "CHALLENGE_COMPLETED",
             "value": ""
           }
@@ -55,12 +92,21 @@
     }
   },
   {
-    "id": "challenge_laser",
+    "id": "challenge_laser1",
     "template": "challenge_laser.json",
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
       "color": "PURPLE"
+    }
+  },
+  {
+    "id": "challenge_laser2",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "TEAL"
     }
   },
   {
@@ -71,5 +117,16 @@
     },
     "eventsAction": [],
     "outputEvents": []
-  }
+  },
+  {
+    "id": "monster_ghost1",
+    "template": "monster_ghost1.json",
+    "properties": {
+      "pathId": "path_ghost1",
+      "autoStart": "true",
+      "looping": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
 ]

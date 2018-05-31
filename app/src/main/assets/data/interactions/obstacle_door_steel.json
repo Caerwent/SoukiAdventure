@@ -1,11 +1,14 @@
 {
   "type":"OBSTACLE",
   "atlas":"steel_door.atlas",
-  "persistence":"SESSION",
+  "persistence":"NONE",
   "defaultState":"CLOSED",
   "isClickable": "false",
   "isRendable": "true",
   "isMovable": "false",
+  "properties": {
+    "startState": "CLOSED"
+  },
   "states": [
     {
       "name": "CLOSED",
@@ -32,6 +35,7 @@
 
     {
       "name": "FROZEN",
+      "isLooping":"true",
       "fps":"0",
       "frames": [
         "steel_door_frozen"
@@ -49,6 +53,25 @@
         {
           "sourceId": "THIS",
           "type": "EFFECT_START",
+          "value": "FREEZE"
+        },
+        {
+          "sourceId": "THIS",
+          "type": "STATE",
+          "value": "CLOSED",
+          "isPersistent":"true"
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "SET_STATE",
+        "value": "CLOSED"
+      },
+      "inputEvents": [
+        {
+          "sourceId": "THIS",
+          "type": "EFFECT_STOP",
           "value": "FREEZE"
         }
       ]
@@ -74,8 +97,8 @@
     },
     {
       "action": {
-        "type": "SET_STATE",
-        "value": "OPEN"
+        "type": "REMOVED",
+        "value": ""
       },
       "inputEvents": [
         {
@@ -104,6 +127,10 @@
     {
       "type": "STATE",
       "value": "OPEN"
+    },
+    {
+      "type": "STATE",
+      "value": "CLOSED"
     },
     {
       "type": "STATE",

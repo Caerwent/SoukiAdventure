@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="11" height="9" tilewidth="32" tileheight="32" infinite="0" nextobjectid="7">
+ <properties>
+  <property name="hasLight" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="terrain.tsx"/>
+ <tileset firstgid="1025" source="hole.tsx"/>
+ <tileset firstgid="1055" source="Celianna_TileA2.tsx"/>
+ <tileset firstgid="1535" source="caves.tsx"/>
+ <layer name="ground" width="11" height="9">
+  <data encoding="base64">
+   CQcAAAkHAAAJBwAACQcAAAkHAAAJBwAACQcAAAkHAAAJBwAACQcAAAkHAAAJBwAALgEAAC4BAAAuAQAALgEAAC4BAAAuAQAALgEAAC4BAAAuAQAACQcAAAkHAAAuAQAAuQQAALkEAAC5BAAAuQQAALkEAAC5BAAAuQQAAC4BAAAJBwAACQcAAC4BAAC5BAAAuQQAALkEAAC5BAAAuQQAALkEAAC5BAAALgEAAAkHAAAJBwAALgEAALkEAAC5BAAAuQQAALkEAAC5BAAAuQQAALkEAAAuAQAACQcAAAkHAAAuAQAAuQQAALkEAAC5BAAAuQQAALkEAAC5BAAAuQQAAC4BAAAJBwAACQcAAC4BAAC5BAAAuQQAALkEAAC5BAAAuQQAALkEAAC5BAAALgEAAAkHAAAJBwAALgEAAC4BAAAuAQAALgEAAC4BAAAuAQAALgEAAC4BAAAuAQAACQcAAAkHAAAJBwAACQcAAAkHAAAJBwAACQcAAAkHAAAJBwAACQcAAAkHAAAJBwAA
+  </data>
+ </layer>
+ <layer name="ground2" width="11" height="9">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzgAAAE4BAABOAQAATgEAAE4BAABOAQAAzwAAAAAAAAAAAAAAAAAAAAAAAAAvAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtAQAAAAAAAAAAAAAAAAAAAAAAAC8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0BAAAAAAAAAAAAAAAAAAAAAAAALwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAALQEAAAAAAAAAAAAAAAAAAAAAAADuAAAADgEAAA4BAAAOAQAADgEAAA4BAADvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  </data>
+ </layer>
+ <objectgroup name="interactions">
+  <object id="1" name="portal" gid="46" x="155" y="157" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="collision">
+  <object id="3" x="2" y="1" width="349" height="81"/>
+  <object id="4" x="1" y="202" width="349" height="83"/>
+  <object id="5" x="264" y="84" width="87" height="119"/>
+  <object id="6" x="94" y="84">
+   <polygon points="0,0 -19.2903,18 -10.3871,35 -19.2903,53 -5.93548,69 -16.3226,85 -7.41935,99 -14.8387,117 -92,118 -90.5161,-4"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="zindex"/>
+</map>

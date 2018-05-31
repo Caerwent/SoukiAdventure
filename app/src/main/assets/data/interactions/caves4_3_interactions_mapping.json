@@ -1,0 +1,256 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves4_2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves4_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "chest1",
+    "template": "chest_type1.json",
+    "properties": {
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "monster_tank1",
+    "template": "monster_tank.json",
+    "properties": {
+      "speedFactor": "2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "golem1",
+    "template": "monster_golem.json",
+    "properties": {
+      "distance": "1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "walker_spider_1",
+    "template": "walker_spider.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "HORIZONTAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_pull_2",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 3
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator_push_pull_3",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "challenge_puzzle",
+    "template": "challenge_puzzle.json",
+    "persistence": "NONE",
+    "properties": {
+      "type": "PUZZLE",
+      "image": "data/challenges/puzzle_house.png",
+      "size": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "THIS",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "pics3",
+    "template": "obstacle_pics.json",
+    "persistence": "GAME",
+    "properties": {
+      "collisionHeightFactor": 2,
+      "closedBoundsAsObstacle":"false"
+    },
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_puzzle",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics1",
+    "template": "obstacle_pics.json",
+    "persistence": "NONE",
+    "properties": {
+      "collisionHeightFactor": 2,
+      "closedBoundsAsObstacle":"false"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  },
+  {
+    "id": "pics2",
+    "template": "obstacle_pics.json",
+    "persistence": "NONE",
+    "properties": {
+      "collisionHeightFactor": 2,
+      "closedBoundsAsObstacle":"false"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "CLOSED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "type":"MONSTER_FIREBALL_GENERATOR",
+  "atlas":"monster_fireball_generator.atlas",
+  "persistence":"NONE",
+  "defaultState":"ACTIVATED",
+  "isClickable": "false",
+  "isRendable": "true",
+  "isMovable": "false",
+  "properties": {
+    "collisionHeightFactor": 1,
+    "ZIndex":0,
+    "hasLight":true,
+    "lightColor":"#f6af16",
+    "lightRadius":1
+  },
+  "states": [
+    {
+      "name": "IDLE",
+      "fps":"0",
+      "frames": [
+        "fireball_generator0"
+      ]
+    },
+    {
+      "name": "ACTIVATED",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": [
+        "fireball_generator0", "fireball_generator1", "fireball_generator2",
+        "fireball_generator1", "fireball_generator0", "fireball_generator3",
+        "fireball_generator4", "fireball_generator3"
+      ]
+    }
+
+  ]
+
+
+}

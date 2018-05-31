@@ -1,0 +1,27 @@
+{
+  "type":"PORTAL",
+  "atlas":"portal_final.atlas",
+  "persistence":"GAME",
+  "defaultState":"ACTIVATED",
+  "isClickable": "true",
+  "isRendable": "true",
+  "isMovable": "false",
+  "states": [
+    {
+      "name": "IDLE",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": ["portal_8",
+        "portal_9","portal_10","portal_11","portal_12","portal_13","portal_14"]
+    },
+    {
+      "name": "ACTIVATED",
+      "isLooping":"true",
+      "fps":"10",
+      "frames": ["portal_8",
+        "portal_9","portal_10","portal_11","portal_12","portal_13","portal_14"]
+    }
+
+  ]
+
+}

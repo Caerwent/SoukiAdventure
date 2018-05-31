@@ -1,0 +1,21 @@
+
+{
+	"id": "quest_final",
+	"title":"quest_final_title",
+	"desc":"quest_final_desc",
+	"itemsReward":[],
+	"effectsReward":[],
+	"requiredCompletedQuest": [],
+	"tasks" : [
+		{
+			"id": "quest_final_task1",
+			"type":"DIALOG",
+			"targetId":"quest_final_dialog",
+			"value":"",
+			"requiredCompletedTask":[]
+		}
+	]
+
+
+}
+

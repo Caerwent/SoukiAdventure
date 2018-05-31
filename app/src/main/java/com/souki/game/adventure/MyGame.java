@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.souki.game.adventure.dialogs.DialogsManager;
 import com.souki.game.adventure.effects.Effect;
 import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.events.ISystemEventListener;
@@ -15,6 +16,7 @@ import com.souki.game.adventure.persistence.GameSession;
 import com.souki.game.adventure.persistence.LocationProfile;
 import com.souki.game.adventure.persistence.Profile;
 import com.souki.game.adventure.quests.QuestManager;
+import com.souki.game.adventure.screens.AboutScreen;
 import com.souki.game.adventure.screens.GameScreen;
 import com.souki.game.adventure.screens.GenericUI;
 import com.souki.game.adventure.screens.LoadingScreen;
@@ -30,13 +32,19 @@ import com.souki.game.adventure.screens.SettingsScreen;
  * expensive.
  */
 public class MyGame extends Game implements ISystemEventListener {
-    public static float SCALE_FACTOR = 1.0F / 32.0F;
-    public static String DEFAULT_MAP_NAME = "village";
-    protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[]{DEFAULT_MAP_NAME, "home", "house1", "house2", "house3", "village_tower1", "village_tower2"};
-    public static String INIT_MAP_START = "home";
-    public static String QUEST_START_ID = "quest_start";
-    public static String QUEST_EFFECT_ID = "quest_obtain_portal";
-    public static String QUEST_HELP_BOOK_ID = "quest_help_book";
+    final public static float SCALE_FACTOR = 1.0F / 32.0F;
+    final public static String DEFAULT_MAP_NAME = "village";
+    final protected static String[] DEFAULT_MAP_NAME_OR_ASSOCIATED = new String[]{DEFAULT_MAP_NAME, "home", "house1", "house2", "house3", "village_tower1", "village_tower2"};
+    final public static String INIT_MAP_START = "home";
+    final public static String FINAL_MAP = "village_final";
+    final public static String ENDED_MAP = "ended";
+    final public static String QUEST_START_ID = "quest_start";
+    final public static String QUEST_EFFECT_ID = "quest_obtain_portal";
+    final public static String QUEST_HELP_BOOK_ID = "quest_help_book";
+    final public static String QUEST_FINAL_ID = "quest_final";
+    final public static String FINAL_DIALOG_ID = "final_finished_dialog";
+    final public static String FINAL_PORTAL_TARGET_ID = "FINAL_PORTAL_TARGET";
+    final public static String ENDED_DIALOG_ID = "thats_all_folks_dialog";
 
     static private MyGame s_instance;
 
@@ -66,7 +74,13 @@ public class MyGame extends Game implements ISystemEventListener {
         if (mGameScreen != null) {
             mScreenRequested = mLoadingScreen;
             mIsGameReadyToBeShown = false;
-            mGameScreen.loadMap(aMapId, mGameScreen.getMap().getMapName(), aTownPortalInfo);
+            if (aMapId != null && aMapId.compareTo(FINAL_PORTAL_TARGET_ID) == 0) {
+                // unload current map
+                mGameScreen.loadMap(null, mGameScreen.getMap().getMapName(), aTownPortalInfo);
+            } else {
+                mGameScreen.loadMap(aMapId, mGameScreen.getMap().getMapName(), aTownPortalInfo);
+            }
+
         }
     }
 
@@ -82,6 +96,19 @@ public class MyGame extends Game implements ISystemEventListener {
     @Override
     public void onMapLoaded(GameMap aMap) {
         mScreenRequested = mGameScreen;
+        if (aMap != null && aMap.getMapName().compareTo(FINAL_MAP) == 0) {
+            EventDispatcher.getInstance().onStartDialog(DialogsManager.getInstance().getDialog(FINAL_DIALOG_ID));
+        } else if (aMap != null && aMap.getMapName().compareTo(ENDED_MAP) == 0) {
+            EventDispatcher.getInstance().onStartDialog(DialogsManager.getInstance().getDialog(ENDED_DIALOG_ID));
+        }
+    }
+
+    @Override
+    public void onMapUnloaded(String aMapName) {
+        if (aMapName != null && aMapName.compareTo(FINAL_MAP) == 0) {
+            Profile.getInstance().setGameMode(Profile.GAME_MODE.MODE_ENDED);
+            setScreen(MyGame.ScreenType.About);
+        }
     }
 
     @Override
@@ -103,7 +130,8 @@ public class MyGame extends Game implements ISystemEventListener {
         MainMenu,
         MainGame,
         LoadingGame,
-        Settings
+        Settings,
+        About
     }
 
     public void setScreen(ScreenType screenType) {
@@ -117,6 +145,9 @@ public class MyGame extends Game implements ISystemEventListener {
                 break;
             case Settings:
                 mScreenRequested = mSettingsScreen;
+                break;
+            case About:
+                mScreenRequested = mAboutScreen;
                 break;
             case MainGame:
 
@@ -148,6 +179,8 @@ public class MyGame extends Game implements ISystemEventListener {
                 return mGameScreen;
             case Settings:
                 return mSettingsScreen;
+            case About:
+                return mAboutScreen;
             default: {
                 return mMainMenuScreen;
             }
@@ -165,6 +198,7 @@ public class MyGame extends Game implements ISystemEventListener {
     private LoadingScreen mLoadingScreen;
     private GameScreen mGameScreen;
     private SettingsScreen mSettingsScreen;
+    private AboutScreen mAboutScreen;
 
     public void create() {
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -177,6 +211,7 @@ public class MyGame extends Game implements ISystemEventListener {
         mMainMenuScreen = new MainMenuScreen();
         mLoadingScreen = new LoadingScreen();
         mSettingsScreen = new SettingsScreen();
+        mAboutScreen = new AboutScreen();
         mCurrentScreen = mMainMenuScreen;
         mScreenRequested = mMainMenuScreen;
 
@@ -209,12 +244,20 @@ public class MyGame extends Game implements ISystemEventListener {
     }
 
     private void loadDefaultMap() {
-        LocationProfile location = Profile.getInstance().getLocationProfile();
-        if (location == null || location.mMapId == null) {
-            mGameScreen.loadMap(INIT_MAP_START, null, null);
+        if (Profile.getInstance().getGameMode() == Profile.GAME_MODE.MODE_ENDED) {
+            mGameScreen.loadMap(ENDED_MAP, null, null);
+        } else if (Profile.getInstance().getGameMode() == Profile.GAME_MODE.MODE_FINAL) {
+            mGameScreen.loadMap(FINAL_MAP, null, null);
         } else {
-            mGameScreen.loadMap(location.mMapId, location.mFromMapId, null);
+            LocationProfile location = Profile.getInstance().getLocationProfile();
+
+            if (location == null || location.mMapId == null) {
+                mGameScreen.loadMap(INIT_MAP_START, null, null);
+            } else {
+                mGameScreen.loadMap(location.mMapId, location.mFromMapId, null);
+            }
         }
+
     }
 
     public void dispose() {
@@ -225,6 +268,7 @@ public class MyGame extends Game implements ISystemEventListener {
         mMainMenuScreen.dispose();
         mLoadingScreen.dispose();
         mSettingsScreen.dispose();
+        mAboutScreen.dispose();
         if (mGameScreen != null) {
             mGameScreen.dispose();
             mGameScreen = null;

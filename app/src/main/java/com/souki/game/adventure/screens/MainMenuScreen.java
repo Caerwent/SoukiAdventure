@@ -10,18 +10,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.items.Item;
-import com.souki.game.adventure.items.ItemFactory;
-import com.souki.game.adventure.persistence.GameSession;
+import com.souki.game.adventure.persistence.LocationProfile;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
-
-import java.util.ArrayList;
+import com.souki.game.adventure.quests.Quest;
+import com.souki.game.adventure.quests.QuestManager;
+import com.souki.game.adventure.quests.QuestTask;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -199,26 +197,26 @@ public class MainMenuScreen implements Screen {
 
         /*CHANGE QUEST STATE*/
 
-     /*   Quest quest = QuestManager.getInstance().getQuestFromId("quest_panda");
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_final");
         quest.setActivated(false);
         quest.setCompleted(false);
         for (QuestTask task : quest.getTasks()) {
             task.setCompleted(false);
         }
-        Profile.getInstance().updateQuestProfile("quest_panda", quest);*/
-
+        Profile.getInstance().updateQuestProfile("quest_final", quest);
+        Profile.getInstance().setGameMode(Profile.GAME_MODE.MODE_NORMAL);
         /*CHANGE LOCATION*/
 
-   /*     LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "mines5";
+        LocationProfile locationProfile = new LocationProfile();
+        locationProfile.mMapId = "caves6";
         // locationProfile.mFromMapId = aFromMap;
 
-        Profile.getInstance().setLocationProfile(locationProfile);*/
+        Profile.getInstance().setLocationProfile(locationProfile);
 
 
         /* CHANGE ITEMS*/
 
-        Array<Item> inventory = new Array<Item>();
+  /*     Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
@@ -233,9 +231,10 @@ public class MainMenuScreen implements Screen {
             }
         }
         inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.TorchFire));
-         inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.CrystalAnimBlue));
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionVioletLarge));
-        Profile.getInstance().updateInventory(inventory);
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.CrystalAnimBlue));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionTealBig));
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialBlue));
+        Profile.getInstance().updateInventory(inventory);*/
 
 
         /*CHANGE MAP ITEM STATE*/
@@ -251,16 +250,11 @@ public class MainMenuScreen implements Screen {
 
 /** CHANGE INTERACTION STATE **/
 
-        GameSession session = Profile.getInstance().getPersistentGameSession();
-        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","IS_RESOLVED", false);
-        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","HAS_POTION", false);
-        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","HAS_TORCH", false);
-        session.putSessionDataForMapAndEntity("caves2", "challenge_laser","HAS_CRYSTAL", false);
-        session.putSessionDataForMapAndEntity("caves2", "portal2","state", "IDLE");
-        session.putSessionDataForMapAndEntity("caves2", "portal2","LIGHT", null);
+    /*    GameSession session = Profile.getInstance().getPersistentGameSession();
+        session.putSessionDataForMapAndEntity("caves5", "portal4","state", "IDLE");
 
 
-        Profile.getInstance().updatePersistentGameSession(session);
+        Profile.getInstance().updatePersistentGameSession(session);*/
     }
 
 }

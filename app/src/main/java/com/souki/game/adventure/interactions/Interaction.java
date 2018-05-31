@@ -171,7 +171,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             mZIndex = ((Float) mProperties.get("ZIndex")).intValue();
         }
         if (mProperties.containsKey("collisionHeightFactor")) {
-            mCollisionHeightFactor = ((Float) mProperties.get("CollisionHeightFactor")).intValue();
+            mCollisionHeightFactor = ((Float) mProperties.get("collisionHeightFactor")).intValue();
         }
         setMovable(mDef.isMovable);
         if (mProperties.containsKey("startState")) {
@@ -268,8 +268,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
 
         LightComponent lightComponent = this.getComponent(LightComponent.class);
-        if(lightComponent!=null)
-        {
+        if (lightComponent != null) {
             aGameSession.putSessionDataForMapAndEntity(getMap().getMapName(), getId(), "LIGHT", lightComponent.color.toString());
 
         }
@@ -351,6 +350,10 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         return null;
     }
 
+    public InteractionState getCurrentState() {
+        return mCurrentState;
+    }
+
     public void setState(String aStateName) {
         InteractionState state = getState(aStateName);
         if (state != null && state != mCurrentState) {
@@ -422,6 +425,9 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
         restoreFromPersistence();
 
         mShouldNotfyStartState = false;
+        if (mCurrentState != null && mDef.defaultState != null && mCurrentState.name.compareTo(mDef.defaultState) != 0) {
+            mShouldNotfyStartState = true;
+        }
         // force state event if startState has been set
         if (mProperties.containsKey("startState")) {
             String initState = (String) mProperties.get("startState");
@@ -935,7 +941,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
     protected void onQuestEvent(Quest aQuest) {
         if (mQuestsActions != null && aQuest != null) {
-            Gdx.app.debug("DEBUG", "onQuestEvent questID=" + aQuest.getId() + " isActivated=" + aQuest.isActivated() + " isCompleted=" + aQuest.isCompleted());
+            //Gdx.app.debug("DEBUG", "onQuestEvent questID=" + aQuest.getId() + " isActivated=" + aQuest.isActivated() + " isCompleted=" + aQuest.isCompleted());
             for (InteractionQuestAction questAction : mQuestsActions) {
                 if ((aQuest.getId() != null && questAction.questId != null && aQuest.getId().equals(questAction.questId))) {
                     boolean doAction = false;
@@ -1007,6 +1013,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             timeAction = mEffectLaunched.frames.size() / mEffectLaunched.fps;
         }
         if (mEffectLaunchedTime > timeAction) {
+            Gdx.app.debug("DEBUG", "stop effect " + mEffectLaunched.id.name() + " time=" + timeAction + " mEffectLaunchedTime=" + mEffectLaunchedTime);
             stopLaunchedEffect();
         }
     }

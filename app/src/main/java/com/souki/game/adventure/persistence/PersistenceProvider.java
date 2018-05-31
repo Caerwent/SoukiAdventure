@@ -219,4 +219,9 @@ public class PersistenceProvider {
     public void savePortalCheckpoints(ArrayList<String> PortalCheckpoints) {
         save(Profile.getInstance());
     }
+
+    public void saveGameMode(Profile.GAME_MODE aGameMode)
+    {
+        save(Profile.getInstance());
+    }
 }

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "activateQuestId":"quest_final"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "wizard",
+    "template": "wizard.json",
+    "properties": {
+      "dialogId": "quest_final_dialog"
+    },
+    "questActions": [
+      {
+        "questId": "quest_final",
+        "questState": "COMPLETED",
+        "action": {
+          "type": "LAUNCH_EFFECT",
+          "value": "PORTAL"
+        }
+      },
+      {
+        "questId": "quest_final",
+        "questState": "FINISHED",
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        }
+      }
+    ],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "REMOVED",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "wizard",
+            "type": "EFFECT_STOP",
+            "value": "PORTAL"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "light1",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 12
+    }
+  },
+  {
+    "id": "light2",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 8
+    }
+  },
+  {
+    "id": "light3",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 12
+    }
+  },
+  {
+    "id": "light4",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 10
+    }
+  },
+  {
+    "id": "light5",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 13
+    }
+  },
+  {
+    "id": "light6",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 13
+    }
+  },
+  {
+    "id": "light7",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 14
+    }
+  },
+  {
+    "id": "light8",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 14
+    }
+  },
+  {
+    "id": "light9",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 13
+    }
+  },
+  {
+    "id": "light10",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 13
+    }
+  },
+  {
+    "id": "light11",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 10
+    }
+  }
+]

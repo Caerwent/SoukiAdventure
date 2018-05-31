@@ -1430,7 +1430,6 @@
       }
     ]
   },
-
   {
     "id": "quest_bat",
     "dialogs": [
@@ -1498,6 +1497,133 @@
         "speaker": "hero_name",
         "phrases": [
           "quest_bat_finished_phrase2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quest_final_dialog",
+    "dialogs": [
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase1"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_phrase2"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase3"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_phrase4",
+          "quest_final_phrase5"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase6",
+          "quest_final_phrase7"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_phrase8"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase9",
+          "quest_final_phrase10",
+          "quest_final_phrase11",
+          "quest_final_phrase12"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_phrase13"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase14",
+          "quest_final_phrase15",
+          "quest_final_phrase16",
+          "quest_final_phrase17"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_phrase18"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase19"
+        ]
+      },
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_phrase20"
+        ]
+      },
+      {
+        "speaker": "wizard_name",
+        "phrases": [
+          "quest_final_phrase21",
+          "quest_final_phrase22",
+          "quest_final_phrase23",
+          "quest_final_phrase24"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "final_finished_dialog",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "quest_final_finished_phrase1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "final_finished_npc_dialog",
+    "dialogs": [
+      {
+        "speaker": "",
+        "phrases": [
+          "quest_final_finished_phrase"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "thats_all_folks_dialog",
+    "dialogs": [
+      {
+        "speaker": "hero_name",
+        "phrases": [
+          "thats_all_folks_phrase"
         ]
       }
     ]

@@ -1,0 +1,566 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves4"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_clickable.json",
+    "properties": {
+      "targetMapId": "caves2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves5_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal4",
+    "template": "portal.json",
+    "persistence": "GAME",
+    "properties": {
+      "defaultState":"IDLE",
+      "targetMapId": "caves6",
+      "lightRadius": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "BLUE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "RED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "GREEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "YELLOW"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "PURPLE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "TEAD"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "GREEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "YELLOW"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "#ff8000"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "BLUE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "WHITE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "WHITE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "WHITE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "WHITE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          },
+          {
+            "sourceId": "challenge_laser4",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "challenge_laser1",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "BLUE"
+    }
+  },
+  {
+    "id": "challenge_laser2",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "RED"
+    }
+  },
+  {
+    "id": "challenge_laser3",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "GREEN"
+    }
+  },
+  {
+    "id": "challenge_laser4",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "YELLOW"
+    }
+  },
+  {
+    "id": "light1",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 20
+    }
+  },
+  {
+    "id": "light14",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 10
+    }
+  },
+  {
+    "id": "light1414",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 9
+    }
+  },
+  {
+    "id": "light2",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 20
+    }
+  },
+  {
+    "id": "light3",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light4",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 9
+    }
+  },
+  {
+    "id": "light5",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 8
+    }
+  },
+  {
+    "id": "light6",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 12
+    }
+  },
+  {
+    "id": "light7",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 14
+    }
+  },
+  {
+    "id": "light77",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 8
+    }
+  },
+  {
+    "id": "light8",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 17
+    }
+  },
+  {
+  "id": "light9",
+  "template": "interaction_null.json",
+  "properties": {
+    "hasLight": true,
+    "lightColor": "#FF0000",
+    "lightRadius": 7
+  }
+},
+  {
+    "id": "light99",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light10",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light100",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light11",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light111",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light12",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 7
+    }
+  },
+  {
+    "id": "light13",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 5
+    }
+  },
+  {
+    "id": "light1313",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 5
+    }
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "portal",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

@@ -106,14 +106,14 @@ public class InteractionActivator extends Interaction{
                 (((aEntity.mType & CollisionObstacleComponent.HERO) != 0) ||
                         ((aEntity.mType & CollisionObstacleComponent.MAPINTERACTION) != 0)  && aEntity.mHandler instanceof IInteractionActivateBehavior ) &&
                         mMode==PUSH_PULL ) {
-            if(mDelay>0) {
-                Gdx.app.debug("DEBUG", "onCollisionObstacleStop start delay");
-                mDelayTime=0;
-                mDelayRunning=true;
-            }
-            else
-            {
-                setState(InteractionState.STATE_IDLE);
+            if(mCollisionsObstacle.size<=0) {
+                if (mDelay > 0) {
+                    Gdx.app.debug("DEBUG", "onCollisionObstacleStop start delay");
+                    mDelayTime = 0;
+                    mDelayRunning = true;
+                } else {
+                    setState(InteractionState.STATE_IDLE);
+                }
             }
             return true;
 

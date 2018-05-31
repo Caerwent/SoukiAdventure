@@ -1,0 +1,189 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal_clickable.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal_caves_light.json",
+    "persistence": "GAME",
+    "properties": {
+      "targetMapId": "caves4",
+      "lightRadius": 3
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "BLUE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "YELLOW"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "GREEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent":true
+          },
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent":true
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent":true
+          },
+          {
+            "sourceId": "challenge_laser1",
+            "type": "STATE",
+            "value": "COMPLETED",
+            "isPersistent":true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "light1",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "light2",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "light3",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "light4",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "light5",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "light6",
+    "template": "interaction_null.json",
+    "properties": {
+      "hasLight": true,
+      "lightColor": "#FF0000",
+      "lightRadius": 4
+    }
+  },
+  {
+    "id": "steel_door1",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "challenge_laser1",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "YELLOW"
+    }
+  },
+  {
+    "id": "challenge_laser2",
+    "template": "challenge_laser.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "LASER",
+      "color": "BLUE"
+    }
+  },
+  {
+    "id": "fireball_generator1",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"2",
+      "orientation":"LEFT"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "fireball_generator2",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"1.5",
+      "orientation":"BOTTOM"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  }
+]

@@ -207,13 +207,13 @@
           {
             "sourceId": "activator_push_pull_3",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
             "isPersistent": true
           },
           {
             "sourceId": "activator_push_pull_4",
             "type": "STATE",
-            "value": "ACTIVATED"
+            "value": "ACTIVATED",
             "isPersistent": true
           }
         ]

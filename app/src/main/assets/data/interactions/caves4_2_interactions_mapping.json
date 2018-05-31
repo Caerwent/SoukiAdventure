@@ -1,0 +1,246 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves4"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves4_3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "steel_door1",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "activator1",
+    "template": "activator_type1.json",
+    "properties": {
+      "startState": "IDLE"
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator2",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator3",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "activator4",
+    "template": "activator_type1.json",
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "fireball_generator1",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"2",
+      "orientation":"LEFT"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SLEEP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "fireball_generator2",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"2",
+      "orientation":"BOTTOM"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SLEEP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator2",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "fireball_generator3",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"2",
+      "orientation":"RIGHT"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SLEEP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator3",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  },
+  {
+    "id": "fireball_generator4",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"2",
+      "orientation":"UP"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SLEEP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "ACTIVATED",
+            "isPersistent":"true"
+          },
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "IDLE",
+            "isPersistent":"true"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator4",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

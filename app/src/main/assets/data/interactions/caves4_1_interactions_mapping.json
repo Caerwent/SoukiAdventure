@@ -1,0 +1,98 @@
+[
+  {
+    "id": "portal1",
+    "template": "portal.json",
+    "properties": {
+      "isDefaultStart": "true",
+      "targetMapId": "caves4"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal2",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves4_3"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "portal3",
+    "template": "portal.json",
+    "properties": {
+      "targetMapId": "caves5_1"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "rock1",
+    "template": "obstacle_rock.json"
+  },
+
+  {
+    "id": "steel_door1",
+    "template": "obstacle_door_steel.json",
+    "properties": {
+    }
+  },
+  {
+    "id": "walker_spider_1",
+    "template": "walker_spider.json",
+    "properties": {
+      "autoStart": "true",
+      "orientation": "VERTICAL"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "activator_push_pull_1",
+    "template": "activator_push_pull.json",
+    "properties": {
+      "delay": 2
+    },
+    "eventsAction": [
+    ]
+  },
+  {
+    "id": "fireball_generator1",
+    "template": "monster_fireball_generator.json",
+    "properties": {
+      "speedFactor": "2",
+      "delay":"1.5",
+      "orientation":"UP"
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SLEEP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "IDLE"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "WAKEUP",
+          "value": ""
+        },
+        "inputEvents": [
+          {
+            "sourceId": "activator_push_pull_1",
+            "type": "STATE",
+            "value": "ACTIVATED"
+          }
+        ]
+      }
+    ],
+    "outputEvents": []
+  }
+]

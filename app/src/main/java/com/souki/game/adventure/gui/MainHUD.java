@@ -282,6 +282,11 @@ public class MainHUD extends Group implements ISystemEventListener, IQuestListen
     }
 
     @Override
+    public void onMapUnloaded(String aMapName) {
+
+    }
+
+    @Override
     public void onNewSelectedEffect(Effect.Type aEffectType) {
         mCurrentEffectType = aEffectType;
         if (mCurrentEffectType != null) {

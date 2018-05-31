@@ -17,6 +17,7 @@ import com.souki.game.adventure.events.EventDispatcher;
 import com.souki.game.adventure.map.GameMap;
 import com.souki.game.adventure.map.ItemInteraction;
 import com.souki.game.adventure.map.MapTownPortalInfo;
+import com.souki.game.adventure.persistence.Profile;
 
 /**
  * Created by vincent on 14/02/2017.
@@ -186,7 +187,18 @@ public class InteractionHero extends Interaction {
                 mPortalInfo.x = getX();
                 mPortalInfo.y = getY();
 
-                EventDispatcher.getInstance().onNewMapRequested(MyGame.DEFAULT_MAP_NAME, mPortalInfo);
+                if(Profile.getInstance().getGameMode()==Profile.GAME_MODE.MODE_FINAL)
+                {
+                    EventDispatcher.getInstance().onNewMapRequested(MyGame.FINAL_MAP, mPortalInfo);
+                } else if(Profile.getInstance().getGameMode()==Profile.GAME_MODE.MODE_ENDED)
+                {
+                    EventDispatcher.getInstance().onNewMapRequested(MyGame.ENDED_MAP, mPortalInfo);
+                }
+                else
+                {
+                    EventDispatcher.getInstance().onNewMapRequested(MyGame.DEFAULT_MAP_NAME, mPortalInfo);
+                }
+
             }
         }
 

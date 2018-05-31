@@ -33,13 +33,15 @@
     "id": "east_land10_chest1",
     "items": [
       "VialRed",
-      "Scroll03"
+      "Scroll03",
+      "CrystalAnimBlue"
     ]
   },
   {
     "id": "east_land9_chest1",
     "items": [
-      "Scroll15"
+      "Scroll15",
+      "Torch"
     ]
   },
   {
@@ -146,6 +148,14 @@
       "VialGreen",
       "Matches"
     ]
+  },
+  {
+    "id": "caves4_3_chest1",
+    "items": [
+      "Torch",
+      "Torch",
+      "CrystalAnimBlue",
+      "CrystalAnimBlue"
+    ]
   }
-
 ]

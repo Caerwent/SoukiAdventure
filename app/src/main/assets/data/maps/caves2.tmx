@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" nextobjectid="24">
+<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" nextobjectid="39">
  <properties>
   <property name="hasLight" type="bool" value="true"/>
   <property name="music" value="cave_theme.ogg"/>
@@ -7,6 +7,7 @@
  <tileset firstgid="1" source="caves.tsx"/>
  <tileset firstgid="673" source="terrain.tsx"/>
  <tileset firstgid="1697" source="house_inside_full.tsx"/>
+ <tileset firstgid="2597" source="dungeon.tsx"/>
  <layer name="ground1" width="20" height="15">
   <data encoding="base64">
    jQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAAjQEAAI0BAACNAQAA
@@ -47,14 +48,22 @@
   </object>
  </objectgroup>
  <objectgroup name="interactions">
-  <object id="13" name="portal2" gid="718" x="512" y="76" width="32" height="32"/>
+  <object id="13" name="portal2" gid="718" x="246" y="76" width="32" height="32"/>
   <object id="14" name="portal1" gid="718" x="57" y="138" width="32" height="32"/>
   <object id="20" name="light1" gid="718" x="416" y="288" width="32" height="32"/>
-  <object id="22" name="monster_tank1" gid="718" x="194" y="425" width="32" height="32"/>
-  <object id="23" name="challenge_laser" gid="718" x="314" y="174" width="32" height="32"/>
+  <object id="22" name="monster_tank1" gid="718" x="130" y="424" width="32" height="32"/>
+  <object id="23" name="challenge_laser1" gid="718" x="245" y="191" width="32" height="32"/>
+  <object id="24" name="monster_ghost1" gid="718" x="468" y="369" width="32" height="32"/>
+  <object id="37" name="portal3" gid="718" x="515" y="74" width="32" height="32"/>
+  <object id="38" name="challenge_laser2" gid="718" x="513" y="192" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="zindex">
   <object id="15" x="13" y="419" width="613" height="61"/>
  </objectgroup>
  <objectgroup name="items"/>
+ <objectgroup name="path">
+  <object id="25" name="path_ghost1" x="470" y="366">
+   <polyline points="0,0 21,-140 -40,-184 -147,-140 -107,-1 -9,1"/>
+  </object>
+ </objectgroup>
 </map>
