@@ -148,6 +148,7 @@ public class GameMap implements ICollisionObstacleHandler {
         if (PersistenceProvider.getInstance().getSettings().musicActivated) {
             mMusic = mapProperties.get("music", String.class);
             if (mMusic != null && !mMusic.isEmpty()) {
+                mMusic = AssetsUtility.getString(mMusic);
                 AudioManager.getInstance().onAudioEvent(new AudioEvent(AudioEvent.Type.MUSIC_LOAD, mMusic));
             }
         }

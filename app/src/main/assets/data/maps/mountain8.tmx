@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="19" height="30" tilewidth="32" tileheight="32" nextobjectid="62">
+ <properties>
+  <property name="music" value="THEME_MOUNTAINS"/>
+ </properties>
  <tileset firstgid="1" source="mountain.tsx"/>
  <tileset firstgid="1025" source="terrain.tsx"/>
  <layer name="ground1" width="19" height="30">

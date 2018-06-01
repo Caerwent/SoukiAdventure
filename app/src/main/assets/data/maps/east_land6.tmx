@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-up" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="48">
+ <properties>
+  <property name="music" value="THEME_EASTLANDS"/>
+ </properties>
  <tileset firstgid="1" source="terrain.tsx"/>
  <tileset firstgid="1025" source="Celianna_TileA2.tsx"/>
  <tileset firstgid="1505" source="outside_decoration.tsx"/>

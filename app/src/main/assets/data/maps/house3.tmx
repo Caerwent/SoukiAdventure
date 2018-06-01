@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" nextobjectid="45">
+ <properties>
+  <property name="music" value="THEME_VILLAGE"/>
+ </properties>
  <tileset firstgid="1" source="house_inside_full.tsx"/>
  <tileset firstgid="901" source="house_inside_full2.tsx"/>
  <tileset firstgid="1405" source="Celianna_TileA5.tsx"/>
