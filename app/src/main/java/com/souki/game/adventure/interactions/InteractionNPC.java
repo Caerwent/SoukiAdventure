@@ -1,6 +1,5 @@
 package com.souki.game.adventure.interactions;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
@@ -169,7 +168,7 @@ public class InteractionNPC extends InteractionFollowPath {
     public void onTouchInteraction() {
         QuestManager.getInstance().onNPC(this);
         if (getDialogId() != null) {
-            Gdx.app.debug("DEBUG", "start dialog " + getDialogId());
+            //Gdx.app.debug("DEBUG", "start dialog " + getDialogId());
 
             EventDispatcher.getInstance().onStartDialog(DialogsManager.getInstance().getDialog(getDialogId()));
         }
@@ -188,7 +187,7 @@ public class InteractionNPC extends InteractionFollowPath {
     @Override
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
-        Gdx.app.debug("DEBUG", "doAction target=" + getId() + " actionType=" + aAction.type.name() + " value=" + aAction.value);
+        //Gdx.app.debug("DEBUG", "doAction target=" + getId() + " actionType=" + aAction.type.name() + " value=" + aAction.value);
         if (!res && aAction != null && InteractionActionType.ActionType.DIALOG == aAction.type) {
             setDialogId(aAction.value);
         } else if (!res && aAction != null && InteractionActionType.ActionType.LAUNCH_EFFECT == aAction.type) {

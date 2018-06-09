@@ -92,6 +92,6 @@
   <object id="51" x="143" y="205" width="164" height="81"/>
  </objectgroup>
  <objectgroup name="items">
-  <object id="43" name="VialGreen" type="ITEM" gid="718" x="780" y="130" width="32" height="32"/>
+  <object id="43" name="VialYellow" type="ITEM" gid="718" x="780" y="130" width="32" height="32"/>
  </objectgroup>
 </map>

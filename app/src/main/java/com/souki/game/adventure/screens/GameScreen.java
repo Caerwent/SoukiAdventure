@@ -528,7 +528,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener, Inpu
         } else {
             mIrisCurrentBound = IRIS_INNERBOUND + (time * (IRIS_OUTERBOUND - IRIS_INNERBOUND) / IRIS_DURATION);
         }
-        Gdx.app.debug("DEBUG", "time=" + time + " mIrisCurrentBound=" + mIrisCurrentBound);
+        //Gdx.app.debug("DEBUG", "time=" + time + " mIrisCurrentBound=" + mIrisCurrentBound);
         mIrisRenderer.setProjectionMatrix(uiCamera.combined);
         mIrisRenderer.setColor(Color.BLACK);
         mIrisRenderer.begin(ShapeRenderer.ShapeType.Filled);

@@ -1,11 +1,13 @@
 [
   {
     "id":"portal1",
-    "template":"portal.json",
+    "template":"portal_clickable.json",
     "properties": {
       "targetMapId":"village",
       "isDefaultStart":"true",
-      "activateQuestId":"quest_help_book"
+      "activateQuestId":"quest_help_book",
+      "width": 32,
+      "height": 32
     },
     "eventsAction":[],
     "outputEvents":[]

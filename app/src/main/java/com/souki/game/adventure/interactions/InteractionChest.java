@@ -77,6 +77,18 @@ public class InteractionChest extends Interaction {
         }
     }
 
+    public Shape createShapeInteraction() {
+        if (isRendable()) {
+            return super.createShapeInteraction();
+        }
+        mShapeInteraction = new CircleShape();
+        mShapeInteraction.setY(0);
+        mShapeInteraction.setX(0);
+        float radius = 1F;
+        ((CircleShape) mShapeInteraction).setRadius(radius);
+        return mShapeInteraction;
+    }
+
     @Override
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
         return !mIsOpen && aEntity.mInteraction.getType() == Type.HERO;

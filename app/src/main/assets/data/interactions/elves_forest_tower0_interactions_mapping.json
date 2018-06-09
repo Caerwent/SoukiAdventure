@@ -1,21 +1,46 @@
 [
   {
-    "id":"portal1",
-    "template":"portal.json",
+    "id": "portal1",
+    "template": "portal_clickable.json",
     "properties": {
-      "targetMapId":"elves_forest4",
-      "isDefaultStart":"true"
+      "targetMapId": "elves_forest4",
+      "isDefaultStart": "true"
     },
-    "eventsAction":[],
-    "outputEvents":[]
+    "eventsAction": [],
+    "outputEvents": []
   },
   {
     "id": "portal2",
     "template": "portal.json",
+    "persistence": "GAME",
     "properties": {
+      "startState": "IDLE",
       "targetMapId": "elves_forest_tower1"
     },
-    "eventsAction": [],
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_inputcode",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
     "outputEvents": []
+  },
+  {
+    "id": "challenge_inputcode",
+    "template": "challenge_inputcode.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "INPUT_CODE",
+      "code": 3789
+    }
   }
 ]

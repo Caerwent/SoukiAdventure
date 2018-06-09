@@ -1,14 +1,14 @@
 {
   "type":"PORTAL",
   "atlas":"portal_hole.atlas",
-  "persistence":"GAME",
+  "persistence":"NONE",
   "defaultState":"ACTIVATED",
   "isClickable": "false",
   "isRendable": "true",
   "isMovable": "false",
   "properties": {
     "forceObstacleCollision": true,
-    "collisionHeightFactor":1
+    "collisionHeightFactor":1.5
   },
 
   "states": [

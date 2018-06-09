@@ -1,5 +1,0 @@
-house2_chest1 : scroll06 (où trouver des objets)
-house2_chest2 : scroll10 (drag and drop des objets)
-east_land2 : scroll04 (town portal)
-east_land10_chest1 : scroll03 (pouvoir de feu)
-forest2_chest2 : scroll02 (pouvoir de glace)

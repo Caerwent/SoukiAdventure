@@ -1,7 +1,6 @@
 package com.souki.game.adventure.interactions;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -692,7 +691,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
 
             } else if (mShapeCollision instanceof CircleShape) {
                 CircleShape shape = (CircleShape) mShapeCollision;
-                shape.getShape().setRadius((float) Math.max(0.2, mShapeRendering.getHeight() / mCollisionHeightFactor));
+                shape.getShape().setRadius((float) Math.max(0.2, mShapeRendering.getHeight()/2 / mCollisionHeightFactor));
             }
         }
     }
@@ -852,7 +851,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
     /*************************************** EVENTS ************************************/
     @Override
     public void onInteractionEvent(InteractionEvent aEvent) {
-        Gdx.app.debug("DEBUG", "onInteractionEvent id=" + getId() + " event.sourceId=" + aEvent.sourceId + " aEvent.type=" + aEvent.type + " aEvent.value=" + aEvent.value);
+        //Gdx.app.debug("DEBUG", "onInteractionEvent id=" + getId() + " event.sourceId=" + aEvent.sourceId + " aEvent.type=" + aEvent.type + " aEvent.value=" + aEvent.value);
 
         if (mEventsAction != null && aEvent != null) {
             for (InteractionEventAction eventAction : mEventsAction) {
@@ -911,22 +910,22 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
      */
     protected boolean doAction(InteractionActionType aAction) {
         if (aAction != null && InteractionActionType.ActionType.SET_STATE == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
 
             if (getState(aAction.value) != null) {
                 setState(aAction.value);
                 return true;
             }
         } else if (aAction != null && InteractionActionType.ActionType.SET_LIGHT == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
             initLight(aAction.value);
             return true;
         } else if (aAction != null && InteractionActionType.ActionType.REMOVE_LIGHT == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId + " value=" + aAction.value);
             removeLight();
             return true;
         } else if (aAction != null && InteractionActionType.ActionType.ACTIVATE_QUEST == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 
             Quest quest = QuestManager.getInstance().getQuestFromId(aAction.value);
             if (quest != null && !quest.isActivated() && !quest.isCompleted()) {
@@ -1013,7 +1012,7 @@ public class Interaction extends Entity implements ICollisionObstacleHandler, IC
             timeAction = mEffectLaunched.frames.size() / mEffectLaunched.fps;
         }
         if (mEffectLaunchedTime > timeAction) {
-            Gdx.app.debug("DEBUG", "stop effect " + mEffectLaunched.id.name() + " time=" + timeAction + " mEffectLaunchedTime=" + mEffectLaunchedTime);
+            //Gdx.app.debug("DEBUG", "stop effect " + mEffectLaunched.id.name() + " time=" + timeAction + " mEffectLaunchedTime=" + mEffectLaunchedTime);
             stopLaunchedEffect();
         }
     }

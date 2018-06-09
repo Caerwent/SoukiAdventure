@@ -1,6 +1,5 @@
 package com.souki.game.adventure.interactions;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.entity.components.CollisionInteractionComponent;
 import com.souki.game.adventure.entity.components.CollisionObstacleComponent;
@@ -123,17 +122,17 @@ public class InteractionObstacle extends Interaction {
         boolean res = super.doAction(aAction);
         boolean stateChanged = false;
         if (aAction != null && InteractionActionType.ActionType.OPEN == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+           //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 
             mIsOpen = true;
             stateChanged = true;
         } else if (aAction != null && InteractionActionType.ActionType.CLOSE == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 
             mIsOpen = false;
             stateChanged = true;
         } else if (aAction != null && InteractionActionType.ActionType.REMOVED == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 
             mIsDestroyed = true;
             stateChanged = true;
@@ -196,7 +195,7 @@ public class InteractionObstacle extends Interaction {
 
     protected void onStateChanged() {
         if (mIsDestroyed) {
-            Gdx.app.debug("DEBUG", "remove obstacle " + getId());
+            //Gdx.app.debug("DEBUG", "remove obstacle " + getId());
             mMap.getInteractions().removeValue(this, true);
             destroy();
             return;
@@ -217,7 +216,7 @@ public class InteractionObstacle extends Interaction {
                     add(mCollisionObstacleComponent);
                 }
             } else {
-                Gdx.app.debug("DEBUG", "remove obstacle when open" + getId());
+                //Gdx.app.debug("DEBUG", "remove obstacle when open" + getId());
                 for(CollisionObstacleComponent otherCollisionObstacleComponent:mCollisionsObstacle)
                 {
                     if(otherCollisionObstacleComponent.mHandler!=null) {
@@ -234,7 +233,7 @@ public class InteractionObstacle extends Interaction {
                 mCollisionHeightFactor = mDefaultCollisionHeightFactor;
             }
             if (getComponent(CollisionObstacleComponent.class) == null) {
-                Gdx.app.debug("DEBUG", "add obstacle when close" + getId());
+                //Gdx.app.debug("DEBUG", "add obstacle when close" + getId());
                 if(mCollisionObstacleComponent==null && isRendable())
                 {
                     mCollisionObstacleComponent =new CollisionObstacleComponent(mCollisionType, getShapeCollision(), mId, this, this);

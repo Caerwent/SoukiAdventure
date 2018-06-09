@@ -5,7 +5,7 @@
     "properties": {
       "targetMapId": "village",
       "isDefaultStart": "true",
-      "activateQuestId":"quest_talk_cat"
+      "activateQuestId": "quest_talk_cat"
     },
     "eventsAction": [],
     "outputEvents": []
@@ -15,6 +15,14 @@
     "template": "portal.json",
     "properties": {
       "targetMapId": "house2"
+    },
+    "eventsAction": [],
+    "outputEvents": []
+  },
+  {
+    "id": "chest1",
+    "template": "chest_invisible.json",
+    "properties": {
     },
     "eventsAction": [],
     "outputEvents": []
@@ -84,7 +92,7 @@
     "properties": {
       "dialogId": "dialog_cat"
     },
-    "questActions":[
+    "questActions": [
       {
         "questId": "quest_teddy_bear",
         "questState": "COMPLETED",
@@ -101,9 +109,8 @@
           "value": ""
         }
       }
-
     ],
-    "eventsAction":[
+    "eventsAction": [
       {
         "action": {
           "type": "DIALOG",

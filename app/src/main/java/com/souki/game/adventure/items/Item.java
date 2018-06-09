@@ -70,6 +70,7 @@ public class Item {
         Pick,
         PotionBlueSmall,
         PotionGreenSmall,
+        PotionOrangeLarge,
         PotionRedSmall,
         PotionRounededBrown,
         PotionSilver,
@@ -119,7 +120,8 @@ public class Item {
         Toaster,
         VialBlue,
         VialGreen,
-        VialRed
+        VialRed,
+        VialYellow
     }
 
     private ItemTypeID itemTypeID;

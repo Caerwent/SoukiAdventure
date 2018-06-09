@@ -1,0 +1,119 @@
+Banana <- island5   => quest_witch (forest8)
+Book<-house3
+Boots <- desert1_chest1 => quest_boots (village)
+Coal<- mines1, mines3, mines4, mines5, mines5_1, mines5_2, mines5_3, mines5_4 => mines2, mines3, mines4, 5*mines5,
+CrystalAnimBlue <- east_land10_chest1, mines4, mines6, caves1, caves4_1, caves4_2, 2 * caves4_3_chest1 => 2*caves3, 2*caves2, 4*caves5
+
+
+        CrystalsGreen <- mines5_4 => quest_crystals (mines5)
+        CrystalsPurple <- mines5_3 => quest_crystals (mines5)
+        Dagger <- DaggerBroken + quest_malo_blacksmith => elves_forest8_chest1, island3_2_chest1, forest4_2_chest1, FoodBread2
+        DaggerBroken <- quest_tree_activation => quest_malo_blacksmith
+        FoodBiscuit <- quest_lapin_bleu
+        FoodBread <- quest_farmer_shovel => quest_panda (desert1)
+        FoodBread2 <- FoodBread + Dagger => quest_panda (desert1)
+        FoodBread3 <- FoodBread2 + Toaster => quest_panda (desert1)
+        FoodShank <- mines5_chest1 => quest_panda (desert1)
+        Gear <- elves_forest3, house3, mines3_chest1, mines4, mines5, mines5_1, mines5_2, mines5_3, mines5_4 => mines2, mines3, mines4, 5*mines5
+        GlyphGreen <- elves_forest8_chest1 => quest_tree (elves_forest4)
+        GlyphRed <- forest4_2_chest1 => quest_tree (elves_forest4)
+        GlyphYellow <- island3_2_chest1 => quest_tree (elves_forest4)
+        Guitar <- forest3_tower1_chest1 => quest_guitar (village)
+        Hammer <- house3_chest => quest_malo (village)
+        JewelsBlue <- mines5_1 => quest_crystals (mines5)
+        JewelsRed <-mines5_2_chest1 => quest_crystals (mines5)
+        KeyCrystal <-quest_elf_reward => portal forest3_tower0 (forest3)
+        KeyIron <- house1_chest1, quest_elf_reward, forest1, forest3, forest5, forest6, mountains5, mines3, mines5_4 => house2_chest1, forest2_chest1, forest3_chest1,forest3_tower1_chest1, mountain4_chest1, mountain5_chest1, mines3_chest1, mines5_2_chest1
+        KeyMoon <- quest_tree_alive => portal elves_forest_tower0 (forest4)
+        KeyRed,
+        KeyRoyal <- quest_panda => desert1_chest1
+        KeyWood <- forest8 => house3_chest
+        LanternEmpty <- house2_chest1
+        LanternFull <- LanternEmpty + Oil
+        LanternOn <- LanternFull + Matches => portal caves2 (caves1)
+        Letter <- desert1_chest1 => quest_frog (house2)
+        MachineActivator <- mines6 => house3=> mines
+        Matches <- mines5_chest1 => LanternOn => mines
+        Mirror <- desert1_chest1
+        NecklaceJewelBlue,
+        NecklaceJewelGreen,
+        NecklaceJewelOrange,
+        NecklaceJewelRed,
+        Oil <- desert1_chest1 => LanternOn => mines
+        Pick,
+        PotionBlueSmall,
+        PotionGreenSmall => portal caves6 (caves5), portal caves4 (caves3)
+        PotionOrangeLarge => portal caves6 (caves5)
+        PotionRedSmall
+        PotionRounededBrown <- quest_witch => quest_elf (forest4)
+        PotionSilver => portal caves5 (caves2), portal caves6 (caves5)
+        PotionTealBig
+        PotionVioletLarge =>  portal caves6 (caves5)
+        PotionYellowSmall,
+        RingGold <- quest_obtain_portal => quest_return_ring (house1)
+        RobeBlue,
+        Scroll01 <- elves_forest_tower1_chest1
+        Scroll02 <- forest2_chest2 (pouvoir de glace)
+        Scroll03 <- east_land10_chest1 (pouvoir de feu)
+        Scroll04 <- east_land2 (town portal)
+        Scroll05,
+        Scroll06 <- house2_chest1 (où trouver des objets)
+        Scroll07 <- house3_chest
+        Scroll08 <- forest2_chest1
+        Scroll09,
+        Scroll10 <- house2_chest2 (drag and drop des objets)
+        Scroll11,
+        Scroll12,
+        Scroll13,
+        Scroll14,
+        Scroll15 <- east_land9_chest1 
+        Scroll16 <- east_land7
+        Stone1 <- elves_forest_tower1_chest1 => checkpoint caves ???
+        Stone2,
+        Stone3 <- island3 => checkpoint desert1
+        Stone4 <- mines4_chest1 => checkpoint mines5
+        Stone5,
+        Stone6,
+        Stone7,
+        Stone8,
+        Stone9,
+        Stone10,
+        Stone11,
+        Stone12 <- elves_forest_tower1_chest1 => checkpoint mountain3
+        Stone13 <- east_land10 => checkpoint forest1
+        Stone14 <- forest2 => checkpoint village
+        Stone15 <-quest_tree_activation => checkpoint elves_forest4
+        Stone16,
+        Shovel <- east_land8 => quest_farmer_shovel (east_land7) => FoodBread
+        Shovel2,
+        TeddyBear<-mountain5_chest1 => quest_teddy_bear => quest_lapin_bleu-> FoodBiscuit
+        Torch <- east_land9_chest1, desert1_chest1, elves_forest_tower0, mines6, caves1, 2*caves4_3_chest1 => 2*caves3, 2*caves2, 4*caves5
+        TorchFire <- LanternOn + Torch
+        Toaster <- house3_chest => FoodBread2 => quest_panda (desert1)
+        VialBlue <- house1_chest1, east_land2, east_land4, , east_land9, forest4_1_chest1, forest3_tower1_chest1, elves_forest1, island3_1, desert1_chest1, mountain1 => portal caves4 (caves3), PotionGreenSmall portal caves4 (caves3), PotionVioletLarge portal caves6 (caves5), portal caves3 (caves2), PotionSilver (caves2), PotionGreenSmall portal caves6 (caves5), PotionSilver portal caves6 (caves5)
+        VialYellow <- east_land1, forest2_chest1, mountains4_chest1, mines3_chest1, mines5_chest1, caves4 => , PotionGreenSmall portal caves6 (caves5), PotionOrangeLarge (portal caves6 (caves5)), PotionSilver (caves2), , PotionSilver portal caves6 (caves5)
+        VialRed <- east_land10_chest1, elves_forest2, 2*mountains4_chest1, 2*mines3_chest1 => PotionOrangeLarge (portal caves6 (caves5)), PotionVioletLarge (portal caves6 (caves5)), PotionSilver (caves2), PotionSilver portal caves6 (caves5)
+        
+        
+        
+INPUT_CODE_LOCATION :
+1234
+5564 => east_land9
+9872 => village_tower1
+6482
+3789 => elves_forest_tower0
+9967 => mines5
+4478 => forest3_tower0
+0806
+1947
+0070
+4731 => mines5_3
+6669
+9753
+1199
+8301
+8888
+5478
+9090 => caves5_1
+
+        

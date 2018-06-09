@@ -1,6 +1,5 @@
 package com.souki.game.adventure.interactions.monsters;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.souki.game.adventure.interactions.Interaction;
 import com.souki.game.adventure.interactions.InteractionActionType;
@@ -78,13 +77,13 @@ public class InteractionMonsterFireballGenerator extends Interaction {
     protected boolean doAction(InteractionActionType aAction) {
         boolean res = super.doAction(aAction);
         if (!res && aAction != null && InteractionActionType.ActionType.WAKEUP == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 
             setState(InteractionState.STATE_ACTIVATED);
             return true;
         }
         if (!res && aAction != null && InteractionActionType.ActionType.SLEEP == aAction.type) {
-            Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
+            //Gdx.app.debug("DEBUG", "doAction type=" + aAction.type + " id=" + mId);
 
             setState(InteractionState.STATE_IDLE);
             return true;

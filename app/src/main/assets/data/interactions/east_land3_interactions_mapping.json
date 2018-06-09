@@ -2,6 +2,7 @@
   {
     "id": "barrier1",
     "template": "barrier_wood_bottom_left.json",
+    "persistence": "GAME",
     "properties": {
     },
     "questActions": [
@@ -15,42 +16,8 @@
       }
     ],
     "eventsAction": [
-      {
-        "action": {
-          "type": "OPEN",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier1",
-            "type": "STATE",
-            "value": "OPEN"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "CLOSE",
-          "value": ""
-        },
-        "inputEvents": [
-          {
-            "sourceId": "barrier1",
-            "type": "STATE",
-            "value": "CLOSED"
-          }
-        ]
-      }
     ],
     "outputEvents": [
-      {
-        "type": "STATE",
-        "value": "CLOSED"
-      },
-      {
-        "type": "STATE",
-        "value": "OPEN"
-      }
     ]
   },
 
@@ -67,9 +34,21 @@
   {
     "id":"portal2",
     "template":"portal.json",
+    "persistence": "GAME",
     "properties": {
+      "startState":"IDLE",
       "targetMapId":"east_land4"
     },
+    "questActions": [
+      {
+        "questId": "quest_obtain_portal",
+        "questState": "FINISHED",
+        "action": {
+          "type": "SET_STATE",
+          "value": "ACTIVATED"
+        }
+      }
+    ],
     "eventsAction":[],
     "outputEvents":[]
   },

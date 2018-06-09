@@ -1,6 +1,5 @@
 package com.souki.game.adventure.gui.challenge;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -311,7 +310,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                         mPuzzleState[row][col - 1] = 0;
                         col = col - 1;
                         lastMove = rand;
-                        Gdx.app.debug("DEBUG", "rand=" + rand);
+                        //Gdx.app.debug("DEBUG", "rand=" + rand);
                     } else {
                         iter--;
                     }
@@ -322,7 +321,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                         mPuzzleState[row][col + 1] = 0;
                         col = col + 1;
                         lastMove = rand;
-                        Gdx.app.debug("DEBUG", "rand=" + rand);
+                        //Gdx.app.debug("DEBUG", "rand=" + rand);
                     } else {
                         iter--;
                     }
@@ -333,7 +332,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                         mPuzzleState[row - 1][col] = 0;
                         row = row - 1;
                         lastMove = rand;
-                        Gdx.app.debug("DEBUG", "rand=" + rand);
+                        //Gdx.app.debug("DEBUG", "rand=" + rand);
                     } else {
                         iter--;
                     }
@@ -344,7 +343,7 @@ public class ChallengeSlidingPuzzle extends ChallengeUI {
                         mPuzzleState[row + 1][col] = 0;
                         row = row + 1;
                         lastMove = rand;
-                        Gdx.app.debug("DEBUG", "rand=" + rand);
+                        //Gdx.app.debug("DEBUG", "rand=" + rand);
                     } else {
                         iter--;
                     }

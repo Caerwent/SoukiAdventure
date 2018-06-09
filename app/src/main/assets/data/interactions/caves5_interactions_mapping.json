@@ -40,24 +40,11 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "BLUE"
+          "value": "ORANGE"
         },
         "inputEvents": [
           {
             "sourceId": "challenge_laser1",
-            "type": "STATE",
-            "value": "COMPLETED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_LIGHT",
-          "value": "RED"
-        },
-        "inputEvents": [
-          {
-            "sourceId": "challenge_laser2",
             "type": "STATE",
             "value": "COMPLETED"
           }
@@ -70,7 +57,33 @@
         },
         "inputEvents": [
           {
+            "sourceId": "challenge_laser2",
+            "type": "STATE",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "VIOLET"
+        },
+        "inputEvents": [
+          {
             "sourceId": "challenge_laser3",
+            "type": "STATE",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "action": {
+          "type": "SET_LIGHT",
+          "value": "WHITE"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_laser4",
             "type": "STATE",
             "value": "COMPLETED"
           }
@@ -83,19 +96,6 @@
         },
         "inputEvents": [
           {
-            "sourceId": "challenge_laser4",
-            "type": "STATE",
-            "value": "COMPLETED"
-          }
-        ]
-      },
-      {
-        "action": {
-          "type": "SET_LIGHT",
-          "value": "PURPLE"
-        },
-        "inputEvents": [
-          {
             "sourceId": "challenge_laser1",
             "type": "STATE",
             "value": "COMPLETED",
@@ -112,7 +112,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "TEAD"
+          "value": "WHITE"
         },
         "inputEvents": [
           {
@@ -132,7 +132,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "GREEN"
+          "value": "#ffd06c"
         },
         "inputEvents": [
           {
@@ -152,7 +152,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "YELLOW"
+          "value": "WHITE"
         },
         "inputEvents": [
           {
@@ -172,7 +172,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "#ff8000"
+          "value": "#93ff93"
         },
         "inputEvents": [
           {
@@ -192,7 +192,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "BLUE"
+          "value": "#ffaeff"
         },
         "inputEvents": [
           {
@@ -353,7 +353,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "BLUE"
+      "color": "ORANGE"
     }
   },
   {
@@ -362,7 +362,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "RED"
+      "color": "GREEN"
     }
   },
   {
@@ -371,7 +371,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "GREEN"
+      "color": "VIOLET"
     }
   },
   {
@@ -380,7 +380,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "YELLOW"
+      "color": "WHITE"
     }
   },
   {

@@ -73,7 +73,7 @@
     "outputEvents": []
   },
   {
-    "id": "﻿portal_hole1",
+    "id": "portal_hole1",
     "template": "portal_hole.json",
     "properties": {
       "targetMapId": "generic_hole"
@@ -91,7 +91,7 @@
     "outputEvents": []
   },
   {
-    "id": "﻿portal_hole2",
+    "id": "portal_hole2",
     "template": "portal_hole.json",
     "properties": {
       "targetMapId": "generic_hole"
@@ -108,9 +108,8 @@
     "eventsAction": [],
     "outputEvents": []
   },
-  ,
   {
-    "id": "﻿portal_hole3",
+    "id": "portal_hole3",
     "template": "portal_hole.json",
     "properties": {
       "targetMapId": "generic_hole"
@@ -271,7 +270,7 @@
         },
         "inputEvents": [
           {
-            "sourceId": "THIS",
+            "sourceId": "malo",
             "type": "END_PATH",
             "value": "path_malo1"
           }

@@ -551,7 +551,7 @@ public class ShapeUtils {
             RectangleShape otherShape = ((RectangleShape) aOtherShape);
             Polygon polygon = new Polygon(new float[]{0, 0, otherShape.getShape().getWidth(), 0, otherShape.getShape().getWidth(), otherShape.getShape().getHeight(), 0, otherShape.getShape().getHeight()});
             polygon.setPosition(otherShape.getX(), otherShape.getY());
-            return Intersector.overlapConvexPolygons(circlePoly, ((PolygonShape) aOtherShape).getShape().getTransformedVertices(),
+            return Intersector.overlapConvexPolygons(circlePoly, polygon.getTransformedVertices(),
                     mvt);
         } else if (aShape.getType() == Shape.Type.RECT && aOtherShape.getType() == Shape.Type.POLYGON) {
             RectangleShape shape = ((RectangleShape) aShape);

@@ -27,7 +27,7 @@
   "outputEvents": [
     {
       "type": "STATE",
-      "value": "ACTIVATED"
+      "value": "COMPLETED"
     },
     {
       "type": "STATE",

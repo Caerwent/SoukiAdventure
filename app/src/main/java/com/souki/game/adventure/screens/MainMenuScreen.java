@@ -10,16 +10,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.souki.game.adventure.AssetsUtility;
 import com.souki.game.adventure.MyGame;
 import com.souki.game.adventure.audio.AudioManager;
-import com.souki.game.adventure.persistence.LocationProfile;
+import com.souki.game.adventure.items.Item;
+import com.souki.game.adventure.items.ItemFactory;
 import com.souki.game.adventure.persistence.PersistenceProvider;
 import com.souki.game.adventure.persistence.Profile;
 import com.souki.game.adventure.quests.Quest;
 import com.souki.game.adventure.quests.QuestManager;
 import com.souki.game.adventure.quests.QuestTask;
+
+import java.util.ArrayList;
 
 import static com.souki.game.adventure.Settings.TARGET_HEIGHT;
 import static com.souki.game.adventure.Settings.TARGET_WIDTH;
@@ -32,6 +36,8 @@ public class MainMenuScreen implements Screen {
 
     private Stage _stage;
 
+    private TextButton mLoadGameButton;
+
     public MainMenuScreen() {
 
         //creation
@@ -39,7 +45,7 @@ public class MainMenuScreen implements Screen {
         Table table = new Table();
         table.setFillParent(true);
 
-        TextButton loadGameButton = new TextButton(AssetsUtility.getString("ui_continue_game"), GenericUI.getInstance().getSkin());
+        mLoadGameButton = new TextButton(AssetsUtility.getString("ui_continue_game"), GenericUI.getInstance().getSkin());
         TextButton newGameButton = new TextButton(AssetsUtility.getString("ui_new_game"), GenericUI.getInstance().getSkin());
         TextButton settingsButton = new TextButton(AssetsUtility.getString("ui_settings"), GenericUI.getInstance().getSkin());
         TextButton exitButton = new TextButton(AssetsUtility.getString("ui_exit"), GenericUI.getInstance().getSkin());
@@ -48,14 +54,18 @@ public class MainMenuScreen implements Screen {
 
 
         //Layout
-        if (PersistenceProvider.isProfileExist()) {
-            table.add(loadGameButton).spaceBottom(10).row();
+
+        table.add(mLoadGameButton).spaceBottom(10).row();
+        if (!PersistenceProvider.isProfileExist()) {
+            mLoadGameButton.setVisible(false);
         }
         table.add(newGameButton).spaceBottom(10).row();
         table.add(settingsButton).spaceBottom(10).row();
-        table.add(exitButton).spaceBottom(10).row();
 
         table.add(debugButton).spaceBottom(10).row();
+
+        table.add(exitButton).spaceBottom(10).row();
+
 
         _stage.addActor(table);
 
@@ -87,25 +97,26 @@ public class MainMenuScreen implements Screen {
                                           } else {
                                               MyGame.getInstance().newProfile();
                                               MyGame.getInstance().setScreen(MyGame.ScreenType.MainGame);
+                                              mLoadGameButton.setVisible(true);
                                           }
 
                                       }
                                   }
         );
 
-        loadGameButton.addListener(new ClickListener() {
+        mLoadGameButton.addListener(new ClickListener() {
 
-                                       @Override
-                                       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                                           AudioManager.getInstance().onAudioEvent(AudioManager.UI_CLIC_SOUND);
-                                           return true;
-                                       }
+                                        @Override
+                                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                                            AudioManager.getInstance().onAudioEvent(AudioManager.UI_CLIC_SOUND);
+                                            return true;
+                                        }
 
-                                       @Override
-                                       public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                                           MyGame.getInstance().setScreen(MyGame.ScreenType.MainGame);
-                                       }
-                                   }
+                                        @Override
+                                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                                            MyGame.getInstance().setScreen(MyGame.ScreenType.MainGame);
+                                        }
+                                    }
         );
         settingsButton.addListener(new ClickListener() {
 
@@ -137,7 +148,7 @@ public class MainMenuScreen implements Screen {
 
                                }
         );
-
+        debugButton.setVisible(false);
         debugButton.addListener(new ClickListener() {
 
                                     @Override
@@ -197,26 +208,28 @@ public class MainMenuScreen implements Screen {
 
         /*CHANGE QUEST STATE*/
 
-        Quest quest = QuestManager.getInstance().getQuestFromId("quest_final");
+        Quest quest = QuestManager.getInstance().getQuestFromId("quest_malo");
         quest.setActivated(false);
         quest.setCompleted(false);
         for (QuestTask task : quest.getTasks()) {
             task.setCompleted(false);
         }
-        Profile.getInstance().updateQuestProfile("quest_final", quest);
-        Profile.getInstance().setGameMode(Profile.GAME_MODE.MODE_NORMAL);
+        Profile.getInstance().updateQuestProfile("quest_malo", quest);
+
+      //  Profile.getInstance().setGameMode(Profile.GAME_MODE.MODE_NORMAL);
+
         /*CHANGE LOCATION*/
 
-        LocationProfile locationProfile = new LocationProfile();
-        locationProfile.mMapId = "caves6";
+    /*    LocationProfile locationProfile = new LocationProfile();
+        locationProfile.mMapId = "east_land3";
         // locationProfile.mFromMapId = aFromMap;
 
         Profile.getInstance().setLocationProfile(locationProfile);
-
+*/
 
         /* CHANGE ITEMS*/
 
-  /*     Array<Item> inventory = new Array<Item>();
+       Array<Item> inventory = new Array<Item>();
         ArrayList<String> savedInventory = Profile.getInstance().getInventory();
 
         if (savedInventory != null) {
@@ -230,11 +243,8 @@ public class MainMenuScreen implements Screen {
                     inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.valueOf(itemId)));
             }
         }
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.TorchFire));
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.CrystalAnimBlue));
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionTealBig));
-        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialBlue));
-        Profile.getInstance().updateInventory(inventory);*/
+        inventory.add(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Hammer));
+        Profile.getInstance().updateInventory(inventory);
 
 
         /*CHANGE MAP ITEM STATE*/
@@ -251,7 +261,7 @@ public class MainMenuScreen implements Screen {
 /** CHANGE INTERACTION STATE **/
 
     /*    GameSession session = Profile.getInstance().getPersistentGameSession();
-        session.putSessionDataForMapAndEntity("caves5", "portal4","state", "IDLE");
+        session.putSessionDataForMapAndEntity("east_land3", "portal2", "state", "IDLE");
 
 
         Profile.getInstance().updatePersistentGameSession(session);*/

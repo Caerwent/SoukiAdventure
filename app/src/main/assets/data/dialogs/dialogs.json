@@ -741,7 +741,7 @@
     "id": "quest_elf_reward",
     "dialogs": [
       {
-        "speaker": "npc_elf_transformed_name",
+        "speaker": "npc_elf_name",
         "phrases": [
           "quest_elf_reward_phrase1"
         ]

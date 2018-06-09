@@ -7,5 +7,15 @@
     },
     "eventsAction": [],
     "outputEvents": []
+  },
+  {
+    "id":"chest1",
+    "template":"chest_type1.json",
+    "persistence": "SESSION",
+    "properties": {
+    },
+
+    "eventsAction":[],
+    "outputEvents":[]
   }
 ]

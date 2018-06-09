@@ -20,7 +20,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "PURPLE"
+          "value": "BLUE"
         },
         "inputEvents": [
           {
@@ -57,7 +57,7 @@
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "TEAL"
+          "value": "WHITE"
         },
         "inputEvents": [
           {
@@ -97,7 +97,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "PURPLE"
+      "color": "BLUE"
     }
   },
   {
@@ -106,7 +106,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "TEAL"
+      "color": "WHITE"
     }
   },
   {

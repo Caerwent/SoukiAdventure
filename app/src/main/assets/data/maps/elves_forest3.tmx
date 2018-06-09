@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-up" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="42">
+<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="43">
  <properties>
   <property name="music" value="THEME_FOREST_ELVES"/>
  </properties>
@@ -90,5 +90,7 @@
   <object id="23" x="69" y="546" width="834" height="81"/>
   <object id="24" x="889" y="355" width="73" height="102"/>
  </objectgroup>
- <objectgroup name="items"/>
+ <objectgroup name="items">
+  <object id="42" name="Gear" type="ITEM" gid="1262" x="337" y="555" width="32" height="32"/>
+ </objectgroup>
 </map>

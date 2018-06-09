@@ -27,20 +27,20 @@
           {
             "sourceId": "challenge_laser2",
             "type": "STATE",
-            "value": "COMPLETED",
+            "value": "COMPLETED"
           }
         ]
       },
       {
         "action": {
           "type": "SET_LIGHT",
-          "value": "YELLOW"
+          "value": "GREEN"
         },
         "inputEvents": [
           {
             "sourceId": "challenge_laser1",
             "type": "STATE",
-            "value": "COMPLETED",
+            "value": "COMPLETED"
           }
         ]
       },
@@ -152,7 +152,7 @@
     "persistence": "GAME",
     "properties": {
       "type": "LASER",
-      "color": "YELLOW"
+      "color": "GREEN"
     }
   },
   {

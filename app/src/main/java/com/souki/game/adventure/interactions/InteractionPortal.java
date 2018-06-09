@@ -43,7 +43,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     protected int mWidth = -1;
     protected int mHeight = -1;
 
-    protected boolean mCollisionObstacle=false;
+    protected boolean mCollisionObstacle = false;
 
     private RectangleShape mMarkShape;
     private TextureRegion mInteractionTextureRegion;
@@ -56,28 +56,28 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
         if (mProperties != null) {
             if (mProperties.containsKey("activateQuestId")) {
-                mQuestId = (String) aMapping.properties.get("activateQuestId");
+                mQuestId = (String) mProperties.get("activateQuestId");
             }
             if (mProperties.containsKey("targetMapId")) {
-                mTargetMapId = (String) aMapping.properties.get("targetMapId");
+                mTargetMapId = (String) mProperties.get("targetMapId");
             }
             if (mProperties.containsKey("isDefaultStart")) {
-                mIsDefaultStart = Boolean.parseBoolean((String) aMapping.properties.get("isDefaultStart"));
+                mIsDefaultStart = Boolean.parseBoolean((String) mProperties.get("isDefaultStart"));
             }
             if (mProperties.containsKey("activatedByQuestId")) {
-                mActivatedByQuestId = (String) aMapping.properties.get("activatedByQuestId");
+                mActivatedByQuestId = (String) mProperties.get("activatedByQuestId");
             }
             if (mProperties.containsKey("activatedByItem")) {
-                mActivatedByItem = (String) aMapping.properties.get("activatedByItem");
+                mActivatedByItem = (String) mProperties.get("activatedByItem");
             }
             if (mProperties.containsKey("width")) {
-                mWidth = ((Float) aMapping.properties.get("width")).intValue();
+                mWidth = ((Float) mProperties.get("width")).intValue();
             }
             if (mProperties.containsKey("height")) {
-                mHeight = ((Float) aMapping.properties.get("height")).intValue();
+                mHeight = ((Float) mProperties.get("height")).intValue();
             }
             if (mProperties.containsKey("forceObstacleCollision")) {
-                mCollisionObstacle = ((Boolean) aMapping.properties.get("forceObstacleCollision")).booleanValue();
+                mCollisionObstacle = ((Boolean) mProperties.get("forceObstacleCollision")).booleanValue();
             }
         }
         initialize(x, y, aMapping);
@@ -127,8 +127,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
         }
 
 
-        if(!mCollisionObstacle)
-        {
+        if (!mCollisionObstacle) {
             remove(CollisionObstacleComponent.class);
         }
         remove(CollisionEffectComponent.class);
@@ -209,7 +208,9 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     @Override
     public void startToInteract() {
         super.startToInteract();
-        remove(CollisionObstacleComponent.class);
+        if (!mCollisionObstacle) {
+            remove(CollisionObstacleComponent.class);
+        }
         remove(CollisionEffectComponent.class);
 
     }
@@ -228,7 +229,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     }
 
     public boolean hasCollisionInteraction(CollisionInteractionComponent aEntity) {
-        return mActivatedByQuestId == null && mIsActivated && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name) && aEntity.mInteraction.getType() == Type.HERO;
+        return !mCollisionObstacle && mActivatedByQuestId == null && mIsActivated && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name) && aEntity.mInteraction.getType() == Type.HERO;
     }
 
 
@@ -241,8 +242,8 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     @Override
     public Shape createShapeCollision() {
         mShapeCollision = new CircleShape();
-        mShapeCollision.setY(getPosition().x);
-        mShapeCollision.setX(getPosition().y);
+        mShapeCollision.setY(0);
+        mShapeCollision.setX(0);
         float radius = 0.5F;
         ((CircleShape) mShapeCollision).setRadius(radius);
         return mShapeCollision;
@@ -252,8 +253,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
     public boolean onCollisionObstacleStart(CollisionObstacleComponent aEntity, boolean aIsPrediction) {
 
         boolean ret = super.onCollisionObstacleStart(aEntity, aIsPrediction);
-        if(ret && mActivatedByItem == null && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name))
-        {
+        if (ret && mActivatedByItem == null && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name)) {
             teleport();
         }
         return ret;
@@ -335,7 +335,7 @@ public class InteractionPortal extends Interaction implements IQuestListener {
 
     @Override
     public void onStopCollisionInteraction(CollisionInteractionComponent aEntity) {
-        if (mActivatedByQuestId == null  && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name)) {
+        if (mActivatedByQuestId == null && InteractionState.STATE_ACTIVATED.equals(mCurrentState.name)) {
             mIsActivated = true;
         }
         mIsInteractionShown = false;
@@ -383,4 +383,14 @@ public class InteractionPortal extends Interaction implements IQuestListener {
         mQuestId = aQuestId;
     }
 
+    @Override
+    protected boolean doAction(InteractionActionType aAction) {
+        boolean res = super.doAction(aAction);
+        if (!res && aAction != null && InteractionActionType.ActionType.REMOVED == aAction.type) {
+            mMap.getInteractions().removeValue(this, true);
+            destroy();
+            return true;
+        }
+        return res;
+    }
 }

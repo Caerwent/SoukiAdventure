@@ -100,9 +100,10 @@ public class ChallengeInputCode extends ChallengeUI {
         if (isResolved != null && isResolved.booleanValue()) {
             mIsResolved = true;
             mCode[0] = mTargetCode/1000;
-            mCode[1] = (mTargetCode - mCode[0])/100;
-            mCode[2] =(mTargetCode - mCode[0] - mCode[1]*100)/10;
-            mCode[3] = (mTargetCode - mCode[0] - mCode[1]*100 - mCode[2]*10);
+            mCode[1] = (mTargetCode - mCode[0]*1000)/100;
+            mCode[2] =(mTargetCode - mCode[0]*1000 - mCode[1]*100)/10;
+            mCode[3] = (mTargetCode - mCode[0]*1000 - mCode[1]*100 - mCode[2]*10);
+            mNbInputs=4;
         }
         refreshUI();
     }

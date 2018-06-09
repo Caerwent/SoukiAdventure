@@ -7,6 +7,21 @@
     ]
   },
   {
+    "id": "generic_hole_chest1",
+    "items": [
+      "VialBlue",
+      "VialYellow",
+      "VialRed"
+    ]
+  },
+  {
+    "id": "house1_chest1",
+    "items": [
+      "VialBlue",
+      "KeyIron"
+    ]
+  },
+  {
     "id": "house2_chest2",
     "items": [
       "Scroll10"
@@ -25,8 +40,7 @@
     "items": [
       "Hammer",
       "Toaster",
-      "Scroll07",
-      "Scroll16"
+      "Scroll07"
     ]
   },
   {
@@ -47,7 +61,7 @@
   {
     "id": "forest2_chest1",
     "items": [
-      "VialGreen",
+      "VialYellow",
       "Scroll08"
     ]
   },
@@ -60,7 +74,8 @@
   {
     "id": "forest3_tower1_chest1",
     "items": [
-      "Guitar"
+      "Guitar",
+      "VialBlue"
     ]
   },
   {
@@ -110,7 +125,7 @@
     "items": [
       "VialRed",
       "VialRed",
-      "VialGreen",
+      "VialYellow",
       "NecklaceJewelBlue"
     ]
   },
@@ -125,7 +140,7 @@
     "items": [
       "VialRed",
       "VialRed",
-      "VialGreen",
+      "VialYellow",
       "Gear"
     ]
   },

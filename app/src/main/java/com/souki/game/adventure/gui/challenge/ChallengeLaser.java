@@ -33,11 +33,12 @@ public class ChallengeLaser extends ChallengeUI {
     public static enum LASER_COLOR {
         BLUE("0000FF", Item.ItemTypeID.VialBlue, "laser_blue"),
         RED("FF0000", Item.ItemTypeID.VialRed, "laser_red"),
-        GREEN("00FF00", Item.ItemTypeID.VialGreen, "laser_green"),
+        GREEN("00FF00", ChallengeMachine.IS_ADDITIVE ? Item.ItemTypeID.VialGreen : Item.ItemTypeID.PotionGreenSmall, "laser_green"),
         PURPLE("d91aea", Item.ItemTypeID.PotionVioletLarge, "laser_purple"),
         TEAL("8bdcf7", Item.ItemTypeID.PotionTealBig, "laser_teal"),
         WHITE("FFFFFF", Item.ItemTypeID.PotionSilver, "laser_white"),
-        YELLOW("f6ee16", Item.ItemTypeID.PotionYellowLarge, "laser_yellow");
+        YELLOW("f6ee16", ChallengeMachine.IS_ADDITIVE ? Item.ItemTypeID.PotionYellowLarge : Item.ItemTypeID.VialYellow, "laser_yellow"),
+        ORANGE("ff9600", Item.ItemTypeID.PotionYellowLarge, "laser_orange");
 
         public Color mColor;
         public Item.ItemTypeID mPotionType;

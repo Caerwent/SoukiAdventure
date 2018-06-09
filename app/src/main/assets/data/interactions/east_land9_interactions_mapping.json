@@ -32,5 +32,37 @@
     "template":"chest_type1.json",
     "properties": {
     }
+  },
+  {
+    "id": "challenge_inputcode",
+    "template": "challenge_inputcode.json",
+    "persistence": "GAME",
+    "properties": {
+      "type": "INPUT_CODE",
+      "code": 5564
+    }
+  },
+  {
+    "id": "barrier1",
+    "template": "barrier_wood_left_top.json",
+    "properties": {
+    },
+    "eventsAction": [
+      {
+        "action": {
+          "type": "SET_STATE",
+          "value": "OPEN"
+        },
+        "inputEvents": [
+          {
+            "sourceId": "challenge_inputcode",
+            "type": "CHALLENGE_COMPLETED",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "outputEvents": [
+    ]
   }
 ]

@@ -571,7 +571,7 @@ public class MapAndSpritesRenderer2 extends OrthogonalTiledMapRenderer {
         endRender();
         shapeRenderer.end();
 //        renderInteractionShapes();
-//        renderShapes(mMapRendables);
+ //       renderShapes(mMapRendables);
 //       renderCollisionShapes();
 
     }

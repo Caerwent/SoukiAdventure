@@ -25,16 +25,23 @@ laser_green
   orig: 64, 32
   offset: 0, 0
   index: -1
-laser_purple
+laser_orange
   rotate: false
   xy: 2, 36
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
-laser_red
+laser_purple
   rotate: false
   xy: 132, 166
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+laser_red
+  rotate: false
+  xy: 2, 2
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
@@ -48,21 +55,21 @@ laser_small
   index: -1
 laser_teal
   rotate: false
-  xy: 2, 2
+  xy: 132, 132
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 laser_white
   rotate: false
-  xy: 132, 132
+  xy: 132, 98
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 laser_yellow
   rotate: false
-  xy: 132, 98
+  xy: 102, 64
   size: 64, 32
   orig: 64, 32
   offset: 0, 0

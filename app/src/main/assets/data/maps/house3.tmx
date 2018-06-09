@@ -43,13 +43,13 @@
    <polygon points="0,0 -1,89 640,90 637,-1"/>
   </object>
   <object id="3" x="1" y="84">
-   <polygon points="0,0 29,0 28,362 0,362"/>
+   <polygon points="0,0 29,0 28,374 0,374"/>
   </object>
-  <object id="4" x="606" y="438">
-   <polygon points="0,0 35,0 34,-358 1,-355.931"/>
+  <object id="4" x="606" y="459">
+   <polygon points="0,0 35,0 34,-379 1,-376.81"/>
   </object>
-  <object id="5" x="-1" y="442">
-   <polygon points="0,0 642,-1 639,39 0,38"/>
+  <object id="5" x="-1" y="459.55">
+   <polygon points="0,0 642,-0.55 639,21.45 0,20.9"/>
   </object>
   <object id="7" x="387" y="254">
    <polygon points="0,0 0,32 219,34 218,-1"/>
@@ -95,7 +95,7 @@
   </object>
  </objectgroup>
  <objectgroup name="interactions">
-  <object id="1" name="portal1" gid="2338" x="226" y="440" width="32" height="32"/>
+  <object id="1" name="portal1" gid="2338" x="224" y="452" width="32" height="32"/>
   <object id="43" name="chest" gid="2091" x="316.667" y="116.667" width="32" height="32"/>
   <object id="44" name="challenge_the_machine" gid="2091" x="36" y="351" width="32" height="32"/>
  </objectgroup>

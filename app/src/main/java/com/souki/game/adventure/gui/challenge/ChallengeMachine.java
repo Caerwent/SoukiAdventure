@@ -29,15 +29,15 @@ public class ChallengeMachine extends ChallengeUI {
     private static final int LIQUID_RESULT_NONE = 0;
     private static final int LIQUID_RESULT_BLUE = 1;
     private static final int LIQUID_RESULT_RED = 2;
-    private static final int LIQUID_RESULT_GREEN = 3;
+    private static final int LIQUID_RESULT_YELLOW_OR_GREEN = 3;
     private static final int LIQUID_RESULT_BLUE_RED = 4;
-    private static final int LIQUID_RESULT_BLUE_GREEN = 5;
-    private static final int LIQUID_RESULT_RED_GREEN = 6;
-    private static final int LIQUID_RESULT_BLUE_GREEN_RED = 7;
+    private static final int LIQUID_RESULT_BLUE_YELLOW_OR_GREEN = 5;
+    private static final int LIQUID_RESULT_RED_YELLOW_OR_GREEN = 6;
+    private static final int LIQUID_RESULT_BLUE_RED_YELLOW_OR_GREEN = 7;
 
     private static final String KEY_HAS_BLUE = "has_blue";
     private static final String KEY_HAS_RED = "has_red";
-    private static final String KEY_HAS_GREEN = "has_green";
+    private static final String KEY_HAS_YELLOW_OR_GREEN = "has_yellow_or_green";
     private static final String KEY_MIX_RESULT = "mix_result";
     private static final String KEY_HAS_ACTIVATOR = "has_activator";
 
@@ -45,7 +45,7 @@ public class ChallengeMachine extends ChallengeUI {
     private Image mBackground;
     private Image mBlue, mBubbleBlue;
     private Image mRed, mBubbleRed;
-    private Image mGreen, mBubbleGreen;
+    private Image mYellowOrGreen, mBubbleYellowOrGreen;
     private Image mMixImg;
     private Image mActivatorOn;
     private Image mActivatorOff;
@@ -56,15 +56,15 @@ public class ChallengeMachine extends ChallengeUI {
 
     private boolean mHasBlue = false;
     private boolean mHasRed = false;
-    private boolean mHasGreen = false;
+    private boolean mHasYellowOrGreen = false;
     private int mMixResult = LIQUID_RESULT_NONE;
     private boolean mHasActivator = false;
     private boolean mIsActivated = false;
 
+    public final static boolean IS_ADDITIVE = false;
+
     public ChallengeMachine() {
         super();
-
-
     }
 
     @Override
@@ -84,12 +84,12 @@ public class ChallengeMachine extends ChallengeUI {
         mBubbleRed = new Image(mAtlas.findRegion("theMachine_bubble_on"));
         mBubbleRed.setScaling(Scaling.none);
         mBubbleRed.setVisible(false);
-        mGreen = new Image(mAtlas.findRegion("theMachine_liquid_green"));
-        mGreen.setScaling(Scaling.none);
-        mGreen.setVisible(false);
-        mBubbleGreen = new Image(mAtlas.findRegion("theMachine_bubble_on"));
-        mBubbleGreen.setScaling(Scaling.none);
-        mBubbleGreen.setVisible(false);
+        mYellowOrGreen = new Image(IS_ADDITIVE ? mAtlas.findRegion("theMachine_liquid_green") :mAtlas.findRegion("theMachine_liquid_yellow"));
+        mYellowOrGreen.setScaling(Scaling.none);
+        mYellowOrGreen.setVisible(false);
+        mBubbleYellowOrGreen = new Image(mAtlas.findRegion("theMachine_bubble_on"));
+        mBubbleYellowOrGreen.setScaling(Scaling.none);
+        mBubbleYellowOrGreen.setVisible(false);
         mPipe = new Image(mAtlas.findRegion("theMachine_pipe"));
         mPipe.setScaling(Scaling.none);
         mPipe.setVisible(true);
@@ -131,7 +131,8 @@ public class ChallengeMachine extends ChallengeUI {
         helpPlus.setAlignment(Align.center);
         mHelpTable.add(helpPlus);
 
-        Image helpVialGreen = new Image(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialGreen).getTextureRegion());
+        Image helpVialGreen = new Image(IS_ADDITIVE ? ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialGreen).getTextureRegion() :
+                ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialYellow).getTextureRegion());
         helpVialGreen.setScaling(Scaling.none);
         mHelpTable.add(helpVialGreen);
 
@@ -166,10 +167,10 @@ public class ChallengeMachine extends ChallengeUI {
         mGroup.addActor(mBubbleBlue);
         mBlue.setPosition(153, -137);
         mBubbleBlue.setPosition(152,-56);
-        mGroup.addActor(mGreen);
-        mGroup.addActor(mBubbleGreen);
-        mGreen.setPosition(182, -137);
-        mBubbleGreen.setPosition(182,-56);
+        mGroup.addActor(mYellowOrGreen);
+        mGroup.addActor(mBubbleYellowOrGreen);
+        mYellowOrGreen.setPosition(182, -137);
+        mBubbleYellowOrGreen.setPosition(182,-56);
         mGroup.addActor(mRed);
         mGroup.addActor(mBubbleRed);
         mRed.setPosition(208, -137);
@@ -198,9 +199,9 @@ public class ChallengeMachine extends ChallengeUI {
         if (hasBlue != null) {
             mHasBlue = hasBlue.booleanValue();
         }
-        Boolean hasGreen = (Boolean) aGameSession.getSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_GREEN);
-        if (hasGreen != null) {
-            mHasGreen = hasGreen.booleanValue();
+        Boolean hasYellow = (Boolean) aGameSession.getSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_YELLOW_OR_GREEN);
+        if (hasYellow != null) {
+            mHasYellowOrGreen = hasYellow.booleanValue();
         }
         Boolean hasRed = (Boolean) aGameSession.getSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_RED);
         if (hasRed != null) {
@@ -220,7 +221,7 @@ public class ChallengeMachine extends ChallengeUI {
     public GameSession saveInPersistence(GameSession aGameSession) {
         aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_BLUE, mHasBlue);
         aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_RED, mHasRed);
-        aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_GREEN, mHasGreen);
+        aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_YELLOW_OR_GREEN, mHasYellowOrGreen);
         aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_MIX_RESULT, mMixResult);
         aGameSession.putSessionDataForMapAndEntity(mInteractionChallenge.getMap().getMapName(), mInteractionChallenge.getId(), KEY_HAS_ACTIVATOR, mHasActivator);
         return aGameSession;
@@ -242,8 +243,8 @@ public class ChallengeMachine extends ChallengeUI {
         if (aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.VialBlue) && !mHasBlue) {
             mHasBlue = true;
             EventDispatcher.getInstance().onItemLost(aSourceSlot.getItemOnTop());
-        } else if (aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.VialGreen) && !mHasGreen) {
-            mHasGreen = true;
+        } else if ((IS_ADDITIVE ? aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.VialGreen):aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.VialYellow) ) && !mHasYellowOrGreen) {
+            mHasYellowOrGreen = true;
             EventDispatcher.getInstance().onItemLost(aSourceSlot.getItemOnTop());
         } else if (aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.VialRed) && !mHasRed) {
             mHasRed = true;
@@ -261,26 +262,26 @@ public class ChallengeMachine extends ChallengeUI {
     protected void onActivate(boolean isActivated) {
         mIsActivated=isActivated;
         if (isActivated) {
-            if (mHasBlue && !mHasGreen && !mHasRed) {
+            if (mHasBlue && !mHasYellowOrGreen && !mHasRed) {
                 mMixResult = LIQUID_RESULT_BLUE;
-            } else if (mHasGreen && !mHasBlue && !mHasRed) {
-                mMixResult = LIQUID_RESULT_GREEN;
-            } else if (mHasRed && !mHasGreen && !mHasBlue) {
+            } else if (mHasYellowOrGreen && !mHasBlue && !mHasRed) {
+                mMixResult = LIQUID_RESULT_YELLOW_OR_GREEN;
+            } else if (mHasRed && !mHasYellowOrGreen && !mHasBlue) {
                 mMixResult = LIQUID_RESULT_RED;
-            } else if (mHasRed && mHasGreen && !mHasBlue) {
-                mMixResult = LIQUID_RESULT_RED_GREEN;
-            } else if (!mHasRed && mHasGreen && mHasBlue) {
-                mMixResult = LIQUID_RESULT_BLUE_GREEN;
-            } else if (mHasRed && !mHasGreen && mHasBlue) {
+            } else if (mHasRed && mHasYellowOrGreen && !mHasBlue) {
+                mMixResult = LIQUID_RESULT_RED_YELLOW_OR_GREEN;
+            } else if (!mHasRed && mHasYellowOrGreen && mHasBlue) {
+                mMixResult = LIQUID_RESULT_BLUE_YELLOW_OR_GREEN;
+            } else if (mHasRed && !mHasYellowOrGreen && mHasBlue) {
                 mMixResult = LIQUID_RESULT_BLUE_RED;
-            } else if (mHasRed && mHasGreen && mHasBlue) {
-                mMixResult = LIQUID_RESULT_BLUE_GREEN_RED;
+            } else if (mHasRed && mHasYellowOrGreen && mHasBlue) {
+                mMixResult = LIQUID_RESULT_BLUE_RED_YELLOW_OR_GREEN;
             } else {
                 mMixResult = LIQUID_RESULT_NONE;
             }
             mHasBlue = false;
             mHasRed = false;
-            mHasGreen = false;
+            mHasYellowOrGreen = false;
 
         }
         mInteractionChallenge.saveInPersistence();
@@ -294,22 +295,22 @@ public class ChallengeMachine extends ChallengeUI {
         if (mMixResult == LIQUID_RESULT_BLUE) {
             hasChanged=true;
             EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialBlue));
-        } else if (mMixResult == LIQUID_RESULT_GREEN) {
+        } else if (mMixResult == LIQUID_RESULT_YELLOW_OR_GREEN) {
             hasChanged=true;
-            EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialGreen));
+            EventDispatcher.getInstance().onItemFound(IS_ADDITIVE ? ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialGreen) :ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialYellow));
         } else if (mMixResult == LIQUID_RESULT_RED) {
             hasChanged=true;
             EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.VialRed));
-        } else if (mMixResult == LIQUID_RESULT_RED_GREEN) {
+        } else if (mMixResult == LIQUID_RESULT_RED_YELLOW_OR_GREEN) {
             hasChanged=true;
-            EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionYellowLarge));
-        } else if (mMixResult == LIQUID_RESULT_BLUE_GREEN) {
+            EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(IS_ADDITIVE ? Item.ItemTypeID.PotionYellowLarge : Item.ItemTypeID.PotionOrangeLarge));
+        } else if (mMixResult == LIQUID_RESULT_BLUE_YELLOW_OR_GREEN) {
             hasChanged=true;
-            EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionTealBig));
+            EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(IS_ADDITIVE ? Item.ItemTypeID.PotionTealBig : Item.ItemTypeID.PotionGreenSmall));
         } else if (mMixResult == LIQUID_RESULT_BLUE_RED) {
             hasChanged=true;
             EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionVioletLarge));
-        } else if (mMixResult == LIQUID_RESULT_BLUE_GREEN_RED) {
+        } else if (mMixResult == LIQUID_RESULT_BLUE_RED_YELLOW_OR_GREEN) {
             hasChanged=true;
             EventDispatcher.getInstance().onItemFound(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.PotionSilver));
         }
@@ -327,8 +328,8 @@ public class ChallengeMachine extends ChallengeUI {
         mBubbleBlue.setVisible(mHasBlue);
         mRed.setVisible(mHasRed);
         mBubbleRed.setVisible(mHasRed);
-        mGreen.setVisible(mHasGreen);
-        mBubbleGreen.setVisible(mHasGreen);
+        mYellowOrGreen.setVisible(mHasYellowOrGreen);
+        mBubbleYellowOrGreen.setVisible(mHasYellowOrGreen);
 
         if(mHasActivator)
         {
@@ -343,17 +344,17 @@ public class ChallengeMachine extends ChallengeUI {
 
         if (mMixResult == LIQUID_RESULT_BLUE) {
             mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_few_blue")));
-        } else if (mMixResult == LIQUID_RESULT_GREEN) {
-            mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_few_green")));
+        } else if (mMixResult == LIQUID_RESULT_YELLOW_OR_GREEN) {
+            mMixImg.setDrawable(new TextureRegionDrawable(IS_ADDITIVE ? mAtlas.findRegion("theMachine_liquid_few_green") : mAtlas.findRegion("theMachine_liquid_few_yellow")));
         } else if (mMixResult == LIQUID_RESULT_RED) {
             mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_few_red")));
-        } else if (mMixResult == LIQUID_RESULT_RED_GREEN) {
-            mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_demi_green_red")));
-        } else if (mMixResult == LIQUID_RESULT_BLUE_GREEN) {
-            mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_demi_blue_green")));
+        } else if (mMixResult == LIQUID_RESULT_RED_YELLOW_OR_GREEN) {
+            mMixImg.setDrawable(new TextureRegionDrawable(IS_ADDITIVE ? mAtlas.findRegion("theMachine_liquid_demi_green_red"): mAtlas.findRegion("theMachine_liquid_demi_yellow_red")));
+        } else if (mMixResult == LIQUID_RESULT_BLUE_YELLOW_OR_GREEN) {
+            mMixImg.setDrawable(new TextureRegionDrawable(IS_ADDITIVE ? mAtlas.findRegion("theMachine_liquid_demi_blue_green") :mAtlas.findRegion("theMachine_liquid_demi_blue_yellow")));
         } else if (mMixResult == LIQUID_RESULT_BLUE_RED) {
             mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_demi_blue_red")));
-        } else if (mMixResult == LIQUID_RESULT_BLUE_GREEN_RED) {
+        } else if (mMixResult == LIQUID_RESULT_BLUE_RED_YELLOW_OR_GREEN) {
             mMixImg.setDrawable(new TextureRegionDrawable(mAtlas.findRegion("theMachine_liquid_mixed_full")));
         }
         mMixImg.setScaling(Scaling.none);

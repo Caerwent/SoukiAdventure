@@ -183,8 +183,8 @@
   {
     "id": "barrier3",
     "template": "barrier_wood_right_top.json",
+    "persistence": "GAME",
     "properties": {
-      "persistence":"GAME"
     },
     "eventsAction": [
       {
@@ -254,8 +254,8 @@
   {
     "id": "barrier4",
     "template": "barrier_wood_right_bottom.json",
+    "persistence": "GAME",
     "properties": {
-      "persistence":"GAME"
     },
     "eventsAction": [
       {

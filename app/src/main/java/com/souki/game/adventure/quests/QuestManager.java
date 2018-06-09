@@ -114,7 +114,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                             if (task.getTargetId() != null && task.getTargetId().equals(aDialog.getId())) {
                                 if (quests[i].isTaskDependenciesCompleted(task)) {
                                     task.setCompleted(true);
-                                    Gdx.app.debug("QestManager", "onDialogEnd quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
+                                    //Gdx.app.debug("QestManager", "onDialogEnd quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
                                     //check if quest is completed
                                     quests[i].computeCompleted();
                                     if (quests[i].isCompleted()) {
@@ -145,7 +145,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                                 checkItemFoundTask(quests[i]);
                                 if (quests[i].isTaskDependenciesCompleted(task)) {
                                     task.setCompleted(true);
-                                    Gdx.app.debug("QestManager", "onNPC quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
+                                    //Gdx.app.debug("QestManager", "onNPC quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
 
                                     quests[i].computeCompleted();
                                     if (quests[i].isCompleted()) {
@@ -187,7 +187,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
                                 if (nbItemInInventory >= nbItem) {
                                     if (quests[i].isTaskDependenciesCompleted(task)) {
                                         task.setCompleted(true);
-                                        Gdx.app.debug("QestManager", "onItemFound quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
+                                        //Gdx.app.debug("QestManager", "onItemFound quest " + quests[i].getId() + " task " + task.getType() + " completed " + task.getId());
 
                                         quests[i].computeCompleted();
                                         if (quests[i].isCompleted()) {
@@ -274,7 +274,7 @@ public class QuestManager implements IItemListener, IQuestListener, IPlayerListe
     }
 
     private void internalQuestcompleted(Quest aQuest) {
-        Gdx.app.debug("QestManager", "quest completed " + aQuest.getId());
+        //Gdx.app.debug("QestManager", "quest completed " + aQuest.getId());
 
         if(aQuest.id.compareTo(MyGame.QUEST_FINAL_ID)==0)
         {
