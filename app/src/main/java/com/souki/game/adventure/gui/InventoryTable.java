@@ -42,6 +42,21 @@ public class InventoryTable extends Table implements IPlayerListener {
     }
 
 
+    private void enableDragScroll(boolean aIsEnabled) {
+        if (aIsEnabled) {
+            _dragAndDrop.setCancelTouchFocus(false);
+            mScrollPane.setFlickScroll(false);
+            mScrollPane.setCancelTouchFocus(false);
+            mScrollPane.addListener(mDragListener);
+        } else {
+            _dragAndDrop.setCancelTouchFocus(true);
+            mScrollPane.setFlickScroll(true);
+            mScrollPane.setCancelTouchFocus(true);
+            mScrollPane.removeListener(mDragListener);
+        }
+
+    }
+
     private void init() {
         //setBackground(UIStage.getInstance().getSkin().getDrawable("window1"));
         // setColor(UIStage.getInstance().getSkin().getColor("lt-blue"));
@@ -61,8 +76,9 @@ public class InventoryTable extends Table implements IPlayerListener {
         mScrollPane.setFadeScrollBars(false);
         mScrollPane.setFlickScroll(true);
         mScrollPane.setCancelTouchFocus(true);
-        mScrollPane.setSize(150,(Settings.TARGET_HEIGHT - 64) / 2);
+        mScrollPane.setSize(150, (Settings.TARGET_HEIGHT - 64) / 2);
         mDragListener = new DragScrollListener(mScrollPane);
+        //   mScrollPane.addListener(mDragListener);
 
         add(mScrollPane).top().left().expandY().fillX();
         add(mDetails).top().right().expand().fill();
@@ -72,8 +88,7 @@ public class InventoryTable extends Table implements IPlayerListener {
 
     }
 
-    public DragAndDrop getDragAndDrop()
-    {
+    public DragAndDrop getDragAndDrop() {
         return _dragAndDrop;
     }
 
@@ -84,25 +99,23 @@ public class InventoryTable extends Table implements IPlayerListener {
     public void update(Player aPlayer) {
         int nbItemInRow = 0;
         mInventoryTable.clear();
-        for(InventorySlotTarget slotTarget : mSlotTargets)
-        {
+        for (InventorySlotTarget slotTarget : mSlotTargets) {
             _dragAndDrop.removeTarget(slotTarget);
         }
         mSlotTargets.clear();
-        for(InventorySlotSource slotSource : mSlotSources)
-        {
+        for (InventorySlotSource slotSource : mSlotSources) {
             _dragAndDrop.removeSource(slotSource);
         }
         mSlotSources.clear();
         mSlots.clear();
-        mSelectedItem=null;
+        mSelectedItem = null;
 
         for (Item item : aPlayer.getInventory()) {
             InventorySlot inventorySlot = mSlots.get(item.getItemTypeID());
             if (inventorySlot == null) {
                 inventorySlot = new InventorySlot();
 
-               mSlots.put(item.getItemTypeID(), inventorySlot);
+                mSlots.put(item.getItemTypeID(), inventorySlot);
                 inventorySlot.setTouchable(Touchable.enabled);
                 mInventoryTable.top().add(inventorySlot).size(mSlotWidth, mSlotHeight);
                 inventorySlot.addListener(new ClickListener() {
@@ -124,8 +137,8 @@ public class InventoryTable extends Table implements IPlayerListener {
 
                                 InventorySlotSource source = new InventorySlotSource(mSelectedItem, _dragAndDrop, mDragListener);
                                 mSlotSources.add(source);
-                                mSelectedItem.addCaptureListener(mDragListener);
-                                mSelectedItem.addListener(mDragListener);
+                                //  mSelectedItem.addCaptureListener(mDragListener);
+                                //   mSelectedItem.addListener(mDragListener);
                                 _dragAndDrop.addSource(source);
 
                             } else if (mSelectedItem != null && mSelectedItem == newSelectedItem) {
@@ -137,6 +150,8 @@ public class InventoryTable extends Table implements IPlayerListener {
                             }
 
                         }
+                        enableDragScroll(mSelectedItem != null);
+
 
                     }
                 });
