@@ -87,7 +87,7 @@
     "persistence": "NONE",
     "properties": {
       "type": "PUZZLE",
-      "image": "data/challenges/puzzle_house.png",
+      "image": "data/challenges/puzzle_blacksmith.png",
       "size": 3
     },
     "eventsAction": [

@@ -1,0 +1,27 @@
+Les aventures de Souki est un jeu sans prétentions dont le code source est disponible en open source ici : https://github.com/Caerwent/SoukiAdventure
+Ce jeux a été réalisé sur mon temps libre et il s'agit d'un premier essai, il reste donc de nombreux petits détails qui mériteraient d'être corrigés ou améliorés.
+
+
+COPYRIGHTS
+La majorité des ressources graphiques et les musiques proviennent du site https://opengameart.org/ et plus particulièrement ceux issus de la liberated pixel cup :
+https://opengameart.org/content/liberated-pixel-cup-0
+Souki et la plupart des personnages de ce jeux ont été dessinés par Anaëlle.
+
+Je n'ai malheureusement pas fait la liste exhaustive des auteurs des ressources utilisées mais en voici un certain nombre.
+Pour les ressources graphiques :
+- Celiana (http://pixanna.nl/)
+- Candacis (https://candacis.wordpress.com/)
+- Hanzo Kimura
+- Schwarzenacht https://schwarzenacht.deviantart.com/
+- Hyptosis (https://opengameart.org/content/lots-of-hyptosis-tiles-organized)
+
+Pour les musiques :
+- Alexandr zhelanov (musique des mines)
+- Trevor Lentz (musique du village final)
+- Alex Smith http://pixelsphere.org (musiques des campagnes à l'Est du village)
+- Joseph Gilbert / Kistol (musique des îles)
+- Jordan Hake (musique du village)
+- Matthew Pablo (musiques des forêts)
+
+
+

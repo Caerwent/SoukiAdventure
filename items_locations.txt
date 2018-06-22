@@ -2,9 +2,7 @@ Banana <- island5   => quest_witch (forest8)
 Book<-house3
 Boots <- desert1_chest1 => quest_boots (village)
 Coal<- mines1, mines3, mines4, mines5, mines5_1, mines5_2, mines5_3, mines5_4 => mines2, mines3, mines4, 5*mines5,
-CrystalAnimBlue <- east_land10_chest1, mines4, mines6, caves1, caves4_1, caves4_2, 2 * caves4_3_chest1 => 2*caves3, 2*caves2, 4*caves5
-
-
+CrystalAnimBlue <- desert1, east_land10_chest1, mines4, mines6, caves1, caves4_1, caves4_2, 2 * caves4_3_chest1 => 2*caves3, 2*caves2, 4*caves5
         CrystalsGreen <- mines5_4 => quest_crystals (mines5)
         CrystalsPurple <- mines5_3 => quest_crystals (mines5)
         Dagger <- DaggerBroken + quest_malo_blacksmith => elves_forest8_chest1, island3_2_chest1, forest4_2_chest1, FoodBread2
@@ -87,7 +85,7 @@ CrystalAnimBlue <- east_land10_chest1, mines4, mines6, caves1, caves4_1, caves4_
         Shovel <- east_land8 => quest_farmer_shovel (east_land7) => FoodBread
         Shovel2,
         TeddyBear<-mountain5_chest1 => quest_teddy_bear => quest_lapin_bleu-> FoodBiscuit
-        Torch <- east_land9_chest1, desert1_chest1, elves_forest_tower0, mines6, caves1, 2*caves4_3_chest1 => 2*caves3, 2*caves2, 4*caves5
+        Torch <- village, east_land9_chest1, desert1_chest1, elves_forest_tower0, mines6, caves1, 2*caves4_3_chest1 => 2*caves3, 2*caves2, 4*caves5
         TorchFire <- LanternOn + Torch
         Toaster <- house3_chest => FoodBread2 => quest_panda (desert1)
         VialBlue <- house1_chest1, east_land2, east_land4, , east_land9, forest4_1_chest1, forest3_tower1_chest1, elves_forest1, island3_1, desert1_chest1, mountain1 => portal caves4 (caves3), PotionGreenSmall portal caves4 (caves3), PotionVioletLarge portal caves6 (caves5), portal caves3 (caves2), PotionSilver (caves2), PotionGreenSmall portal caves6 (caves5), PotionSilver portal caves6 (caves5)

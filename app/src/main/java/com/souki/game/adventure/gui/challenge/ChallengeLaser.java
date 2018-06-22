@@ -1,5 +1,6 @@
 package com.souki.game.adventure.gui.challenge;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -38,14 +39,13 @@ public class ChallengeLaser extends ChallengeUI {
         TEAL("8bdcf7", Item.ItemTypeID.PotionTealBig, "laser_teal"),
         WHITE("FFFFFF", Item.ItemTypeID.PotionSilver, "laser_white"),
         YELLOW("f6ee16", ChallengeMachine.IS_ADDITIVE ? Item.ItemTypeID.PotionYellowLarge : Item.ItemTypeID.VialYellow, "laser_yellow"),
-        ORANGE("ff9600", Item.ItemTypeID.PotionYellowLarge, "laser_orange");
+        ORANGE("ff9600", Item.ItemTypeID.PotionOrangeLarge, "laser_orange");
 
         public Color mColor;
         public Item.ItemTypeID mPotionType;
         public String mLaserRegion;
 
-        LASER_COLOR(String colorCode, Item.ItemTypeID  aPotionType, String aLaserRegion)
-        {
+        LASER_COLOR(String colorCode, Item.ItemTypeID aPotionType, String aLaserRegion) {
             mColor = Color.valueOf(colorCode);
             mPotionType = aPotionType;
             mLaserRegion = aLaserRegion;
@@ -61,10 +61,9 @@ public class ChallengeLaser extends ChallengeUI {
     private ChallengeTarget mDropTarget;
     private WidgetGroup mGroup;
 
-    protected Image  mMirrorImage, mCrystalImage, mPotionImage, mTorchImage, mPreLaserImage, mLaserImage;
+    protected Image mMirrorImage, mCrystalImage, mPotionImage, mTorchImage, mPreLaserImage, mLaserImage;
     private Table mHelpTable;
     protected TextureAtlas mAtlas;
-
 
 
     public ChallengeLaser() {
@@ -72,7 +71,6 @@ public class ChallengeLaser extends ChallengeUI {
 
 
     }
-
 
 
     @Override
@@ -92,7 +90,7 @@ public class ChallengeLaser extends ChallengeUI {
         crystal.setScaling(Scaling.none);
         mHelpTable.add(crystal);
 
-         helpPlus = new Label("+", GenericUI.getInstance().getSkin(), "big-font");
+        helpPlus = new Label("+", GenericUI.getInstance().getSkin(), "big-font");
         helpPlus.setAlignment(Align.center);
         mHelpTable.add(helpPlus);
 
@@ -102,60 +100,58 @@ public class ChallengeLaser extends ChallengeUI {
         mContent.top().add(mGroup).padTop(10).padBottom(10).expand().fill().center();
 
 
-
-
     }
 
     protected void createUI() {
 
-        Image backImage  = new Image(mAtlas.findRegion("laser_bkg"));
+        Image backImage = new Image(mAtlas.findRegion("laser_bkg"));
         backImage.setSize(128, 128);
         backImage.setPosition(0, 128);
         mGroup.addActor(backImage);
-        backImage  = new Image(mAtlas.findRegion("laser_bkg"));
+        backImage = new Image(mAtlas.findRegion("laser_bkg"));
         backImage.setSize(128, 128);
         backImage.setPosition(128, 128);
         mGroup.addActor(backImage);
 
         mMirrorImage = new Image(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.Mirror).getTextureRegion());
         mMirrorImage.setScaling(Scaling.none);
-        mMirrorImage.setPosition(10, 48+128);
+        mMirrorImage.setPosition(10, 48 + 128);
         mGroup.addActor(mMirrorImage);
 
         mTorchImage = new Image(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.TorchFire).getTextureRegion());
         mTorchImage.setScaling(Scaling.none);
         mTorchImage.setVisible(false);
-        mTorchImage.setPosition(42,48+128);
+        mTorchImage.setPosition(42, 48 + 128);
         mGroup.addActor(mTorchImage);
 
         mCrystalImage = new Image(ItemFactory.getInstance().getInventoryItem(Item.ItemTypeID.CrystalAnimBlue).getTextureRegion());
         mCrystalImage.setScaling(Scaling.none);
         mCrystalImage.setVisible(false);
-        mCrystalImage.setPosition(74, 48+128);
+        mCrystalImage.setPosition(74, 48 + 128);
         mGroup.addActor(mCrystalImage);
 
-
+        Gdx.app.error("DEBUG", "mPotionType: " + mColor.mPotionType);
         Image potion = new Image(ItemFactory.getInstance().getInventoryItem(mColor.mPotionType).getTextureRegion());
         potion.setScaling(Scaling.none);
         mHelpTable.add(potion);
 
 
-        mPreLaserImage= new Image(mAtlas.findRegion(LASER_COLOR.WHITE.mLaserRegion));
+        mPreLaserImage = new Image(mAtlas.findRegion(LASER_COLOR.WHITE.mLaserRegion));
         mPreLaserImage.setScaling(Scaling.none);
         mPreLaserImage.setVisible(false);
-        mPreLaserImage.setPosition(110, 48+128);
+        mPreLaserImage.setPosition(110, 48 + 128);
         mGroup.addActor(mPreLaserImage);
 
         mPotionImage = new Image(ItemFactory.getInstance().getInventoryItem(mColor.mPotionType).getTextureRegion());
         mPotionImage.setScaling(Scaling.none);
         mPotionImage.setVisible(false);
-        mPotionImage.setPosition(174, 48+128);
+        mPotionImage.setPosition(174, 48 + 128);
         mGroup.addActor(mPotionImage);
 
         mLaserImage = new Image(mAtlas.findRegion(mColor.mLaserRegion));
         mLaserImage.setScaling(Scaling.none);
         mLaserImage.setVisible(false);
-        mLaserImage.setPosition(206,48+128);
+        mLaserImage.setPosition(206, 48 + 128);
         mGroup.addActor(mLaserImage);
 
         refreshUI();
@@ -195,8 +191,7 @@ public class ChallengeLaser extends ChallengeUI {
         if (aProperties != null && aProperties.containsKey("color")) {
             try {
                 mColor = LASER_COLOR.valueOf((String) aProperties.get("color"));
-            }catch(Exception e)
-            {
+            } catch (Exception e) {
 
             }
         }
@@ -209,15 +204,16 @@ public class ChallengeLaser extends ChallengeUI {
 
 
     protected void refreshUI() {
-        if(mAtlas==null)
+        if (mAtlas == null)
             return;
         mCrystalImage.setVisible(mHasCrystal);
         mTorchImage.setVisible(mHasTorch);
         mPotionImage.setVisible(mhasPotion);
-        mPreLaserImage.setVisible(mHasCrystal && mHasTorch );
-        mLaserImage.setVisible(mHasCrystal && mHasTorch &&mhasPotion);
+        mPreLaserImage.setVisible(mHasCrystal && mHasTorch);
+        mLaserImage.setVisible(mHasCrystal && mHasTorch && mhasPotion);
 
     }
+
     @Override
     protected void createDragAndDropTarget(DragAndDrop aDragAndDrop) {
         mDropTarget = new ChallengeTarget(mGroup, this);
@@ -234,17 +230,13 @@ public class ChallengeLaser extends ChallengeUI {
         if (!mHasTorch && aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.TorchFire)) {
             mHasTorch = true;
             EventDispatcher.getInstance().onItemLost(aSourceSlot.getItemOnTop());
-        }
-        else if (!mHasCrystal && aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.CrystalAnimBlue)) {
+        } else if (!mHasCrystal && aSourceSlot.doesAcceptItemUseType(Item.ItemTypeID.CrystalAnimBlue)) {
             mHasCrystal = true;
             EventDispatcher.getInstance().onItemLost(aSourceSlot.getItemOnTop());
-        }
-        else if (!mhasPotion && aSourceSlot.doesAcceptItemUseType(mColor.mPotionType)) {
+        } else if (!mhasPotion && aSourceSlot.doesAcceptItemUseType(mColor.mPotionType)) {
             mhasPotion = true;
             EventDispatcher.getInstance().onItemLost(aSourceSlot.getItemOnTop());
-        }
-        else
-        {
+        } else {
             return;
         }
         checkIsResolved();
@@ -255,7 +247,7 @@ public class ChallengeLaser extends ChallengeUI {
 
     protected void checkIsResolved() {
         mIsResolved = mHasCrystal && mHasTorch && mhasPotion;
-        if(mIsResolved) {
+        if (mIsResolved) {
             mInteractionChallenge.setState("COMPLETED");
             challengeCompleted();
         }

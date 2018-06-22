@@ -49,6 +49,7 @@ public class MainMenuScreen implements Screen {
         TextButton newGameButton = new TextButton(AssetsUtility.getString("ui_new_game"), GenericUI.getInstance().getSkin());
         TextButton settingsButton = new TextButton(AssetsUtility.getString("ui_settings"), GenericUI.getInstance().getSkin());
         TextButton exitButton = new TextButton(AssetsUtility.getString("ui_exit"), GenericUI.getInstance().getSkin());
+        TextButton aboutButton = new TextButton(AssetsUtility.getString("ui_about"), GenericUI.getInstance().getSkin());
 
         TextButton debugButton = new TextButton("DEBUG", GenericUI.getInstance().getSkin());
 
@@ -61,6 +62,7 @@ public class MainMenuScreen implements Screen {
         }
         table.add(newGameButton).spaceBottom(10).row();
         table.add(settingsButton).spaceBottom(10).row();
+        table.add(aboutButton).spaceBottom(10).row();
 
         table.add(debugButton).spaceBottom(10).row();
 
@@ -129,6 +131,20 @@ public class MainMenuScreen implements Screen {
                                        @Override
                                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                                            MyGame.getInstance().setScreen(MyGame.ScreenType.Settings);
+                                       }
+                                   }
+        );
+        aboutButton.addListener(new ClickListener() {
+
+                                       @Override
+                                       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                                           AudioManager.getInstance().onAudioEvent(AudioManager.UI_CLIC_SOUND);
+                                           return true;
+                                       }
+
+                                       @Override
+                                       public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                                           MyGame.getInstance().setScreen(MyGame.ScreenType.About);
                                        }
                                    }
         );

@@ -117,10 +117,12 @@ public class InteractionChallenge extends Interaction {
 
     @Override
     public void onStopCollisionInteraction(CollisionInteractionComponent aEntity) {
-        mIsInteractionShown = false;
-        ChallengeUI currentChallengeUI = UIStage.getInstance().getChallengeUIOpened();
-        if (currentChallengeUI != null && currentChallengeUI == mChallengeUI) {
-            UIStage.getInstance().closeChallengeUI();
+        if (hasCollisionInteraction(aEntity)) {
+            mIsInteractionShown = false;
+            ChallengeUI currentChallengeUI = UIStage.getInstance().getChallengeUIOpened();
+            if (currentChallengeUI != null && currentChallengeUI == mChallengeUI) {
+                UIStage.getInstance().closeChallengeUI();
+            }
         }
     }
 

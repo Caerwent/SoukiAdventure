@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="32" height="21" tilewidth="32" tileheight="32" infinite="0" nextobjectid="193">
+<map version="1.0" tiledversion="1.1.3" orientation="orthogonal" renderorder="right-up" width="32" height="21" tilewidth="32" tileheight="32" infinite="0" nextobjectid="194">
  <properties>
   <property name="music" value="THEME_MINES"/>
  </properties>
@@ -56,6 +56,7 @@
   <object id="185" x="321" y="211" width="36" height="14"/>
   <object id="186" x="443" y="211" width="44" height="12"/>
   <object id="187" x="480" y="96" width="8" height="126"/>
+  <object id="193" x="161" y="217" width="7" height="103"/>
  </objectgroup>
  <objectgroup name="interactions">
   <object id="1" name="portal2" gid="846" x="160" y="104.333" width="32" height="32"/>

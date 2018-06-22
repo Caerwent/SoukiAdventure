@@ -6,133 +6,140 @@ filter: Nearest,Nearest
 repeat: none
 theMachine_bkg
   rotate: false
-  xy: 2, 32
+  xy: 2, 38
   size: 300, 216
   orig: 300, 216
   offset: 0, 0
   index: -1
 theMachine_bubble_on
   rotate: false
-  xy: 418, 64
+  xy: 451, 70
   size: 18, 20
   orig: 18, 20
   offset: 0, 0
   index: -1
 theMachine_liquid_activator_off
   rotate: false
-  xy: 36, 6
+  xy: 418, 43
   size: 26, 24
   orig: 26, 24
   offset: 0, 0
   index: -1
 theMachine_liquid_activator_on
   rotate: false
-  xy: 64, 6
+  xy: 36, 12
   size: 26, 24
   orig: 26, 24
   offset: 0, 0
   index: -1
 theMachine_liquid_blue
   rotate: false
-  xy: 398, 23
+  xy: 398, 43
   size: 18, 47
   orig: 18, 47
   offset: 0, 0
   index: -1
 theMachine_liquid_demi_blue_green
   rotate: false
-  xy: 304, 166
+  xy: 304, 172
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_demi_blue_red
   rotate: false
-  xy: 399, 209
+  xy: 399, 215
+  size: 92, 39
+  orig: 92, 39
+  offset: 0, 0
+  index: -1
+theMachine_liquid_demi_blue_yellow
+  rotate: false
+  xy: 304, 131
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_demi_green_red
   rotate: false
-  xy: 304, 125
+  xy: 304, 90
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_demi_yellow_red
   rotate: false
-  xy: 304, 84
+  xy: 304, 49
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_few_blue
   rotate: false
-  xy: 304, 43
+  xy: 304, 8
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_few_green
   rotate: false
-  xy: 304, 2
+  xy: 399, 174
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_few_red
   rotate: false
-  xy: 399, 168
+  xy: 398, 133
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_few_yellow
   rotate: false
-  xy: 398, 127
+  xy: 398, 92
   size: 92, 39
   orig: 92, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_green
   rotate: false
-  xy: 492, 113
+  xy: 492, 119
   size: 18, 53
   orig: 18, 53
   offset: 0, 0
   index: -1
 theMachine_liquid_mixed_full
   rotate: false
-  xy: 304, 207
+  xy: 304, 213
   size: 93, 41
   orig: 93, 41
   offset: 0, 0
   index: -1
 theMachine_liquid_red
   rotate: false
-  xy: 418, 86
+  xy: 398, 2
   size: 20, 39
   orig: 20, 39
   offset: 0, 0
   index: -1
 theMachine_liquid_yellow
   rotate: false
-  xy: 398, 72
+  xy: 492, 64
   size: 18, 53
   orig: 18, 53
   offset: 0, 0
   index: -1
 theMachine_pipe
   rotate: false
-  xy: 440, 104
+  xy: 418, 69
   size: 31, 21
   orig: 31, 21
   offset: 0, 0
   index: -1
 theMachine_small
   rotate: false
-  xy: 2, 7
+  xy: 2, 13
   size: 32, 23
   orig: 32, 23
   offset: 0, 0

@@ -88,10 +88,12 @@ public final class AssetsUtility {
     }
 
 
-    protected static void loadStrings() {
+    public static Locale loadLanguage() {
         Locale locale;
-        if (PersistenceProvider.getInstance().getSettings().language == null) {
+        if (PersistenceProvider.getInstance().getSettings().language == null || PersistenceProvider.getInstance().getSettings().language.compareTo("null") == 0) {
             locale = Locale.getDefault();
+            PersistenceProvider.getInstance().getSettings().language = locale.getLanguage();
+            PersistenceProvider.getInstance().saveSettings();
         } else {
             if (PersistenceProvider.getInstance().getSettings().countryCode == null) {
                 locale = new Locale(PersistenceProvider.getInstance().getSettings().language);
@@ -100,6 +102,12 @@ public final class AssetsUtility {
             }
 
         }
+        return locale;
+    }
+
+    protected static void loadStrings() {
+        Locale locale = loadLanguage();
+
         _assetManager.load(STRINGS_PATH, I18NBundle.class, new I18NBundleLoader.I18NBundleParameter(locale));
         //Until we add loading screen, just block until we load the map
         _assetManager.finishLoadingAsset(STRINGS_PATH);
